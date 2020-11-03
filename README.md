@@ -1,7 +1,6 @@
 # FitCom
 ## verwendete Technologie
-### Backend Framework
-[Details](backend/backend.md)
+### [Backend Framework](backend/backend.md)
 #### Auswahl 
 - NodeJS 
     - Express
@@ -13,11 +12,9 @@
 ### Frontend Framework
 - Angular
 ### Mobilanwendung
-#### Android
-[Details](android_app/android_app.md)
+#### [Android](android_app/android_app.md)
 - Kotlin
-#### IOS
-[Details](ios_app/ios_app.md)
+#### [IOS](ios_app/ios_app.md)
 - Swift
 ### API
 - Rest
