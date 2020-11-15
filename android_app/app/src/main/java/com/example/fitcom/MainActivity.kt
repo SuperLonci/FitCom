@@ -1,6 +1,8 @@
 package com.example.fitcom
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,9 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.coroutines.delay
 import java.util.logging.Handler
+
+const val EXTRA_MESSAGE = "com.example.fitcom.MESSAGE"
+
 
 class MainActivity : AppCompatActivity() {
     var user_authn: Boolean = false
@@ -31,7 +36,13 @@ class MainActivity : AppCompatActivity() {
         }
         else {
             //Start activity for registration
-            findViewById<TextView>(R.id.loading_screen).text = "you have to sign up"
+            //findViewById<TextView>(R.id.loading_screen).text = "you have to sign up"
+            val editText = findViewById<TextView>(R.id.loading_screen)
+            val message = editText.text
+            val intent = Intent(this, WelcomeActivity::class.java).apply {
+                putExtra(EXTRA_MESSAGE, message)
+            }
+            startActivity(intent)
         }
     }
 }
