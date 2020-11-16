@@ -6,11 +6,13 @@ import android.widget.EditText
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.coroutines.delay
+import java.util.jar.Manifest
 import java.util.logging.Handler
 
 const val EXTRA_MESSAGE = "com.example.fitcom.MESSAGE"
