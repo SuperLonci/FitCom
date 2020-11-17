@@ -17,9 +17,13 @@ class QRInstructions : Fragment() {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_qr_instructions, container, false)
         val scan =  root.findViewById<Button>(R.id.scan)
+        val writeId = root.findViewById<Button>(R.id.write_id)
 
         scan.setOnClickListener {
             Navigation.findNavController(root).navigate(R.id.QRScanner)
+        }
+        writeId.setOnClickListener {
+            Navigation.findNavController(root).navigate(R.id.studioIdInput)
         }
         return root
     }
