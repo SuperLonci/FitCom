@@ -14,4 +14,7 @@
     <string name="text_enterid">ID eingeben</string>
     <string name="text_scanqr">Scanne den QR-Code des Fitnessstudios zum beginnen.</string>
     <string name="text_welcome">Willkommen!</string>
+    <string name="text_id">ID</string>
+    <string name="text_studioid_input">Hier kannst du die ID deines Fitnessstudios eingeben.</string>
+    <string name="text_next">Weiter</string>
 </resources>

@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="248dp"
         android:text="@string/text_welcome"
+        android:textColor="#000000"
         android:textSize="30sp"
         android:typeface="monospace"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,6 +29,7 @@
         android:layout_marginTop="64dp"
         android:gravity="center"
         android:text="@string/text_scanqr"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
@@ -38,6 +40,7 @@
         android:layout_height="60dp"
         android:layout_marginBottom="160dp"
         android:text="@string/scannen"
+        android:textColor="@android:color/black"
         app:backgroundTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,11 +50,13 @@
 
     <Button
         android:id="@+id/write_id"
-        android:layout_width="194dp"
-        android:layout_height="0dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        style="?attr/materialButtonOutlinedStyle"
         android:text="@string/text_enterid"
-        app:strokeColor="@color/colorAccent"
-        android:background="@drawable/button_custom"
+        android:textColor="@android:color/black"
+        app:strokeColor="@color/colorPrimary"
+        app:backgroundTint="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scan" />
