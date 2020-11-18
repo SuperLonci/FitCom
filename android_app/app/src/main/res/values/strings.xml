@@ -17,4 +17,6 @@
     <string name="text_id">ID</string>
     <string name="text_studioid_input">Hier kannst du die ID deines Fitnessstudios eingeben.</string>
     <string name="text_next">Weiter</string>
+    <string name="text_name">Name</string>
+    <string name="text_email">Email</string>
 </resources>
