@@ -22,9 +22,11 @@ class NameInput : Fragment() {
 
         next.setOnClickListener {
             val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputName)
-            if(root.findViewById<EditText>(R.id.editText_name).text.length > 10) {
+            val textfield = root.findViewById<EditText>(R.id.editText_name)
+            if(textfield.text.length > 10) {
                 edtTextLayout.isErrorEnabled = true
                 edtTextLayout.error = "Dieser Name ist ungültig."
+                WelcomeActivity().username = textfield.text.toString()
             }
             else {
                 Navigation.findNavController(root).navigate(R.id.emailInput)

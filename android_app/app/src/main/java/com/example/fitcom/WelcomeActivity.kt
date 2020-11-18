@@ -11,7 +11,11 @@ import java.util.jar.Manifest
 class WelcomeActivity : AppCompatActivity() {
 
     private val CameraPermissionRequestCode = 101
+    var username: String? = null
+    var useremail: String? = null
     var gender:Boolean? = null
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
