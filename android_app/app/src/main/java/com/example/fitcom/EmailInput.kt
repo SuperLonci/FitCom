@@ -23,12 +23,15 @@ class EmailInput : Fragment() {
         next.setOnClickListener {
             val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputEmail)
             val textfield = root.findViewById<EditText>(R.id.editText_email)
+
             if(textfield.text.length > 10) {
                 edtTextLayout.isErrorEnabled = true
                 edtTextLayout.error = "Diese Email ist ungültig."
-                WelcomeActivity().useremail = textfield.text.toString()
+
             }
             else {
+                user.useremail = textfield.text.toString()
+
                 Navigation.findNavController(root).navigate(R.id.apacheHelicopterSelection)
             }
         }

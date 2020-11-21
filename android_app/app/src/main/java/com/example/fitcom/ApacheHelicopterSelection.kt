@@ -24,15 +24,15 @@ class ApacheHelicopterSelection : Fragment() {
         val helinext = root.findViewById<ImageButton>(R.id.helicopter_imgbutton)
 
         malenext.setOnClickListener {
-            WelcomeActivity().gender = true
+            user.usergender = "male"
             next(root)
         }
         femalenext.setOnClickListener {
-            WelcomeActivity().gender = false
+            user.usergender = "female"
             next(root)
         }
         helinext.setOnClickListener {
-            WelcomeActivity().gender = true
+            user.usergender = "helicopter"
             next(root)
         }
         return root

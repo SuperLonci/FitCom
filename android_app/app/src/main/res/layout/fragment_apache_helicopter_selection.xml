@@ -8,7 +8,6 @@
     tools:context=".ApacheHelicopterSelection">
 
     <!-- TODO: Update blank fragment layout -->
-
     <TextView
         android:id="@+id/enterGender"
         android:layout_width="wrap_content"

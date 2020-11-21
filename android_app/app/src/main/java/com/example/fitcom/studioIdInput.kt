@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.android.synthetic.main.fragment_studio_id_input.*
 
 class studioIdInput : Fragment() {
 
@@ -23,10 +24,13 @@ class studioIdInput : Fragment() {
         next.setOnClickListener {
             val edtTextLayout = root.findViewById<TextInputLayout>(R.id.text_input_layout_id)
             if(root.findViewById<EditText>(R.id.editText_id).text.length > 10) {
+//                ToDo: Backend Anfrage zur Verifizierung
                 edtTextLayout.isErrorEnabled = true
                 edtTextLayout.error = "Diese StudioID ist ungültig."
             }
             else {
+//                ToDo: Vorher abfangen und bereinigten Int weitergeben
+                user.studioID = Integer.parseInt(editText_id.text.toString())
                 Navigation.findNavController(root).navigate(R.id.nameInput)
             }
         }
