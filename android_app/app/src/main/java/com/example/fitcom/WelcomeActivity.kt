@@ -22,22 +22,6 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-
-        initHNumberPicker()
-
-        val numberPicker = findViewById<NumberPicker>(R.id.hNumberPicker)
-
-        if (numberPicker != null) {
-            numberPicker.minValue = 0
-            numberPicker.maxValue = 10
-
-            numberPicker.wrapSelectorWheel = true
-            numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
-                val text = "Changed from $oldVal to $newVal"
-                Toast.makeText(this@WelcomeActivity, text, Toast.LENGTH_SHORT).show()
-            }
-        }
-
     }
 
     public fun setupPermission() {
@@ -67,10 +51,5 @@ class WelcomeActivity : AppCompatActivity() {
                 }
             }
         }
-    }
-
-    //        height numberpicker
-    private fun initHNumberPicker(){
-
     }
 }

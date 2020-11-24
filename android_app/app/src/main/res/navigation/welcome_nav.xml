@@ -12,12 +12,8 @@
         tools:layout="@layout/fragment_qr_scanner" >
         <action
             android:id="@+id/action_QRScanner_to_nameInput"
-            app:destination="@id/nameInput"/>
-        <action
-            android:id="@+id/action_QRScanner_to_QRInstructions"
-            app:destination="@id/QRInstructions"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim" />
+            app:destination="@id/nameInput"
+            app:enterAnim="@anim/enter_right_to_left" />
     </fragment>
     <fragment
         android:id="@+id/studioIdInput"
@@ -26,7 +22,8 @@
         tools:layout="@layout/fragment_studio_id_input" >
         <action
             android:id="@+id/action_studioIdInput_to_nameInput"
-            app:destination="@id/nameInput" />
+            app:destination="@id/nameInput"
+            app:enterAnim="@anim/exit_right_to_left" />
     </fragment>
     <fragment
         android:id="@+id/nameInput"
@@ -94,11 +91,13 @@
         tools:layout="@layout/fragment_qr_instructions" >
         <action
             android:id="@+id/action_QRInstructions_to_studioIdInput"
-            app:destination="@id/studioIdInput" />
+            app:destination="@id/studioIdInput"
+            app:enterAnim="@anim/enter_right_to_left"
+            app:exitAnim="@anim/exit_right_to_left" />
         <action
             android:id="@+id/action_QRInstructions_to_QRScanner"
             app:destination="@id/QRScanner"
-            app:enterAnim="@anim/nav_default_enter_anim"
+            app:enterAnim="@anim/exit_right_to_left"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
