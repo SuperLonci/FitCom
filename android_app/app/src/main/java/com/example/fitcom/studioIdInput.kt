@@ -30,7 +30,7 @@ class studioIdInput : Fragment() {
             }
             else {
 //                ToDo: Vorher abfangen und bereinigten Int weitergeben
-                user.studioID = Integer.parseInt(editText_id.text.toString())
+                user.studioID = editText_id.text.toString()
                 Navigation.findNavController(root).navigate(R.id.nameInput)
             }
         }
