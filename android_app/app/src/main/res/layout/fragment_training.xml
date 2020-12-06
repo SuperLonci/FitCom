@@ -7,15 +7,15 @@
     tools:context=".ui.training.TrainingFragment">
 
     <TextView
-        android:id="@+id/text_training"
+        android:id="@+id/text_trainingplans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="5dp"
+        android:gravity="center"
+        android:text="Wähle deinen Trainingsplan!"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,13 +24,12 @@
         android:id="@+id/card_view_3er"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_gravity="center"
+        android:layout_gravity="center_horizontal"
         android:layout_margin="15dp"
         app:cardCornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/text_trainingplans">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,7 +39,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/person_name"
+                android:id="@+id/text_trainingplan_name_3er"
                 android:layout_toRightOf="@+id/person_photo"
                 android:layout_alignParentTop="true"
                 android:textSize="35sp"
@@ -51,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/subinfo_3er"
-                android:layout_below="@+id/person_name"
+                android:layout_below="@+id/text_trainingplan_name_3er"
                 android:text="Alle wichtigen Übungen in drei spannenden Trainingstagen"
                 android:textSize="20dp"
                 />
@@ -61,6 +60,51 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/subsubinfo_3er"
                 android:layout_below="@+id/subinfo_3er"
+                android:text="Vorschläge der Redaktion"
+                />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_5er"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_view_3er">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_trainingplan_name_5er"
+                android:layout_toRightOf="@+id/person_photo"
+                android:layout_alignParentTop="true"
+                android:textSize="35sp"
+                android:text="5er Split"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subinfo_5er"
+                android:layout_below="@+id/text_trainingplan_name_5er"
+                android:text="Jeder Muskelpartie wird an einem Tag die volle Aufmerksamkeit geschenkt"
+                android:textSize="20dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/subsubinfo_5er"
+                android:layout_below="@+id/subinfo_5er"
                 android:text="Vorschläge der Redaktion"
                 />
         </RelativeLayout>
