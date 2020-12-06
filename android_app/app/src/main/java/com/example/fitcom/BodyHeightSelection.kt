@@ -32,10 +32,10 @@ class BodyHeightSelection : Fragment() {
         else {
             numberPicker.value = 166
         }
-        numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
-            val text = "Changed from $oldVal to $newVal"
-            Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
-        }
+//        numberPicker.setOnValueChangedListener { picker, oldVal, newVal ->
+//            val text = "Changed from $oldVal to $newVal"
+//            Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+//        }
 
         next.setOnClickListener {
             user.userheight = numberPicker.value

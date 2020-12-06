@@ -19,4 +19,6 @@
     <string name="text_next">Weiter</string>
     <string name="text_name">Name</string>
     <string name="text_email">Email</string>
+    <string name="title_training">Training</string>
+    <string name="title_profile">Profile</string>
 </resources>
