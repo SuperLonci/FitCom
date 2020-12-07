@@ -17,5 +17,8 @@ Feature: Create Account
          When I enter "thatsNotAnEmail" into the email input field
          Then Message toast with text "Invalid Email address!"
 
+      Scenario Outline:  sdfsadf
+        Given dsafsadf
+
 
 
