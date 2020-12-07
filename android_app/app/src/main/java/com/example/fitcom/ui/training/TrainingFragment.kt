@@ -22,10 +22,6 @@ class TrainingFragment : Fragment() {
         trainingViewModel =
                 ViewModelProviders.of(this).get(TrainingViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_training, container, false)
-        val textView: TextView = root.findViewById(R.id.text_training)
-        trainingViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         return root
     }
 }
