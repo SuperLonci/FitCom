@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         //hides the action bar in the loading screen
         supportActionBar?.hide()
 
+        //sets a timer for 3 seconds to show the logo in that time
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
