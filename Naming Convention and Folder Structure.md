@@ -27,16 +27,16 @@
 Short name of major components:
 |Name           |short  |
 |---            |---    |
-|Button         | btn   |
-|EditText       | et    |
-|TextView       | tv    |
-|ProgressBar    | pb    |
-|Checkbox       | chk   |
-|RadioButton    | rb    |
-|ToggleButton   | tb    |
-|Spinner        | spn   |
-|Menu           | mnu   |
-|ListView       | lv    |
-|GalleryView    | gv    |
-|LinearLayout   | ll    |
-|RelativeLayout | rl    |
+|Button         |btn    |
+|EditText       |et     |
+|TextView       |tv     |
+|ProgressBar    |pb     |
+|Checkbox       |chk    |
+|RadioButton    |rb     |
+|ToggleButton   |tb     |
+|Spinner        |spn    |
+|Menu           |mnu    |
+|ListView       |lv     |
+|GalleryView    |gv     |
+|LinearLayout   |ll     |
+|RelativeLayout |rl     |
