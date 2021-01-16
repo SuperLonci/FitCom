@@ -1,6 +1,6 @@
 # Naming Convention and Folder Structure
 
-## Namign Convention
+## Naming Conventions
 ### Kotlin Files
 - lower camelcase
 
@@ -40,3 +40,8 @@ Short name of major components:
 |GalleryView    |gv     |
 |LinearLayout   |ll     |
 |RelativeLayout |rl     |
+
+### For everything else
+[Guidelines Link](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md)
+
+## Folder Structure
