@@ -45,3 +45,15 @@ Short name of major components:
 [Guidelines Link](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md)
 
 ## Folder Structure
+- per activity one folder
+- per fragment one subfolder
+- mvc model in the folder
+- BSP:
+    - registration
+        - qrCodeScan
+            - model
+            - controller
+        - ageEntry
+            - model
+            - controller
+- Res/Layout folder all fragments in activity folder
