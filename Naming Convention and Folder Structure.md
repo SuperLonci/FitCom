@@ -45,6 +45,7 @@ Short name of major components:
 [Guidelines Link](https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md)
 
 ## Folder Structure
+- lower camelcase
 - per activity one folder
 - per fragment one subfolder
 - mvc model in the folder
