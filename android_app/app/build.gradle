@@ -10,12 +10,14 @@ android {
         main {
             res.srcDirs =
                     [
-                            'src/main/res/layout/welcomeFragments',
-                            'src/main/res/layout',
+                            'src/main/res/layouts/welcome-fragments',
+                            'src/main/res/layouts/activity-layouts',
+                            'src/main/res/layouts',
                             'src/main/res'
                     ]
         }
     }
+
     defaultConfig {
         applicationId "tech.fitcom.app"
         minSdkVersion 16
