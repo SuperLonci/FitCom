@@ -1,10 +1,11 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import tech.fitcom.app.R
 
 class RegistrationConfirmation : Fragment() {
 

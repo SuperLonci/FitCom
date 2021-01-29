@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,8 +10,9 @@ import android.widget.EditText
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_studio_id_input.*
+import tech.fitcom.app.R
 
-class studioIdInput : Fragment() {
+class StudioIdInput : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

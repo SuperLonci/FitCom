@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
+import tech.fitcom.app.R
 
 class EmailInput : Fragment() {
 

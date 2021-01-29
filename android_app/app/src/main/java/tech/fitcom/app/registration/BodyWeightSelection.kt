@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_body_height_selection.*
 import kotlinx.android.synthetic.main.fragment_body_weight_selection.*
+import tech.fitcom.app.R
 
 class BodyWeightSelection : Fragment() {
 

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import tech.fitcom.app.R
 
-class QRScanner : Fragment() {
+class Home : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -15,6 +15,6 @@ class QRScanner : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_qr_scanner, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 }

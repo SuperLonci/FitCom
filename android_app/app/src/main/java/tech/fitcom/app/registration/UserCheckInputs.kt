@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_user_check_inputs.*
+import tech.fitcom.app.R
 
 class UserCheckInputs : Fragment() {
 

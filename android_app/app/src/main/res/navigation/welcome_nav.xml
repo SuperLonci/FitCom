@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/QRScanner"
-        android:name="com.example.fitcom.QRScanner"
+        android:name="tech.fitcom.app.registration.QRScanner"
         android:label="fragment_qr_scanner"
         tools:layout="@layout/fragment_qr_scanner" >
         <action
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/studioIdInput"
-        android:name="com.example.fitcom.studioIdInput"
+        android:name="tech.fitcom.app.registration.StudioIdInput"
         android:label="fragment_studio_id_input"
         tools:layout="@layout/fragment_studio_id_input" >
         <action
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/nameInput"
-        android:name="com.example.fitcom.NameInput"
+        android:name="tech.fitcom.app.registration.NameInput"
         android:label="fragment_name_input"
         tools:layout="@layout/fragment_name_input" >
         <action
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/emailInput"
-        android:name="com.example.fitcom.EmailInput"
+        android:name="tech.fitcom.app.registration.EmailInput"
         android:label="fragment_email_input"
         tools:layout="@layout/fragment_email_input" >
         <action
@@ -45,7 +45,7 @@
     </fragment>
     <fragment
         android:id="@+id/apacheHelicopterSelection"
-        android:name="com.example.fitcom.ApacheHelicopterSelection"
+        android:name="tech.fitcom.app.registration.ApacheHelicopterSelection"
         android:label="fragment_apache_helicopter_selection"
         tools:layout="@layout/fragment_apache_helicopter_selection" >
         <action
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/bodyHeightSelection"
-        android:name="com.example.fitcom.BodyHeightSelection"
+        android:name="tech.fitcom.app.registration.BodyHeightSelection"
         android:label="fragment_body_height_selection"
         tools:layout="@layout/fragment_body_height_selection" >
         <action
@@ -63,7 +63,7 @@
     </fragment>
     <fragment
         android:id="@+id/bodyWeightSelection"
-        android:name="com.example.fitcom.BodyWeightSelection"
+        android:name="tech.fitcom.app.registration.BodyWeightSelection"
         android:label="fragment_body_weight_selection"
         tools:layout="@layout/fragment_body_weight_selection" >
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/userCheckInputs"
-        android:name="com.example.fitcom.UserCheckInputs"
+        android:name="tech.fitcom.app.registration.UserCheckInputs"
         android:label="fragment_user_check_inputs"
         tools:layout="@layout/fragment_user_check_inputs" >
         <action
@@ -81,12 +81,12 @@
     </fragment>
     <fragment
         android:id="@+id/registrationConfirmation"
-        android:name="com.example.fitcom.RegistrationConfirmation"
+        android:name="tech.fitcom.app.registration.RegistrationConfirmation"
         android:label="fragment_registration_confirmation"
         tools:layout="@layout/fragment_registration_confirmation" />
     <fragment
         android:id="@+id/QRInstructions"
-        android:name="com.example.fitcom.QRInstructions"
+        android:name="tech.fitcom.app.registration.QRInstructions"
         android:label="fragment_qr_instructions"
         tools:layout="@layout/fragment_qr_instructions" >
         <action

@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,6 +13,7 @@ import androidx.core.view.get
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.fragment_body_height_selection.*
+import tech.fitcom.app.R
 
 class BodyHeightSelection : Fragment() {
 

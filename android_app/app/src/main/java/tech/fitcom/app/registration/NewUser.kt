@@ -1,4 +1,4 @@
-package com.example.fitcom
+package tech.fitcom.app.registration
 
 class NewUser {
     var studioID: String = "12345"

@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BodyWeightSelection">
+    tools:context=".registration.BodyWeightSelection">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
