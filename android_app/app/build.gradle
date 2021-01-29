@@ -10,7 +10,7 @@ android {
         main {
             res.srcDirs =
                     [
-                            'src/main/res/layouts/welcome-fragments',
+                            'src/main/res/layouts/registration',
                             'src/main/res/layouts/activity-layouts',
                             'src/main/res/layouts',
                             'src/main/res'
