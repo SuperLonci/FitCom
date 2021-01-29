@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout5"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ApacheHelicopterSelection">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/enterGender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Gib dein Geschlecht an"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Apache Helikopter werden unterstüzt"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@id/enterGender"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterGender" />
+
+    <RadioGroup
+        android:id="@+id/gender_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterGender"
+        app:layout_constraintVertical_bias="0.2"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <ImageButton
+            android:id="@+id/male_imgbutton"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_gender_male"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gender_radio_group"
+            app:layout_constraintStart_toStartOf="@id/gender_radio_group"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/female_imgbutton"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_gender_female"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gender_radio_group"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/helicopter_imgbutton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#00FFFFFF"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_helicopter"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@id/gender_radio_group"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_radio_group" />
+
+
+    <!--<com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/gender_button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/enterGender"
+        app:layout_constraintVertical_bias="0.2"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/maleButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:drawableLeft="@drawable/ic_gender_male"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/gender_button_group"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/femaleButton"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:text="Frau"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            app:backgroundTint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gender_button_group"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>-->
+
+<!--
+    <Button
+        android:id="@+id/next"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="202dp"
+        android:text="@string/text_next"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:backgroundTint="#009688"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gender_radio_group"
+        app:layout_constraintVertical_bias="0.0" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
