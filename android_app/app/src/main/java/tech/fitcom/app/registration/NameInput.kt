@@ -30,7 +30,7 @@ class NameInput : Fragment() {
                 edtTextLayout.error = "Dieser Name ist ungültig."
             }
             else {
-                user.username = textfield.getText().toString()
+                user.username = textfield.text.toString()
                 Navigation.findNavController(root).navigate(R.id.emailInput)
             }
         }

@@ -28,11 +28,9 @@ class EmailInput : Fragment() {
             if(textfield.text.length > 10) {
                 edtTextLayout.isErrorEnabled = true
                 edtTextLayout.error = "Diese Email ist ungültig."
-
             }
             else {
                 user.useremail = textfield.text.toString()
-
                 Navigation.findNavController(root).navigate(R.id.apacheHelicopterSelection)
             }
         }
