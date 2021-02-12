@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_user_check_inputs.*
+import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
 
 class UserCheckInputs : Fragment() {
@@ -30,6 +31,11 @@ class UserCheckInputs : Fragment() {
         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
             // ToDo: Datenbankanfrage senden
             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
+
+            // Die Environment Variablen müssen lokal gespeichert werden
+            // Wenn erfolgreich
+            EnvironmentVariables.registered = true
+
         }
         root.findViewById<Button>(R.id.btn_no).setOnClickListener {
             Navigation.findNavController(root).navigate(R.id.nameInput)

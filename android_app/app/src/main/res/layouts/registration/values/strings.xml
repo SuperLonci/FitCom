@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="text_welcome">Willkommen</string>
-    <string name="text_scanqr">Scannen sie den QR Code</string>
+    <string name="text_scanqr">Scanne den QR Code</string>
     <string name="scannen">Scannen</string>
     <string name="text_enterid">ID Eingeben</string>
     <string name="your_email">Deine Email Adresse:</string>
