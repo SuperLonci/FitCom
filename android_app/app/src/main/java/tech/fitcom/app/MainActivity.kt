@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
 
             //constant for manual start HomeActivity or LoginActivity
             if(EnvironmentVariables.registered) {
-                val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
+                val intent = Intent(this@MainActivity, HomeActivity::class.java)
                 startActivity(intent)
             }
             else {
-                val intent = Intent(this@MainActivity, HomeActivity::class.java)
+                val intent = Intent(this@MainActivity, WelcomeActivity::class.java)
                 startActivity(intent)
             }
             finish()

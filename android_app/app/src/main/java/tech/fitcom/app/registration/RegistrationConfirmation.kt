@@ -22,6 +22,9 @@ class RegistrationConfirmation : Fragment() {
         Handler(Looper.getMainLooper()).postDelayed({
             val intent = Intent(context, HomeActivity::class.java)
             startActivity(intent)
+            if(getActivity() != null) {
+                activity?.finish();
+            }
         }, 3000)
 
         return root
