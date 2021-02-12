@@ -1,4 +1,4 @@
-package tech.fitcom.app.registration
+package tech.fitcom.app.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".registration.WelcomeActivity"></activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".home.HomeActivity"
             android:label="Home" />
         <activity android:name=".MainActivity">
             <intent-filter>

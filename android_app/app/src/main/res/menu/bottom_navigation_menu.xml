@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dashboard_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="Dashboard"/>
+    <item
+        android:id="@+id/training_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_training_24"
+        android:title="Training"/>
+    <item
+        android:id="@+id/award_item"
+        android:enabled="true"
+        android:icon="@drawable/ic_outline_award_24"
+        android:title="Awards"/>
+</menu>
