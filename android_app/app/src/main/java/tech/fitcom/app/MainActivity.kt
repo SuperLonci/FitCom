@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import tech.fitcom.app.home.HomeActivity
 import tech.fitcom.app.registration.WelcomeActivity
+
 
 class MainActivity : AppCompatActivity() {
 
