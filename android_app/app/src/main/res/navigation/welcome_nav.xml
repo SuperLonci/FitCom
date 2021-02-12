@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_QRScanner_to_nameInput"
             app:destination="@id/nameInput"
-            app:enterAnim="@anim/enter_right_to_left" />
+            app:enterAnim="@anim/fragment_fade_enter" />
     </fragment>
     <fragment
         android:id="@+id/studioIdInput"
@@ -23,7 +23,7 @@
         <action
             android:id="@+id/action_studioIdInput_to_nameInput"
             app:destination="@id/nameInput"
-            app:enterAnim="@anim/exit_right_to_left" />
+            app:enterAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/nameInput"
@@ -92,12 +92,12 @@
         <action
             android:id="@+id/action_QRInstructions_to_studioIdInput"
             app:destination="@id/studioIdInput"
-            app:enterAnim="@anim/enter_right_to_left"
-            app:exitAnim="@anim/exit_right_to_left" />
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
         <action
             android:id="@+id/action_QRInstructions_to_QRScanner"
             app:destination="@id/QRScanner"
-            app:enterAnim="@anim/exit_right_to_left"
+            app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
