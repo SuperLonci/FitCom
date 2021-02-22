@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="4dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/text_trainingplans">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_trainingplan_title"
+            android:layout_alignParentTop="true"
+            android:textSize="35sp"
+            android:text="3er Split"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_trainingplan_subinfo"
+            android:layout_below="@+id/text_trainingplan_title"
+            android:text="Alle wichtigen Übungen in drei spannenden Trainingstagen"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_trainingplan_subsubinfo"
+            android:layout_below="@+id/text_trainingplan_subinfo"
+            android:text="Vorschläge der Redaktion"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
