@@ -2,21 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_home">
+    android:id="@+id/navigation_bar"
+    app:startDestination="@id/homeFragement">
 
     <fragment
-        android:id="@+id/navigation_home"
+        android:id="@+id/homeFragement"
         android:name="tech.fitcom.app.home.Home"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
-        android:id="@+id/navigation_training"
+        android:id="@+id/trainingFragment"
         android:name="tech.fitcom.app.home.Training"
+        android:label="Training"
         tools:layout="@layout/fragment_training" />
-
     <fragment
-        android:id="@+id/navigation_profile"
+        android:id="@+id/profileFragment"
         android:name="tech.fitcom.app.home.Profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
