@@ -9,7 +9,7 @@ export class AppController {
     @Get('test')
     getHello(): { Hello: string } {
         return {
-            Hello: 'World!'
+            Hello: ''
         };
     }
 }
