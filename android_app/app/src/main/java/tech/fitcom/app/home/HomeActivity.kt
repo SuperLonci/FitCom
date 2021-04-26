@@ -1,31 +1,15 @@
 package tech.fitcom.app.home
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.Window
-import android.widget.FrameLayout
-import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.card.MaterialCardView
 import kotlinx.android.synthetic.main.fragment_training.*
-import kotlinx.android.synthetic.main.trainingplan_item.*
 import tech.fitcom.app.R
-import tech.fitcom.app.registration.EmailInput
-import tech.fitcom.app.registration.NewUser
-import tech.fitcom.app.registration.QRInstructions
 
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,5 +34,20 @@ class HomeActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)*/
         bottomNavigationView.setupWithNavController(navController)
+
+
+        // Recycler View configuration
+
+        // Layout Manager for TrainingPlanList
+        listTrainingPlans.layoutManager = LinearLayoutManager(this)
+
+        listTrainingPlans.adapter = TrainingplanAdapter(this, DataManager.trainingday)
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+
     }
 }

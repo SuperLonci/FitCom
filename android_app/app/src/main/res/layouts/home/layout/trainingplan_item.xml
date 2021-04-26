@@ -7,6 +7,8 @@
     android:layout_gravity="center_horizontal"
     android:layout_margin="15dp"
     app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:contentPadding="0dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/text_trainingplans">
@@ -17,29 +19,26 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/text_trainingplan_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text_trainingplan_title"
             android:layout_alignParentTop="true"
-            android:textSize="35sp"
             android:text="3er Split"
-            />
+            android:textSize="35sp" />
 
         <TextView
+            android:id="@+id/text_trainingplan_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text_trainingplan_subinfo"
             android:layout_below="@+id/text_trainingplan_title"
             android:text="Alle wichtigen Übungen in drei spannenden Trainingstagen"
-            android:textSize="20sp"
-            />
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/text_trainingplan_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/text_trainingplan_subsubinfo"
-            android:layout_below="@+id/text_trainingplan_subinfo"
-            android:text="Vorschläge der Redaktion"
-            />
+            android:layout_below="@+id/text_trainingplan_desc"
+            android:text="Vorschläge der Redaktion" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
