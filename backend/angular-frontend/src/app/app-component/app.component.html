@@ -1,8 +1,43 @@
 
-<mat-toolbar>
-    <span> {{ title }} </span>
-</mat-toolbar>
+<div id="main-frame">
 
-<button mat-button> Clicke me </button>
+    <mat-card style="padding: 0px; z-index: 2;">
 
-<router-outlet></router-outlet>
+        <mat-toolbar class="noselect">
+
+            <button mat-button (click)="sidenav.toggle()">
+                <mat-icon> menu </mat-icon>
+            </button>
+
+            <button mat-button style="margin: auto; font-size: large; padding: 4px 32px;">
+                <span> Fitcom. </span>
+            </button>
+            
+            <button mat-button>
+                <mat-icon> account_circle </mat-icon>
+            </button>
+
+        </mat-toolbar>
+
+        <mat-progress-bar mode="indeterminate" *ngIf="appService.isLoading"></mat-progress-bar>
+
+    </mat-card>
+
+    <mat-sidenav-container>
+        
+        <mat-sidenav #sidenav mode="side">
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+</div>
+
+
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,40 +1,60 @@
-CREATE DATABASE FitComDB;
 
-CREATE TABLE FitComDB.Gyms
-(GymID VARCHAR(10) NOT NULL, GymName VARCHAR(100) NOT NULL);
+CREATE DATABASE FitcomDB;
+USE FitcomDB;
 
-CREATE TABLE FitComDB.GymAdministrators
-(GymID VARCHAR(10) NOT NULL, Email VARCHAR(254) NOT NULL, password VARCHAR(128) NOT NULL);
+CREATE TABLE FitcomAdministrators (
+    id                              CHAR(36) PRIMARY KEY,
+    firstName                       VARCHAR(255) NOT NULL CHECK (firstName <> ''),
+    lastName                        VARCHAR(255) NOT NULL CHECK (lastName <> ''),
+    email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
+    password                        VARCHAR(255) NOT NULL CHECK (password <> '')
+);
 
-CREATE TABLE FitComDB.Trainers
-(GymID VARCHAR(10) NOT NULL, Email VARCHAR(254) NOT NULL, password VARCHAR(128) NOT NULL);
+INSERT INTO FitcomAdministrators (id, firstName, lastName, email, password)
+VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512));
 
-CREATE TABLE FitComDB.GymAvailableExercises
-(GymID VARCHAR(10) NOT NULL, ExerciseID VARCHAR(10) NOT NULL);
+CREATE TABLE FitnessCenters (
+    id                              CHAR(36) PRIMARY KEY,
+    title                           VARCHAR(255) NOT NULL DEFAULT '' CHECK (title <> ''),
+    ownerId                         CHAR(36) NOT NULL CHECK (ownerId <> ''),
+    createdAt                       DATE NOT NULL,
+    
+    country                         VARCHAR(255) NOT NULL DEFAULT '',
+    city                            VARCHAR(255) NOT NULL DEFAULT '',
+    postCode                        VARCHAR(255) NOT NULL DEFAULT '',
+    street                          VARCHAR(255) NOT NULL DEFAULT '',
+    streetNumber                    VARCHAR(255) NOT NULL DEFAULT '',
 
-CREATE TABLE FitComDB.Exercises
-(ExerciseID VARCHAR(10) NOT NULL);
+    email                           VARCHAR(255) NOT NULL DEFAULT '',
+    phoneNumber                     VARCHAR(255) NOT NULL DEFAULT '',
+    faxNumber                       VARCHAR(255) NOT NULL DEFAULT ''
+);
 
-CREATE TABLE FitComDB.GymMember
-(GymID VARCHAR(10) NOT NULL, UserID VARCHAR(10) NOT NULL, UserName VARCHAR(32) NOT NULL, Email VARCHAR(254) NOT NULL);
+CREATE TABLE FitnessCenterStaff (
+    id                              CHAR(36) PRIMARY KEY,
+    fitnessCenterId                 CHAR(36) NOT NULL CHECK (fitnessCenterId <> ''),
+    FOREIGN KEY (fitnessCenterId)   REFERENCES FitnessCenters(id),
 
-CREATE TABLE FitComDB.GymMemberAchivements
-(UserID VARCHAR(10) NOT NULL, AchivementID VARCHAR(21) NOT NULL, ExerciseID VARCHAR(10) NOT NULL, AchivementDate DATE NOT NULL);
+    isAdmin                         BOOLEAN NOT NULL DEFAULT FALSE,
 
-CREATE TABLE FitComDB.AchivementSpecs
-(AchivementID VARCHAR(21) NOT NULL, Sets INTEGER NOT NULL, Repeatments INTEGER NOT NULL, WEIGHT DOUBLE NOT NULL);
+    gender                          ENUM('male', 'female', 'diverse', ''),
+    firstName                       VARCHAR(255) NOT NULL CHECK (firstName <> ''),
+    lastName                        VARCHAR(255) NOT NULL CHECK (lastName <> ''),
+    birthDate                       DATE,
+    email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
+    password                        VARCHAR(255) NOT NULL CHECK (password <> ''),
+    activationToken                 CHAR(36)
+);
 
-CREATE TABLE FitComDB.Trainingsplans
-(UserID VARCHAR(10) NOT NULL, TrainingsplanID VARCHAR(21) NOT NULL, TrainingsplanTitleID VARCHAR(10) NOT NULL);
-
-CREATE TABLE FitComDB.TrainingsDays
-(TrainingsplanID VARCHAR(21) NOT NULL, TrainingsDayID VARCHAR(10) NOT NULL);
-
-CREATE TABLE FitComDB.TrainingsDayExercises
-(TrainingsDayID VARCHAR(10) NOT NULL, TrainingsDayExerciseID VARCHAR(21) NOT NULL);
-
-CREATE TABLE FitComDB.TrainingsDayExerciseSets
-(TrainingsDayExerciseID VARCHAR(21) NOT NULL, ExerciseID VARCHAR(10) NOT NULL, TrainingsDayExerciseSetID VARCHAR(21) NOT NULL);
-
-CREATE TABLE FitComDB.TrainingsDayExerciseSetGoals
-(TrainingsDayExerciseID VARCHAR(21) NOT NULL, Sets INTEGER NOT NULL, Repeatments INTEGER NOT NULL, WEIGHT DOUBLE NOT NULL);
+CREATE TABLE FitnessCenterMembers (
+    id                              CHAR(36) PRIMARY KEY,
+    fitnessCenterId                 CHAR(36) NOT NULL CHECK (fitnessCenterId <> ''),
+    
+    gender                          ENUM('male', 'female', 'diverse', ''),
+    firstName                       VARCHAR(255) NOT NULL CHECK (firstName <> ''),
+    lastName                        VARCHAR(255) NOT NULL CHECK (lastName <> ''),
+    birthDate                       DATE,
+    email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
+    password                        VARCHAR(255) NOT NULL CHECK (password <> ''),
+    activationToken                 CHAR(36)
+);

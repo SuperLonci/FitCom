@@ -1,15 +1,30 @@
 
 import { Component } from '@angular/core';
-import { APIService } from '../_services/api.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AppService } from './app.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
     
-    title: string = 'Titel';
-    
-    constructor(public apiService: APIService) { }
+    constructor(
+        public readonly appService: AppService,
+        private readonly dialog: MatDialog,
+        private readonly router: Router
+    ) {}
+
+    sidenavExpanded: boolean = false;
+
+    navigateTo(destination: string): void {
+        this.router.navigate([destination]);
+    }
+
+    // editPassword(): void {
+    //     this.dialog.open(EditPasswordDialog);
+    // }
 
 }

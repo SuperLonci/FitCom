@@ -7,6 +7,7 @@
     "@angular/core": "~11.1.0",
     "@angular/forms": "~11.1.0",
     "@angular/material": "^11.2.6",
+    "@angular/material-moment-adapter": "^11.2.6",
     "@angular/platform-browser": "~11.1.0",
     "@angular/platform-browser-dynamic": "~11.1.0",
     "@angular/router": "~11.1.0",
