@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import tech.fitcom.app.R
 import java.util.ArrayList
 
-class Training : Fragment() {
+class TrainingFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -18,17 +20,17 @@ class Training : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_training, container, false)
-//        var cardTwoSplit = root.findViewById<MaterialCardView>(R.id.card_two_split)
-//        var cardThreeSplit = root.findViewById<MaterialCardView>(R.id.card_three_split)
-//        var cardList: ArrayList<MaterialCardView> = ArrayList()
-//        cardList.add(cardTwoSplit)
-//        cardList.add(cardThreeSplit)
-//
-//        for(i in cardList) {
-//            i.setOnClickListener {
-//                Toast.makeText(this.context, "You clicked a card", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+
+        // Recycler View definition
+
+        // Data Manager for TrainingPlanList
+        val rvTrainingplans = root.findViewById<RecyclerView>(R.id.listTrainingPlans)
+
+        rvTrainingplans.adapter = TrainingplanAdapter(requireContext(), DataManager().trainingplans.values.toList())
+
+        rvTrainingplans.layoutManager = LinearLayoutManager(context)
+
+
         return root
     }
 }

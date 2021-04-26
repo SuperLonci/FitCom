@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import tech.fitcom.app.R
 
-class Profile : Fragment() {
+class ProfileFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

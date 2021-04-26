@@ -7,17 +7,28 @@
 
     <fragment
         android:id="@+id/homeFragement"
-        android:name="tech.fitcom.app.home.Home"
+        android:name="tech.fitcom.app.home.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
+
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="tech.fitcom.app.home.Training"
+        android:name="tech.fitcom.app.home.TrainingFragment"
         android:label="Training"
-        tools:layout="@layout/fragment_training" />
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_trainingFragment_to_trainingdayFragment"
+            app:destination="@id/trainingdayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingdayFragment"
+        android:name="tech.fitcom.app.home.TrainingFragment"
+        android:label="Trainingday"
+        tools:layout="@layout/fragment_trainingday" />
+
     <fragment
         android:id="@+id/profileFragment"
-        android:name="tech.fitcom.app.home.Profile"
+        android:name="tech.fitcom.app.home.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
