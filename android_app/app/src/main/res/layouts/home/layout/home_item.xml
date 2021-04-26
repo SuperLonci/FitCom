@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="15dp"
+    app:cardCornerRadius="4dp"
+    app:cardMaxElevation="1dp"
+    app:cardElevation="3dp"
+    app:contentPadding="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+<!--    app:cardUseCompatPadding="true"-->
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/img_home_item_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_portrait_black_48dp" />
+
+        <TextView
+            android:id="@+id/text_home_item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/img_home_item_picture"
+            android:text="Trainer Thorstens Herausforderung!"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/text_home_item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_home_item_title"
+            android:layout_toRightOf="@+id/img_home_item_picture"
+            android:text="50 Liegestütze"
+            android:textSize="15dp"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

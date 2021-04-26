@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal"
     android:layout_margin="15dp"
     app:cardCornerRadius="4dp"
-    app:cardElevation="4dp"
+    app:cardElevation="3dp"
     app:contentPadding="0dp"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
