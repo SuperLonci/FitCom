@@ -1,0 +1,35 @@
+
+Registrieren
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Vorname </mat-label>
+    <input matInput [(ngModel)]="staff.firstName" required>
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Nachname </mat-label>
+    <input matInput [(ngModel)]="staff.lastName" required>
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Geschlecht </mat-label>
+    <input matInput [(ngModel)]="staff.gender">
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Geburtsdatum </mat-label>
+    <input matInput [(ngModel)]="staff.birthDate">
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Passwort </mat-label>
+    <input matInput type="password" [(ngModel)]="staff.password" required>
+</mat-form-field>
+
+<mat-form-field appearance="outline" style="display: block;">
+    <mat-label> Passwort wiederholen </mat-label>
+    <input matInput type="password" [(ngModel)]="passwordRepeat" required>
+    <mat-hint *ngIf="!passwordsAreEqual()"> Passwörter stimmen nich miteinander überein </mat-hint>
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="register()" [disabled]="!dataIsComplete()"> Registrieren </button>
