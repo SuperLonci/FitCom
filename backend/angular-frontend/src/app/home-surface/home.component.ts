@@ -2,9 +2,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    template: `
-        Home - Herzlich Willkommen bei Fitcom.
-    `
+    templateUrl: './home.component.html'
 })
 export class HomeComponent {
 

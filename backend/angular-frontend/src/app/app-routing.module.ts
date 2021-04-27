@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdministrationGuard } from './administrator-surface/administration.guard';
 import { AdministrationSurface } from './administrator-surface/administrator.component';
 import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
 import { HomeComponent } from './home-surface/home.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
     },
     {
         path: 'Administration',
-        component: AdministrationSurface
+        component: AdministrationSurface,
+        canActivate: [AdministrationGuard]
     },
     {
         path: 'Fitnesstudio',

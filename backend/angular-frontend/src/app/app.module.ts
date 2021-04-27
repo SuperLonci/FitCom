@@ -46,9 +46,12 @@ import { AppService } from './app-component/app.service';
 import { RegistrationDialog, RegistrationPage } from './registration/registration.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SigninDialog, SigninPage } from './signin/signin.component';
+
 import { HomeComponent } from './home-surface/home.component';
 import { AdministrationSurface } from './administrator-surface/administrator.component';
 import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
+import { AdministrationGuard } from './administrator-surface/administration.guard';
+import { FitnessCenterGuard } from './fitness-center-surface/fitness-center.guard';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -84,9 +87,11 @@ const angularMaterialModules = [
 @NgModule({
     declarations: [
         AppComponent,
+
         HomeComponent,
         AdministrationSurface,
         FitnessCenterSurface,
+
         RegistrationPage,
         RegistrationDialog,
         NotFoundComponent,
@@ -114,7 +119,9 @@ const angularMaterialModules = [
             multi: true
         },
         DatePipe,
-        AppService
+        AppService,
+        AdministrationGuard,
+        FitnessCenterGuard
     ]
 })
 export class AppModule {}
