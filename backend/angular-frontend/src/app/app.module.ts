@@ -43,9 +43,12 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { CustomHttpInterceptor } from './http-interceptor';
 import { AppService } from './app-component/app.service';
-import { RegistrationDialog, RegistrationPage } from './registration-component/registration.component';
-import { NotFoundComponent } from './not-found-component/not-found.component';
-import { SigninDialog, SigninPage } from './signin-component/signin.component';
+import { RegistrationDialog, RegistrationPage } from './registration/registration.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { SigninDialog, SigninPage } from './signin/signin.component';
+import { HomeComponent } from './home-surface/home.component';
+import { AdministrationSurface } from './administrator-surface/administrator.component';
+import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -81,6 +84,9 @@ const angularMaterialModules = [
 @NgModule({
     declarations: [
         AppComponent,
+        HomeComponent,
+        AdministrationSurface,
+        FitnessCenterSurface,
         RegistrationPage,
         RegistrationDialog,
         NotFoundComponent,

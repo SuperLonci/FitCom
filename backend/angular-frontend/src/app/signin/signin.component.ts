@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Credentials } from './../../../../nest-server/src/interfaces';
+import { Credentials } from '../../../../nest-server/src/interfaces';
 
 @Component({
     template: ''
@@ -20,6 +20,8 @@ export class SigninPage {
     templateUrl: './signin.component.html'
 })
 export class SigninDialog {
+
+    // no cancel
 
     user: Credentials = {
         email: '',

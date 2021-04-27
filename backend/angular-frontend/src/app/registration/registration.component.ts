@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { StaffForPost } from './../../../../nest-server/src/staff/staff.interfaces';
+import { StaffForPost } from '../../../../nest-server/src/staff/staff.interfaces';
 
 @Component({
     template: ''
@@ -14,6 +14,7 @@ export class RegistrationPage {
         private readonly dialog: MatDialog,
         private readonly activeRoute: ActivatedRoute
     ) {
+        console.log(this.activeRoute.snapshot.params);
         const activationToken = this.activeRoute.snapshot.params.activationToken;
         this.dialog.open(RegistrationDialog, { data: activationToken, disableClose: true });
     }

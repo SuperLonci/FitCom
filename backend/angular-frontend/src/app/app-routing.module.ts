@@ -1,17 +1,30 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from './not-found-component/not-found.component';
-import { RegistrationPage } from './registration-component/registration.component';
+import { AdministrationSurface } from './administrator-surface/administrator.component';
+import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
+import { HomeComponent } from './home-surface/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RegistrationPage } from './registration/registration.component';
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     pathMatch: 'full',
-    //     redirectTo: 'Kalender'
-    // },
     {
-        path: 'Registrieren/:activationToken',
+        path: '',
+        component: HomeComponent
+    },
+    {
+        path: 'Administration',
+        component: AdministrationSurface
+    },
+    {
+        path: 'Fitnesstudio',
+        component: FitnessCenterSurface
+    },
+
+
+    
+    {
+        path: 'Registrierung/:type/:activationToken',
         component: RegistrationPage
     },
     {

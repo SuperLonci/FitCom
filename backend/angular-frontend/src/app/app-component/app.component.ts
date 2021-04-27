@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SigninDialog } from '../signin-component/signin.component';
+import { SigninDialog } from '../signin/signin.component';
 import { AppService } from './app.service';
 
 @Component({
