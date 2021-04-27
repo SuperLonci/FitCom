@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Credentials } from '../../../../nest-server/src/interfaces';
 
 @Component({
@@ -21,7 +22,7 @@ export class SigninPage {
 })
 export class SigninDialog {
 
-    // no cancel
+    constructor(private readonly router: Router) {}
 
     user: Credentials = {
         email: '',

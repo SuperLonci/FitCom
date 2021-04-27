@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StaffForPost } from '../../../../nest-server/src/staff/staff.interfaces';
 
 @Component({
@@ -28,7 +28,8 @@ export class RegistrationDialog {
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private readonly activationToken: string,
-        private readonly httpClient: HttpClient
+        private readonly httpClient: HttpClient,
+        private readonly router: Router
     ) {}
 
     staff: StaffForPost = {
@@ -47,7 +48,7 @@ export class RegistrationDialog {
 
     register(): void {
         this.httpClient.post(`api/staff/register/${this.activationToken}`, this.staff).subscribe(
-            () => undefined
+            () => this.router.navigate(['Administration'])
         );
     }
 

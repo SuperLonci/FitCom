@@ -10,7 +10,7 @@ import de from '@angular/common/locales/de';
 registerLocaleData(de);
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app-component/app.component';
+import { AppComponent } from './app/app.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -42,7 +42,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 
 import { CustomHttpInterceptor } from './http-interceptor';
-import { AppService } from './app-component/app.service';
+import { AppService } from './app/app.service';
 import { RegistrationDialog, RegistrationPage } from './registration/registration.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SigninDialog, SigninPage } from './signin/signin.component';

@@ -3,7 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { AppService } from './app-component/app.service';
+import { AppService } from './app/app.service';
 // import { UserService } from './user/user.service';
 
 @Injectable()
