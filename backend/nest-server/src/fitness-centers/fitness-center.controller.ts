@@ -15,9 +15,9 @@ export class FintessCenterController {
     @Post()
     async create(@Request() request: Request): Promise<void> {
         const {adminId} = this.jwtService.authorizeAndGetJWTContent(request);
+        if (!adminId) throw new UnauthorizedException;
         const fitnessCenter = request.body as unknown as FitnessCenterForPost;
-        if (adminId) await this.fintessCenterService.create(fitnessCenter);
-        throw UnauthorizedException;
+        return await this.fintessCenterService.create(fitnessCenter);
     }
 
 }

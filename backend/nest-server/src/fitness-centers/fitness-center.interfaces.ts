@@ -1,10 +1,8 @@
 
-import { StaffForInitialPost } from './../staff/staff.interfaces';
-
 export interface FitnessCenterForPost {
     title: string
-    country: string
     
+    country: string
     city: string
     postCode: string
     street: string
@@ -14,7 +12,7 @@ export interface FitnessCenterForPost {
     phoneNumber: string
     faxNumber: string
 
-    owner: StaffForInitialPost
+    ownerEmail: string
 }
 
 export interface FitnessCenter {

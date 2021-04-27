@@ -6,7 +6,8 @@ import * as mysql from 'mysql2/promise';
 @Injectable()
 export class EnvironmentService {
 
-    root: string;
+    backendRoot: string;
+    frontendRoot: string;
     dbConfiguration: mysql.ConnectionOptions;
     jwtPrivateKey: string;
     mailConfiguration: {
@@ -16,7 +17,8 @@ export class EnvironmentService {
     }
 
     constructor(private configService: ConfigService) {
-        this.root = this.configService.get<string>('root'),
+        this.backendRoot = this.configService.get<string>('backend_root'),
+        this.frontendRoot = this.configService.get<string>('frontend_root'),
         this.dbConfiguration = {
             host: this.configService.get<string>('db_host'),
             user: this.configService.get<string>('db_user'),

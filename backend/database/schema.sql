@@ -33,16 +33,15 @@ CREATE TABLE FitnessCenters (
 CREATE TABLE FitnessCenterStaff (
     id                              CHAR(36) PRIMARY KEY,
     fitnessCenterId                 CHAR(36) NOT NULL CHECK (fitnessCenterId <> ''),
-    FOREIGN KEY (fitnessCenterId)   REFERENCES FitnessCenters(id),
 
     isAdmin                         BOOLEAN NOT NULL DEFAULT FALSE,
 
     gender                          ENUM('male', 'female', 'diverse', ''),
-    firstName                       VARCHAR(255) NOT NULL CHECK (firstName <> ''),
-    lastName                        VARCHAR(255) NOT NULL CHECK (lastName <> ''),
+    firstName                       VARCHAR(255) NOT NULL DEFAULT '',
+    lastName                        VARCHAR(255) NOT NULL DEFAULT '',
     birthDate                       DATE,
     email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
-    password                        VARCHAR(255) NOT NULL CHECK (password <> ''),
+    password                        VARCHAR(255) NOT NULL DEFAULT '',
     activationToken                 CHAR(36)
 );
 

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SigninDialog } from '../signin-component/signin.component';
 import { AppService } from './app.service';
 
 @Component({
@@ -19,9 +20,13 @@ export class AppComponent {
 
     sidenavExpanded: boolean = false;
 
-    navigateTo(destination: string): void {
-        this.router.navigate([destination]);
+    signin(): void {
+        this.dialog.open(SigninDialog);
     }
+
+    // navigateTo(destination: string): void {
+    //     this.router.navigate([destination]);
+    // }
 
     // editPassword(): void {
     //     this.dialog.open(EditPasswordDialog);

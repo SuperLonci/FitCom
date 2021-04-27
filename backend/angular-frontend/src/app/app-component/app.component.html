@@ -5,7 +5,7 @@
 
         <mat-toolbar class="noselect">
 
-            <button mat-button (click)="sidenav.toggle()">
+            <button mat-button>
                 <mat-icon> menu </mat-icon>
             </button>
 
@@ -13,7 +13,7 @@
                 <span> Fitcom. </span>
             </button>
             
-            <button mat-button>
+            <button mat-button (click)="signin()">
                 <mat-icon> account_circle </mat-icon>
             </button>
 
@@ -23,8 +23,10 @@
 
     </mat-card>
 
-    <mat-sidenav-container>
-        
+    <router-outlet></router-outlet>
+
+    <!-- <mat-sidenav-container>
+         (click)="sidenav.toggle()"
         <mat-sidenav #sidenav mode="side">
 
         </mat-sidenav>
@@ -34,10 +36,6 @@
 
         </mat-sidenav-content>
 
-    </mat-sidenav-container>
+    </mat-sidenav-container> -->
 
 </div>
-
-
-
-<!-- <router-outlet></router-outlet> -->

@@ -16,7 +16,7 @@ export class FintessCenterService {
 
     async create(fitnessCenter: FitnessCenterForPost): Promise<void> {
         const fitnessCenterId = uuidv4();
-        const ownerId = await this.staffService.create(fitnessCenterId, fitnessCenter.owner);
+        const ownerId = await this.staffService.create(fitnessCenterId, fitnessCenter.ownerEmail);
         await this.dbService.query(`
             INSERT INTO Fitnesscenters (id, title, ownerId, createdAt, country, city, postCode, street, streetNumber, email, phoneNumber, faxNumber)
             VALUE ('${fitnessCenterId}', '${fitnessCenter.title}', '${ownerId}', CURRENT_DATE, '${fitnessCenter.country}', '${fitnessCenter.city}', '${fitnessCenter.postCode}', '${fitnessCenter.street}', '${fitnessCenter.streetNumber}', '${fitnessCenter.email}', '${fitnessCenter.phoneNumber}', '${fitnessCenter.faxNumber}')
