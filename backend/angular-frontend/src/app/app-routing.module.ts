@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdministrationGuard } from './administrator-surface/administration.guard';
 import { AdministrationSurface } from './administrator-surface/administrator.component';
 import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
+import { FitnessCenterGuard } from './fitness-center-surface/fitness-center.guard';
 import { HomeComponent } from './home-surface/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationPage } from './registration/registration.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
     },
     {
         path: 'Fitnesstudio',
-        component: FitnessCenterSurface
+        component: FitnessCenterSurface,
+        canActivate: [FitnessCenterGuard]
     },
 
 

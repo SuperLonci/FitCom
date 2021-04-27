@@ -48,7 +48,10 @@ export class RegistrationDialog {
 
     register(): void {
         this.httpClient.post(`api/staff/register/${this.activationToken}`, this.staff).subscribe(
-            () => this.router.navigate(['Administration'])
+            jwt => {
+                // appService.jwt ..
+                this.router.navigate(['Administration']);
+            }
         );
     }
 
