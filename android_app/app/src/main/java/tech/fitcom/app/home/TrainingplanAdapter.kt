@@ -1,11 +1,19 @@
 package tech.fitcom.app.home
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.trainingplan_item.view.*
 import tech.fitcom.app.R
 
@@ -14,10 +22,23 @@ class TrainingplanAdapter(private val context: Context, private val trainingplan
 
     private val layoutInflater = LayoutInflater.from(context)
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val textTitle = itemView?.findViewById<TextView?>(R.id.text_trainingplan_title)
         val textDesc = itemView?.findViewById<TextView?>(R.id.text_trainingplan_desc)
         val textInfo = itemView?.findViewById<TextView?>(R.id.text_trainingplan_info)
+
+        init {
+            itemView.setOnClickListener {
+                var activity = itemView.context as AppCompatActivity
+                var fragment = TrainingDayFragment()
+                // use a bundle to give the next fragment the information which rv was clicked
+                var bundle = Bundle()
+                bundle.putString("Workout_Title", textTitle?.text.toString())
+                fragment.arguments = bundle
+                //replace the fragment
+                activity.supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
