@@ -1,4 +1,5 @@
 # FitCom
+![Website](https://img.shields.io/website?down_color=red&down_message=offline&label=Blog&up_color=green&up_message=online&url=https%3A%2F%2Ffitcom.tech)
 ## [Documentation](https://github.com/SuperLonci/FitComDoc)
 ## verwendete Technologie
 ### [Backend Framework](backend/backend.md)
