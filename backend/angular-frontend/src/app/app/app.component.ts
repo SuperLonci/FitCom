@@ -15,19 +15,25 @@ export class AppComponent {
     constructor(
         public readonly appService: AppService,
         private readonly dialog: MatDialog,
-        public readonly router: Router
+        private readonly router: Router
     ) {}
+
+    navigationDestinations: string[] = ['Startseite', 'Administration', 'Fitnessstudio', 'Blog'];
 
     signin(): void {
         this.dialog.open(SigninDialog);
     }
 
-    // navigateTo(destination: string): void {
-    //     this.router.navigate([destination]);
-    // }
+    signout(): void {
+        this.appService.signout();
+    }
 
-    // editPassword(): void {
-    //     this.dialog.open(EditPasswordDialog);
-    // }
+    navigateTo(destination: string): void {
+        this.router.navigate([destination]);
+    }
+
+    editPassword(): void {
+        // this.dialog.open();
+    }
 
 }

@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { FitcomUserRole, JwtContent } from '../../../../nest-server/src/identity-provider/identity-provider.interfaces';
+import { JwtContent } from '../../../../nest-server/src/users/user.interfaces';
 import jwt_decode from 'jwt-decode';
 import { ApiService } from '../api.service';
 
@@ -29,8 +29,8 @@ export class AppService {
         this.jwt = jwt;
         this.userId = userId;
         this.userRole = userRole;
-        if (userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
-        else this.router.navigate(['Fitnesstudio']);
+        // if (userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
+        // else this.router.navigate(['Fitnessstudio']);
     }
 
     signout(): void {

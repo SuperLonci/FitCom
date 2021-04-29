@@ -8,7 +8,7 @@
         </button>
 
         <button mat-button id="title-button">
-            <span> Fitcom. </span>
+            <img src="assets/fitcom-logo.png">
         </button>
         
         <button mat-button (click)="signin()" *ngIf="appService.jwt === undefined">
@@ -16,12 +16,17 @@
         </button>
         
         <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="appService.jwt !== undefined">
-            <mat-icon> more_horiz </mat-icon>
+            <mat-icon> account_circle </mat-icon>
         </button>
 
         <mat-menu #userMenu="matMenu">
 
-            <button mat-menu-item (click)="appService.signout()">
+            <button mat-menu-item (click)="editPassword">
+                <mat-icon matSuffix> lock </mat-icon>
+                <span> Passwort ändern </span>
+            </button>
+
+            <button mat-menu-item (click)="signout()">
                 <mat-icon matSuffix color="warn"> logout </mat-icon>
                 <span> Abmelden </span>
             </button>
@@ -34,20 +39,22 @@
 
 </mat-card>
 
-<mat-sidenav-container id="app-content">
+<mat-sidenav-container>
 
     <mat-sidenav #sidenav mode="side">
         
-        <div>
-            <button mat-menu-item (click)="router.navigate([''])"> Startseite </button>
-            <button mat-menu-item (click)="router.navigate(['Administration'])"> Administration </button>
-            <button mat-menu-item (click)="router.navigate(['Fitnesstudio'])"> Fitnesstudio </button>
-            <button mat-menu-item (click)="router.navigate([''])"> Blog </button>
+        <div id="regular-button-container">
+            <button mat-menu-item
+                *ngFor="let navigationDestinaton of navigationDestinations"
+                (click)="navigateTo(navigationDestinaton)">
+                {{ navigationDestinaton }}
+            </button>
         </div>
 
         <div id="bottom-button-container">
             <mat-divider></mat-divider>
-            <button mat-menu-item (click)="router.navigate([''])"> Impressum </button>
+            <button mat-menu-item (click)="navigateTo('Impressum')"> Impressum </button>
+            <button mat-menu-item (click)="navigateTo('Datenschutzbestimmung')"> Datenschutzbestimmung </button>
         </div>
 
     </mat-sidenav>

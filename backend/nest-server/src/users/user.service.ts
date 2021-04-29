@@ -1,11 +1,11 @@
 
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from 'src/shared-services/jwt.service';
-import { DbService } from './../shared-services/db.service';
-import { AuhtenticationResponse, Credentials, UserAuthenticationDatabaseResult, UserForRegistration } from './identity-provider.interfaces';
+import { DbService } from '../shared-services/db.service';
+import { AuhtenticationResponse, Credentials, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
 
 @Injectable()
-export class IdentityProviderService {
+export class UserService {
 
     constructor(
         private readonly dbService: DbService,

@@ -47,13 +47,13 @@ import { RegistrationDialog, RegistrationPage } from './registration/registratio
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SigninDialog, SigninPage } from './signin/signin.component';
 
-import { HomeComponent } from './home-surface/home.component';
-import { AdministrationSurface } from './administrator-surface/administrator.component';
-import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
-import { AdministrationGuard } from './administrator-surface/administration.guard';
-import { FitnessCenterGuard } from './fitness-center-surface/fitness-center.guard';
+import { HomeComponent } from './home/home.component';
+import { AdministrationComponent } from './administration/administrator.component';
+import { FitnessCenterAdministrationComponent } from './fitness-center-administration/fitness-center.component';
+import { AdministrationGuard } from './administration/administration.guard';
+import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
 import { ApiService } from './api.service';
-import { StaffComponent } from './fitness-center-surface/staff/staff.components';
+import { StaffComponent } from './fitness-center-administration/staff/staff.components';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -91,8 +91,8 @@ const angularMaterialModules = [
         AppComponent,
 
         HomeComponent,
-        AdministrationSurface,
-        FitnessCenterSurface,
+        AdministrationComponent,
+        FitnessCenterAdministrationComponent,
 
         StaffComponent,
 

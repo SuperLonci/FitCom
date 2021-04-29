@@ -1,11 +1,12 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministrationGuard } from './administrator-surface/administration.guard';
-import { AdministrationSurface } from './administrator-surface/administrator.component';
-import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
-import { FitnessCenterGuard } from './fitness-center-surface/fitness-center.guard';
-import { HomeComponent } from './home-surface/home.component';
+import { AdministrationGuard } from './administration/administration.guard';
+import { AdministrationComponent } from './administration/administrator.component';
+import { FitnessCenterAdministrationComponent } from './fitness-center-administration/fitness-center.component';
+import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
+import { StaffComponent } from './fitness-center-administration/staff/staff.components';
+import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RegistrationPage } from './registration/registration.component';
 
@@ -15,30 +16,55 @@ const routes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'Administration',
-        component: AdministrationSurface,
-        canActivate: [AdministrationGuard]
+        path: 'Startseite',
+        redirectTo: ''
     },
     {
-        path: 'Fitnesstudio',
-        component: FitnessCenterSurface,
-        canActivate: [FitnessCenterGuard]
+        path: 'Administration',
+        component: AdministrationComponent,
+        canActivate: [AdministrationGuard],
+        children: [
+            {
+                path: 'Fitnessstudios',
+
+            },
+            {
+                path: 'Administratoren',
+
+            }
+        ]
     },
-
-
-    
+    {
+        path: 'Fitnessstudio',
+        component: FitnessCenterAdministrationComponent,
+        canActivate: [FitnessCenterGuard],
+        children: [
+            {
+                path: 'Fitnessstudio',
+                component: StaffComponent
+            },
+            {
+                path: 'Angestellte',
+                component: StaffComponent
+            },
+            {
+                path: 'Mitglieder',
+                component: StaffComponent
+            },
+            {
+                path: 'Anfragen',
+                component: StaffComponent
+            }
+        ]
+    },    
     // {
     //     path: 'Registrierung/:type/:activationToken',
     //     component: RegistrationPage
     // },
-    // {
-    //     path: '**',
-    //     redirectTo: '/nicht-gefunden'
-    // },
-    // {
-    //     path: 'nicht-gefunden',
-    //     component: NotFoundComponent
-    // }
+    {
+        path: '**',
+        component: NotFoundComponent
+    }
 ];
 
 @NgModule({

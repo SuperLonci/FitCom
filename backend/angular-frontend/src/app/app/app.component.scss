@@ -11,8 +11,11 @@ mat-card {
 
     #title-button {
         margin: auto;
-        font-size: large;
-        padding: 4px 32px;
+        padding: 4px 16px;
+
+        img {
+            height: 40px;
+        }
     }
 }
 
@@ -20,23 +23,18 @@ mat-sidenav-container {
     flex: 1;
 
     mat-sidenav {
-        padding-top: 8px;
-        // padding-bottom: 128px;
+        width: 195px;
 
-        button {
-            padding: 0px 32px;
+        #regular-button-container {
+            margin: 8px 0px 256px 0px;
         }
-
-
+        
         #bottom-button-container {
             position: absolute;
-            bottom: 8px;
+            bottom: 0px;
+            padding-bottom: 8px;
             width: 100%;
-            background-color: orange;
-
-            // button {
-                // padding: 0px 32px;
-            // }
+            background-color: white;
         }
-    }
+    }    
 }

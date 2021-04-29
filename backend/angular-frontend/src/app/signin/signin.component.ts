@@ -1,7 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Credentials } from '../../../../nest-server/src/identity-provider/identity-provider.interfaces';
+import { Credentials } from '../../../../nest-server/src/users/user.interfaces';
 import { ApiService } from '../api.service';
 import { AppService } from '../app/app.service';
 

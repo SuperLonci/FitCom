@@ -7,8 +7,8 @@ import { AdministratorContoller } from './administrators/administrator.controlle
 import { AdministratorServcie } from './administrators/administrator.service';
 import { FintessCenterController } from './fitness-centers/fitness-center.controller';
 import { FintessCenterService } from './fitness-centers/fitness-center.service';
-import { IdentityProviderController } from './identity-provider/identity-provider.controller';
-import { IdentityProviderService } from './identity-provider/identity-provider.service';
+import { UserController } from './users/user.controller';
+import { UserService } from './users/user.service';
 
 import { DbService } from './shared-services/db.service';
 import { EnvironmentService } from './shared-services/environment.service';
@@ -19,7 +19,7 @@ import { StaffService } from './staff/staff.service';
 
 @Module({
     controllers: [
-        IdentityProviderController,
+        UserController,
         
         AdministratorContoller,
         FintessCenterController,
@@ -30,7 +30,8 @@ import { StaffService } from './staff/staff.service';
         EnvironmentService,
         JwtService,
         MailService,
-        IdentityProviderService,
+        
+        UserService,
 
         AdministratorServcie,
         FintessCenterService,
