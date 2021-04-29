@@ -1,0 +1,70 @@
+
++ Fitnessstudio hinzufügen
+
+<mat-vertical-stepper>
+
+    <mat-step>
+        <ng-template matStepLabel> Allgemein </ng-template>
+
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Name des Fitnessstudios </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.title" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> E-Mail Adresse des Besitzers </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.ownerEmail" type="email">
+        </mat-form-field>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel> Adresse </ng-template>
+
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Land </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.country" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Stadt </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.city" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Postleitzahl </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.postCode" type="number">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Straße </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.street" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Hausnumer </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.streetNumber" type="text">
+        </mat-form-field>
+    </mat-step>
+
+    <mat-step>
+        <ng-template matStepLabel> Kontaktdaten </ng-template>
+
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> E-Mail Adresse </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.email" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Telefonnummer </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.phoneNumber" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="display: block;">
+            <mat-label> Fax Nummer </mat-label>
+            <input matInput [(ngModel)]="fitnessCenter.faxNumber" type="text">
+        </mat-form-field>
+    </mat-step>
+
+</mat-vertical-stepper>
+
+<button mat-raised-button> + Hinzufügen </button>

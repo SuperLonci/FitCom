@@ -1,7 +1,7 @@
 
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
@@ -40,8 +40,8 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatStepperModule } from '@angular/material/stepper';
 
-import { CustomHttpInterceptor } from './http-interceptor';
 import { AppService } from './app/app.service';
 import { RegistrationDialog, RegistrationPage } from './registration/registration.component';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -57,6 +57,8 @@ import { StaffComponent } from './fitness-center-administration/staff/staff.comp
 import { FitnessCentersComponents } from './administration/fitness-centers/fitness-centers.component';
 import { AdministratorsComponent } from './administration/administrators/administrators.component';
 import { UserService } from './user.service';
+import { AdministrationStatisticsComponent } from './administration/administration-statistics/administration-statistics.component';
+import { AddFitnessCenterDialog } from './administration/fitness-centers/add-fitness-center-dialog/add-fitness-center.dialog';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -86,7 +88,8 @@ const angularMaterialModules = [
     MatSliderModule,
     MatTabsModule,
     MatSidenavModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatStepperModule
 ];
 
 @NgModule({
@@ -98,6 +101,9 @@ const angularMaterialModules = [
         AdministrationComponent,
         AdministratorsComponent,
         FitnessCentersComponents,
+        AdministrationStatisticsComponent,
+        AddFitnessCenterDialog,
+
 
         FitnessCenterAdministrationComponent,
 
@@ -125,11 +131,6 @@ const angularMaterialModules = [
             provide: LOCALE_ID,
             useValue: 'de'
         },
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: CustomHttpInterceptor,
-        //     multi: true
-        // },
         DatePipe,
         AppService,
         UserService,

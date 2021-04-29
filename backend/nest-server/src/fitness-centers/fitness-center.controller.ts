@@ -1,8 +1,8 @@
 
-import { Controller, Get, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { Controller, Get, Request, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from 'src/shared-services/jwt.service';
-import { JwtContent } from 'src/users/user.interfaces';
-import { FitnessCenterForPost } from './fitness-center.interfaces';
+import { FitcomUserRole, JwtContent } from 'src/users/user.interfaces';
+import { FitnessCenterForAdministrationOverview } from './fitness-center.interfaces';
 import { FintessCenterService } from './fitness-center.service';
 
 @Controller('fitness-centers')
@@ -14,9 +14,10 @@ export class FintessCenterController {
     ) {}
     
     @Get()
-    async getFitnessCenterOverview(@Request() request: Request): Promise<void> {
+    async getFitnessCenters(@Request() request: Request): Promise<FitnessCenterForAdministrationOverview[]> {
         const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
-        console.log(userRole);
+        if (userRole === FitcomUserRole.fitcomAdministrator) return await this.fintessCenterService.getFitnessCenters();
+        throw new UnauthorizedException;
     }
 
     // @Post()

@@ -1,6 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdministrationStatisticsComponent } from './administration/administration-statistics/administration-statistics.component';
 import { AdministrationGuard } from './administration/administration.guard';
 import { AdministrationComponent } from './administration/administrator.component';
 import { AdministratorsComponent } from './administration/administrators/administrators.component';
@@ -26,6 +27,10 @@ const routes: Routes = [
         component: AdministrationComponent,
         canActivate: [AdministrationGuard],
         children: [
+            {
+                path: 'Statistiken',
+                component: AdministrationStatisticsComponent
+            },
             {
                 path: 'Fitnessstudios',
                 component: FitnessCentersComponents

@@ -1,4 +1,12 @@
 
+export interface FitnessCenterForAdministrationOverview {
+    id: string
+    title: string
+    city: string
+    ownerId: string
+    ownerName: string
+}
+
 export interface FitnessCenterForPost {
     title: string
     

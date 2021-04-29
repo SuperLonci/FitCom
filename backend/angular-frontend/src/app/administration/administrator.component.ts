@@ -20,7 +20,7 @@ export class AdministrationComponent {
     constructor(private readonly router: Router) {}
 
     selectedTab: number = 1;
-    tabs: string[] = ['Fitnessstudios', 'Administratoren'];
+    tabs: string[] = ['Statistiken', 'Fitnessstudios', 'Administratoren'];
 
     tabSelectionDidChange(index: number): void {
         this.router.navigate(['Administration', this.tabs[index]]);
