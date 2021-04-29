@@ -1,32 +1,44 @@
 
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { FitcomUserRole, JwtContent } from '../../../../nest-server/src/identity-provider/identity-provider.interfaces';
+import jwt_decode from 'jwt-decode';
+import { ApiService } from '../api.service';
 
 @Injectable()
 export class AppService {
 
-    constructor(private readonly httpClient: HttpClient) {
-        const fitcomTokenString = localStorage.getItem('fitcom-jwt');
-        // if (fitcomTokenString) this.httpClient.post('', {});
-        
-        
-        // const fitcomToken = JSON.parse(fitcomTokenString) as {
-        //     userId: string,
-        //     role: string,
-        //     jwt: string
-        // };
-        // this.user = fitcomToken;
-
-        // authenticate
-
+    constructor(
+        private readonly apiService: ApiService,
+        private readonly router: Router
+    ) {
+        const jwt = localStorage.getItem('fitcom-jwt');
+        if (jwt) this.apiService.authorize(jwt, (jwt) => this.setAuthenticated(jwt));
+        else console.log('no token to authorize');
     }
 
-    readonly user: undefined | {
-        userId: string,
-        role: string,
-        jwt: string
-    }
+    jwt: string | undefined;
+    userId: string | undefined;
+    userRole: string | undefined;
 
     isLoading: boolean = false;
+
+    setAuthenticated(jwt: string): void {
+        localStorage.setItem('fitcom-jwt', jwt);
+        const {userId, userRole} = jwt_decode<JwtContent>(jwt);
+        this.jwt = jwt;
+        this.userId = userId;
+        this.userRole = userRole;
+        if (userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
+        else this.router.navigate(['Fitnesstudio']);
+    }
+
+    signout(): void {
+        localStorage.removeItem('fitcom-jwt');
+        this.jwt = undefined;
+        this.userId = undefined;
+        this.userRole = undefined;
+        this.router.navigate(['']);
+    }
     
 }

@@ -3,7 +3,7 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from './../shared-services/jwt.service';
 import { Credentials } from './../interfaces';
 import { DbService } from './../shared-services/db.service';
-import { AdministratorAuthenticationResponse, Administrator } from './administrator.interfaces';
+import { AdministratorAuthenticationResponse, Administrator, FitcomRole } from './administrator.interfaces';
 
 @Injectable()
 export class AdministratorServcie {
@@ -23,7 +23,8 @@ export class AdministratorServcie {
             jwt: this.jwtService.sign({
                 adminId: user.id
             }),
-            user: user
+            userId: 'string',
+            role: FitcomRole.fitcomAdministrator
         };
     }
 
@@ -37,7 +38,8 @@ export class AdministratorServcie {
             jwt: this.jwtService.sign({
                 adminId: user.id
             }),
-            user: user
+            userId: 'string',
+            role: FitcomRole.fitcomAdministrator
         };
     }
 

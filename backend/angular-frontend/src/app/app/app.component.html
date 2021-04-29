@@ -1,28 +1,61 @@
 
-<div id="main-frame">
+<mat-card>
 
-    <mat-card style="padding: 0px; z-index: 2;">
+    <mat-toolbar>
 
-        <mat-toolbar class="noselect">
+        <button mat-button (click)="sidenav.toggle()">
+            <mat-icon> menu </mat-icon>
+        </button>
 
-            <button mat-button>
-                <mat-icon> menu </mat-icon>
+        <button mat-button id="title-button">
+            <span> Fitcom. </span>
+        </button>
+        
+        <button mat-button (click)="signin()" *ngIf="appService.jwt === undefined">
+            <span> Anmelden </span>
+        </button>
+        
+        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="appService.jwt !== undefined">
+            <mat-icon> more_horiz </mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu">
+
+            <button mat-menu-item (click)="appService.signout()">
+                <mat-icon matSuffix color="warn"> logout </mat-icon>
+                <span> Abmelden </span>
             </button>
 
-            <button mat-button style="margin: auto; font-size: large; padding: 4px 32px;">
-                <span> Fitcom. </span>
-            </button>
-            
-            <button mat-button (click)="signin()">
-                <mat-icon> account_circle </mat-icon>
-            </button>
+        </mat-menu>
 
-        </mat-toolbar>
+    </mat-toolbar>
 
-        <mat-progress-bar mode="indeterminate" *ngIf="appService.isLoading"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" *ngIf="appService.isLoading"></mat-progress-bar>
 
-    </mat-card>
+</mat-card>
 
-    <router-outlet></router-outlet>
+<mat-sidenav-container id="app-content">
 
-</div>
+    <mat-sidenav #sidenav mode="side">
+        
+        <div>
+            <button mat-menu-item (click)="router.navigate([''])"> Startseite </button>
+            <button mat-menu-item (click)="router.navigate(['Administration'])"> Administration </button>
+            <button mat-menu-item (click)="router.navigate(['Fitnesstudio'])"> Fitnesstudio </button>
+            <button mat-menu-item (click)="router.navigate([''])"> Blog </button>
+        </div>
+
+        <div id="bottom-button-container">
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="router.navigate([''])"> Impressum </button>
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+
+        <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,22 +1,6 @@
 
 <h1> Anmelden </h1>
 
-<mat-tab-group mat-align-tabs="end">
-
-    <mat-tab>
-        <ng-template mat-tab-label> Fitnesstudio Mitglied </ng-template>
-    </mat-tab>
-
-    <mat-tab>
-        <ng-template mat-tab-label> Fitnesstudio Mitarbeiter </ng-template>
-    </mat-tab>
-
-    <mat-tab>
-        <ng-template mat-tab-label> Administrator </ng-template>
-    </mat-tab>
-    
-</mat-tab-group>
-
 <div>
             
     <mat-form-field appearance="outline" style="display: block;">
@@ -33,5 +17,5 @@
 
 <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close> Abbrechen </button>
-    <button mat-raised-button color="primary"> Anmelden </button>
+    <button mat-raised-button color="primary" (click)="signin()"> Anmelden </button>
 </mat-dialog-actions>

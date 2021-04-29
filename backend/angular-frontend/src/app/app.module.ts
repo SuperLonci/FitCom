@@ -52,6 +52,8 @@ import { AdministrationSurface } from './administrator-surface/administrator.com
 import { FitnessCenterSurface } from './fitness-center-surface/fitness-center.component';
 import { AdministrationGuard } from './administrator-surface/administration.guard';
 import { FitnessCenterGuard } from './fitness-center-surface/fitness-center.guard';
+import { ApiService } from './api.service';
+import { StaffComponent } from './fitness-center-surface/staff/staff.components';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -92,6 +94,8 @@ const angularMaterialModules = [
         AdministrationSurface,
         FitnessCenterSurface,
 
+        StaffComponent,
+
         RegistrationPage,
         RegistrationDialog,
         NotFoundComponent,
@@ -113,13 +117,14 @@ const angularMaterialModules = [
             provide: LOCALE_ID,
             useValue: 'de'
         },
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: CustomHttpInterceptor,
-            multi: true
-        },
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: CustomHttpInterceptor,
+        //     multi: true
+        // },
         DatePipe,
         AppService,
+        ApiService,
         AdministrationGuard,
         FitnessCenterGuard
     ]

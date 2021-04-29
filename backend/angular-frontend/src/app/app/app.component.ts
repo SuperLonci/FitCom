@@ -15,10 +15,8 @@ export class AppComponent {
     constructor(
         public readonly appService: AppService,
         private readonly dialog: MatDialog,
-        private readonly router: Router
+        public readonly router: Router
     ) {}
-
-    sidenavExpanded: boolean = false;
 
     signin(): void {
         this.dialog.open(SigninDialog);

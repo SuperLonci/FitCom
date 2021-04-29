@@ -7,6 +7,9 @@
         },
         "secure": false,
         "logLevel": "debug",
-        "changeOrigin": "true"
+        "changeOrigin": "true",
+        "pathRewrite": {
+            "^/api": ""
+        }
     }
 }

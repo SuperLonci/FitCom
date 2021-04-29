@@ -9,17 +9,14 @@ import { AppService } from './app/app.service';
 @Injectable()
 export class CustomHttpInterceptor implements HttpInterceptor {
 
-    constructor(
-        // private readonly userService: UserService,
-        private readonly appService: AppService
-    ) {}
+    constructor(private readonly appService: AppService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        // if (this.userService.jwt) return next.handle(req.clone({
-        //     headers: req.headers.set('authorization', this.userService.jwt)
-        // })).pipe(
-        //     finalize(() => this.appService.isLoading = false)
-        // );
+        if (this.appService.jwt) return next.handle(req.clone({
+            headers: req.headers.set('authorization', this.appService.jwt)
+        })).pipe(
+            finalize(() => this.appService.isLoading = false)
+        );
         return next.handle(req).pipe(
             finalize(() => this.appService.isLoading = false)
         );

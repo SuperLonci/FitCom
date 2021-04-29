@@ -27,18 +27,18 @@ const routes: Routes = [
 
 
     
-    {
-        path: 'Registrierung/:type/:activationToken',
-        component: RegistrationPage
-    },
-    {
-        path: '**',
-        redirectTo: '/nicht-gefunden'
-    },
-    {
-        path: 'nicht-gefunden',
-        component: NotFoundComponent
-    }
+    // {
+    //     path: 'Registrierung/:type/:activationToken',
+    //     component: RegistrationPage
+    // },
+    // {
+    //     path: '**',
+    //     redirectTo: '/nicht-gefunden'
+    // },
+    // {
+    //     path: 'nicht-gefunden',
+    //     component: NotFoundComponent
+    // }
 ];
 
 @NgModule({
