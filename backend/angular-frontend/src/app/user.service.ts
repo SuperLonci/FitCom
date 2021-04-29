@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuhtenticationResponse, Credentials, FitcomUserRole, JwtContent } from '../../../nest-server/src/users/user.interfaces';
+import { AuhtenticationResponse, Credentials, FitcomUserRole, JwtContent, UserForRegistration } from '../../../nest-server/src/users/user.interfaces';
 import jwt_decode from 'jwt-decode';
 import { Router } from '@angular/router';
 
@@ -44,7 +44,8 @@ export class UserService {
                 completion(true);
                 if (this.userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
                 if (this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer) this.router.navigate(['Fitnessstudio']);
-            }
+            },
+            () => completion(false)
         );
     }
 
@@ -55,5 +56,18 @@ export class UserService {
         this.userRole = undefined;
         this.router.navigate(['']);
     }
+
+    register(activationToken: string, user: UserForRegistration, completion: (wasSuccessful: boolean) => void): void {
+        this.httpClient.post<AuhtenticationResponse>(`api/users/register/${activationToken}`, user).subscribe(
+            (response: AuhtenticationResponse) => {
+                this.setAuthenticated(response.jwt);
+                completion(true);
+                if (this.userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
+                if (this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer) this.router.navigate(['Fitnessstudio']);
+            },
+            () => completion(false)
+        );
+    }
+    
 
 }

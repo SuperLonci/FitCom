@@ -1,5 +1,5 @@
 
-import { Controller, Param, Post, Request } from '@nestjs/common';
+import { Controller, Get, Param, Post, Request } from '@nestjs/common';
 import { UserService } from './user.service';
 import { AuhtenticationResponse, Credentials, UserForRegistration } from './user.interfaces';
 

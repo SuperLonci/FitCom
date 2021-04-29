@@ -1,9 +1,9 @@
 
-import { HttpClient } from '@angular/common/http';
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StaffForPost } from '../../../../nest-server/src/staff/staff.interfaces';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { UserForRegistration } from '../../../../nest-server/src/users/user.interfaces';
+import { UserService } from '../user.service';
 
 @Component({
     template: ''
@@ -28,11 +28,11 @@ export class RegistrationDialog {
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private readonly activationToken: string,
-        private readonly httpClient: HttpClient,
-        private readonly router: Router
+        private readonly dialogReference: MatDialogRef<RegistrationDialog>,
+        private readonly userService: UserService
     ) {}
 
-    staff: StaffForPost = {
+    user: UserForRegistration = {
         gender: '',
         firstName: '',
         lastName: '',
@@ -42,15 +42,14 @@ export class RegistrationDialog {
 
     passwordRepeat: string = '';
 
-    passwordIsValid = (): boolean => this.staff.password !== '';
-    passwordsAreEqual = (): boolean => this.staff.password === this.passwordRepeat;
-    dataIsComplete = (): boolean => this.staff.firstName !== '' && this.staff.lastName !== '' && this.passwordIsValid() && this.passwordsAreEqual();
+    passwordIsValid = (): boolean => this.user.password !== '';
+    passwordsAreEqual = (): boolean => this.user.password === this.passwordRepeat;
+    dataIsComplete = (): boolean => this.user.firstName !== '' && this.user.lastName !== '' && this.passwordIsValid() && this.passwordsAreEqual();
 
     register(): void {
-        this.httpClient.post(`api/staff/register/${this.activationToken}`, this.staff).subscribe(
-            jwt => {
-                // appService.jwt ..
-                this.router.navigate(['Administration']);
+        this.userService.register(this.activationToken, this.user, 
+            (wasSuccessful) => {
+                if (wasSuccessful) this.dialogReference.close();
             }
         );
     }

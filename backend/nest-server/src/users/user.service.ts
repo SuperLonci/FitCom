@@ -42,6 +42,17 @@ export class UserService {
         };
     }
 
+    async invite(email: string, userRole: FitcomUserRole): Promise<string> {
+        const userId: string = uuidv4();
+        const activationToken: string = uuidv4();
+        await this.dbService.query(`
+            INSERT INTO Users (id, email, role, activationToken)
+            VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}')
+        `);
+        this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrierung/${activationToken}`);
+        return userId;
+    }
+
     async register(activationToken: string, user: UserForRegistration): Promise<AuhtenticationResponse> {
         const [userResult] = await this.dbService.query<{id: string, role: string}>(`
             SELECT id, role FROM Users WHERE activationToken = '${activationToken}'
@@ -63,17 +74,6 @@ export class UserService {
                 userRole: userResult.role
             })
         };
-    }
-
-    async invite(email: string, userRole: FitcomUserRole): Promise<string> {
-        const userId: string = uuidv4();
-        const activationToken: string = uuidv4();
-        await this.dbService.query(`
-            INSERT INTO Users (id, email, role, activationToken)
-            VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}')
-        `);
-        this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrieren/${activationToken}`);
-        return userId;
     }
 
 }

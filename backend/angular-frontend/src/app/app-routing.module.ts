@@ -64,10 +64,10 @@ const routes: Routes = [
             }
         ]
     },    
-    // {
-    //     path: 'Registrierung/:type/:activationToken',
-    //     component: RegistrationPage
-    // },
+    {
+        path: 'Registrierung/:activationToken',
+        component: RegistrationPage
+    },
     {
         path: '**',
         component: NotFoundComponent

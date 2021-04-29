@@ -19,7 +19,7 @@ VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'r
 
 CREATE TABLE FitnessCenters (
     id                              CHAR(36) PRIMARY KEY,
-    title                           VARCHAR(255) NOT NULL DEFAULT '' CHECK (title <> ''),
+    title                           VARCHAR(255) NOT NULL DEFAULT '' CHECK (title <> '') UNIQUE,
     ownerId                         CHAR(36) NOT NULL CHECK (ownerId <> ''),
     FOREIGN KEY (ownerId)           REFERENCES Users(id),
     createdAt                       DATE NOT NULL,

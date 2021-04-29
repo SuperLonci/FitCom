@@ -23,14 +23,14 @@ export class FintessCenterService {
 
     async create(fitnessCenter: FitnessCenterForPost): Promise<void> {
         const fitnessCenterId = uuidv4();
-        const ownerId = await this.userService.invite(fitnessCenterId, FitcomUserRole.fitnessCenterAdministrator);
+        const ownerId = await this.userService.invite(fitnessCenter.ownerEmail, FitcomUserRole.fitnessCenterAdministrator);
         await this.dbService.query(`
             INSERT INTO Fitnesscenters (id, title, ownerId, createdAt, country, city, postCode, street, streetNumber, email, phoneNumber, faxNumber)
             VALUE ('${fitnessCenterId}', '${fitnessCenter.title}', '${ownerId}', CURRENT_DATE, '${fitnessCenter.country}', '${fitnessCenter.city}', '${fitnessCenter.postCode}', '${fitnessCenter.street}', '${fitnessCenter.streetNumber}', '${fitnessCenter.email}', '${fitnessCenter.phoneNumber}', '${fitnessCenter.faxNumber}')
         `);
         await this.dbService.query(`
             INSERT INTO FitnessCenterStaff (userId, fitnessCenterId)
-            VALUE ('${fitnessCenterId}', '${ownerId}')
+            VALUE ('${ownerId}', '${fitnessCenterId}')
         `);
     }
 

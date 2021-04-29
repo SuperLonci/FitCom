@@ -18,9 +18,9 @@ export class ApiService {
         );
     }
 
-    createFitnessCenter(fitnessCenter: FitnessCenterForPost): void {
+    createFitnessCenter(fitnessCenter: FitnessCenterForPost, completion: () => void): void {
         this.httpClient.post('api/fitness-centers', fitnessCenter, {headers: {authorization: this.userService.jwt ?? ''}}).subscribe(
-            (res) => console.log(res)
+            () => completion()
         );
     }
 
