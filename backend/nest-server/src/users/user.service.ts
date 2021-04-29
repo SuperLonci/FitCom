@@ -2,14 +2,19 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from 'src/shared-services/jwt.service';
 import { DbService } from '../shared-services/db.service';
-import { AuhtenticationResponse, Credentials, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
+import { AuhtenticationResponse, Credentials, FitcomUserRole, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
+import { v4 as uuidv4 } from 'uuid';
+import { MailService } from 'src/shared-services/mail.service';
+import { EnvironmentService } from 'src/shared-services/environment.service';
 
 @Injectable()
 export class UserService {
 
     constructor(
         private readonly dbService: DbService,
-        private readonly jwtService: JwtService
+        private readonly jwtService: JwtService,
+        private readonly mailService: MailService,
+        private readonly environmentService: EnvironmentService
     ) {}
 
     async auhtenticate(credentials: Credentials): Promise<AuhtenticationResponse> {
@@ -58,6 +63,17 @@ export class UserService {
                 userRole: userResult.role
             })
         };
+    }
+
+    async invite(email: string, userRole: FitcomUserRole): Promise<string> {
+        const userId: string = uuidv4();
+        const activationToken: string = uuidv4();
+        await this.dbService.query(`
+            INSERT INTO Users (id, email, role, activationToken)
+            VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}')
+        `);
+        this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrieren/${activationToken}`);
+        return userId;
     }
 
 }
