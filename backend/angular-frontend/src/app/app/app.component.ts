@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SigninDialog } from '../signin/signin.component';
 import { AppService } from './app.service';
 import { UserService } from '../user.service';
+import { UserProfileDialog } from '../user-profile/user-profile.dialog';
 
 @Component({
     selector: 'app-root',
@@ -20,7 +21,7 @@ export class AppComponent {
         private readonly router: Router
     ) {}
 
-    navigationDestinations: string[] = ['Startseite', 'Administration', 'Fitnessstudio', 'Blog'];
+    sideNavIsExpanded: boolean = false;
 
     signin(): void {
         this.dialog.open(SigninDialog);
@@ -31,7 +32,12 @@ export class AppComponent {
     }
 
     navigateTo(destination: string): void {
+        this.sideNavIsExpanded = false;
         this.router.navigate([destination]);
+    }
+
+    showUserProfile(): void {
+        this.dialog.open(UserProfileDialog);
     }
 
     editPassword(): void {

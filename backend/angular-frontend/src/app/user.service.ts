@@ -21,6 +21,9 @@ export class UserService {
     userId: string | undefined;
     userRole: string | undefined;
 
+    isAdministrator = (): boolean => this.userRole === FitcomUserRole.fitcomAdministrator;
+    isFitnessCenterStaff = (): boolean => this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer;
+
     setAuthenticated(jwt: string): void {
         localStorage.setItem('fitcom-jwt', jwt);
         const {userId, userRole} = jwt_decode<JwtContent>(jwt);

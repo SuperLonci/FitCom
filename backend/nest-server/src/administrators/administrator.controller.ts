@@ -1,8 +1,8 @@
 
-import { Controller, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { Controller, Get, Param, Request, UnauthorizedException } from '@nestjs/common';
+import { FitcomUserRole, JwtContent } from 'src/users/user.interfaces';
 import { JwtService } from './../shared-services/jwt.service';
-import { Credentials } from './../interfaces';
-import { AdministratorAuthenticationResponse } from './administrator.interfaces';
+import { Administrator, FitcomAdministratorsOverview } from './administrator.interfaces';
 import { AdministratorServcie } from './administrator.service';
 
 @Controller('administrators')
@@ -13,17 +13,18 @@ export class AdministratorContoller {
         private readonly jwtService: JwtService
     ) {}
 
-    @Post('authenticate')
-    async authenticate(@Request() request: Request): Promise<AdministratorAuthenticationResponse> {
-        const credentials = request.body as unknown as Credentials;
-        if ('email' in credentials && 'password' in credentials) return await this.administratorServcie.authenticate(credentials);
+    @Get()
+    async getAdministrators(@Request() request: Request): Promise<FitcomAdministratorsOverview> {
+        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+        return await this.administratorServcie.getAdministrators();
     }
 
-    @Post('authorize')
-    async authorize(@Request() request: Request): Promise<AdministratorAuthenticationResponse> {
-        const {adminId} = this.jwtService.authorizeAndGetJWTContent(request);
-        if (adminId) return await this.administratorServcie.authorize(adminId);
-        throw UnauthorizedException;
+    @Get(':userId')
+    async getFitcomAdministrator(@Param('userId') userId: string, @Request() request: Request): Promise<Administrator> {
+        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+        return await this.administratorServcie.getAdministrator(userId);
     }
 
 }

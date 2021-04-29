@@ -24,5 +24,16 @@ export class FitnessCentersComponents {
     addFitnessCenter(): void {
         this.dialog.open(AddFitnessCenterDialog);
     }
+
+    columns = [
+        {
+            title: 'Name',
+            attributeName: 'title'
+        },
+        {
+            title: 'Stadt',
+            attributeName: 'city'
+        }
+    ];
     
 }

@@ -1,46 +1,32 @@
 
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { JwtService } from './../shared-services/jwt.service';
-import { Credentials } from './../interfaces';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { DbService } from './../shared-services/db.service';
-import { AdministratorAuthenticationResponse, Administrator, FitcomRole } from './administrator.interfaces';
+import { Administrator, AdministratorForAdministrationOverview, FitcomAdministratorsOverview } from './administrator.interfaces';
 
 @Injectable()
 export class AdministratorServcie {
 
-    constructor(
-        private readonly dbService: DbService,
-        private readonly jwtService: JwtService
-    ) {}
+    constructor(private readonly dbService: DbService) {}
 
-    async authenticate(credentials: Credentials): Promise<AdministratorAuthenticationResponse> {
-        const [user] = await this.dbService.query<Administrator>(`
-            SELECT id, firstName, lastName, email FROM FitcomAdministrators
-            WHERE email = '${credentials.email}' AND password = SHA2(CONCAT('${credentials.password}', id), 512)
+    async getAdministrators(): Promise<FitcomAdministratorsOverview> {
+        const administrators = await this.dbService.query<AdministratorForAdministrationOverview>(`
+            SELECT id, firstName, lastName FROM Users WHERE role = 'fitcomAdministrator' AND activationToken IS NULL
         `);
-        if (!user) throw new UnauthorizedException;
+        const pendingAdministrators = await this.dbService.query<{id: string, email: string}>(`
+            SELECT id, email FROM Users WHERE role = 'fitcomAdministrator' AND activationToken IS NOT NULL
+        `);
         return {
-            jwt: this.jwtService.sign({
-                adminId: user.id
-            }),
-            userId: 'string',
-            role: FitcomRole.fitcomAdministrator
+            administrators: administrators,
+            pendingAdministrators: pendingAdministrators
         };
     }
 
-    async authorize(adminId: string): Promise<AdministratorAuthenticationResponse> {
-        const [user] = await this.dbService.query<Administrator>(`
-            SELECT id, firstName, lastName, email FROM FitcomAdministrators
-            WHERE id = '${adminId}'
+    async getAdministrator(userId: string): Promise<Administrator> {
+        const [administrator] = await this.dbService.query<Administrator>(`
+            SELECT id, gender, firstName, lastName, birthDate, email FROM Users WHERE id = '${userId}'
         `);
-        if (!user) throw new UnauthorizedException;
-        return {
-            jwt: this.jwtService.sign({
-                adminId: user.id
-            }),
-            userId: 'string',
-            role: FitcomRole.fitcomAdministrator
-        };
+        if (!administrator) throw new NotFoundException;
+        return administrator;
     }
 
 }

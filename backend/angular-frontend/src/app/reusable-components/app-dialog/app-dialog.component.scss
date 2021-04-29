@@ -1,0 +1,55 @@
+
+:host {
+    display: block;
+    padding: 0px 8px 8px 8px;
+
+    #dialog-header {
+        
+        #title {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            font-size: x-large;
+            white-space: nowrap;
+
+            #spacer {
+                flex: 1;
+            }
+
+            > * {
+                margin-right: 16px;
+            }
+        }
+
+        #subtitle {
+            margin-top: 16px;
+            font-size: large;
+        }
+    }
+
+    mat-dialog-content {
+        margin-top: 32px;
+
+        ::ng-deep {
+
+            .row-container {
+                display: flex;
+                flex-wrap: wrap;
+            
+                mat-form-field {
+                    flex: 1;
+                    margin-right: 16px;
+                }
+            
+                .column-container {
+                    flex: 1;
+                    
+                    mat-form-field {
+                        display: block;
+                        min-width: 256px;
+                    }
+                }
+            }
+        }
+    }
+}

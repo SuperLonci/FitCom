@@ -25,8 +25,13 @@ mat-sidenav-container {
     mat-sidenav {
         width: 195px;
 
+        button {
+            font-size: large;
+        }
+        
         #regular-button-container {
             margin: 8px 0px 256px 0px;
+            
         }
         
         #bottom-button-container {

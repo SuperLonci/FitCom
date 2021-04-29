@@ -5,6 +5,7 @@ import { AdministrationStatisticsComponent } from './administration/administrati
 import { AdministrationGuard } from './administration/administration.guard';
 import { AdministrationComponent } from './administration/administrator.component';
 import { AdministratorsComponent } from './administration/administrators/administrators.component';
+import { ExercisesComponent } from './administration/exercises/exercises.component';
 import { FitnessCentersComponents } from './administration/fitness-centers/fitness-centers.component';
 import { FitnessCenterAdministrationComponent } from './fitness-center-administration/fitness-center.component';
 import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
@@ -27,6 +28,10 @@ const routes: Routes = [
         component: AdministrationComponent,
         canActivate: [AdministrationGuard],
         children: [
+            {
+                path: 'Trainingsübungen',
+                component: ExercisesComponent
+            },
             {
                 path: 'Statistiken',
                 component: AdministrationStatisticsComponent

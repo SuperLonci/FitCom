@@ -21,7 +21,12 @@
 
         <mat-menu #userMenu="matMenu">
 
-            <button mat-menu-item (click)="editPassword">
+            <button mat-menu-item (click)="showUserProfile()">
+                <mat-icon matSuffix> account_circle </mat-icon>
+                <span> Profil </span>
+            </button>
+
+            <button mat-menu-item (click)="editPassword()">
                 <mat-icon matSuffix> lock </mat-icon>
                 <span> Passwort ändern </span>
             </button>
@@ -41,20 +46,19 @@
 
 <mat-sidenav-container>
 
-    <mat-sidenav #sidenav mode="side">
+    <mat-sidenav #sidenav mode="over" [(opened)]="sideNavIsExpanded">
         
         <div id="regular-button-container">
-            <button mat-menu-item
-                *ngFor="let navigationDestinaton of navigationDestinations"
-                (click)="navigateTo(navigationDestinaton)">
-                {{ navigationDestinaton }}
-            </button>
+            <button mat-menu-item (click)="navigateTo('Startseite')"> Startseite </button>
+            <button mat-menu-item (click)="navigateTo('Administration')" *ngIf="userService.isAdministrator()"> Administration </button>
+            <button mat-menu-item (click)="navigateTo('Fitnessstudio')" *ngIf="userService.isFitnessCenterStaff()"> Fitnessstudio </button>
+            <button mat-menu-item (click)="navigateTo('Blog')"> Blog </button>
         </div>
 
         <div id="bottom-button-container">
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="navigateTo('Impressum')"> Impressum </button>
-            <button mat-menu-item (click)="navigateTo('Datenschutzbestimmung')"> Datenschutzbestimmung </button>
+            <button mat-menu-item (click)="navigateTo('Datenschutzbestimmung')"> Datenschutz </button>
         </div>
 
     </mat-sidenav>

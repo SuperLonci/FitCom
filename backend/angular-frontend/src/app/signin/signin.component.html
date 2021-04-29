@@ -1,21 +1,33 @@
 
-<h1> Anmelden </h1>
+<app-dialog
+    [titlePrefixIconName]="'account_circle'"
+    [title]="'Anmelden'"
+    [showActions]="true">
 
-<div>
-            
-    <mat-form-field appearance="outline" style="display: block;">
-        <mat-label> E-Mail Adresse </mat-label>
-        <input matInput type="email" [(ngModel)]="user.email" required>
-    </mat-form-field>
+    <div content>
 
-    <mat-form-field appearance="outline" style="display: block;">
-        <mat-label> Passwort </mat-label>
-        <input matInput type="password" [(ngModel)]="user.password" required>
-    </mat-form-field>
+        <mat-form-field appearance="outline" style="display: block; width: 256px">
+            <mat-label> E-Mail Adresse </mat-label>
+            <input matInput type="email" [(ngModel)]="user.email" required>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" style="display: block; width: 256px">
+            <mat-label> Passwort </mat-label>
+            <input matInput type="password" [(ngModel)]="user.password" required (keyup.enter)="signin()">
+        </mat-form-field>
 
-</div>
+        <button mat-button color="primary">
+            Passwort vergessen?
+        </button>
+        
+    </div>
 
-<mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close> Abbrechen </button>
-    <button mat-raised-button color="primary" (click)="signin()"> Anmelden </button>
-</mat-dialog-actions>
+    <div actions>
+        <button mat-button mat-dialog-close> Abbrechen </button>
+        <button mat-raised-button (click)="signin()" color="primary">
+            <span> Anmelden </span>
+            <mat-icon> login </mat-icon>
+        </button>
+    </div>
+
+</app-dialog>

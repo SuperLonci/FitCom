@@ -59,6 +59,13 @@ import { AdministratorsComponent } from './administration/administrators/adminis
 import { UserService } from './user.service';
 import { AdministrationStatisticsComponent } from './administration/administration-statistics/administration-statistics.component';
 import { AddFitnessCenterDialog } from './administration/fitness-centers/add-fitness-center-dialog/add-fitness-center.dialog';
+import { AddAdministratorDialog } from './administration/administrators/add-administrator-dialog/add-administrator.dialog';
+import { UserProfileDialog } from './user-profile/user-profile.dialog';
+import { AppDialog } from './reusable-components/app-dialog/app-dialog.component';
+import { AppHeader } from './reusable-components/app-header/app-header.component';
+import { AppPage } from './reusable-components/app-page/app-page.component';
+import { OverviewTable } from './reusable-components/overview-table/overview-table.component';
+import { ExercisesComponent } from './administration/exercises/exercises.component';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -96,25 +103,30 @@ const angularMaterialModules = [
     declarations: [
         AppComponent,
 
+        AppDialog,
+        AppHeader,
+        AppPage,
+        OverviewTable,
+
         HomeComponent,
+        RegistrationPage,
+        RegistrationDialog,
+        SigninPage,
+        SigninDialog,
+        UserProfileDialog,
 
         AdministrationComponent,
         AdministratorsComponent,
+        AddAdministratorDialog,
         FitnessCentersComponents,
-        AdministrationStatisticsComponent,
         AddFitnessCenterDialog,
-
+        AdministrationStatisticsComponent,
+        ExercisesComponent,
 
         FitnessCenterAdministrationComponent,
 
-
         StaffComponent,
-
-        RegistrationPage,
-        RegistrationDialog,
         NotFoundComponent,
-        SigninPage,
-        SigninDialog
     ],
     imports: [
         BrowserModule,

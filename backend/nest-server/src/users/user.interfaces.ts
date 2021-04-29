@@ -13,6 +13,10 @@ export interface AuhtenticationResponse {
     jwt: string
 }
 
+export interface CreateUserResponse {
+    userId: string
+}
+
 export interface UserAuthenticationDatabaseResult {
     id: string
     role: FitcomUserRole

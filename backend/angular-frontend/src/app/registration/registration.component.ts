@@ -14,7 +14,6 @@ export class RegistrationPage {
         private readonly dialog: MatDialog,
         private readonly activeRoute: ActivatedRoute
     ) {
-        console.log(this.activeRoute.snapshot.params);
         const activationToken = this.activeRoute.snapshot.params.activationToken;
         this.dialog.open(RegistrationDialog, { data: activationToken, disableClose: true });
     }

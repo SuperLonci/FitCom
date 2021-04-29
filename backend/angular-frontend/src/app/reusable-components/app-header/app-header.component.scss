@@ -1,0 +1,37 @@
+
+:host {
+    display: block;
+    overflow-x: scroll;
+
+    #title-row {
+        height: 60px;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+
+        #title {
+            font-weight: bold;
+            font-size: x-large;
+        }
+
+        #spacer {
+            flex: 1;
+        }
+
+        ::ng-deep > * {
+            margin-right: 16px;
+
+            :last-child {
+                margin-right: 0px;
+            }
+
+            > * {
+                margin-right: 16px;
+            }
+        }
+    }
+
+    #subtitle {
+        font-size: large;
+    }
+}

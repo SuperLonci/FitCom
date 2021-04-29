@@ -2,7 +2,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from 'src/shared-services/jwt.service';
 import { DbService } from '../shared-services/db.service';
-import { AuhtenticationResponse, Credentials, FitcomUserRole, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
+import { AuhtenticationResponse, CreateUserResponse, Credentials, FitcomUserRole, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
 import { v4 as uuidv4 } from 'uuid';
 import { MailService } from 'src/shared-services/mail.service';
 import { EnvironmentService } from 'src/shared-services/environment.service';
@@ -42,7 +42,7 @@ export class UserService {
         };
     }
 
-    async invite(email: string, userRole: FitcomUserRole): Promise<string> {
+    async invite(email: string, userRole: FitcomUserRole): Promise<CreateUserResponse> {
         const userId: string = uuidv4();
         const activationToken: string = uuidv4();
         await this.dbService.query(`
@@ -50,7 +50,9 @@ export class UserService {
             VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}')
         `);
         this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrierung/${activationToken}`);
-        return userId;
+        return {
+            userId: userId
+        };
     }
 
     async register(activationToken: string, user: UserForRegistration): Promise<AuhtenticationResponse> {
@@ -63,7 +65,7 @@ export class UserService {
             firstName = '${user.firstName}',
             lastName = '${user.lastName}',
             gender = '${user.gender}',
-            birthDate = ${user.birthDate === '' ? 'NULL': user.birthDate},
+            birthDate = ${user.birthDate === '' ? 'NULL': `'${user.birthDate}'`},
             password = SHA2(CONCAT('${user.password}', id), 512),
             activationToken = NULL
             WHERE activationToken = '${activationToken}'

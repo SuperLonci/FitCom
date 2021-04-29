@@ -1,0 +1,41 @@
+
+<mat-card>
+
+    <div id="header">
+
+        <div *ngFor="let column of columns; let last = last" [style.flex]="column.flex ? column.flex : '1'" [style.text-align]="column.textAlign" class="column-header">
+            
+            <span>  {{ column.title }} </span>
+            <span *ngIf="last" id="spacer"></span>
+            <button mat-icon-button *ngIf="last" color="primary" (click)="createItem.emit()">
+                <mat-icon> add </mat-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div *ngFor="let item of items">
+
+        <button mat-menu-item (click)="selectItem.emit(item.id)" matTooltip="{{item[tooltipAttributeName]}}" class="row">
+
+            <div *ngFor="let column of columns" [style.flex]="column.flex ? column.flex : '1'" [style.text-align]="column.textAlign" class="row-column">
+
+                <span> {{ rewriteRule ? rewriteRule(column.attributeName, item[column.attributeName]) : item[column.attributeName] }} </span>
+
+            </div>
+
+        </button>
+
+        <mat-divider></mat-divider>
+
+    </div>
+
+    <div id="footer">
+        <i *ngIf="items.length === 0"> {{ noDataText }} </i>
+        <i *ngIf="items.length !== 0"> {{ footerText }} </i>
+    </div>
+    
+</mat-card>

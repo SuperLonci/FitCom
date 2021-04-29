@@ -17,20 +17,25 @@ export class FintessCenterService {
 
     async getFitnessCenters(): Promise<FitnessCenterForAdministrationOverview[]> {
         return await this.dbService.query<FitnessCenterForAdministrationOverview>(`
-            SELECT id, title, city, ownerId FROM Fitnesscenters
+            SELECT Fitnesscenters.id, Fitnesscenters.title, Fitnesscenters.city, Fitnesscenters.ownerId, 
+            CONCAT(Users.firstName, ' ', Users.lastName) as owner, 
+            (Users.activationToken IS NOT NULL) as isPending
+            FROM Fitnesscenters
+            LEFT JOIN Users
+            ON Fitnesscenters.ownerId = Users.id
         `);
     }
 
     async create(fitnessCenter: FitnessCenterForPost): Promise<void> {
         const fitnessCenterId = uuidv4();
-        const ownerId = await this.userService.invite(fitnessCenter.ownerEmail, FitcomUserRole.fitnessCenterAdministrator);
+        const {userId} = await this.userService.invite(fitnessCenter.ownerEmail, FitcomUserRole.fitnessCenterAdministrator);
         await this.dbService.query(`
             INSERT INTO Fitnesscenters (id, title, ownerId, createdAt, country, city, postCode, street, streetNumber, email, phoneNumber, faxNumber)
-            VALUE ('${fitnessCenterId}', '${fitnessCenter.title}', '${ownerId}', CURRENT_DATE, '${fitnessCenter.country}', '${fitnessCenter.city}', '${fitnessCenter.postCode}', '${fitnessCenter.street}', '${fitnessCenter.streetNumber}', '${fitnessCenter.email}', '${fitnessCenter.phoneNumber}', '${fitnessCenter.faxNumber}')
+            VALUE ('${fitnessCenterId}', '${fitnessCenter.title}', '${userId}', CURRENT_DATE, '${fitnessCenter.country}', '${fitnessCenter.city}', '${fitnessCenter.postCode}', '${fitnessCenter.street}', '${fitnessCenter.streetNumber}', '${fitnessCenter.email}', '${fitnessCenter.phoneNumber}', '${fitnessCenter.faxNumber}')
         `);
         await this.dbService.query(`
             INSERT INTO FitnessCenterStaff (userId, fitnessCenterId)
-            VALUE ('${ownerId}', '${fitnessCenterId}')
+            VALUE ('${userId}', '${fitnessCenterId}')
         `);
     }
 

@@ -1,0 +1,43 @@
+
+mat-card {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;                         
+
+    padding: 0px;
+    margin: auto;
+    max-width: 1400px;
+    margin-bottom: 32px;
+
+    #header {
+        display: flex;
+
+        .column-header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin: 8px 16px;
+
+            #spacer {
+                flex-grow: 1;
+            }
+        }
+    }
+
+    .row {
+        display: flex;
+        padding: 0px;
+
+        .row-column {
+            margin: 0px 16px;
+        }
+    }
+
+    #footer {
+        text-align: center;
+        padding: 16px 0px;
+    }
+}

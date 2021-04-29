@@ -12,14 +12,19 @@ import { Router } from '@angular/router';
 
         </mat-tab-group>
 
-        <router-outlet></router-outlet>
-    `
+        <div id="content">
+            <router-outlet></router-outlet>
+        </div>
+    `,
+    styleUrls: ['./administrator.component.scss']
 })
 export class AdministrationComponent {
 
-    constructor(private readonly router: Router) {}
+    constructor(private readonly router: Router) {
+        this.router.navigate(['Administration', this.tabs[this.selectedTab]]);
+    }
 
-    selectedTab: number = 1;
+    selectedTab: number = 3;
     tabs: string[] = ['Trainingsübungen', 'Statistiken', 'Fitnessstudios', 'Administratoren'];
 
     tabSelectionDidChange(index: number): void {

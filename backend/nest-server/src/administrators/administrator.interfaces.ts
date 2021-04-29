@@ -1,19 +1,25 @@
 
-export interface Administrator{
+export interface AdministratorForAdministrationOverview {
     id: string
     firstName: string
     lastName: string
+}
+
+export interface FitcomAdministratorsOverview {
+    administrators: AdministratorForAdministrationOverview[]
+    pendingAdministrators: {
+        id: string
+        email: string
+    }[]
+}
+
+
+
+export interface Administrator {
+    id: string
+    gender: string
+    firstName: string
+    lastName: string
+    birthDate: string
     email: string
-}
-
-export interface AdministratorAuthenticationResponse {
-    jwt: string
-    userId: string
-    role: FitcomRole
-}
-
-export enum FitcomRole {
-    fitcomAdministrator = 'fitcomAdministrator',
-    fitnessCenterAdministrator = 'fitnessCenterAdministrator',
-    fitnessCenterTrainer = 'fitnessCenterTrainer'
 }

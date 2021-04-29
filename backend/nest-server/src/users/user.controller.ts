@@ -1,12 +1,16 @@
 
-import { Controller, Get, Param, Post, Request } from '@nestjs/common';
+import { Controller, Get, Param, Post, Request, UnauthorizedException } from '@nestjs/common';
 import { UserService } from './user.service';
-import { AuhtenticationResponse, Credentials, UserForRegistration } from './user.interfaces';
+import { AuhtenticationResponse, CreateUserResponse, Credentials, FitcomUserRole, JwtContent, UserForRegistration } from './user.interfaces';
+import { JwtService } from 'src/shared-services/jwt.service';
 
 @Controller('users')
 export class UserController {
 
-    constructor(private readonly userService: UserService) {}
+    constructor(
+        private readonly userService: UserService,
+        private readonly jwtService: JwtService
+    ) {}
 
     @Post('auhtenticate')
     async auhtenticate(@Request() request: Request): Promise<AuhtenticationResponse> {
@@ -25,5 +29,20 @@ export class UserController {
         const staff = request.body as unknown as UserForRegistration;
         return await this.userService.register(activationToken, staff);
     }
+
+
+    @Post('fitcomAdministrator/:email')
+    async createFitcomAdministrator(@Param('email') email: string, @Request() request: Request): Promise<CreateUserResponse> {
+        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+        return await this.userService.invite(email, FitcomUserRole.fitcomAdministrator);
+    }
+
+    // @Post('fitnessCenterStaff')
+    // async createFitnessCenterStaff(@Request() request: Request): Promise<void> {
+    //     const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+    //     if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
+    //     return await this.userService.invite();
+    // }
 
 }

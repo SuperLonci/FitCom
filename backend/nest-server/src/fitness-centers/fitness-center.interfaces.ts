@@ -3,8 +3,9 @@ export interface FitnessCenterForAdministrationOverview {
     id: string
     title: string
     city: string
+    owner: string
     ownerId: string
-    ownerName: string
+    isPending: boolean
 }
 
 export interface FitnessCenterForPost {

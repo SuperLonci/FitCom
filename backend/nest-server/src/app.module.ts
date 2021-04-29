@@ -14,8 +14,8 @@ import { DbService } from './shared-services/db.service';
 import { EnvironmentService } from './shared-services/environment.service';
 import { JwtService } from './shared-services/jwt.service';
 import { MailService } from './shared-services/mail.service';
-import { StaffController } from './staff/staff.controller';
-import { StaffService } from './staff/staff.service';
+import { FitnessCenterStaffController } from './fitness-center-staff/fitness-center-staff.controller';
+import { FitnessCenterStaffService } from './fitness-center-staff/fitness-center-staff.service';
 
 @Module({
     controllers: [
@@ -23,7 +23,7 @@ import { StaffService } from './staff/staff.service';
         
         AdministratorContoller,
         FintessCenterController,
-        StaffController
+        FitnessCenterStaffController
     ],
     providers: [
         DbService,
@@ -35,7 +35,7 @@ import { StaffService } from './staff/staff.service';
 
         AdministratorServcie,
         FintessCenterService,
-        StaffService
+        FitnessCenterStaffService
     ],
     imports: [
         ConfigModule.forRoot({ envFilePath:  ['.env', '../.env'] }),

@@ -1,0 +1,18 @@
+
+<app-dialog
+    [title]="'Administrator einladen'"
+    [showActions]="true">
+
+    <div content>
+
+        <mat-form-field appearance="outline" style="display: block;">
+            <input matInput [(ngModel)]="email" type="email">
+        </mat-form-field>
+
+    </div>
+
+    <div actions>
+        <button mat-raised-button (click)="addAdministrator()" color="primary"> Einladen </button>
+    </div>
+
+</app-dialog>

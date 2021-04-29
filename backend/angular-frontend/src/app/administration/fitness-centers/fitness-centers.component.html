@@ -1,10 +1,64 @@
 
-<h1> Fitnessstudios </h1>
+<app-page
+    [titlePrefixIconName]="'domain'"
+    [title]="'Fitnessstudios'">
 
-<button mat-raised-button (click)="addFitnessCenter()"> + Hinzufügen </button>
+    <div detail>
+        <!-- <mat-icon id="filter-icon" *ngIf="!filtersAreActive"> filter_list </mat-icon>
 
-<ul>
-    <li *ngFor="let fitnessCenter of fitnessCenters">
-        {{ fitnessCenter.title }} {{ fitnessCenter.city }} {{ fitnessCenter.ownerId }}
-    </li>
-</ul>
+        <button mat-icon-button *ngIf="filtersAreActive" (click)="resetFilters()" color="primary" matTooltip="Filter zurücksetzen">
+            <mat-icon> close </mat-icon>
+        </button>
+
+        <mat-form-field>
+            <mat-label> Geschlecht </mat-label>
+            <mat-select [(ngModel)]="selectedGenderOption" (selectionChange)="updateItemsToDisplay()" matTooltip="nach Geschlecht der Patienten filtern">
+                <mat-option [value]="defaultGenderOption.value"> {{ defaultGenderOption.title }} </mat-option>
+                <mat-option *ngFor="let genderOption of genderOptions; let i = index" [value]="i">
+                    {{ genderOption.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Anzeigen </mat-label>
+            <mat-select [(ngModel)]="selectedActivityOption" (selectionChange)="updateItemsToDisplay()" matTooltip="nach aktiven oder inaktiven Patienten filtern">
+                <mat-option [value]="defaultActivityOption.value"> {{ defaultActivityOption.title }} </mat-option>
+                <mat-option *ngFor="let activityOption of activityOptions; let i = index" [value]="i">
+                    {{ activityOption.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> Sortieren </mat-label>
+            <mat-select [(ngModel)]="selectedSortOption" (selectionChange)="updateItemsToDisplay()">
+                <mat-option [value]="undefined"> {{ defaultSortOption.title }} </mat-option>
+                <mat-option *ngFor="let sortOption of sortOptions; let i = index" [value]="i">
+                    {{ sortOption.title }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field *ngIf='searchIsActive'>
+            <mat-label> Suchtext </mat-label>
+            <input matInput autocomplete="off" [(ngModel)]="searchText" (input)="updateItemsToDisplay()" autofocus>
+        </mat-form-field>
+
+        <button mat-icon-button (click)="toggleSearchIsActive()">
+            <mat-icon *ngIf='!searchIsActive'> search </mat-icon>
+            <mat-icon *ngIf='searchIsActive'> close </mat-icon>
+        </button> -->
+    </div>
+
+    <div content>
+        <overview-table
+            [items]="fitnessCenters"
+            [footerText]="fitnessCenters.length + ' ' + (fitnessCenters.length === 1 ? 'Fitnessstudios' : 'Fitnessstudio') + ' gefunden'"
+            [noDataText]="'Keine Fitnessstudios gefunden'"
+            [columns]="columns"
+            (createItem)="addFitnessCenter()">
+        </overview-table>
+    </div>
+
+</app-page>
