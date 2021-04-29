@@ -10,8 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.R
 
-class TrainingplanAdapter(private val context: Context, private val trainingplans: List<TrainingplanInfo>) :
-    RecyclerView.Adapter<TrainingplanAdapter.ViewHolder>() {
+class TrainingdayAdapter(private val context: Context, private val trainingdays: List<TrainingdayInfo>) :
+    RecyclerView.Adapter<TrainingdayAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
@@ -40,13 +40,13 @@ class TrainingplanAdapter(private val context: Context, private val trainingplan
     }
 
     override fun getItemCount(): Int {
-        return trainingplans.size
+        return trainingdays.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val trainingplan = trainingplans[position]
-        holder.textTitle?.text = trainingplan.title
-        holder.textDesc?.text = trainingplan.desc
-        holder.textInfo?.text = trainingplan.info
+        val trainingday= trainingdays[position]
+        holder.textTitle?.text = trainingday.title
+        holder.textDesc?.text = trainingday.desc
+        holder.textInfo?.text = trainingday.info
     }
 }

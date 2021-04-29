@@ -13,16 +13,16 @@
 
     <fragment
         android:id="@+id/trainingFragment"
-        android:name="tech.fitcom.app.home.TrainingFragment"
+        android:name="tech.fitcom.app.home.TrainingplanFragment"
         android:label="Training"
-        tools:layout="@layout/fragment_training" >
+        tools:layout="@layout/fragment_trainingplan" >
         <action
             android:id="@+id/action_trainingFragment_to_trainingdayFragment"
             app:destination="@id/trainingdayFragment" />
     </fragment>
     <fragment
         android:id="@+id/trainingdayFragment"
-        android:name="tech.fitcom.app.home.TrainingFragment"
+        android:name="tech.fitcom.app.home.TrainingplanFragment"
         android:label="Trainingday"
         tools:layout="@layout/fragment_trainingday" />
 

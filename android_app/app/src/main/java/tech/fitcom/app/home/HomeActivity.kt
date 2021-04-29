@@ -2,19 +2,11 @@ package tech.fitcom.app.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.replace
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_training.*
 import tech.fitcom.app.R
 
 class HomeActivity : AppCompatActivity() {
@@ -40,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.trainingFragment -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingFragment()).commit()
+                    supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingplanFragment()).commit()
                     true
                 }
                 R.id.profileFragment -> {

@@ -2,12 +2,13 @@ package tech.fitcom.app.home
 
 class DataManager {
     val trainingplans = HashMap<String, TrainingplanInfo>()
-    val trainingdays = ArrayList<TrainingplanInfo>()
+    val trainingdays = HashMap<String, TrainingdayInfo>()
 
     val homeItems = HashMap<String, HomeItemData>()
 
     init {
         initializeTrainingplans()
+        initializeTrainingdays()
         initializeHome()
     }
 
@@ -17,6 +18,18 @@ class DataManager {
 
         trainingplan = TrainingplanInfo("5er_split","5er Split", "Jeder Muskelpartie wird an einem Tag die volle Aufmerksamkeit geschenkt", "")
         trainingplans.set(trainingplan.trainingplanId, trainingplan)
+
+    }
+
+    private fun initializeTrainingdays() {
+        var trainingday = TrainingdayInfo("3er_split_1" ,"Brust", "Drück alles weg!", "")
+        trainingdays.set(trainingday.trainingdayId, trainingday)
+
+        trainingday = TrainingdayInfo("3er_split_2","Rücken", "Ziehen mal anders", "")
+        trainingdays.set(trainingday.trainingdayId, trainingday)
+
+        trainingday = TrainingdayInfo("3er_split_3","Bauch Beine Po", "Für unser Cardiomäuschen", "")
+        trainingdays.set(trainingday.trainingdayId, trainingday)
 
     }
 
