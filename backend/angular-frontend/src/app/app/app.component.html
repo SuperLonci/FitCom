@@ -11,11 +11,11 @@
             <img src="assets/fitcom-logo.png">
         </button>
         
-        <button mat-button (click)="signin()" *ngIf="appService.jwt === undefined">
+        <button mat-button (click)="signin()" *ngIf="userService.jwt === undefined">
             <span> Anmelden </span>
         </button>
         
-        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="appService.jwt !== undefined">
+        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.jwt !== undefined">
             <mat-icon> account_circle </mat-icon>
         </button>
 

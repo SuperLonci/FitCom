@@ -54,6 +54,9 @@ import { AdministrationGuard } from './administration/administration.guard';
 import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
 import { ApiService } from './api.service';
 import { StaffComponent } from './fitness-center-administration/staff/staff.components';
+import { FitnessCentersComponents } from './administration/fitness-centers/fitness-centers.component';
+import { AdministratorsComponent } from './administration/administrators/administrators.component';
+import { UserService } from './user.service';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -91,8 +94,13 @@ const angularMaterialModules = [
         AppComponent,
 
         HomeComponent,
+
         AdministrationComponent,
+        AdministratorsComponent,
+        FitnessCentersComponents,
+
         FitnessCenterAdministrationComponent,
+
 
         StaffComponent,
 
@@ -124,6 +132,7 @@ const angularMaterialModules = [
         // },
         DatePipe,
         AppService,
+        UserService,
         ApiService,
         AdministrationGuard,
         FitnessCenterGuard

@@ -2,8 +2,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Credentials } from '../../../../nest-server/src/users/user.interfaces';
-import { ApiService } from '../api.service';
-import { AppService } from '../app/app.service';
+import { UserService } from '../user.service';
 
 @Component({
     template: ''
@@ -21,8 +20,7 @@ export class SigninDialog {
 
     constructor(
         private readonly dialogReference: MatDialogRef<SigninDialog>,
-        private readonly apiService: ApiService,
-        private readonly appService: AppService
+        private readonly userService: UserService
     ) {}
 
     user: Credentials = {
@@ -31,9 +29,8 @@ export class SigninDialog {
     }
     
     signin(): void {
-        this.apiService.authenticate(this.user, (jwt) => {
-            this.dialogReference.close();
-            this.appService.setAuthenticated(jwt);
+        this.userService.authenticate(this.user, (wasSuccessful) => {
+            if (wasSuccessful) this.dialogReference.close();
         });
     }
     

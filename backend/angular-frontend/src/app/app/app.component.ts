@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SigninDialog } from '../signin/signin.component';
 import { AppService } from './app.service';
+import { UserService } from '../user.service';
 
 @Component({
     selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
     
     constructor(
         public readonly appService: AppService,
+        public readonly userService: UserService,
         private readonly dialog: MatDialog,
         private readonly router: Router
     ) {}
@@ -25,7 +27,7 @@ export class AppComponent {
     }
 
     signout(): void {
-        this.appService.signout();
+        this.userService.signout();
     }
 
     navigateTo(destination: string): void {

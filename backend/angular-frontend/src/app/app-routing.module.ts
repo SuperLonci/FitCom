@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdministrationGuard } from './administration/administration.guard';
 import { AdministrationComponent } from './administration/administrator.component';
+import { AdministratorsComponent } from './administration/administrators/administrators.component';
+import { FitnessCentersComponents } from './administration/fitness-centers/fitness-centers.component';
 import { FitnessCenterAdministrationComponent } from './fitness-center-administration/fitness-center.component';
 import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
 import { StaffComponent } from './fitness-center-administration/staff/staff.components';
@@ -26,11 +28,11 @@ const routes: Routes = [
         children: [
             {
                 path: 'Fitnessstudios',
-
+                component: FitnessCentersComponents
             },
             {
                 path: 'Administratoren',
-
+                component: AdministratorsComponent
             }
         ]
     },
