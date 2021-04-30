@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_welcome">Willkommen</string>
+    <string name="text_scanqr">Scanne den QR Code</string>
+    <string name="scannen">Scannen</string>
+    <string name="text_enterid">ID Eingeben</string>
+    <string name="your_email">Deine Email Adresse:</string>
+    <string name="for_recovery">zur Wiederherstellung</string>
+    <string name="text_email">Email</string>
+    <string name="text_name">Name</string>
+    <string name="text_studioid_input">Studio ID Eingeben</string>
+    <string name="text_id">ID</string>
+    <string name="start_workout">Workout starten</string>
+</resources>

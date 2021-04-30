@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/welcome_nav"
+    app:startDestination="@id/QRInstructions">
+
+    <fragment
+        android:id="@+id/QRScanner"
+        android:name="tech.fitcom.app.registration.QRScanner"
+        android:label="fragment_qr_scanner"
+        tools:layout="@layout/fragment_qr_scanner" >
+        <action
+            android:id="@+id/action_QRScanner_to_nameInput"
+            app:destination="@id/nameInput"
+            app:enterAnim="@anim/fragment_fade_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/studioIdInput"
+        android:name="tech.fitcom.app.registration.StudioIdInput"
+        android:label="fragment_studio_id_input"
+        tools:layout="@layout/fragment_studio_id_input" >
+        <action
+            android:id="@+id/action_studioIdInput_to_nameInput"
+            app:destination="@id/nameInput"
+            app:enterAnim="@anim/fragment_fade_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/nameInput"
+        android:name="tech.fitcom.app.registration.NameInput"
+        android:label="fragment_name_input"
+        tools:layout="@layout/fragment_name_input" >
+        <action
+            android:id="@+id/action_nameInput_to_emailInput"
+            app:destination="@id/emailInput" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailInput"
+        android:name="tech.fitcom.app.registration.EmailInput"
+        android:label="fragment_email_input"
+        tools:layout="@layout/fragment_email_input" >
+        <action
+            android:id="@+id/action_emailInput_to_apacheHelicopterSelection"
+            app:destination="@id/apacheHelicopterSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/apacheHelicopterSelection"
+        android:name="tech.fitcom.app.registration.ApacheHelicopterSelection"
+        android:label="fragment_apache_helicopter_selection"
+        tools:layout="@layout/fragment_apache_helicopter_selection" >
+        <action
+            android:id="@+id/action_apacheHelicopterSelection_to_bodyHeightSelection"
+            app:destination="@id/bodyHeightSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/bodyHeightSelection"
+        android:name="tech.fitcom.app.registration.BodyHeightSelection"
+        android:label="fragment_body_height_selection"
+        tools:layout="@layout/fragment_body_height_selection" >
+        <action
+            android:id="@+id/action_bodyHeightSelection_to_bodyWeightSelection"
+            app:destination="@id/bodyWeightSelection" />
+    </fragment>
+    <fragment
+        android:id="@+id/bodyWeightSelection"
+        android:name="tech.fitcom.app.registration.BodyWeightSelection"
+        android:label="fragment_body_weight_selection"
+        tools:layout="@layout/fragment_body_weight_selection" >
+        <action
+            android:id="@+id/action_bodyWeightSelection_to_userCheckInputs"
+            app:destination="@id/userCheckInputs" />
+    </fragment>
+    <fragment
+        android:id="@+id/userCheckInputs"
+        android:name="tech.fitcom.app.registration.UserCheckInputs"
+        android:label="fragment_user_check_inputs"
+        tools:layout="@layout/fragment_user_check_inputs" >
+        <action
+            android:id="@+id/action_userCheckInputs_to_registrationConfirmation"
+            app:destination="@id/registrationConfirmation" />
+    </fragment>
+    <fragment
+        android:id="@+id/registrationConfirmation"
+        android:name="tech.fitcom.app.registration.RegistrationConfirmation"
+        android:label="fragment_registration_confirmation"
+        tools:layout="@layout/fragment_registration_confirmation" />
+    <fragment
+        android:id="@+id/QRInstructions"
+        android:name="tech.fitcom.app.registration.QRInstructions"
+        android:label="fragment_qr_instructions"
+        tools:layout="@layout/fragment_qr_instructions" >
+        <action
+            android:id="@+id/action_QRInstructions_to_studioIdInput"
+            app:destination="@id/studioIdInput"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_QRInstructions_to_QRScanner"
+            app:destination="@id/QRScanner"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+
+</navigation>

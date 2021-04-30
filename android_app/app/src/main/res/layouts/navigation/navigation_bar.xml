@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_bar"
+    app:startDestination="@id/homeFragement">
+
+    <fragment
+        android:id="@+id/homeFragement"
+        android:name="tech.fitcom.app.home.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="tech.fitcom.app.home.TrainingplanFragment"
+        android:label="Training"
+        tools:layout="@layout/fragment_trainingplan" >
+        <action
+            android:id="@+id/action_trainingFragment_to_trainingdayFragment"
+            app:destination="@id/trainingdayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trainingdayFragment"
+        android:name="tech.fitcom.app.home.TrainingplanFragment"
+        android:label="Trainingday"
+        tools:layout="@layout/fragment_trainingday" />
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="tech.fitcom.app.home.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
