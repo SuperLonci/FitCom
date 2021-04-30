@@ -1,9 +1,10 @@
 
 import { Controller, Get, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { FintessCenterService } from './fitness-center.service';
 import { JwtService } from 'src/shared-services/jwt.service';
+
 import { FitcomUserRole, JwtContent } from 'src/users/user.interfaces';
 import { FitnessCenterForAdministrationOverview, FitnessCenterForPost } from './fitness-center.interfaces';
-import { FintessCenterService } from './fitness-center.service';
 
 @Controller('fitness-centers')
 export class FintessCenterController {
@@ -22,10 +23,10 @@ export class FintessCenterController {
 
     @Post()
     async create(@Request() request: Request): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent(request);
+        const {userRole, userId} = this.jwtService.authorizeAndGetJWTContent(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         const fitnessCenter = request.body as unknown as FitnessCenterForPost;
-        return await this.fintessCenterService.create(fitnessCenter);
+        return await this.fintessCenterService.create(fitnessCenter, userId);
     }
 
 }

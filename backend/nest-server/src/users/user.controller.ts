@@ -1,8 +1,9 @@
 
-import { Controller, Get, Param, Post, Request, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, Controller, Param, Post, Request } from '@nestjs/common';
 import { UserService } from './user.service';
-import { AuhtenticationResponse, CreateUserResponse, Credentials, FitcomUserRole, JwtContent, UserForRegistration } from './user.interfaces';
 import { JwtService } from 'src/shared-services/jwt.service';
+
+import { AuhtenticationResponse, Credentials, UserForRegistration } from './user.interfaces';
 
 @Controller('users')
 export class UserController {
@@ -15,6 +16,7 @@ export class UserController {
     @Post('auhtenticate')
     async auhtenticate(@Request() request: Request): Promise<AuhtenticationResponse> {
         const credentials = request.body as unknown as Credentials;
+        if (credentials.email === '' || credentials.password === '') throw new BadRequestException;
         return await this.userService.auhtenticate(credentials);
     }
 
@@ -29,20 +31,5 @@ export class UserController {
         const staff = request.body as unknown as UserForRegistration;
         return await this.userService.register(activationToken, staff);
     }
-
-
-    @Post('fitcomAdministrator/:email')
-    async createFitcomAdministrator(@Param('email') email: string, @Request() request: Request): Promise<CreateUserResponse> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
-        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
-        return await this.userService.invite(email, FitcomUserRole.fitcomAdministrator);
-    }
-
-    // @Post('fitnessCenterStaff')
-    // async createFitnessCenterStaff(@Request() request: Request): Promise<void> {
-    //     const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
-    //     if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
-    //     return await this.userService.invite();
-    // }
 
 }

@@ -1,9 +1,10 @@
 
 import { Injectable } from '@nestjs/common';
 import { DbService } from './../shared-services/db.service';
-import { FitnessCenterForAdministrationOverview, FitnessCenterForPost } from './fitness-center.interfaces';
+import { UserService } from './../users/user.service';
 import { v4 as uuidv4 } from 'uuid';
-import { UserService } from 'src/users/user.service';
+
+import { FitnessCenterForAdministrationOverview, FitnessCenterForPost } from './fitness-center.interfaces';
 import { FitcomUserRole } from 'src/users/user.interfaces';
 
 
@@ -26,9 +27,9 @@ export class FintessCenterService {
         `);
     }
 
-    async create(fitnessCenter: FitnessCenterForPost): Promise<void> {
+    async create(fitnessCenter: FitnessCenterForPost, creatorId: string): Promise<void> {
         const fitnessCenterId = uuidv4();
-        const {userId} = await this.userService.invite(fitnessCenter.ownerEmail, FitcomUserRole.fitnessCenterAdministrator);
+        const {userId} = await this.userService.inviteUser(fitnessCenter.ownerEmail, FitcomUserRole.fitnessCenterAdministrator, creatorId);
         await this.dbService.query(`
             INSERT INTO Fitnesscenters (id, title, ownerId, createdAt, country, city, postCode, street, streetNumber, email, phoneNumber, faxNumber)
             VALUE ('${fitnessCenterId}', '${fitnessCenter.title}', '${userId}', CURRENT_DATE, '${fitnessCenter.country}', '${fitnessCenter.city}', '${fitnessCenter.postCode}', '${fitnessCenter.street}', '${fitnessCenter.streetNumber}', '${fitnessCenter.email}', '${fitnessCenter.phoneNumber}', '${fitnessCenter.faxNumber}')

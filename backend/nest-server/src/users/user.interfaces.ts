@@ -1,4 +1,22 @@
 
+export interface User {
+    id: string
+    role: FitcomUserRole
+    gender: string
+    firstName: string
+    lastName: string
+    birthDate: Date
+    email: string
+    invitationPending: boolean
+    createdAt: Date
+    creatorId: string
+    creator: string
+}
+
+
+
+
+
 export interface Credentials {
     email: string
     password: string

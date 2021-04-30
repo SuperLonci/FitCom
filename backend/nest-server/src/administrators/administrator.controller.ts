@@ -1,9 +1,10 @@
 
-import { Controller, Get, Param, Request, UnauthorizedException } from '@nestjs/common';
-import { FitcomUserRole, JwtContent } from 'src/users/user.interfaces';
-import { JwtService } from './../shared-services/jwt.service';
-import { Administrator, FitcomAdministratorsOverview } from './administrator.interfaces';
+import { Controller, Delete, Get, Param, Post, Request, UnauthorizedException } from '@nestjs/common';
 import { AdministratorServcie } from './administrator.service';
+import { JwtService } from './../shared-services/jwt.service';
+
+import { FitcomUserRole, JwtContent, User } from './../users/user.interfaces';
+import { Administrator, FitcomAdministratorsOverview } from './administrator.interfaces';
 
 @Controller('administrators')
 export class AdministratorContoller {
@@ -14,17 +15,53 @@ export class AdministratorContoller {
     ) {}
 
     @Get()
-    async getAdministrators(@Request() request: Request): Promise<FitcomAdministratorsOverview> {
+    async getAll(@Request() request: Request): Promise<void> {
         const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
-        return await this.administratorServcie.getAdministrators();
+        return await this.administratorServcie.getAll();
+    }
+    
+    @Get(':administratorId')
+    async getOne(@Request() request: Request, @Param('administratorId') administratorId: string): Promise<User> {
+        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+        return await this.administratorServcie.getOne(administratorId);
+    }
+    
+    @Post(':email')
+    async create(@Request() request: Request, @Param('email') email: string): Promise<void> {
+        const {userRole, userId} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+        return await this.administratorServcie.create(email, userId);
     }
 
-    @Get(':userId')
-    async getFitcomAdministrator(@Param('userId') userId: string, @Request() request: Request): Promise<Administrator> {
+    @Delete(':administratorId')
+    async delete(@Request() request: Request, @Param('administratorId') administratorId: string): Promise<void> {
         const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
-        return await this.administratorServcie.getAdministrator(userId);
+        return await this.administratorServcie.delete(administratorId);
     }
+
+
+
+
+
+
+
+
+
+    // @Get()
+    // async getAdministrators(@Request() request: Request): Promise<FitcomAdministratorsOverview> {
+    //     const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+    //     if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+    //     return await this.administratorServcie.getAdministrators();
+    // }
+
+    // @Get(':userId')
+    // async getFitcomAdministrator(@Param('userId') userId: string, @Request() request: Request): Promise<Administrator> {
+    //     const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+    //     if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+    //     return await this.administratorServcie.getAdministrator(userId);
+    // }
 
 }

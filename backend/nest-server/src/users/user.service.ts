@@ -1,11 +1,12 @@
 
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
-import { JwtService } from 'src/shared-services/jwt.service';
 import { DbService } from '../shared-services/db.service';
-import { AuhtenticationResponse, CreateUserResponse, Credentials, FitcomUserRole, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
+import { JwtService } from './../shared-services/jwt.service';
+import { MailService } from './../shared-services/mail.service';
+import { EnvironmentService } from './../shared-services/environment.service';
 import { v4 as uuidv4 } from 'uuid';
-import { MailService } from 'src/shared-services/mail.service';
-import { EnvironmentService } from 'src/shared-services/environment.service';
+
+import { AuhtenticationResponse, CreateUserResponse, Credentials, FitcomUserRole, User, UserAuthenticationDatabaseResult, UserForRegistration } from './user.interfaces';
 
 @Injectable()
 export class UserService {
@@ -42,19 +43,6 @@ export class UserService {
         };
     }
 
-    async invite(email: string, userRole: FitcomUserRole): Promise<CreateUserResponse> {
-        const userId: string = uuidv4();
-        const activationToken: string = uuidv4();
-        await this.dbService.query(`
-            INSERT INTO Users (id, email, role, activationToken)
-            VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}')
-        `);
-        this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrierung/${activationToken}`);
-        return {
-            userId: userId
-        };
-    }
-
     async register(activationToken: string, user: UserForRegistration): Promise<AuhtenticationResponse> {
         const [userResult] = await this.dbService.query<{id: string, role: string}>(`
             SELECT id, role FROM Users WHERE activationToken = '${activationToken}'
@@ -76,6 +64,36 @@ export class UserService {
                 userRole: userResult.role
             })
         };
+    }
+
+
+    
+    // Only consumed from other services
+
+    async inviteUser(email: string, userRole: FitcomUserRole, inviterId: string): Promise<CreateUserResponse> {
+        const userId: string = uuidv4();
+        const activationToken: string = uuidv4();
+        await this.dbService.query(`
+            INSERT INTO Users (id, email, role, activationToken, createdAt, createdBy)
+            VALUE ('${userId}', '${email}', '${userRole}', '${activationToken}', CURRENT_DATE, '${inviterId}')
+        `);
+        this.mailService.sendMail(email, 'Fitcom Registrierung', `${this.environmentService.frontendRoot}/Registrierung/${activationToken}`);
+        return {
+            userId: userId
+        };
+    }
+
+    async get(userId: string, condition: string): Promise<User> {
+        const [user] = await this.dbService.query<User>(`
+            SELECT A.id, A.role, A.gender, A.firstName, A.lastName, A.birthDate, A.email, (A.activationToken IS NOT NULL) as invitationPending, A.createdAt, A.createdBy as creatorId, CONCAT(B.firstName, ' ', B.lastName) as creator
+            FROM Users as A
+            LEFT JOIN Users as B
+            ON A.createdBy = B.id
+            WHERE A.id = '${userId}'
+        `);
+        user.invitationPending = Boolean(user.invitationPending);
+        if (!user) throw new NotFoundException;
+        return user;
     }
 
 }

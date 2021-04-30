@@ -11,11 +11,15 @@ CREATE TABLE Users (
     birthDate                       DATE,
     email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
     password                        VARCHAR(255) NOT NULL DEFAULT '',
-    activationToken                 CHAR(36)
+    activationToken                 CHAR(36),
+
+    createdAt                       DATE NOT NULL,
+    createdBy                       CHAR(36) NOT NULL CHECK (createdBy <> ''),
+    FOREIGN KEY (createdBy)         REFERENCES Users(id)
 );
 
-INSERT INTO Users (id, role, firstName, lastName, email, password)
-VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512));
+INSERT INTO Users (id, role, firstName, lastName, email, password, createdAt, createdBy)
+VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
 
 CREATE TABLE FitnessCenters (
     id                              CHAR(36) PRIMARY KEY,
