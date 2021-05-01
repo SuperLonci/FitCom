@@ -16,14 +16,14 @@ export class FintessCenterController {
     
     @Get()
     async getFitnessCenters(@Request() request: Request): Promise<FitnessCenterForAdministrationOverview[]> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         return await this.fintessCenterService.getFitnessCenters();
     }
 
     @Post()
     async create(@Request() request: Request): Promise<void> {
-        const {userRole, userId} = this.jwtService.authorizeAndGetJWTContent(request);
+        const {userRole, userId} = this.jwtService.verifyHttpRequest(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         const fitnessCenter = request.body as unknown as FitnessCenterForPost;
         return await this.fintessCenterService.create(fitnessCenter, userId);

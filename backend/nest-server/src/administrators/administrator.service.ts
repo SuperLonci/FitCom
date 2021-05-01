@@ -20,9 +20,9 @@ export class AdministratorServcie {
         `);
     }
     
-    async getOne(administratorId: string): Promise<User> {
-        return await this.userService.get(administratorId, `role = '${FitcomUserRole.fitcomAdministrator}'`);
-    }
+    // async getOne(administratorId: string): Promise<User> {
+    //     return await this.userService.get(administratorId, `role = '${FitcomUserRole.fitcomAdministrator}'`);
+    // }
     
     async create(email: string, creatorId: string): Promise<void> {
         this.userService.inviteUser(email, FitcomUserRole.fitcomAdministrator, creatorId);

@@ -34,7 +34,7 @@ export class UserService {
     }
 
     async authorize(jwt: string): Promise<AuhtenticationResponse> {
-        const jwtContent = this.jwtService.getContentAndVerify<{userId: string, userRole: string}>(jwt);
+        const jwtContent = this.jwtService.verify<{userId: string, userRole: string}>(jwt);
         return {
             jwt: this.jwtService.sign({
                 userId: jwtContent.userId,
@@ -83,17 +83,17 @@ export class UserService {
         };
     }
 
-    async get(userId: string, condition: string): Promise<User> {
-        const [user] = await this.dbService.query<User>(`
-            SELECT A.id, A.role, A.gender, A.firstName, A.lastName, A.birthDate, A.email, (A.activationToken IS NOT NULL) as invitationPending, A.createdAt, A.createdBy as creatorId, CONCAT(B.firstName, ' ', B.lastName) as creator
-            FROM Users as A
-            LEFT JOIN Users as B
-            ON A.createdBy = B.id
-            WHERE A.id = '${userId}'
-        `);
-        user.invitationPending = Boolean(user.invitationPending);
-        if (!user) throw new NotFoundException;
-        return user;
-    }
+    // async get(userId: string, condition: string): Promise<User> {
+    //     const [user] = await this.dbService.query<User>(`
+    //         SELECT A.id, A.role, A.gender, A.firstName, A.lastName, A.birthDate, A.email, (A.activationToken IS NOT NULL) as invitationPending, A.createdAt, A.createdBy as creatorId, CONCAT(B.firstName, ' ', B.lastName) as creator
+    //         FROM Users as A
+    //         LEFT JOIN Users as B
+    //         ON A.createdBy = B.id
+    //         WHERE A.id = '${userId}'
+    //     `);
+    //     user.invitationPending = Boolean(user.invitationPending);
+    //     if (!user) throw new NotFoundException;
+    //     return user;
+    // }
 
 }

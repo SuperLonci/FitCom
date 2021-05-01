@@ -16,28 +16,28 @@ export class AdministratorContoller {
 
     @Get()
     async getAll(@Request() request: Request): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         return await this.administratorServcie.getAll();
     }
     
-    @Get(':administratorId')
-    async getOne(@Request() request: Request, @Param('administratorId') administratorId: string): Promise<User> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
-        if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
-        return await this.administratorServcie.getOne(administratorId);
-    }
+    // @Get(':administratorId')
+    // async getOne(@Request() request: Request, @Param('administratorId') administratorId: string): Promise<User> {
+    //     const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
+    //     if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
+    //     return await this.administratorServcie.getOne(administratorId);
+    // }
     
     @Post(':email')
     async create(@Request() request: Request, @Param('email') email: string): Promise<void> {
-        const {userRole, userId} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole, userId} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         return await this.administratorServcie.create(email, userId);
     }
 
     @Delete(':administratorId')
     async delete(@Request() request: Request, @Param('administratorId') administratorId: string): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitcomAdministrator) throw new UnauthorizedException;
         return await this.administratorServcie.delete(administratorId);
     }

@@ -1,26 +1,32 @@
 
 export interface User {
     id: string
-    role: FitcomUserRole
-    gender: string
     firstName: string
     lastName: string
+    gender: string
     birthDate: Date
     email: string
-    invitationPending: boolean
     createdAt: Date
-    creatorId: string
     creator: string
 }
 
-
-
-
+export interface UserForRegistration {
+    firstName: string
+    lastName: string
+    gender: string
+    birthDate: string
+    password: string
+}
 
 export interface Credentials {
     email: string
     password: string
 }
+
+
+
+
+
 
 export interface JwtContent {
     userId: string
@@ -47,10 +53,4 @@ export enum FitcomUserRole {
     fitnessCenterTrainer = 'fitnessCenterTrainer'
 }
 
-export interface UserForRegistration {
-    firstName: string
-    lastName: string
-    gender: string
-    birthDate: string
-    password: string
-}
+

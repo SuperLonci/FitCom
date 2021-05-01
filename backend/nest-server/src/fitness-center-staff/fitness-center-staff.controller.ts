@@ -15,28 +15,28 @@ export class FitnessCenterStaffController {
 
     @Get()
     async getAll(@Request() request: Request): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
         this.fitnessCenterStaffService.getAll();
     }
     
     @Get(':staffId')
     async getOne(@Request() request: Request, @Param('staffId') staffId: string): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
         this.fitnessCenterStaffService.getOne(staffId);
     }
     
     @Post(':email')
     async create(@Request() request: Request, @Param('email') email: string): Promise<void> {
-        const {userRole, userId} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole, userId} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
         this.fitnessCenterStaffService.create(email, userId);
     }
 
     @Delete(':staffId')
     async delete(@Request() request: Request, @Param('staffId') staffId: string): Promise<void> {
-        const {userRole} = this.jwtService.authorizeAndGetJWTContent<JwtContent>(request);
+        const {userRole} = this.jwtService.verifyHttpRequest<JwtContent>(request);
         if (userRole !== FitcomUserRole.fitnessCenterAdministrator) throw new UnauthorizedException;
         this.fitnessCenterStaffService.delete(staffId);
     }

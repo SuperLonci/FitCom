@@ -7,8 +7,7 @@ import * as jsonwebtoken from 'jsonwebtoken';
 export class JwtService {
 
     constructor(private environmentService: EnvironmentService) {}
-    
-    // eslint-disable-next-line @typescript-eslint/ban-types
+
     sign(content: any): string {
         return jsonwebtoken.sign(
             content,
@@ -17,8 +16,7 @@ export class JwtService {
         );
     }
 
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    getContentAndVerify<T>(jwt: string): T {
+    verify<T>(jwt: string): T {
         try {
             return jsonwebtoken.verify(jwt, this.environmentService.jwtPrivateKey) as unknown as T;
         } catch {
@@ -26,13 +24,9 @@ export class JwtService {
         }
     }
 
-    authorizeAndGetJWTContent<T>(httpRequest: Request): T {
+    verifyHttpRequest<T>(httpRequest: Request): T {
         const jwt = ((httpRequest.headers) as unknown as { authorization: string }).authorization;
-        try {
-            return jsonwebtoken.verify(jwt, this.environmentService.jwtPrivateKey) as unknown as T;
-        } catch {
-            throw new UnauthorizedException;
-        }
+        return this.verify(jwt);
     }
 
 }
