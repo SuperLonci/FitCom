@@ -64,6 +64,8 @@ import { ForgotPasswordDialog } from './forgot-password-dialog/forgot-password.d
 import { FitcomAdministrationAdministratorsComponent } from './fitcom-administration-administrators-component/fitcom-administration-administrators.component';
 import { FitcomAdministrationExercisesComponent } from './fitcom-administration-exercises-component/fitcom-administration-exercises.component';
 import { FitcomAdministrationFitnessCentersComponent } from './fitcom-administration-fitness-centers-component/fitcom-administration-fitness-centers.component';
+import { UserProfileDialog } from './user-profile-dialog/user-profile.dialog';
+import { EditPasswordDialog } from './edit-password-dialog/edit-password.dialog';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -111,6 +113,8 @@ const angularMaterialModules = [
         RegistrationDialog,
         SigninDialog,
         ForgotPasswordDialog,
+        UserProfileDialog,
+        EditPasswordDialog,
 
         NotFoundComponent,
         HomeComponent,

@@ -66,6 +66,16 @@ export class UserService {
         };
     }
 
+    async getUser(userId: string): Promise<User> {
+        const [user] = await this.dbService.query<User>(`
+            SELECT id, firstName, lastName, gender, birthDate, email, invitationDate, (SELECT CONCAT(firstName, ' ', lastName) FROM Users WHERE id = invitedBy) as invitedBy
+            FROM Users
+            WHERE id = '${userId}'
+        `);
+        if(!user) throw new NotFoundException;
+        return user;
+    }
+
 
     
     // Only consumed from other services

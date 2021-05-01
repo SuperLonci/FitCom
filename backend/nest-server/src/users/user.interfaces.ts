@@ -6,8 +6,8 @@ export interface User {
     gender: string
     birthDate: Date
     email: string
-    createdAt: Date
-    creator: string
+    invitationDate: Date
+    invitedBy: string
 }
 
 export interface UserForRegistration {
@@ -22,11 +22,6 @@ export interface Credentials {
     email: string
     password: string
 }
-
-
-
-
-
 
 export interface JwtContent {
     userId: string

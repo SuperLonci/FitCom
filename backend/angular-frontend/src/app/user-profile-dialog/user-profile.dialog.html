@@ -1,0 +1,44 @@
+
+<app-dialog *ngIf="user"
+    [titlePrefixIconName]="'account_circle'"
+    [title]="'Benutzerprofil'">
+
+    <div titleDetail>
+        <button mat-icon-button color="primary" (click)="editMode = !editMode">
+            <mat-icon> edit </mat-icon>
+        </button>
+    </div>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Vorname </mat-label>
+        <input matInput [(ngModel)]="user.firstName" [readonly]="!editMode">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Nachname </mat-label>
+        <input matInput [(ngModel)]="user.lastName" [readonly]="!editMode">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Geburtsdatum </mat-label>
+        <input matInput [(ngModel)]="user.birthDate" [readonly]="!editMode">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Geschlecht </mat-label>
+        <input matInput [(ngModel)]="user.gender" [readonly]="!editMode">
+    </mat-form-field>
+
+    <div *ngIf="!editMode">
+        <mat-form-field appearance="outline">
+            <mat-label> Mitglied seit </mat-label>
+            <input matInput [value]="user.invitationDate | date: 'd. MMMM y'" readonly>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline">
+            <mat-label> Eingeladen von </mat-label>
+            <input matInput [(ngModel)]="user.invitedBy" readonly>
+        </mat-form-field>
+    </div>
+
+</app-dialog>

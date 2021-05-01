@@ -35,16 +35,7 @@ export class UserController {
     @Get(':userId')
     async getUser(@Param('userId') userId: string, @Request() request: Request): Promise<User> {
         // const {userId} = this.jwtService.verifyHttpRequest<{userId: string}>(request);
-        return {
-            id: 'abc',
-            firstName: 'Cem',
-            lastName: 'Yilmaz',
-            gender: 'male',
-            birthDate: new Date('1999-03-26'),
-            email: 'yilmaz.cem.2603@gmail.com',
-            createdAt: new Date(),
-            creator: 'root root',
-        };
+        return await this.userService.getUser(userId);
     }
 
 }

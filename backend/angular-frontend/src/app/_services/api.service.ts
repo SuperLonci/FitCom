@@ -1,7 +1,7 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CreateUserResponse } from '../../../../nest-server/src/users/user.interfaces';
+import { CreateUserResponse, User } from '../../../../nest-server/src/users/user.interfaces';
 import { FitnessCenterForAdministrationOverview, FitnessCenterForPost } from '../../../../nest-server/src/fitness-centers/fitness-center.interfaces';
 import { Administrator, FitcomAdministratorsOverview } from '../../../../nest-server/src/administrators/administrator.interfaces';
 import { UserService } from './user.service';
@@ -13,6 +13,15 @@ export class ApiService {
         private readonly httpClient: HttpClient,
         private readonly userService: UserService
     ) {}
+
+    getUserProfile(userId: string, completion: (user: User) => void): void {
+        this.httpClient.get<User>(`api/users/${userId}`).subscribe(
+            (user: User) => completion(user),
+            () => console.log('Benutzerprofil konnte nicht geladen werden')
+        );
+    }
+
+
 
     getFitnessCenters(completion: (fitnessCenters: FitnessCenterForAdministrationOverview[]) => void): void {
         this.httpClient.get<FitnessCenterForAdministrationOverview[]>('api/fitness-centers', {headers: {authorization: this.userService.jwt ?? ''}}).subscribe(

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { AppService } from '../_services/app.service';
 import { SigninDialog } from '../signin-dialog/signin.dialog';
 import { UserService } from './../_services/user.service';
+import { UserProfileDialog } from '../user-profile-dialog/user-profile.dialog';
+import { EditPasswordDialog } from '../edit-password-dialog/edit-password.dialog';
 
 @Component({
     selector: 'app-root',
@@ -38,11 +40,11 @@ export class AppComponent {
     }
 
     showUserProfile(): void {
-        // this.dialog.open(UserProfileDialog);
+        this.dialog.open(UserProfileDialog);
     }
 
     editPassword(): void {
-        // this.dialog.open();
+        this.dialog.open(EditPasswordDialog);
     }
 
 }

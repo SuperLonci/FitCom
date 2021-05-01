@@ -4,25 +4,25 @@ USE FitcomDB;
 
 CREATE TABLE Users (
     id                              CHAR(36) PRIMARY KEY,
-    role                            ENUM('fitcomAdministrator', 'fitnessCenterAdministrator', 'fitnessCenterTrainer'),
-    gender                          ENUM('male', 'female', 'diverse', ''),
     firstName                       VARCHAR(255) NOT NULL DEFAULT '',
     lastName                        VARCHAR(255) NOT NULL DEFAULT '',
+    role                            ENUM('fitcomAdministrator', 'fitnessCenterStaff'),
+    gender                          ENUM('male', 'female', 'diverse', ''),
     birthDate                       DATE,
     email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
     password                        VARCHAR(255) NOT NULL DEFAULT '',
     activationToken                 CHAR(36),
 
-    createdAt                       DATE NOT NULL,
-    createdBy                       CHAR(36) NOT NULL CHECK (createdBy <> ''),
-    FOREIGN KEY (createdBy)         REFERENCES Users(id)
+    invitationDate                  DATE NOT NULL,
+    invitedBy                       CHAR(36) NOT NULL CHECK (invitedBy <> ''),
+    FOREIGN KEY (invitedBy)         REFERENCES Users(id)
 );
 
-INSERT INTO Users (id, role, firstName, lastName, email, password, createdAt, createdBy)
-VALUES ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-VALUES ('83b8ed2e-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Cem', 'cem@fitcom.tech', 'root', SHA2(CONCAT('root', '83b8ed2e-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-VALUES ('83b8ef36-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Ian', 'Demo', 'ian@fitcom.tech', SHA2(CONCAT('root', '83b8ef36-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-VALUES ('83b8f026-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Daniel', 'Demo', 'daniel@fitcom.tech', SHA2(CONCAT('root', '83b8f026-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
+INSERT INTO Users (id, role, firstName, lastName, email, password, invitationDate, invitedBy) VALUES
+('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+('83b8ed2e-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Cem', 'Demo', 'cem@fitcom.tech', SHA2(CONCAT('root', '83b8ed2e-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+('83b8ef36-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Ian', 'Demo', 'ian@fitcom.tech', SHA2(CONCAT('root', '83b8ef36-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+('83b8f026-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Daniel', 'Demo', 'daniel@fitcom.tech', SHA2(CONCAT('root', '83b8f026-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
 
 
 
