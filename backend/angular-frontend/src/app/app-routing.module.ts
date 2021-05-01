@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FitcomAdministrationAdministratorsComponent } from './fitcom-administration-administrators-component/fitcom-administration-administrators.component';
 import { FitcomAdministrationComponent } from './fitcom-administration-component/fitcom-administration.component';
+import { FitcomAdministrationExercisesComponent } from './fitcom-administration-exercises-component/fitcom-administration-exercises.component';
+import { FitcomAdministrationFitnessCentersComponent } from './fitcom-administration-fitness-centers-component/fitcom-administration-fitness-centers.component';
 import { HomeComponent } from './home-component/home.component';
 import { ImpressumComponent } from './impressum-component/impressum.component';
 import { NotFoundComponent } from './not-found-component/not-found.component';
@@ -43,12 +45,14 @@ const routes: Routes = [
                 path: 'Administratoren',
                 component: FitcomAdministrationAdministratorsComponent
             },
-            // {
-            //     path: 'Trainingsübungen'
-            // },
-            // {
-            //     path: 'Fitnessstudios'
-            // },
+            {
+                path: 'Trainingsübungen',
+                component: FitcomAdministrationExercisesComponent
+            },
+            {
+                path: 'Fitnessstudios',
+                component: FitcomAdministrationFitnessCentersComponent
+            },
             // {
             //     path: 'Statistiken'
             // }

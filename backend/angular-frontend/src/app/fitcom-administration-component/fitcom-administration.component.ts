@@ -11,7 +11,12 @@ export class FitcomAdministrationComponent {
     constructor(
         private readonly router: Router,
         public readonly activeRoute: ActivatedRoute
-    ) {}
+    ) {
+        const childRoute = activeRoute.snapshot?.firstChild?.routeConfig?.path;
+        if (childRoute) this.selectedTab = this.tabs.findIndex(tab => tab.title === childRoute);
+    }
+
+    selectedTab: number = 0;
 
     readonly tabs = [
         {
@@ -32,8 +37,9 @@ export class FitcomAdministrationComponent {
         },
     ];
 
-    navigateTo(destination: string): void {
-        this.router.navigate(['Administration', destination]);
+    didSelectTab(index: number): void {
+        this.selectedTab = index;
+        this.router.navigate(['Administration', this.tabs[index].title]);
     }
 
 }

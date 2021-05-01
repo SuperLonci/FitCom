@@ -62,6 +62,8 @@ import { RegistrationDialog } from './registration-component/registration.dialog
 import { FitcomAdministrationComponent } from './fitcom-administration-component/fitcom-administration.component';
 import { ForgotPasswordDialog } from './forgot-password-dialog/forgot-password.dialog';
 import { FitcomAdministrationAdministratorsComponent } from './fitcom-administration-administrators-component/fitcom-administration-administrators.component';
+import { FitcomAdministrationExercisesComponent } from './fitcom-administration-exercises-component/fitcom-administration-exercises.component';
+import { FitcomAdministrationFitnessCentersComponent } from './fitcom-administration-fitness-centers-component/fitcom-administration-fitness-centers.component';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -117,7 +119,9 @@ const angularMaterialModules = [
         PrivacyComponent,
 
         FitcomAdministrationComponent,
-        FitcomAdministrationAdministratorsComponent
+        FitcomAdministrationAdministratorsComponent,
+        FitcomAdministrationExercisesComponent,
+        FitcomAdministrationFitnessCentersComponent
         
     ],
     imports: [
