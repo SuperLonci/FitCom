@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_training_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training.TrainingInputFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_trainingday_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--<TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3er-Split: Push"
+            android:textSize="24sp"
+            android:gravity="right"
+            android:id="@+id/text_trainingdayoverview_plan"/>-->
+
+        <TextView
+            android:id="@+id/text_trainingdayoverview_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Bankdrücken"
+            android:textSize="40sp"/>
+<!--        android:layout_below="@id/text_trainingdayoverview_plan"-->
+
+        <ImageView
+            android:id="@+id/iv_exercise_img"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_below="@id/text_trainingdayoverview_title"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true"
+            android:gravity="center_horizontal"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_helicopter"/>
+
+<!--        android:background="@drawable/border"-->
+
+        <TableLayout
+            android:id="@+id/tl_exercise_conf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_exercise_img"
+            android:paddingHorizontal="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableRow
+                android:id="@+id/row_weight_conf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_exercise_weight_val"
+                    android:text="100"
+                    android:textSize="25sp"
+                    android:inputType="numberDecimal"
+                    android:layout_gravity="center_vertical"/>
+
+                <!-- Todo: make button layout not dependent on text -->
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_exercise_weight"
+                    android:text="kg"
+                    android:textSize="25sp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <Button
+                    android:id="@+id/btn_sub_weight"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:background="@drawable/round_button"
+                    android:text="-"
+                    android:textSize="25sp"
+                    android:layout_gravity="right|center_vertical"/>
+
+                <Button
+                    android:id="@+id/btn_add_weight"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:background="@drawable/round_button"
+                    android:text="+"
+                    android:textSize="25sp"
+                    android:layout_gravity="right|center_vertical"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_repetition_conf"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_exercise_rep_val"
+                    android:text="100"
+                    android:textSize="25sp"
+                    android:inputType="number"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_exercise_rep"
+                    android:text="Stück"
+                    android:textSize="25sp"
+                    android:paddingLeft="5dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <Button
+                    android:id="@+id/btn_sub_rep"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:background="@drawable/round_button"
+                    android:text="-"
+                    android:textSize="25sp"
+                    android:layout_gravity="right|center_vertical"/>
+
+                <Button
+                    android:id="@+id/btn_add_rep"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_margin="5dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:background="@drawable/round_button"
+                    android:text="+"
+                    android:textSize="25sp"
+                    android:layout_gravity="right|center_vertical"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_toggle_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tl_exercise_conf"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="5dp">
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:text="Zurück"
+                android:textSize="20sp"
+                android:layout_alignParentLeft="true"/>
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="50dp"
+                android:text="Weiter"
+                android:textSize="20sp"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_history"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rl_trainingday_info">
+
+        <TextView
+            android:id="@+id/text_exercise_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="end"
+            android:text="Historie"
+            android:textSize="24sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_traininginput_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_exercise_history"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            tools:listitem="@layout/history_item" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

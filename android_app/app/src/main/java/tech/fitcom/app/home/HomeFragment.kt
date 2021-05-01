@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
 
 class HomeFragment : Fragment() {

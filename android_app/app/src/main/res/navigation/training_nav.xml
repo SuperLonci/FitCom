@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/training_nav"
+    app:startDestination="@id/TrainingDayOverview">
+
+    <fragment
+        android:id="@+id/TrainingDayOverview"
+        android:name="tech.fitcom.app.training.TrainingDayOverviewFragment"
+        android:label="fragment_trainingday_overview"
+        tools:layout="@layout/fragment_trainingdayoverview" >
+        <action
+            android:id="@+id/action_TrainingDayOverview_to_TrainingInput"
+            app:destination="@id/TrainingInput" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TrainingInput"
+        android:name="tech.fitcom.app.training.TrainingInputFragment"
+        android:label="fragment_training_input"
+        tools:layout="@layout/fragment_traininginput" >
+    </fragment>
+
+</navigation>
