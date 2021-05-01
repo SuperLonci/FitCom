@@ -45,6 +45,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatRippleModule } from '@angular/material/core';
+
+
 import { SigninDialog } from './signin-dialog/signin.dialog';
 import { AppHeader } from './_reusable-components/app-header/app-header.component';
 import { AppDialog } from './_reusable-components/app-dialog/app-dialog.component';
@@ -56,7 +59,9 @@ import { ImpressumComponent } from './impressum-component/impressum.component';
 import { PrivacyComponent } from './privacy-component/privacy.component';
 import { RegistrationComponent } from './registration-component/registration.component';
 import { RegistrationDialog } from './registration-component/registration.dialog';
-import { AdministrationComponent } from './administration-component/administration.component';
+import { FitcomAdministrationComponent } from './fitcom-administration-component/fitcom-administration.component';
+import { ForgotPasswordDialog } from './forgot-password-dialog/forgot-password.dialog';
+import { FitcomAdministrationAdministratorsComponent } from './fitcom-administration-administrators-component/fitcom-administration-administrators.component';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -87,7 +92,8 @@ const angularMaterialModules = [
     MatTabsModule,
     MatSidenavModule,
     MatBadgeModule,
-    MatStepperModule
+    MatStepperModule,
+    MatRippleModule
 ];
 
 @NgModule({
@@ -102,6 +108,7 @@ const angularMaterialModules = [
         RegistrationComponent,
         RegistrationDialog,
         SigninDialog,
+        ForgotPasswordDialog,
 
         NotFoundComponent,
         HomeComponent,
@@ -109,7 +116,8 @@ const angularMaterialModules = [
         ImpressumComponent,
         PrivacyComponent,
 
-        AdministrationComponent
+        FitcomAdministrationComponent,
+        FitcomAdministrationAdministratorsComponent
         
     ],
     imports: [

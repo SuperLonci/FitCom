@@ -49,10 +49,7 @@
     <mat-sidenav #sidenav mode="over" [(opened)]="sideNavIsExpanded">
         <button mat-menu-item *ngFor="let navigationLink of navigationLinks" (click)="navigateTo(navigationLink)"> {{ navigationLink }} </button>
         <!-- <button mat-menu-item (click)="navigateTo('Administration')" *ngIf="userService.isAdministrator()"> Administration </button>
-        <button mat-menu-item (click)="navigateTo('Fitnessstudio')" *ngIf="userService.isFitnessCenterStaff()"> Fitnessstudio </button>
-        <button mat-menu-item (click)="navigateTo('Blog')"> Blog </button>
-        <button mat-menu-item (click)="navigateTo('Impressum')"> Impressum </button>
-        <button mat-menu-item (click)="navigateTo('Datenschutzbestimmung')"> Datenschutz </button> -->
+        <button mat-menu-item (click)="navigateTo('Fitnessstudio')" *ngIf="userService.isFitnessCenterStaff()"> Fitnessstudio </button> -->
     </mat-sidenav>
 
     <mat-sidenav-content>

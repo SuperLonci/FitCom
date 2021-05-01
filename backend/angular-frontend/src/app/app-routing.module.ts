@@ -1,7 +1,8 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministrationComponent } from './administration-component/administration.component';
+import { FitcomAdministrationAdministratorsComponent } from './fitcom-administration-administrators-component/fitcom-administration-administrators.component';
+import { FitcomAdministrationComponent } from './fitcom-administration-component/fitcom-administration.component';
 import { HomeComponent } from './home-component/home.component';
 import { ImpressumComponent } from './impressum-component/impressum.component';
 import { NotFoundComponent } from './not-found-component/not-found.component';
@@ -36,8 +37,25 @@ const routes: Routes = [
     },
     {
         path: 'Administration',
-        component: AdministrationComponent
+        component: FitcomAdministrationComponent,
+        children: [
+            {
+                path: 'Administratoren',
+                component: FitcomAdministrationAdministratorsComponent
+            },
+            // {
+            //     path: 'Trainingsübungen'
+            // },
+            // {
+            //     path: 'Fitnessstudios'
+            // },
+            // {
+            //     path: 'Statistiken'
+            // }
+        ]
     },
+
+
     // {
     //     path: 'Administration',
     //     component: AdministrationComponent,

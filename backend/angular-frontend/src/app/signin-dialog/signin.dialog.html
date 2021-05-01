@@ -14,7 +14,7 @@
         <input matInput [(ngModel)]="credentials.password" required type="password" autocomplete="off" (keyup.enter)="signin()">
     </mat-form-field>
 
-    <button mat-button disabled> Passwort vergessen? </button>
+    <button mat-button (click)="forgotPassword()"> Passwort vergessen? </button>
 
     <div actions>
         <button mat-raised-button mat-dialog-close> Abbrechen </button>
