@@ -19,7 +19,19 @@ CREATE TABLE Users (
 );
 
 INSERT INTO Users (id, role, firstName, lastName, email, password, createdAt, createdBy)
-VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
+VALUES ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+VALUES ('83b8ed2e-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Cem', 'cem@fitcom.tech', 'root', SHA2(CONCAT('root', '83b8ed2e-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+VALUES ('83b8ef36-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Ian', 'Demo', 'ian@fitcom.tech', SHA2(CONCAT('root', '83b8ef36-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+VALUES ('83b8f026-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Daniel', 'Demo', 'daniel@fitcom.tech', SHA2(CONCAT('root', '83b8f026-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
+
+
+
+
+
+
+
+
+
 
 CREATE TABLE FitnessCenters (
     id                              CHAR(36) PRIMARY KEY,

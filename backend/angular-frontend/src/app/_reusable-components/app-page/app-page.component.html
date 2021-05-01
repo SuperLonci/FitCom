@@ -1,0 +1,12 @@
+
+<app-header
+    [titlePrefixIconName]="titlePrefixIconName"
+    [title]="title">
+
+    <ng-content select="[titleDetail]"></ng-content>
+
+</app-header>
+
+<div id="content">
+    <ng-content></ng-content>
+</div>

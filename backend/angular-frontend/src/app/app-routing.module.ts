@@ -1,18 +1,13 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdministrationStatisticsComponent } from './administration/administration-statistics/administration-statistics.component';
-import { AdministrationGuard } from './administration/administration.guard';
-import { AdministrationComponent } from './administration/administrator.component';
-import { AdministratorsComponent } from './administration/administrators/administrators.component';
-import { ExercisesComponent } from './administration/exercises/exercises.component';
-import { FitnessCentersComponents } from './administration/fitness-centers/fitness-centers.component';
-import { FitnessCenterAdministrationComponent } from './fitness-center-administration/fitness-center.component';
-import { FitnessCenterGuard } from './fitness-center-administration/fitness-center.guard';
-import { StaffComponent } from './fitness-center-administration/staff/staff.components';
-import { HomeComponent } from './home/home.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { RegistrationPage } from './registration/registration.component';
+import { AdministrationComponent } from './administration-component/administration.component';
+import { HomeComponent } from './home-component/home.component';
+import { ImpressumComponent } from './impressum-component/impressum.component';
+import { NotFoundComponent } from './not-found-component/not-found.component';
+import { PrivacyComponent } from './privacy-component/privacy.component';
+import { RegistrationComponent } from './registration-component/registration.component';
+import { TermsOfServiceComponent } from './terms-of-service-component/terms-of-service.component';
 
 const routes: Routes = [
     {
@@ -24,55 +19,71 @@ const routes: Routes = [
         redirectTo: ''
     },
     {
-        path: 'Administration',
-        component: AdministrationComponent,
-        canActivate: [AdministrationGuard],
-        children: [
-            {
-                path: 'Trainingsübungen',
-                component: ExercisesComponent
-            },
-            {
-                path: 'Statistiken',
-                component: AdministrationStatisticsComponent
-            },
-            {
-                path: 'Fitnessstudios',
-                component: FitnessCentersComponents
-            },
-            {
-                path: 'Administratoren',
-                component: AdministratorsComponent
-            }
-        ]
+        path: 'Nutzungsbedingungen',
+        component: TermsOfServiceComponent
     },
     {
-        path: 'Fitnessstudio',
-        component: FitnessCenterAdministrationComponent,
-        canActivate: [FitnessCenterGuard],
-        children: [
-            {
-                path: 'Fitnessstudio',
-                component: StaffComponent
-            },
-            {
-                path: 'Angestellte',
-                component: StaffComponent
-            },
-            {
-                path: 'Mitglieder',
-                component: StaffComponent
-            },
-            {
-                path: 'Anfragen',
-                component: StaffComponent
-            }
-        ]
-    },    
+        path: 'Impressum',
+        component: ImpressumComponent
+    },
+    {
+        path: 'Datenschutz',
+        component: PrivacyComponent
+    },
     {
         path: 'Registrierung/:activationToken',
-        component: RegistrationPage
+        component: RegistrationComponent
     },
+    {
+        path: 'Administration',
+        component: AdministrationComponent
+    },
+    // {
+    //     path: 'Administration',
+    //     component: AdministrationComponent,
+    //     canActivate: [AdministrationGuard],
+    //     children: [
+    //         {
+    //             path: 'Trainingsübungen',
+    //             component: ExercisesComponent
+    //         },
+    //         {
+    //             path: 'Statistiken',
+    //             component: AdministrationStatisticsComponent
+    //         },
+    //         {
+    //             path: 'Fitnessstudios',
+    //             component: FitnessCentersComponents
+    //         },
+    //         {
+    //             path: 'Administratoren',
+    //             component: AdministratorsComponent
+    //         }
+    //     ]
+    // },
+    // {
+    //     path: 'Fitnessstudio',
+    //     component: FitnessCenterAdministrationComponent,
+    //     canActivate: [FitnessCenterGuard],
+    //     children: [
+    //         {
+    //             path: 'Fitnessstudio',
+    //             component: StaffComponent
+    //         },
+    //         {
+    //             path: 'Angestellte',
+    //             component: StaffComponent
+    //         },
+    //         {
+    //             path: 'Mitglieder',
+    //             component: StaffComponent
+    //         },
+    //         {
+    //             path: 'Anfragen',
+    //             component: StaffComponent
+    //         }
+    //     ]
+    // },    
     {
         path: '**',
         component: NotFoundComponent

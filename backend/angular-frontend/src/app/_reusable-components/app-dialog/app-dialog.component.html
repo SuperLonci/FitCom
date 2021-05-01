@@ -1,0 +1,18 @@
+
+<app-header
+    [titlePrefixIconName]="titlePrefixIconName"
+    [title]="title">
+
+    <ng-content select="[titleDetail]"></ng-content>
+
+</app-header>
+
+<mat-dialog-content>
+    <ng-content></ng-content>
+</mat-dialog-content>
+
+<mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar>
+
+<mat-dialog-actions align="end" *ngIf="showActions">
+    <ng-content select="[actions]"></ng-content>
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+
+#content-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .tile {
+        background-color: lightblue;
+        text-align: center;
+        border-radius: 8px;
+        min-width: 256px;
+        min-height: 256px;
+        margin: 16px;
+    }
+}
