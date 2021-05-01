@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_exercise_history"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="55dp"
     android:layout_gravity="center_horizontal"
     android:layout_margin="10dp"
     android:clickable="false"
@@ -35,7 +35,7 @@
             android:layout_toLeftOf="@id/text_history_rep"
             android:paddingRight="10dp"
             android:text="100 kg"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/text_history_rep"
@@ -44,7 +44,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:text="10 Stück"
-            android:textSize="24sp" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/text_history_last"
