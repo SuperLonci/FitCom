@@ -6,10 +6,16 @@ import androidx.room.*
 interface FitComDatabaseDao {
 
     @Insert
-    fun insert(fitnessCenterMember: FitnessCenterMember)
+    fun insertFitnessCenterMember(fitnessCenterMember: FitnessCenterMember)
+
+    @Insert
+    fun insertTrainingsPlan(trainingsPlan: TrainingsPlan)
 
     @Update
-    fun update(fitnessCenterMember: FitnessCenterMember)
+    fun updateFitnessCenterMember(fitnessCenterMember: FitnessCenterMember)
+
+    @Update
+    fun updateTrainingsPlan(trainingsPlan: TrainingsPlan)
 
     @Delete
     fun delete(fitnessCenterMember: FitnessCenterMember)
