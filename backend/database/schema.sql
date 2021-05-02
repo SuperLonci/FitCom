@@ -24,6 +24,19 @@ INSERT INTO Users (id, role, firstName, lastName, email, password, invitationDat
 ('83b8ef36-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Ian', 'Demo', 'ian@fitcom.tech', SHA2(CONCAT('root', '83b8ef36-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
 ('83b8f026-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Daniel', 'Demo', 'daniel@fitcom.tech', SHA2(CONCAT('root', '83b8f026-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
 
+CREATE TABLE Exercises (
+    id                              CHAR(36) PRIMARY KEY,
+    title                           VARCHAR(255) NOT NULL CHECK (title <> ''),
+    requiresEquipment               BOOLEAN NOT NULL DEFAULT FALSE
+);
+
+INSERT INTO Exercises (id, title, requiresEquipment) VALUES
+('62510952-ab3f-11eb-bcbc-0242ac130002', 'Bankdrücken', TRUE),
+('62510b50-ab3f-11eb-bcbc-0242ac130002', 'Latziehen', TRUE),
+('62510c40-ab3f-11eb-bcbc-0242ac130002', 'Kreuzheben', TRUE),
+('62510e5c-ab3f-11eb-bcbc-0242ac130002', 'Liegestütz', FALSE),
+('62510f24-ab3f-11eb-bcbc-0242ac130002', 'Kniebeugen', FALSE),
+('62510f24-ab3f-11eb-japr-0242ac130002', 'Sit Ups', FALSE);
 
 
 

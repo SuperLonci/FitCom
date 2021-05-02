@@ -16,6 +16,8 @@ import { JwtService } from './shared-services/jwt.service';
 import { MailService } from './shared-services/mail.service';
 import { FitnessCenterStaffController } from './fitness-center-staff/fitness-center-staff.controller';
 import { FitnessCenterStaffService } from './fitness-center-staff/fitness-center-staff.service';
+import { ExerciseController } from './exercises/exercise.controller';
+import { ExerciseService } from './exercises/exercise.service';
 
 @Module({
     controllers: [
@@ -23,7 +25,8 @@ import { FitnessCenterStaffService } from './fitness-center-staff/fitness-center
         
         AdministratorContoller,
         FintessCenterController,
-        FitnessCenterStaffController
+        FitnessCenterStaffController,
+        ExerciseController
     ],
     providers: [
         DbService,
@@ -32,6 +35,7 @@ import { FitnessCenterStaffService } from './fitness-center-staff/fitness-center
         MailService,
         
         UserService,
+        ExerciseService,
 
         AdministratorServcie,
         FintessCenterService,

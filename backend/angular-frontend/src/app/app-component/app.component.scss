@@ -17,6 +17,11 @@ mat-card {
             height: 38px;
         }
     }
+
+    mat-progress-bar {
+        position: absolute;
+        height: 2px;
+    }
 }
 
 mat-sidenav-container {

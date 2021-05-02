@@ -1,4 +1,8 @@
 
+<div *ngIf="!user">
+    <mat-spinner diameter="48"></mat-spinner>
+</div>
+
 <app-dialog *ngIf="user"
     [titlePrefixIconName]="'account_circle'"
     [title]="'Benutzerprofil'">

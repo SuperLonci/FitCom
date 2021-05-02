@@ -32,9 +32,9 @@ export class UserController {
         return await this.userService.register(activationToken, staff);
     }
 
-    @Get(':userId')
-    async getUser(@Param('userId') userId: string, @Request() request: Request): Promise<User> {
-        // const {userId} = this.jwtService.verifyHttpRequest<{userId: string}>(request);
+    @Get('ownUserProfile')
+    async getUser(@Request() request: Request): Promise<User> {
+        const {userId} = this.jwtService.verifyHttpRequest<{userId: string}>(request);
         return await this.userService.getUser(userId);
     }
 

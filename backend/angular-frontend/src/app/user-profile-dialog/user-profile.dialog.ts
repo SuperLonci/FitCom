@@ -14,13 +14,17 @@ export class UserProfileDialog {
         private readonly apiService: ApiService,
         private readonly userService: UserService
     ) {
-        if (this.userService.userId) this.apiService.getUserProfile(this.userService.userId,
+        if (this.userService.userId) this.apiService.getOwnUserProfile(
             (user: User) => this.user = user
         );
     }
 
+    isLoading: boolean = true;
+
     user: User | undefined;
 
     editMode: boolean = false;
+
+    editedUser: User | undefined;
 
 }

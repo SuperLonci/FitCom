@@ -36,16 +36,9 @@ export class UserService {
     }
 
     authorize(jwt: string): void {
-        this.httpClient.post<AuhtenticationResponse>('api/users/authorize', {}, {headers: {authorization: jwt} }).toPromise()
-            .then(
-                (response: AuhtenticationResponse) => console.log(response)
-            ).catch(
-                () => console.log('authorization failed')
-            );
-        
-        // .subscribe(
-        //     (response: AuhtenticationResponse) => this.setAuthenticated(response.jwt)
-        // );
+        this.httpClient.post<AuhtenticationResponse>('api/users/authorize', {}, {headers: {authorization: jwt} }).subscribe(
+            (response: AuhtenticationResponse) => this.setAuthenticated(response.jwt)
+        );
     }
 
     authenticate(user: Credentials, completion: () => void): void {
