@@ -1,11 +1,11 @@
-package tech.fitcom.app.database
+package tech.fitcom.app.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class TrainingsPlan(
+data class TrainingsPlans(
     @PrimaryKey(autoGenerate = false)
     var id: String,
 

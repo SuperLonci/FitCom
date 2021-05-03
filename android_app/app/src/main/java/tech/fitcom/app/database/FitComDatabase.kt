@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import tech.fitcom.app.database.entity.FitnessCenterMember
 
 @Database(entities = [FitnessCenterMember::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)

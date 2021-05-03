@@ -1,4 +1,4 @@
-package tech.fitcom.app.database
+package tech.fitcom.app.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

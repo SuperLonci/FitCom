@@ -1,6 +1,8 @@
 package tech.fitcom.app.database
 
 import androidx.room.*
+import tech.fitcom.app.database.entity.FitnessCenterMember
+import tech.fitcom.app.database.entity.TrainingsPlans
 
 @Dao
 interface FitComDatabaseDao {
@@ -9,13 +11,13 @@ interface FitComDatabaseDao {
     fun insertFitnessCenterMember(fitnessCenterMember: FitnessCenterMember)
 
     @Insert
-    fun insertTrainingsPlan(trainingsPlan: TrainingsPlan)
+    fun insertTrainingsPlan(trainingsPlan: TrainingsPlans)
 
     @Update
     fun updateFitnessCenterMember(fitnessCenterMember: FitnessCenterMember)
 
     @Update
-    fun updateTrainingsPlan(trainingsPlan: TrainingsPlan)
+    fun updateTrainingsPlan(trainingsPlan: TrainingsPlans)
 
     @Delete
     fun delete(fitnessCenterMember: FitnessCenterMember)
