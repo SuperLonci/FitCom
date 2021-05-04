@@ -1,0 +1,17 @@
+
+<mat-card>
+    <table mat-table [dataSource]="dataSet">
+
+        <mat-header-row  mat-header-row *matHeaderRowDef="columnKeys()"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columnKeys()" matRipple></mat-row>
+
+        <ng-container *ngFor="let column of columns" [matColumnDef]="column.objectKey">
+          <mat-header-cell *matHeaderCellDef> {{ column.title }} </mat-header-cell>
+          <mat-cell *matCellDef="let element" style="cursor: pointer;"> {{ element[column.objectKey] }} </mat-cell>
+        </ng-container>
+      
+    </table>
+
+</mat-card>
+
+<!-- <tr mat-footer-row *matFooterRowDef="['title']"></tr> <td mat-footer-cell *matFooterCellDef> Footer </td> -->

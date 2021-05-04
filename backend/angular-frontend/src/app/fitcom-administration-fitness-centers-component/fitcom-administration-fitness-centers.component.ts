@@ -15,4 +15,11 @@ export class FitcomAdministrationFitnessCentersComponent {
 
     fitnessCenters: any[] = [];
 
+    columns = [
+        {
+            objectKey: 'title',
+            title: 'Name'
+        }
+    ];
+
 }

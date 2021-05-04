@@ -12,6 +12,11 @@ registerLocaleData(de);
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
 
+import { AppHeader } from './_reusable-components/app-header/app-header.component';
+import { AppDialog } from './_reusable-components/app-dialog/app-dialog.component';
+import { AppPage } from './_reusable-components/app-page/app-page.component';
+import { AppTable } from './_reusable-components/app-table/app-table.component';
+
 import { AppService } from './_services/app.service';
 import { ApiService } from './_services/api.service';
 import { UserService } from './_services/user.service';
@@ -49,9 +54,6 @@ import { MatRippleModule } from '@angular/material/core';
 
 
 import { SigninDialog } from './signin-dialog/signin.dialog';
-import { AppHeader } from './_reusable-components/app-header/app-header.component';
-import { AppDialog } from './_reusable-components/app-dialog/app-dialog.component';
-import { AppPage } from './_reusable-components/app-page/app-page.component';
 import { NotFoundComponent } from './not-found-component/not-found.component';
 import { HomeComponent } from './home-component/home.component';
 import { TermsOfServiceComponent } from './terms-of-service-component/terms-of-service.component';
@@ -103,12 +105,12 @@ const angularMaterialModules = [
 @NgModule({
     declarations: [
         AppComponent,
-
-        // reusable components
+        // --- reusable components ---
         AppHeader,
         AppDialog,
         AppPage,
-        
+        AppTable,
+        // ---------------------------
         RegistrationComponent,
         RegistrationDialog,
         SigninDialog,

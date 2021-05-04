@@ -15,4 +15,15 @@ export class FitcomAdministrationAdministratorsComponent {
 
     administrators: any[] = [];
 
+    columns = [
+        {
+            objectKey: 'firstName',
+            title: 'Vorname'
+        },
+        {
+            objectKey: 'lastName',
+            title: 'Nachname'
+        }
+    ];
+
 }

@@ -3,8 +3,9 @@
     [titlePrefixIconName]="'people'"
     [title]="'Administratoren'">
 
-    <div *ngFor="let administrator of administrators">
-        {{ administrator.firstName }} {{ administrator.lastName }}
-    </div>
+    <app-table
+        [dataSet]="administrators"
+        [columns]="columns">
+    </app-table>
 
 </app-page>

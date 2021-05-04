@@ -15,4 +15,15 @@ export class FitcomAdministrationExercisesComponent {
 
     exercises: any[] = [];
 
+    columns = [
+        {
+            objectKey: 'title',
+            title: 'Name'
+        },
+        {
+            objectKey: 'type',
+            title: 'Typ der Übung'
+        }
+    ];
+
 }
