@@ -66,17 +66,21 @@ FROM Users;
 
 
 
+INSERT INTO Exercises (id, type, requiresEquipment, requiresTrainingspartnert, title, description) VALUES
+('787899ac-ac52-11eb-8529-0242ac130003', 'weight', TRUE, FALSE, 'Bankdrücken', 'Allegemeine Beschreibung von Bankdrücken.'),
+('78789c40-ac52-11eb-8529-0242ac130003', 'weight', TRUE, FALSE, 'Kreuzheben', 'Allegemeine Beschreibung von Kreuzheben.'),
+('78789fb0-ac52-11eb-8529-0242ac130003', 'duration', TRUE, FALSE, 'Rudern', 'Allegemeine Beschreibung von Rudern.'),
+('7878a096-ac52-11eb-8529-0242ac130003', 'repetition', FALSE, FALSE, 'Liegestütze', 'Allegemeine Beschreibung von Liegestützen.'),
+('22e6958d-3434-4754-8e27-943256ea596d', 'repetition', FALSE, FALSE, 'Sit Ups', 'Allegemeine Beschreibung von Sit Ups.'),
+('7878a15e-ac52-11eb-8529-0242ac130003', 'repetition', FALSE, FALSE, 'Dips', 'Allegemeine Beschreibung von Dops.');
 
 
 
 
-INSERT INTO Exercises (id, requiresEquipment, title, description, imageUrl, videoUrl) VALUES
-('787899ac-ac52-11eb-8529-0242ac130003', TRUE, 'Bankdrücken', 'Allegemeine Beschreibung von Bankdrücken.', '', ''),
-('78789c40-ac52-11eb-8529-0242ac130003', TRUE, 'Kreuzheben', 'Allegemeine Beschreibung von Kreuzheben.', '', ''),
-('78789fb0-ac52-11eb-8529-0242ac130003', TRUE, 'Rudern', 'Allegemeine Beschreibung von Rudern.', '', ''),
-('7878a096-ac52-11eb-8529-0242ac130003', FALSE, 'Liegestütze', 'Allegemeine Beschreibung von Liegestützen.', '', ''),
-('22e6958d-3434-4754-8e27-943256ea596d', FALSE, 'Sit Ups', 'Allegemeine Beschreibung von Sit Ups.', '', ''),
-('7878a15e-ac52-11eb-8529-0242ac130003', FALSE, 'Dips', 'Allegemeine Beschreibung von Dops.', '', '');
+
+
+
+
 
 INSERT INTO FitnessCenterExercises (id, fitnessCenterId, exerciseId, fintessCentersDescription) VALUES
 ('9fd2fc6c-ac53-11eb-8529-0242ac130003', 'd13b2ca9-4794-4f68-9bc8-2ff5dd62b232', '787899ac-ac52-11eb-8529-0242ac130003', 'Fitnessstudiospezifischer Kommentar bezüglich der Übung Bankdrücken'),

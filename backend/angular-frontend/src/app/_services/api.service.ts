@@ -14,6 +14,41 @@ export class ApiService {
         private readonly appService: AppService
     ) {}
 
+    getAdministrators(completion: (administrators: any) => void): void {
+        this.appService.isLoading = true;
+        this.httpClient.get('api/users/fitcom-dministrators', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
+            finalize(() => this.appService.isLoading = false)
+        ).subscribe(
+            (administrators => completion(administrators)),
+            () => console.log('Administratoren konnten nicht geladen werden.')
+        );
+    }
+
+    getExercises(completion: (exercises: any) => void): void {
+        this.appService.isLoading = true;
+        this.httpClient.get('api/exercises', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
+            finalize(() => this.appService.isLoading = false)
+        ).subscribe(
+            (exercises => completion(exercises)),
+            () => console.log('Trainingsübungen konnten nicht geladen werden.')
+        );
+    }
+
+    getFitnessCenters(completion: (fitnessCenters: any) => void): void {
+        this.appService.isLoading = true;
+        this.httpClient.get('api/fitness-centers', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
+            finalize(() => this.appService.isLoading = false)
+        ).subscribe(
+            (fitnessCenters => completion(fitnessCenters)),
+            () => console.log('Fitnessstudios konnten nicht geladen werden.')
+        );
+    }
+
+
+
+
+    
+
     // getOwnUserProfile(completion: (user: User) => void): void {
     //     this.httpClient.get<User>('api/users/ownUserProfile', {headers: {authorization: this.userService.jwt ?? ''}}).subscribe(
     //         (user: User) => completion(user),

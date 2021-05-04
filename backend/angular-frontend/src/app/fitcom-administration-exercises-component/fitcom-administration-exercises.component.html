@@ -3,4 +3,8 @@
     [titlePrefixIconName]="'fitness_center'"
     [title]="'Trainingsübungen'">
 
+    <div *ngFor="let exercise of exercises">
+        {{ exercise.title }}
+    </div>
+
 </app-page>

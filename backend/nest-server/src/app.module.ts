@@ -3,6 +3,10 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { ExerciseController } from './exercises/exercise.controller';
+import { ExerciseService } from './exercises/exercise.service';
+import { FitnessCenterController } from './fitness-centers/fitness-center.controller';
+import { FitnessCenterService } from './fitness-centers/fitness-center.service';
 
 import { DbService } from './shared-services/db.service';
 import { EnvironmentService } from './shared-services/environment.service';
@@ -16,6 +20,8 @@ import { UserService } from './users/user.service';
 @Module({
     controllers: [
         UserController,
+        ExerciseController,
+        FitnessCenterController,
         TrainingsplanController
     ],
     providers: [
@@ -25,6 +31,8 @@ import { UserService } from './users/user.service';
         MailService,
 
         UserService,
+        ExerciseService,
+        FitnessCenterService,
         TrainingsplanService
     ],
     imports: [

@@ -3,4 +3,8 @@
     [titlePrefixIconName]="'domain'"
     [title]="'Fitnessstudios'">
 
+    <div *ngFor="let fitnessCenter of fitnessCenters">
+        {{ fitnessCenter.title }}
+    </div>
+
 </app-page>

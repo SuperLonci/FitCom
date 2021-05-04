@@ -71,7 +71,7 @@ CREATE TABLE Exercises (
     id                                      CHAR(36) PRIMARY KEY,
     type                                    ENUM('weight', 'repetition', 'duration', 'distance'),
     requiresEquipment                       BOOLEAN NOT NULL,
-    requiresTrainingsprartner               BOOLEAN NOT NULL,
+    requiresTrainingspartner                BOOLEAN NOT NULL,
     title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
     description                             VARCHAR(255) NOT NULL DEFAULT ''
 );

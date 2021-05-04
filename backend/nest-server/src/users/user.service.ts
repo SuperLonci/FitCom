@@ -12,6 +12,20 @@ export class UserService {
         private readonly jwtService: JwtService
     ) {}
 
+    async getFitcomAdministrators(): Promise<any> {
+        return await this.dbService.query(`
+            SELECT
+            Users.id,
+            Users.firstName,
+            Users.lastName,
+            Users.email,
+            Users.birthdate
+            FROM FitcomAdministrators
+            LEFT JOIN Users
+            ON Users.id = FitcomAdministrators.userId
+        `);
+    }
+
     async authentication(credentials: Credentials): Promise<AuthenticationResponse> {
         const [user] = await this.dbService.query<DatabaseUserResponse>(`
             SELECT
