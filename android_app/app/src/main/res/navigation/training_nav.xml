@@ -21,6 +21,16 @@
         android:name="tech.fitcom.app.training.TrainingInputFragment"
         android:label="fragment_training_input"
         tools:layout="@layout/fragment_traininginput" >
+        <action
+            android:id="@+id/action_TrainingInput_to_TrainingFinished"
+            app:destination="@id/TrainingFinished" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/TrainingFinished"
+        android:name="tech.fitcom.app.training.TrainingFinishedFragment"
+        android:label="fragment_training_finished"
+        tools:layout="@layout/fragment_trainingfinished" >
     </fragment>
 
 </navigation>

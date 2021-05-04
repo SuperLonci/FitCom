@@ -27,7 +27,7 @@
             android:id="@+id/text_trainingdayoverview_plan"/>-->
 
         <TextView
-            android:id="@+id/text_trainingdayoverview_title"
+            android:id="@+id/text_traininginput_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -42,7 +42,7 @@
             android:id="@+id/rl_exercise_toggle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/text_trainingdayoverview_title"
+            android:layout_below="@id/text_traininginput_title"
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp">
 
@@ -96,15 +96,15 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <TableRow
-                    android:id="@+id/row_weight_conf"
+                    android:id="@+id/row_value1_conf"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/text_exercise_weight_val"
-                        android:text="100"
+                        android:id="@+id/text_exercise_value1_val"
+                        android:text="0"
                         android:textSize="25sp"
                         android:inputType="numberDecimal"
                         android:layout_gravity="center_vertical"/>
@@ -114,14 +114,14 @@
                     <TextView
                         android:layout_width="140dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/text_exercise_weight"
-                        android:text="kg"
+                        android:id="@+id/text_exercise_value1"
+                        android:text=""
                         android:textSize="25sp"
                         android:paddingLeft="5dp"
                         android:layout_gravity="center_vertical"/>
 
                     <Button
-                        android:id="@+id/btn_sub_weight"
+                        android:id="@+id/btn_sub_value1"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_margin="5dp"
@@ -132,7 +132,7 @@
                         android:layout_gravity="right|center_vertical"/>
 
                     <Button
-                        android:id="@+id/btn_add_weight"
+                        android:id="@+id/btn_add_value1"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_margin="5dp"
@@ -145,15 +145,15 @@
                 </TableRow>
 
                 <TableRow
-                    android:id="@+id/row_repetition_conf"
+                    android:id="@+id/row_value2_conf"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/text_exercise_rep_val"
-                        android:text="100"
+                        android:id="@+id/text_exercise_value2_val"
+                        android:text=""
                         android:textSize="25sp"
                         android:inputType="number"
                         android:layout_gravity="center_vertical"/>
@@ -161,14 +161,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/text_exercise_rep"
-                        android:text="Stück"
+                        android:id="@+id/text_exercise_value2"
+                        android:text=""
                         android:textSize="25sp"
                         android:paddingLeft="5dp"
                         android:layout_gravity="center_vertical"/>
 
                     <Button
-                        android:id="@+id/btn_sub_rep"
+                        android:id="@+id/btn_sub_value2"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_margin="5dp"
@@ -179,7 +179,7 @@
                         android:layout_gravity="right|center_vertical"/>
 
                     <Button
-                        android:id="@+id/btn_add_rep"
+                        android:id="@+id/btn_add_value2"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:layout_margin="5dp"

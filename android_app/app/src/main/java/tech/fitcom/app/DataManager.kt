@@ -79,42 +79,66 @@ class DataManager {
         var exercise = ExerciseData(
             "exercise_bench_press",
             "Bankdrücken",
-            "Auf und ab"
+            "Auf und ab",
+            100,
+            "kg",
+            8,
+            "Wdh"
         )
         exercises.set(exercise.exerciseId, exercise)
 
         exercise = ExerciseData(
             "exercise_pull_up",
             "Klimmzüge",
-            "Hoch und runter"
+            "Hoch und runter",
+            10,
+            "Wdh",
+            null,
+            null
         )
         exercises.set(exercise.exerciseId, exercise)
 
         exercise = ExerciseData(
             "exercise_push_up",
             "Liegestütze",
-            "Hoch und runter"
+            "Hoch und runter",
+            50,
+            "Wdh",
+            null,
+            null
         )
         exercises.set(exercise.exerciseId, exercise)
 
         exercise = ExerciseData(
             "exercise_bizeps_curl",
             "Bizeps-Curls",
-            "Hoch und runter"
+            "Hoch und runter",
+            15,
+            "kg",
+            12,
+            "Wdh"
         )
         exercises.set(exercise.exerciseId, exercise)
 
         exercise = ExerciseData(
             "exercise_squat",
             "Kniebeuge",
-            "Hoch und runter"
+            "Hoch und runter",
+            120,
+            "kg",
+            15,
+            "Wdh"
         )
         exercises.set(exercise.exerciseId, exercise)
 
         exercise = ExerciseData(
             "exercise_leg_press",
             "Beinpresse",
-            "Hoch und runter"
+            "Hoch und runter",
+            150,
+            "kg",
+            6,
+            "Wdh"
         )
         exercises.set(exercise.exerciseId, exercise)
 
