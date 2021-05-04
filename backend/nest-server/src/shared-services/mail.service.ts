@@ -20,7 +20,7 @@ export class MailService {
         });
     }
 
-    async sendMail(to: string, subject: string, message: string): Promise<void> {
+    async send(to: string, subject: string, message: string): Promise<void> {
         await this.transporter.sendMail({
             from: `"${this.environmentService.mailConfiguration.name}" <${this.environmentService.mailConfiguration.email}>`,
             to: `${to}`,

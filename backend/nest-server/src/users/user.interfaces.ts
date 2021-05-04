@@ -1,51 +1,44 @@
 
-export interface User {
-    id: string
-    firstName: string
-    lastName: string
-    gender: string
-    birthDate: Date
-    email: string
-    invitationDate: Date
-    invitedBy: string
-}
-
-export interface UserForRegistration {
-    firstName: string
-    lastName: string
-    gender: string
-    birthDate: string
-    password: string
-}
-
 export interface Credentials {
     email: string
     password: string
 }
 
+export interface AuthenticationResponse {
+    jwt: string
+    userId: string
+    isFitcomAdministrator: boolean
+    isStaffInFitnessCenters: any[]
+    isMemberInFitnessCenters: any[]
+}
+
+export interface FitnessCenterForStaff {
+    fitnessCenterTitle: string
+    fitnessCenterId: string
+    
+    // rights -- incomplete
+    canAcceptInvitations: boolean
+    canWatchMembers: boolean
+    canCreateTrainingsplans: boolean
+}
+
+export interface FitnessCenterForMember {
+    fitnessCenterTitle: string
+    fitnessCenterId: string
+}
+
 export interface JwtContent {
     userId: string
-    userRole: FitcomUserRole
+    isFitcomAdministrator: boolean
+
+    isStaffInFitnessCenters: FitnessCenterForStaff[]
+    
+    isMemberInFitnessCenters: {
+        fitnessCenterTitle: string
+        fitnessCenterId: string
+    }[]
 }
 
-export interface AuhtenticationResponse {
-    jwt: string
-}
-
-export interface CreateUserResponse {
-    userId: string
-}
-
-export interface UserAuthenticationDatabaseResult {
-    id: string
-    role: FitcomUserRole
+export interface DatabaseUserResponse extends JwtContent {
     activationToken: string
 }
-
-export enum FitcomUserRole {
-    fitcomAdministrator = 'fitcomAdministrator',
-    fitnessCenterAdministrator = 'fitnessCenterAdministrator',
-    fitnessCenterTrainer = 'fitnessCenterTrainer'
-}
-
-

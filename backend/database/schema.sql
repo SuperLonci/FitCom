@@ -3,87 +3,155 @@ CREATE DATABASE FitcomDB;
 USE FitcomDB;
 
 CREATE TABLE Users (
-    id                              CHAR(36) PRIMARY KEY,
-    firstName                       VARCHAR(255) NOT NULL DEFAULT '',
-    lastName                        VARCHAR(255) NOT NULL DEFAULT '',
-    role                            ENUM('fitcomAdministrator', 'fitnessCenterStaff'),
-    gender                          ENUM('male', 'female', 'diverse', ''),
-    birthDate                       DATE,
-    email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
-    password                        VARCHAR(255) NOT NULL DEFAULT '',
-    activationToken                 CHAR(36),
-
-    invitationDate                  DATE NOT NULL,
-    invitedBy                       CHAR(36) NOT NULL CHECK (invitedBy <> ''),
-    FOREIGN KEY (invitedBy)         REFERENCES Users(id)
+    id                                      CHAR(36) PRIMARY KEY,
+    firstName                               VARCHAR(255) NOT NULL,
+    lastName                                VARCHAR(255) NOT NULL,
+    birthDate                               DATE,
+    email                                   VARCHAR(255) NOT NULL,
+    password                                VARCHAR(255) NOT NULL,
+    activationToken                         CHAR(36)
 );
 
-INSERT INTO Users (id, role, firstName, lastName, email, password, invitationDate, invitedBy) VALUES
-('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'fitcomAdministrator', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-('83b8ed2e-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Cem', 'Demo', 'cem@fitcom.tech', SHA2(CONCAT('root', '83b8ed2e-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-('83b8ef36-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Ian', 'Demo', 'ian@fitcom.tech', SHA2(CONCAT('root', '83b8ef36-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
-('83b8f026-a9f7-11eb-bcbc-0242ac130002', 'fitcomAdministrator', 'Daniel', 'Demo', 'daniel@fitcom.tech', SHA2(CONCAT('root', '83b8f026-a9f7-11eb-bcbc-0242ac130002'), 512), CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
-
-CREATE TABLE Exercises (
-    id                              CHAR(36) PRIMARY KEY,
-    title                           VARCHAR(255) NOT NULL CHECK (title <> ''),
-    requiresEquipment               BOOLEAN NOT NULL DEFAULT FALSE
+CREATE TABLE FitcomAdministrators (
+    userId                                  CHAR(36) PRIMARY KEY,
+    FOREIGN KEY(userId)                     REFERENCES Users(id)
 );
-
-INSERT INTO Exercises (id, title, requiresEquipment) VALUES
-('62510952-ab3f-11eb-bcbc-0242ac130002', 'Bankdrücken', TRUE),
-('62510b50-ab3f-11eb-bcbc-0242ac130002', 'Latziehen', TRUE),
-('62510c40-ab3f-11eb-bcbc-0242ac130002', 'Kreuzheben', TRUE),
-('62510e5c-ab3f-11eb-bcbc-0242ac130002', 'Liegestütz', FALSE),
-('62510f24-ab3f-11eb-bcbc-0242ac130002', 'Kniebeugen', FALSE),
-('62510f24-ab3f-11eb-japr-0242ac130002', 'Sit Ups', FALSE);
-
-
-
-
-
-
-
-
 
 CREATE TABLE FitnessCenters (
-    id                              CHAR(36) PRIMARY KEY,
-    title                           VARCHAR(255) NOT NULL DEFAULT '' CHECK (title <> '') UNIQUE,
-    ownerId                         CHAR(36) NOT NULL CHECK (ownerId <> ''),
-    FOREIGN KEY (ownerId)           REFERENCES Users(id),
-    createdAt                       DATE NOT NULL,
-
-    country                         VARCHAR(255) NOT NULL DEFAULT '',
-    city                            VARCHAR(255) NOT NULL DEFAULT '',
-    postCode                        VARCHAR(255) NOT NULL DEFAULT '',
-    street                          VARCHAR(255) NOT NULL DEFAULT '',
-    streetNumber                    VARCHAR(255) NOT NULL DEFAULT '',
-
-    email                           VARCHAR(255) NOT NULL DEFAULT '',
-    phoneNumber                     VARCHAR(255) NOT NULL DEFAULT '',
-    faxNumber                       VARCHAR(255) NOT NULL DEFAULT ''
+    id                                      CHAR(36) PRIMARY KEY,
+    title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
+    country                                 VARCHAR(255) NOT NULL CHECK (country <> ''),
+    city                                    VARCHAR(255) NOT NULL CHECK (city <> ''),
+    postCode                                VARCHAR(255) NOT NULL CHECK (postCode <> ''),
+    street                                  VARCHAR(255) NOT NULL CHECK (street <> ''),
+    streetNumber                            VARCHAR(255) NOT NULL CHECK (streetNumber <> ''),
+    phoneNumber                             VARCHAR(255) NOT NULL DEFAULT '',
+    email                                   VARCHAR(255) NOT NULL DEFAULT ''
 );
 
-CREATE TABLE FitnessCenterStaff (
-    userId                          CHAR(36),
-    fitnessCenterId                 CHAR(36),
-    FOREIGN KEY (userId)            REFERENCES Users(id),
-    FOREIGN KEY (fitnessCenterId)   REFERENCES FitnessCenters(id),
-    PRIMARY KEY (userId, fitnessCenterId)
+CREATE TABLE Trainingsplans (
+    creatorId                               CHAR(36) NOT NULL,
+    FOREIGN KEY(creatorId)                  REFERENCES Users(id),
+
+    id                                      CHAR(36) PRIMARY KEY,
+    title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
+    description                             VARCHAR(255) NOT NULL DEFAULT ''
 );
 
 CREATE TABLE FitnessCenterMembers (
-    id                              CHAR(36) PRIMARY KEY,
-    fitnessCenterId                 CHAR(36) NOT NULL CHECK (fitnessCenterId <> ''),
-    FOREIGN KEY (fitnessCenterId)   REFERENCES FitnessCenters(id),
-    
-    gender                          ENUM('male', 'female', 'diverse', ''),
-    firstName                       VARCHAR(255) NOT NULL CHECK (firstName <> ''),
-    lastName                        VARCHAR(255) NOT NULL CHECK (lastName <> ''),
-    birthDate                       DATE,
-    email                           VARCHAR(255) NOT NULL CHECK (email <> ''),
-    password                        VARCHAR(255) NOT NULL CHECK (password <> ''),
-    activationToken                 CHAR(36),
-    bodyWeight                      SMALLINT,
-    bodySize                        SMALLINT
+    userId                                  CHAR(36),
+    FOREIGN KEY(userId)                     REFERENCES Users(id),
+
+    fitnessCenterId                         CHAR(36),
+    FOREIGN KEY(fitnessCenterId)            REFERENCES FitnessCenters(id),
+
+    activeTrainingsplanId                   CHAR(36),
+    FOREIGN KEY(activeTrainingsplanId)      REFERENCES Trainingsplans(id),
+
+    bodyWeight                              SMALLINT,
+    bodySize                                SMALLINT,
+    PRIMARY KEY(userId, fitnessCenterId)
+);
+
+CREATE TABLE FitnessCenterStaff (
+    userId                                  CHAR(36),
+    FOREIGN KEY(userId)                     REFERENCES Users(id),
+
+    fitnessCenterId                         CHAR(36),
+    FOREIGN KEY(fitnessCenterId)            REFERENCES FitnessCenters(id),
+
+    canAcceptInvitations                    BOOLEAN NOT NULL,
+    canWatchMembers                         BOOLEAN NOT NULL,
+    canCreateTrainingsplans                 BOOLEAN NOT NULL,
+
+    PRIMARY KEY(userId, fitnessCenterId)
+);
+
+CREATE TABLE Exercises (
+    id                                      CHAR(36) PRIMARY KEY,
+    type                                    ENUM('weight', 'repetition', 'duration', 'distance'),
+    requiresEquipment                       BOOLEAN NOT NULL,
+    requiresTrainingsprartner               BOOLEAN NOT NULL,
+    title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
+    description                             VARCHAR(255) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE MuscleGroups (
+    id                                      CHAR(36) PRIMARY KEY,
+    title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
+    description                             VARCHAR(255) NOT NULL DEFAULT ''
+);
+
+CREATE TABLE ExerciseMuscleGroups (
+    exerciseId                              CHAR(36),
+    muscleGroupId                           CHAR(36),
+    effectivity                             ENUM('low', 'medium', 'high'),
+    FOREIGN KEY(exerciseId)                 REFERENCES Exercises(id),
+    FOREIGN KEY(muscleGroupId)              REFERENCES MuscleGroups(id),
+    PRIMARY KEY(exerciseId, muscleGroupId)
+);
+
+CREATE TABLE FitnessCenterExercises (
+    id                                      CHAR(36) PRIMARY KEY,
+    fitnessCenterId                         CHAR(36) NOT NULL,
+    FOREIGN KEY(fitnessCenterId)            REFERENCES FitnessCenters(id),
+
+    exerciseId                              CHAR(36) NOT NULL,
+    FOREIGN KEY(exerciseId)                 REFERENCES Exercises(id),
+
+    fintessCentersDescription               VARCHAR(255) NOT NULL,
+
+    UNIQUE(fitnessCenterId, exerciseId)
+);
+
+CREATE TABLE TrainingsplanDays (
+    id                                      CHAR(36) PRIMARY KEY,
+    `index`                                 TINYINT UNSIGNED,
+    trainingsplanId                         CHAR(36) NOT NULL,
+    FOREIGN KEY(trainingsplanId)            REFERENCES Trainingsplans(id),
+
+    title                                   VARCHAR(255) NOT NULL CHECK (title <> ''),
+    description                             VARCHAR(255) NOT NULL DEFAULT '',
+    UNIQUE(`index`, trainingsplanId)
+);
+
+CREATE TABLE TrainingsplanDayExercises (
+    id                                      CHAR(36) PRIMARY KEY,
+    `index`                                 TINYINT UNSIGNED,
+    trainingsplanDayId                      CHAR(36) NOT NULL,
+    FOREIGN KEY(trainingsplanDayId)         REFERENCES TrainingsplanDays(id),
+
+    exerciseId                              CHAR(36) NOT NULL,
+    FOREIGN KEY(exerciseId)                 REFERENCES FitnessCenterExercises(id),
+
+    UNIQUE(`index`, trainingsplanDayId)
+);
+
+CREATE TABLE TrainingsplanDayExerciseSets (
+    id                                      CHAR(36) PRIMARY KEY,
+    `index`                                 TINYINT UNSIGNED,
+    trainingsplanDayExerciseId              CHAR(36) NOT NULL,
+    FOREIGN KEY(trainingsplanDayExerciseId) REFERENCES TrainingsplanDayExercises(id),
+
+    value1                                  SMALLINT,
+    value2                                  SMALLINT,
+    UNIQUE(`index`, trainingsplanDayExerciseId)
+);
+
+
+CREATE TABLE UserTrainingsplans (
+    userId                                  CHAR(36) NOT NULL,
+    trainingsplanId                         CHAR(36) NOT NULL,
+    FOREIGN KEY(userId)                     REFERENCES Users(id),
+    FOREIGN KEY(trainingsplanId)            REFERENCES Trainingsplans(id),
+    PRIMARY KEY(userId, trainingsplanId)
+);
+
+CREATE TABLE ExecutedTrainingsplanDays (
+    id                                      CHAR(36) PRIMARY KEY,
+    userId                                  CHAR(36) NOT NULL,
+    FOREIGN KEY(userId)                     REFERENCES Users(id),
+    trainingsplanDayId                      CHAR(36) NOT NULL,
+    FOREIGN KEY(trainingsplanDayId)         REFERENCES TrainingsplanDays(id),
+    date                                    DATE NOT NULL
 );
