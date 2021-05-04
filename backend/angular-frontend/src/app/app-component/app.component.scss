@@ -28,23 +28,6 @@ mat-sidenav-container {
     flex: 1;
 
     mat-sidenav {
-        width: 215px;
-
-        button {
-            font-size: large;
-        }
-        
-        #regular-button-container {
-            margin: 8px 0px 256px 0px;
-            
-        }
-        
-        #bottom-button-container {
-            position: absolute;
-            bottom: 0px;
-            padding-bottom: 8px;
-            width: 100%;
-            background-color: white;
-        }
+        padding: 8px 0px;
     }    
 }

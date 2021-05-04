@@ -14,6 +14,9 @@ export class UserController {
         return await this.userService.authentication(credentials);
     }
 
-    
+    @Post('authorization')
+    async authorization(@Request() request: Request): Promise<AuthenticationResponse> {
+        return await this.userService.authorization(request);
+    }
 
 }

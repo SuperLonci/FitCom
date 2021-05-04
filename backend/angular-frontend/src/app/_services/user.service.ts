@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import jwt_decode from 'jwt-decode';
 
-import { AuhtenticationResponse, Credentials, FitcomUserRole, JwtContent, UserForRegistration } from './../../../../nest-server/src/users/user.interfaces';
+import { AuthenticationResponse, Credentials } from './../../../../nest-server/src/users/user.interfaces';
 
 @Injectable()
 export class UserService {
@@ -20,34 +19,25 @@ export class UserService {
         else console.log('No JWT in local storage');
     }
 
-    jwt: string | undefined;
-    userId: string | undefined;
-    userRole: string | undefined;
+    user: undefined | AuthenticationResponse;
 
-    isAdministrator = (): boolean => this.userRole === FitcomUserRole.fitcomAdministrator;
-    isFitnessCenterStaff = (): boolean => this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer;
-
-    setAuthenticated(jwt: string): void {
-        localStorage.setItem('fitcom-jwt', jwt);
-        const {userId, userRole} = jwt_decode<JwtContent>(jwt);
-        this.jwt = jwt;
-        this.userId = userId;
-        this.userRole = userRole;
+    setAuthenticated(authenticationResponse: AuthenticationResponse): void {
+        this.user = authenticationResponse;
+        if (this.user.isFitcomAdministrator) this.router.navigate(['Administration']);
+        localStorage.setItem('fitcom-jwt', authenticationResponse.jwt);
     }
 
     authorize(jwt: string): void {
-        this.httpClient.post<AuhtenticationResponse>('api/users/authorize', {}, {headers: {authorization: jwt} }).subscribe(
-            (response: AuhtenticationResponse) => this.setAuthenticated(response.jwt)
+        this.httpClient.post<AuthenticationResponse>('api/users/authorization', {}, {headers: {authorization: jwt} }).subscribe(
+            (response: AuthenticationResponse) => this.setAuthenticated(response)
         );
     }
 
     authenticate(user: Credentials, completion: () => void): void {
-        this.httpClient.post<AuhtenticationResponse>('api/users/auhtenticate', user).subscribe(
-            (response: AuhtenticationResponse) => {
-                this.setAuthenticated(response.jwt);
+        this.httpClient.post<AuthenticationResponse>('api/users/authentication', user).subscribe(
+            (response: AuthenticationResponse) => {
+                this.setAuthenticated(response);
                 completion();
-                if (this.userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
-                if (this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer) this.router.navigate(['Fitnessstudio']);
             },
             () => this.snackBar.open('Es ist ein Fehler aufgetreten.', '', {
                 duration: 5000,
@@ -59,23 +49,20 @@ export class UserService {
 
     signout(): void {
         localStorage.removeItem('fitcom-jwt');
-        this.jwt = undefined;
-        this.userId = undefined;
-        this.userRole = undefined;
+        this.user = undefined;
         this.router.navigate(['']);
     }
 
-    register(activationToken: string, user: UserForRegistration, completion: (wasSuccessful: boolean) => void): void {
-        this.httpClient.post<AuhtenticationResponse>(`api/users/register/${activationToken}`, user).subscribe(
-            (response: AuhtenticationResponse) => {
-                this.setAuthenticated(response.jwt);
-                completion(true);
-                if (this.userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
-                if (this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer) this.router.navigate(['Fitnessstudio']);
-            },
-            () => completion(false)
-        );
-    }
+    // register(activationToken: string, user: UserForRegistration, completion: (wasSuccessful: boolean) => void): void {
+    //     this.httpClient.post<AuhtenticationResponse>(`api/users/register/${activationToken}`, user).subscribe(
+    //         (response: AuhtenticationResponse) => {
+    //             this.setAuthenticated(response.jwt);
+    //             completion(true);
+    //             if (this.userRole === FitcomUserRole.fitcomAdministrator) this.router.navigate(['Administration']);
+    //             if (this.userRole === FitcomUserRole.fitnessCenterAdministrator || this.userRole === FitcomUserRole.fitnessCenterTrainer) this.router.navigate(['Fitnessstudio']);
+    //         },
+    //         () => completion(false)
+    //     );
+    // }
     
-
 }

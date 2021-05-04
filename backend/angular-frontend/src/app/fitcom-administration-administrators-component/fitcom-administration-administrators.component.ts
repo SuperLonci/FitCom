@@ -8,9 +8,9 @@ import { ApiService } from '../_services/api.service';
 export class FitcomAdministrationAdministratorsComponent {
 
     constructor(private readonly apiService: ApiService) {
-        this.apiService.getAdministrators(
-            () => undefined
-        );
+        // this.apiService.getAdministrators(
+        //     () => undefined
+        // );
     }
 
 }

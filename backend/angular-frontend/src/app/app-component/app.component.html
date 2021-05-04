@@ -11,11 +11,11 @@
             <img src="assets/fitcom-logo.png">
         </button>
         
-        <button mat-button (click)="signin()" *ngIf="userService.jwt === undefined">
+        <button mat-button (click)="signin()" *ngIf="userService.user === undefined">
             <span> Anmelden </span>
         </button>
         
-        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.jwt !== undefined">
+        <button mat-button [matMenuTriggerFor]="userMenu" *ngIf="userService.user !== undefined">
             <mat-icon> account_circle </mat-icon>
         </button>
 
@@ -48,8 +48,8 @@
 
     <mat-sidenav #sidenav mode="over" [(opened)]="sideNavIsExpanded">
         <button mat-menu-item *ngFor="let navigationLink of navigationLinks" (click)="navigateTo(navigationLink)"> {{ navigationLink }} </button>
-        <!-- <button mat-menu-item (click)="navigateTo('Administration')" *ngIf="userService.isAdministrator()"> Administration </button>
-        <button mat-menu-item (click)="navigateTo('Fitnessstudio')" *ngIf="userService.isFitnessCenterStaff()"> Fitnessstudio </button> -->
+        <button mat-menu-item (click)="navigateTo('Administration')" *ngIf="userService.user?.isFitcomAdministrator"> Administration </button>
+        <!-- <button mat-menu-item (click)="navigateTo('Fitnessstudio')" *ngIf="userService.isFitnessCenterStaff()"> Fitnessstudio </button> -->
     </mat-sidenav>
 
     <mat-sidenav-content>

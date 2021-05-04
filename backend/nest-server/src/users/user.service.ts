@@ -2,7 +2,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { DbService } from './../shared-services/db.service';
 import { JwtService } from './../shared-services/jwt.service';
-import { AuthenticationResponse, Credentials, DatabaseUserResponse, FitnessCenterForMember, FitnessCenterForStaff } from './user.interfaces';
+import { AuthenticationResponse, Credentials, DatabaseUserResponse, FitnessCenterForMember, FitnessCenterForStaff, JwtContent } from './user.interfaces';
 
 @Injectable()
 export class UserService {
@@ -25,7 +25,27 @@ export class UserService {
             FROM Users
             WHERE email = '${credentials.email}' AND password = SHA2(CONCAT('${credentials.password}', id), 512)
         `);
+        return await this.generateAuthenticationResponseFor(user);
+    }
 
+    async authorization(request: Request): Promise<AuthenticationResponse> {
+        const {userId} = this.jwtService.verifyHttpRequest<JwtContent>(request);
+        const [user] = await this.dbService.query<DatabaseUserResponse>(`
+            SELECT
+            Users.id as userId,
+            Users.firstName,
+            Users.lastName,
+            Users.activationToken,
+            EXISTS(
+                SELECT * FROM FitcomAdministrators WHERE FitcomAdministrators.userId = Users.id
+            ) as isFitcomAdministrator
+            FROM Users
+            WHERE id = '${userId}'
+        `);
+        return await this.generateAuthenticationResponseFor(user);
+    }
+
+    async generateAuthenticationResponseFor(user: DatabaseUserResponse): Promise<AuthenticationResponse> {
         if (!user) throw new NotFoundException;
         if (user.activationToken) throw new ForbiddenException;
         delete user.activationToken;

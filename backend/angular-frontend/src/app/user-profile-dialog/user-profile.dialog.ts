@@ -1,6 +1,5 @@
 
 import { Component } from '@angular/core';
-import { User } from '../../../../nest-server/src/users/user.interfaces';
 import { ApiService } from '../_services/api.service';
 import { UserService } from '../_services/user.service';
 
@@ -14,17 +13,17 @@ export class UserProfileDialog {
         private readonly apiService: ApiService,
         private readonly userService: UserService
     ) {
-        if (this.userService.userId) this.apiService.getOwnUserProfile(
-            (user: User) => this.user = user
-        );
+        // if (this.userService.userId) this.apiService.getOwnUserProfile(
+        //     (user: User) => this.user = user
+        // );
     }
 
     isLoading: boolean = true;
 
-    user: User | undefined;
+    // user: User | undefined;
 
-    editMode: boolean = false;
+    // editMode: boolean = false;
 
-    editedUser: User | undefined;
+    // editedUser: User | undefined;
 
 }
