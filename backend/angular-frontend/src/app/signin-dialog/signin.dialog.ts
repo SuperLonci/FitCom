@@ -5,8 +5,7 @@ import { ForgotPasswordDialog } from '../forgot-password-dialog/forgot-password.
 import { UserService } from './../_services/user.service';
 
 @Component({
-    templateUrl: './signin.dialog.html',
-    styleUrls: ['./signin.dialog.scss']
+    templateUrl: './signin.dialog.html'
 })
 export class SigninDialog {
 
@@ -27,10 +26,9 @@ export class SigninDialog {
     dataIsIncomplete = (): boolean => this.credentials.email === '' || this.credentials.password === '';
 
     signin(): void {
-        if (!this.dataIsIncomplete())
-            this.userService.authenticate(this.credentials, 
-                () => this.dialogReference.close()
-            );
+        if (!this.dataIsIncomplete()) this.userService.authenticate(this.credentials, 
+            () => this.dialogReference.close()
+        );
     }
 
     forgotPassword(): void {

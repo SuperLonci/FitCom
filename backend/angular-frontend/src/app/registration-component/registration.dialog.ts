@@ -2,8 +2,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    templateUrl: './registration.dialog.html',
-    styleUrls: ['./registration.dialog.scss']
+    templateUrl: './registration.dialog.html'
 })
 export class RegistrationDialog {
 

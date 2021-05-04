@@ -6,4 +6,11 @@ mat-dialog-content {
 
 mat-dialog-content {
     margin-bottom: 8px;
+
+    ::ng-deep {
+        mat-form-field {
+            display: block;
+            min-width: 256px;
+        }
+    }
 }
