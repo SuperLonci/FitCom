@@ -4,5 +4,13 @@ mat-card {
 
     table {
         width: 100%;
+
+        #last-column-header {
+            background-color: orange;
+            display: flex;
+            #spacer {
+                flex: 1;
+            }
+        }
     }
 }
