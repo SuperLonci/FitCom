@@ -1,21 +1,41 @@
 
 <mat-card>
-    <table mat-table [dataSource]="dataSet">
 
-        <mat-header-row  mat-header-row *matHeaderRowDef="columnKeys()"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: columnKeys()" matRipple></mat-row>
+    <div id="header">
 
-        <ng-container *ngFor="let column of columns; let last = last" [matColumnDef]="column.objectKey">
-            <mat-header-cell *matHeaderCellDef>
-            <div> {{ column.title }} </div>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let element" style="cursor: pointer;"> {{ element[column.objectKey] }} </mat-cell>
-        </ng-container>
-      
-    </table>
+        <div *ngFor="let column of columns; let last = last" [style.flex]="column.flex ? column.flex : '1'" [style.text-align]="column.textAlign" class="column-header">
+            
+            <span> {{ column.title }} </span>
+            <span *ngIf="last" id="spacer"></span>
+            <button mat-icon-button *ngIf="last" color="primary" (click)="createItem.emit()">
+                <mat-icon> add </mat-icon>
+            </button>
 
-    <button mat-icon-button color="primary" style="position: absolute; z-index: 3; top: 8px; right: 8px;"> <mat-icon> add </mat-icon> </button>
+        </div>
 
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div *ngFor="let item of items">
+
+        <button mat-menu-item (click)="selectItem.emit(item.id)" matTooltip="{{item[tooltipAttributeName]}}" class="row">
+
+            <div *ngFor="let column of columns" [style.flex]="column.flex ? column.flex : '1'" [style.text-align]="column.textAlign" class="row-column">
+
+                <span> {{ rewriteRule ? rewriteRule(column.objectKey, item[column.objectKey]) : item[column.objectKey] }} </span>
+
+            </div>
+
+        </button>
+
+        <mat-divider></mat-divider>
+
+    </div>
+
+    <div id="footer" * ngIf="noDataText || footerText">
+        <i *ngIf="items.length === 0 && noDataText"> {{ noDataText }} </i>
+        <i *ngIf="items.length !== 0 && footerText"> {{ footerText }} </i>
+    </div>
+    
 </mat-card>
-
-<!-- <tr mat-footer-row *matFooterRowDef="['title']"></tr> <td mat-footer-cell *matFooterCellDef> Footer </td> -->

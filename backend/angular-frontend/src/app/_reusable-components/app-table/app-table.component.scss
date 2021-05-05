@@ -1,16 +1,36 @@
 
 mat-card {
     padding: 0px;
+    margin: auto;
+    max-width: 1400px;
+    margin-bottom: 32px;
 
-    table {
-        width: 100%;
+    #header {
+        display: flex;
 
-        #last-column-header {
-            background-color: orange;
+        .column-header {
             display: flex;
+            align-items: center;
+            font-weight: bold;
+            margin: 8px 16px;
+
             #spacer {
-                flex: 1;
+                flex-grow: 1;
             }
         }
+    }
+
+    .row {
+        display: flex;
+        padding: 0px;
+
+        .row-column {
+            margin: 0px 16px;
+        }
+    }
+
+    #footer {
+        text-align: center;
+        padding: 16px 0px;
     }
 }

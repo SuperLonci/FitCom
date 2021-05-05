@@ -1,5 +1,4 @@
-
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
     selector: 'app-table',
@@ -8,17 +7,19 @@ import { Component, Input } from '@angular/core';
 })
 export class AppTable {
 
-    @Input() dataSet: any[] = [];
+    @Input() items: any[] = [];
+    @Input() footerText: string = '';
+    @Input() noDataText: string = '';
+    @Input() tooltipAttributeName: string = '';
     @Input() columns: {
         objectKey: string
         title: string
-        alignment?: string
+        flex?: string,
+        textAlign?: string
     }[] = [];
+    @Input() rewriteRule?: (attributeName: string, attributeValue: string) => string;
 
-    @Input() noDataText: string | undefined;
-    @Input() footerText: string | undefined;
-
-
-    columnKeys = (): any[] => this.columns.map(column => column.objectKey);
+    @Output() createItem = new EventEmitter();
+    @Output() selectItem = new EventEmitter();
 
 }
