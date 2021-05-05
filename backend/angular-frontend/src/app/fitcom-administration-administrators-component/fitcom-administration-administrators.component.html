@@ -7,7 +7,8 @@
         [items]="administrators.administrators"
         [columns]="columns"
         [rewriteRule]="tableRewriteRule"
-        
+        [footerText]="administrators.administrators.length + ' ' + (administrators.administrators.length === 1 ? 'Administrator' : 'Administratoren') + ' gefunden'"
+        [noDataText]="'Keine Administratoren gefunden'"
         (selectItem)="didSelectAdministrator($event)"
         (createItem)="createAdministrator()">
     </app-table>
@@ -22,6 +23,8 @@
         [items]="administrators.invitedAdministrators"
         [columns]="invitedAdministratorsColumns"
         [showCreateButton]="false"
+        [footerText]="administrators.invitedAdministrators.length + ' ' + (administrators.invitedAdministrators.length === 1 ? 'Administrator' : 'Administratoren') + ' gefunden'"
+        [noDataText]="'Keine Administratoren gefunden'"
         [rewriteRule]="tableRewriteRule"
         (selectItem)="didSelectInvitedAdministrator($event)">
     </app-table>

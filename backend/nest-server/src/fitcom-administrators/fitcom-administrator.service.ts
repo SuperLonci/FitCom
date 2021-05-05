@@ -6,7 +6,9 @@ import { FitcomAdministrator, FitcomAdministrators, InvitedFitcomAdministrator }
 @Injectable()
 export class FitcomAdministratorService {
 
-    constructor(private readonly dbService: DbService) {}
+    constructor(
+        private readonly dbService: DbService
+    ) {}
 
     async getFitcomAdministrators(): Promise<FitcomAdministrators> {
         const administrators = await this.dbService.query<FitcomAdministrator>(`
@@ -46,6 +48,20 @@ export class FitcomAdministratorService {
             administrators: administrators,
             invitedAdministrators: invitedAdministrators
         };
+    }
+
+    async inviteFitcomAdministrator(email: string, invitorId: string): Promise<void> {
+        const [user] = await this.dbService.query<{id: string}>(`
+            SELECT id FROM Users WHERE email = '${email}'
+        `);
+        if (user) {
+            await this.dbService.query(`
+                INSERT INTO FitcomAdministrators (userId, invitedAt, invitedBy)
+                VALUE ('${user.id}', CURRENT_DATE, '${invitorId}')
+            `);
+        } else {
+            //
+        }
     }
 
 }

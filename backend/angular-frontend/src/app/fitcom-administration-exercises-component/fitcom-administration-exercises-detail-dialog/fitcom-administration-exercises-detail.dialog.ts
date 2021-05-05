@@ -14,8 +14,4 @@ export class FitcomAdministrationExerciseDetailDialog {
 
     editableExercise: Exercise;
 
-    hasBeenEdited(): boolean {
-        return JSON.stringify(this.exercise) !== JSON.stringify(this.editableExercise);
-    }
-
 }

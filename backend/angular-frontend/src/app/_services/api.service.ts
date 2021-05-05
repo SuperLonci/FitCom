@@ -5,7 +5,7 @@ import { UserService } from './user.service';
 import { AppService } from './app.service';
 import { finalize } from 'rxjs/operators';
 import { Exercise, ExerciseForPostRequest } from '../../../../nest-server/src/exercises/exercise.interfaces';
-import { FitcomAdministrators } from '../../../../nest-server/src/fitcom-administrators/fitcom-administrator.interfaces';
+import { FitcomAdministratorForPostRequest, FitcomAdministrators } from '../../../../nest-server/src/fitcom-administrators/fitcom-administrator.interfaces';
 
 @Injectable()
 export class ApiService {
@@ -26,6 +26,13 @@ export class ApiService {
         );
     }
 
+    inviteFitcomAdministrator(administrator: FitcomAdministratorForPostRequest): void {
+        this.httpClient.post('api/fitcom-administrators', administrator, {headers: {authorization: this.userService.user?.jwt ?? ''}}).subscribe(
+            (res) => console.log(res),
+            () => console.log('Administrator konnte nicht eingeladen werden.')
+        );
+    }
+
     getExercises(completion: (exercises: any) => void): void {
         this.appService.isLoading = true;
         this.httpClient.get('api/exercises', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
@@ -36,6 +43,13 @@ export class ApiService {
         );
     }
 
+    createExercise(exercise: ExerciseForPostRequest, completion: (exercise: Exercise) => void): void {
+        this.httpClient.post<Exercise>('api/exercises', exercise, {headers: {authorization: this.userService.user?.jwt ?? ''}}).subscribe(
+            (exercise: Exercise) => completion(exercise),
+            (() => console.log('Trainingsübung konnte nicht angelegt werden.'))
+        );
+    }
+
     getFitnessCenters(completion: (fitnessCenters: any) => void): void {
         this.appService.isLoading = true;
         this.httpClient.get('api/fitness-centers', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
@@ -43,13 +57,6 @@ export class ApiService {
         ).subscribe(
             (fitnessCenters => completion(fitnessCenters)),
             () => console.log('Fitnessstudios konnten nicht geladen werden.')
-        );
-    }
-
-    createExercise(exercise: ExerciseForPostRequest, completion: (exercise: Exercise) => void): void {
-        this.httpClient.post<Exercise>('api/exercises', exercise, {headers: {authorization: this.userService.user?.jwt ?? ''}}).subscribe(
-            (exercise: Exercise) => completion(exercise),
-            (() => console.log('Trainingsübung konnte nicht angelegt werden.'))
         );
     }
 

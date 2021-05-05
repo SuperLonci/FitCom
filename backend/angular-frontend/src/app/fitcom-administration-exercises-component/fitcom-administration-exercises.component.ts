@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Exercise } from '../../../../nest-server/src/exercises/exercise.interfaces';
 import { ApiService } from '../_services/api.service';
 import { FitcomAdministrationCreateExerciseDialog } from './fitcom-administration-create-exercise-component/fitcom-administration-create-exercise.dialog';
 import { FitcomAdministrationExerciseDetailDialog } from './fitcom-administration-exercises-detail-dialog/fitcom-administration-exercises-detail.dialog';
@@ -19,7 +20,7 @@ export class FitcomAdministrationExercisesComponent {
         );
     }
 
-    exercises: any[] = [];
+    exercises: Exercise[] = [];
 
     columns = [
         {
@@ -37,7 +38,11 @@ export class FitcomAdministrationExercisesComponent {
     }
 
     createExercise(): void {
-        this.dialog.open(FitcomAdministrationCreateExerciseDialog);
+        this.dialog.open(FitcomAdministrationCreateExerciseDialog).afterClosed().subscribe(
+            (exercise: Exercise) => {
+                if (exercise) this.exercises.push(exercise);
+            }
+        );
     }
 
 }

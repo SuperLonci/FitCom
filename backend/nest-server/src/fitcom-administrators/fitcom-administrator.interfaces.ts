@@ -22,3 +22,7 @@ export interface FitcomAdministrators {
     administrators: FitcomAdministrator[]
     invitedAdministrators: InvitedFitcomAdministrator[]
 }
+
+export interface FitcomAdministratorForPostRequest {
+    email: string
+}

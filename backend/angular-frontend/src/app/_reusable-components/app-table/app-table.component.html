@@ -33,7 +33,7 @@
 
     </div>
 
-    <div id="footer" * ngIf="noDataText || footerText">
+    <div id="footer" *ngIf="noDataText || footerText">
         <i *ngIf="items.length === 0 && noDataText"> {{ noDataText }} </i>
         <i *ngIf="items.length !== 0 && footerText"> {{ footerText }} </i>
     </div>
