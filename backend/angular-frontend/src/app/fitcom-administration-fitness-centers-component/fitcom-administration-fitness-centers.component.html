@@ -5,7 +5,9 @@
 
     <app-table
         [items]="fitnessCenters"
-        [columns]="columns">
+        [columns]="columns"
+        (selectItem)="didSelectFitnessCenter($event)"
+        (createItem)="createFitnessCenter()">
     </app-table>
 
 </app-page>

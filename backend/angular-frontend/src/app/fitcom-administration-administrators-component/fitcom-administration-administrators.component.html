@@ -5,7 +5,9 @@
 
     <app-table
         [items]="administrators"
-        [columns]="columns">
+        [columns]="columns"
+        (selectItem)="didSelectAdministrator($event)"
+        (createItem)="createAdministrator()">
     </app-table>
 
 </app-page>
