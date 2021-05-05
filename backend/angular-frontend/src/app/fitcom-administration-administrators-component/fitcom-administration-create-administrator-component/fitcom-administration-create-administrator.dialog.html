@@ -1,2 +1,16 @@
 
-Fitcom Administrator anlegen
+<app-dialog
+    [title]="'Administrator einladen'"
+    [showActions]="true">
+
+    <mat-form-field appearance="outline">
+        <mat-label> E-Mail Adresse </mat-label>
+        <input matInput type="email">
+    </mat-form-field>
+
+    <div actions>
+        <button mat-raised-button mat-dialog-close> Abbrechen </button>
+        <button mat-raised-button color="primary" (click)="invite()"> Einladen </button>
+    </div>
+
+</app-dialog>

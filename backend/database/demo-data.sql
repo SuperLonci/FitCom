@@ -7,17 +7,16 @@ VALUE ('d13b2ca9-4794-4f68-9bc8-2ff5dd62b232', 'Demo Fitnessstudio');
 INSERT INTO FitnessCenters (id, title, country, city, postCode, street, streetNumber, phoneNumber, email)
 VALUE ('d13b2ca9-4794-4f68-9bc8-2ff5dd62b232', 'Demo Fitnessstudio', 'Deutschland', 'Demostadt', '123456', 'Demostraße', '1a', '', '');
 
-INSERT INTO Users (id, firstName, lastName, email, password, activationToken)
-VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'root', 'root', 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), NULL);
+INSERT INTO Users (id, firstName, lastName, birthDate, email, password, activationToken) VALUES
+('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'root', 'root', NULL, 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), NULL),
+('19a7394f-fea0-4d96-897e-370ae0ccadae', 'bob', 'bob', NULL, 'bob', SHA2(CONCAT('bob', '19a7394f-fea0-4d96-897e-370ae0ccadae'), 512), NULL),
+('b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d', 'alice', 'alice', NULL, 'alice', SHA2(CONCAT('alice', 'b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d'), 512), NULL),
+('f15a3fe8-a001-4874-89ca-db067244f0e4', 'chalie', 'chalie', NULL, 'chalie', SHA2(CONCAT('chalie', 'f15a3fe8-a001-4874-89ca-db067244f0e4'), 512), NULL);
 
-INSERT INTO Users (id, firstName, lastName, email, password, activationToken)
-VALUE ('19a7394f-fea0-4d96-897e-370ae0ccadae', 'bob', 'bob', 'bob', SHA2(CONCAT('bob', '19a7394f-fea0-4d96-897e-370ae0ccadae'), 512), NULL);
-
-INSERT INTO Users (id, firstName, lastName, email, password, activationToken)
-VALUE ('b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d', 'alice', 'alice', 'alice', SHA2(CONCAT('alice', 'b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d'), 512), NULL);
-
-INSERT INTO FitcomAdministrators (userId)
-VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4');
+INSERT INTO FitcomAdministrators (userId, invitedAt, invitedBy) VALUES
+('eacd43b4-f1e1-430c-905a-2ae90710d6f4', CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+('19a7394f-fea0-4d96-897e-370ae0ccadae', CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
+('b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d', CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4');
 
 INSERT INTO FitnessCenterMembers (userId, fitnessCenterId, activeTrainingsplanId, bodyWeight, bodySize)
 VALUE ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'd13b2ca9-4794-4f68-9bc8-2ff5dd62b232', NULL, 75, 183);

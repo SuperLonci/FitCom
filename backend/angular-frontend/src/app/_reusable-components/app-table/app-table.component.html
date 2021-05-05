@@ -7,7 +7,7 @@
             
             <span> {{ column.title }} </span>
             <span *ngIf="last" id="spacer"></span>
-            <button mat-icon-button *ngIf="last" color="primary" (click)="createItem.emit()">
+            <button mat-icon-button *ngIf="last && showCreateButton" color="primary" (click)="createItem.emit()">
                 <mat-icon> add </mat-icon>
             </button>
 

@@ -23,11 +23,4 @@ export class UserController {
         return await this.userService.authorization(request);
     }
 
-    @Get('fitcom-dministrators')
-    async getFitcomAdministrators(@Request() request: Request): Promise<any> {
-        const {isFitcomAdministrator} = this.jwtService.verifyHttpRequest(request);
-        if (!isFitcomAdministrator) throw new UnauthorizedException;
-        return await this.userService.getFitcomAdministrators();
-    }
-
 }

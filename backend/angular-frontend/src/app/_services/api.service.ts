@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { AppService } from './app.service';
 import { finalize } from 'rxjs/operators';
+import { FitcomAdministrators } from '../../../../nest-server/src/fitcom-administrators/fitcom-administrator.interfaces';
 
 @Injectable()
 export class ApiService {
@@ -14,9 +15,9 @@ export class ApiService {
         private readonly appService: AppService
     ) {}
 
-    getAdministrators(completion: (administrators: any) => void): void {
+    getAdministrators(completion: (administrators: FitcomAdministrators) => void): void {
         this.appService.isLoading = true;
-        this.httpClient.get('api/users/fitcom-dministrators', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
+        this.httpClient.get<FitcomAdministrators>('api/fitcom-administrators', {headers: {authorization: this.userService.user?.jwt ?? ''}}).pipe(
             finalize(() => this.appService.isLoading = false)
         ).subscribe(
             (administrators => completion(administrators)),
@@ -55,21 +56,6 @@ export class ApiService {
     //         () => console.log('Benutzerprofil konnte nicht geladen werden')
     //     );
     // }
-
-    // Patch User Profile
-    
-    // getAdministrators(completion: (administrators: FitcomAdministratorsOverview) => void): void {
-    //     this.appService.isLoading = true;
-    //     this.httpClient.get<FitcomAdministratorsOverview>('api/administrators', {headers: {authorization: this.userService.jwt ?? ''}}).pipe(
-    //         finalize(() => this.appService.isLoading = false)
-    //     ).subscribe(
-    //         administratorsOverview => completion(administratorsOverview)
-    //     );
-    // }
-
-
-
-
 
     // getFitnessCenters(completion: (fitnessCenters: FitnessCenterForAdministrationOverview[]) => void): void {
     //     this.httpClient.get<FitnessCenterForAdministrationOverview[]>('api/fitness-centers', {headers: {authorization: this.userService.jwt ?? ''}}).subscribe(

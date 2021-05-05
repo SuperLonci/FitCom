@@ -5,6 +5,8 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { ExerciseController } from './exercises/exercise.controller';
 import { ExerciseService } from './exercises/exercise.service';
+import { FitcomAdministratorController } from './fitcom-administrators/fitcom-administrator.controller';
+import { FitcomAdministratorService } from './fitcom-administrators/fitcom-administrator.service';
 import { FitnessCenterController } from './fitness-centers/fitness-center.controller';
 import { FitnessCenterService } from './fitness-centers/fitness-center.service';
 
@@ -20,6 +22,7 @@ import { UserService } from './users/user.service';
 @Module({
     controllers: [
         UserController,
+        FitcomAdministratorController,
         ExerciseController,
         FitnessCenterController,
         TrainingsplanController
@@ -31,6 +34,7 @@ import { UserService } from './users/user.service';
         MailService,
 
         UserService,
+        FitcomAdministratorService,
         ExerciseService,
         FitnessCenterService,
         TrainingsplanService

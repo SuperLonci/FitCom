@@ -4,10 +4,22 @@
     [title]="'Administratoren'">
 
     <app-table
-        [items]="administrators"
+        [items]="administrators.administrators"
         [columns]="columns"
         (selectItem)="didSelectAdministrator($event)"
         (createItem)="createAdministrator()">
+    </app-table>
+
+    <app-header
+        [titlePrefixIconName]="'mark_email_unread'"
+        [title]="'Ausstehende Einladungen'">
+    </app-header>
+
+    <app-table
+        [items]="administrators.invitedAdministrators"
+        [columns]="invitedAdministratorsColumns"
+        [showCreateButton]="false"
+        (selectItem)="didSelectAdministrator($event)">
     </app-table>
 
 </app-page>

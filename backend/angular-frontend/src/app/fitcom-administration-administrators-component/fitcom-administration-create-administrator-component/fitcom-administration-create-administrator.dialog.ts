@@ -6,4 +6,13 @@ import { Component } from '@angular/core';
 })
 export class FitcomAdministrationCreateAdministratorDialog {
 
+    // api- or userService for registration function constructor() {}
+
+    isLoading: boolean = false;
+    email: string = '';
+
+    invite(): void {
+        //
+    }
+
 }

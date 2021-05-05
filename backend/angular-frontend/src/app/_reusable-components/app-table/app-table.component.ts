@@ -19,6 +19,7 @@ export class AppTable {
     }[] = [];
     @Input() rewriteRule?: (attributeName: string, attributeValue: string) => string;
 
+    @Input() showCreateButton: boolean = true;
     @Output() createItem = new EventEmitter();
     @Output() selectItem = new EventEmitter();
 

@@ -28,6 +28,10 @@ export class FitcomAdministrationComponent {
             iconName: 'fitness_center'
         },
         {
+            title: 'Muskelgruppen',
+            iconName: 'accessibility'
+        },
+        {
             title: 'Fitnessstudios',
             iconName: 'domain'
         },

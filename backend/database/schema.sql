@@ -34,7 +34,7 @@ CREATE TABLE FitnessCenters (
 
     createdAt                               DATE NOT NULL,
     createdBy                               CHAR(36) NOT NULL,
-    FOREIGN KEY(invitedBy)                  REFERENCES Users(id)
+    FOREIGN KEY(createdBy)                  REFERENCES Users(id)
 );
 
 CREATE TABLE Trainingsplans (
@@ -75,7 +75,7 @@ CREATE TABLE FitnessCenterStaff (
 
     invitedAt                               DATE NOT NULL,
     invitedBy                               CHAR(36) NOT NULL,
-    FOREIGN KEY(invitedBy)                  REFERENCES Users(id)
+    FOREIGN KEY(invitedBy)                  REFERENCES Users(id),
     PRIMARY KEY(userId, fitnessCenterId)
 );
 
