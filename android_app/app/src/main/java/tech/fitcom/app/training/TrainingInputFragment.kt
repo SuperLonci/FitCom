@@ -1,13 +1,14 @@
 package tech.fitcom.app.training
 
+import android.graphics.Color
+import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_traininginput.*
 import tech.fitcom.app.R
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.registration.user
@@ -37,6 +39,10 @@ class TrainingInputFragment : Fragment() {
     private var btn_add_value2: Button? = null
     private var btn_sub_value2: Button? = null
 
+    private var spinner_exercise_value2_steps: Spinner? = null
+
+    // init Data Manager
+    val dm = DataManager()
 
 //    private lateinit var binding: TrainingFinishedFragmentBinding
 
@@ -50,6 +56,8 @@ class TrainingInputFragment : Fragment() {
 //
 //        )
 
+
+
         viewModel = ViewModelProvider(this).get(TrainingInputViewModel::class.java)
 //        viewModel = ViewModelProviders.of(this).get(TrainingInputViewModel::class.java)
 
@@ -58,13 +66,25 @@ class TrainingInputFragment : Fragment() {
 
         val rv = root.findViewById<RecyclerView>(R.id.rv_traininginput_history)
 
-        rv.adapter = TrainingInputHistoryAdapter(requireContext(), DataManager().histories)
+        rv.adapter = TrainingInputHistoryAdapter(requireContext(), dm.histories)
 
         rv.layoutManager = LinearLayoutManager(context)
 
         // Buttons to change values
         // reference to text
         text_exercise_value1_val = root.findViewById<EditText>(R.id.text_exercise_value1_val)
+
+        // on focus change listener to save
+
+        text_exercise_value1_val?.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus -> if(!hasFocus){
+            viewModel.setValue1(text_exercise_value1_val?.text.toString().toInt())
+            updateInputs()
+        } }
+        text_exercise_value2_val?.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus -> if(!hasFocus){
+            viewModel.setValue2(text_exercise_value2_val?.text.toString().toInt())
+            updateInputs()
+        } }
+
         // get reference to button
         btn_add_value1 = root.findViewById<Button>(R.id.btn_add_value1)
         btn_sub_value1 = root.findViewById<Button>(R.id.btn_sub_value1)
@@ -111,6 +131,44 @@ class TrainingInputFragment : Fragment() {
             updateExercise()
         }
 
+        // Spinner
+        val spinner_exercise_value1_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value1_steps);
+        spinner_exercise_value2_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value2_steps);
+
+        // finally, data bind spinner with adapter
+        spinner_exercise_value1_steps.adapter = TrainingInputStepSpinnerAdapter(root.context, dm.steps)
+        spinner_exercise_value2_steps?.adapter = TrainingInputStepSpinnerAdapter(root.context, dm.steps)
+
+        // spinner on item selected listener
+        spinner_exercise_value1_steps.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItemText = parent.getItemAtPosition(position).toString()
+                viewModel.setStep1(selectedItemText.toInt())
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // another interface callback
+            }
+        }
+        spinner_exercise_value2_steps?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItemText = parent.getItemAtPosition(position).toString()
+                viewModel.setStep2(selectedItemText.toInt())
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // another interface callback
+            }
+        }
+
         // title declaration
         text_traininginput_title = root.findViewById<TextView>(R.id.text_traininginput_title)
         /*text_traininginput_title.text = viewModel.exercise.title
@@ -135,6 +193,8 @@ class TrainingInputFragment : Fragment() {
         text_exercise_value1_val?.setText(viewModel.exercise.value1.toString())
         text_exercise_value1?.text = viewModel.exercise.value1type
 
+        spinner_exercise_value1_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value1step.toString()))
+
         if (viewModel.exercise.value2 == null){
             text_exercise_value2_val?.setText("")
             text_exercise_value2?.text = ""
@@ -144,11 +204,15 @@ class TrainingInputFragment : Fragment() {
 
             btn_add_value2?.isVisible = false
             btn_sub_value2?.isVisible = false
+
+            spinner_exercise_value2_steps?.isVisible = false
         } else {
             text_exercise_value2_val?.isVisible = true
             text_exercise_value2?.isVisible = true
             btn_add_value2?.isVisible = true
             btn_sub_value2?.isVisible = true
+            spinner_exercise_value2_steps?.isVisible = true
+            spinner_exercise_value2_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value2step.toString()))
 
             text_exercise_value2_val?.setText(viewModel.exercise.value2.toString())
             text_exercise_value2?.text = viewModel.exercise.value2type

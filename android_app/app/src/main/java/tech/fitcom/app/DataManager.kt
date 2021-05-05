@@ -16,12 +16,16 @@ class DataManager {
 
     val histories = ArrayList<HistoryData>()
 
+    val steps = ArrayList<String>()
+
+
     init {
         initializeTrainingplans()
         initializeTrainingdays()
         initializeHome()
         initializeExercises()
         initializeHistory()
+        initializeSteps()
     }
 
     private fun initializeTrainingplans() {
@@ -82,8 +86,11 @@ class DataManager {
             "Auf und ab",
             100,
             "kg",
+            10,
             8,
-            "Wdh"
+            "Wdh",
+            1
+
         )
         exercises.set(exercise.exerciseId, exercise)
 
@@ -93,6 +100,8 @@ class DataManager {
             "Hoch und runter",
             10,
             "Wdh",
+            1,
+            null,
             null,
             null
         )
@@ -104,6 +113,8 @@ class DataManager {
             "Hoch und runter",
             50,
             "Wdh",
+            1,
+            null,
             null,
             null
         )
@@ -115,8 +126,10 @@ class DataManager {
             "Hoch und runter",
             15,
             "kg",
+            10,
             12,
-            "Wdh"
+            "Wdh",
+            1
         )
         exercises.set(exercise.exerciseId, exercise)
 
@@ -126,8 +139,10 @@ class DataManager {
             "Hoch und runter",
             120,
             "kg",
+            10,
             15,
-            "Wdh"
+            "Wdh",
+            1
         )
         exercises.set(exercise.exerciseId, exercise)
 
@@ -137,8 +152,10 @@ class DataManager {
             "Hoch und runter",
             150,
             "kg",
+            10,
             6,
-            "Wdh"
+            "Wdh",
+            1
         )
         exercises.set(exercise.exerciseId, exercise)
 
@@ -168,5 +185,13 @@ class DataManager {
             "vor 3 Tagen"
         )
         histories.add(history)
+    }
+
+    private fun initializeSteps() {
+        steps.add("1")
+        steps.add("2")
+        steps.add("5")
+        steps.add("10")
+        steps.add("20")
     }
 }

@@ -9,12 +9,6 @@ import tech.fitcom.app.R
 
 class TrainingInputViewModel: ViewModel() {
 
-    // current value1
-    private var value1_steps = 10
-
-    // current value2
-    private var value2_steps = 1
-
     //Exercise Structure
     private var currentExercise = 0
     private val exercises: List<ExerciseData> = DataManager().exercises.values.toList()
@@ -23,21 +17,37 @@ class TrainingInputViewModel: ViewModel() {
     init {
     }
 
+    fun setValue1(int: Int){
+        exercise.value1 = int
+    }
+
+    fun setValue2(int: Int){
+        exercise.value2 = int
+    }
+
+    fun setStep1(int: Int){
+        exercise.value1step = int
+    }
+
+    fun setStep2(int: Int){
+        exercise.value2step = int
+    }
+
     fun onAddValue1() {
-        exercise.value1 += value1_steps
+        exercise.value1 += exercise.value1step
     }
 
     fun onSubValue1() {
-        exercise.value1 -= value1_steps
+        exercise.value1 -= exercise.value1step
         if (exercise.value1 < 0) exercise.value1 = 0
     }
 
     fun onAddValue2() {
-        exercise.value2 = exercise.value2?.plus(value2_steps)
+        exercise.value2 = exercise?.value2step?.let { exercise.value2?.plus(it) }
     }
 
     fun onSubValue2() {
-        exercise.value2 = exercise.value2?.minus(value2_steps)
+        exercise.value2 = exercise.value2step?.let { exercise.value2?.minus(it) }
         if (exercise.value2!! < 0) exercise.value2 = 0
     }
 
@@ -47,8 +57,6 @@ class TrainingInputViewModel: ViewModel() {
         } else currentExercise = 0
 
         exercise = exercises[currentExercise]
-
-        value1 = exercise.value1
     }
 
     fun prevExercise(){

@@ -101,7 +101,7 @@
                     android:layout_height="wrap_content">
 
                     <EditText
-                        android:layout_width="wrap_content"
+                        android:layout_width="50dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value1_val"
                         android:text="0"
@@ -112,7 +112,7 @@
                     <!-- Todo: make button layout not dependent on text -->
 
                     <TextView
-                        android:layout_width="140dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value1"
                         android:text=""
@@ -131,11 +131,18 @@
                         android:textSize="25sp"
                         android:layout_gravity="right|center_vertical"/>
 
+                    <Spinner
+                        android:id="@+id/spinner_exercise_value1_steps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
                     <Button
                         android:id="@+id/btn_add_value1"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_margin="5dp"
+                        android:layout_margin="0dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
                         android:backgroundTint="@color/colorAccent"
                         android:background="@drawable/round_button"
                         android:text="+"
@@ -178,11 +185,16 @@
                         android:textSize="25sp"
                         android:layout_gravity="right|center_vertical"/>
 
+                    <Spinner
+                        android:id="@+id/spinner_exercise_value2_steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
                     <Button
                         android:id="@+id/btn_add_value2"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
-                        android:layout_margin="5dp"
+                        android:layout_margin="0dp"
                         android:backgroundTint="@color/colorAccent"
                         android:background="@drawable/round_button"
                         android:text="+"
