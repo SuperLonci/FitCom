@@ -74,6 +74,7 @@ import { FitcomAdministrationCreateExerciseDialog } from './fitcom-administratio
 import { FitcomAdministrationFitnessCenterDetailDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-fintess-center-detail-dialog/fitcom-administration-fintess-center-detail.dialog';
 import { FitcomAdministrationCreateFitnessCenterDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-create-fitness-center-dialog/fitcom-administration-create-fitness-center.dialog';
 import { FitcomAdministrationInvitedAdministratorDetailDialog } from './fitcom-administration-administrators-component/fitcom-administration-invited-administrator-detail-dialog/fitcom-administration-invited-administrator-detail.dialog';
+import { ConfirmationDialog } from './_reusable-components/confirmation-dialog/confirmation.dialog';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -116,6 +117,7 @@ const angularMaterialModules = [
         AppDialog,
         AppPage,
         AppTable,
+        ConfirmationDialog,
         // ---------------------------
         RegistrationComponent,
         RegistrationDialog,

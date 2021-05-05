@@ -7,6 +7,7 @@ import { SigninDialog } from '../signin-dialog/signin.dialog';
 import { UserService } from './../_services/user.service';
 import { UserProfileDialog } from '../user-profile-dialog/user-profile.dialog';
 import { EditPasswordDialog } from '../edit-password-dialog/edit-password.dialog';
+import { ConfirmationDialog } from '../_reusable-components/confirmation-dialog/confirmation.dialog';
 
 @Component({
     selector: 'app-root',
@@ -31,7 +32,13 @@ export class AppComponent {
     }
 
     signout(): void {
-        this.userService.signout();
+        this.dialog.open(ConfirmationDialog, {data: {
+            title: 'Wollen Sie sich wirklich abmelden?',
+            buttonTitle: 'Abmelden',
+            warnAction: true
+        }}).afterClosed().subscribe((confirmed: boolean) => {
+            if (confirmed) this.userService.signout();
+        });
     }
 
     navigateTo(destination: string): void {

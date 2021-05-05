@@ -1,2 +1,23 @@
 
-Trainingsübung anlegen
+<app-dialog
+    [title]="'Trainingsübung anlegen'"
+    [showActions]="true">
+
+    <mat-form-field appearance="outline">
+        <mat-label> Name </mat-label>
+        <input matInput [(ngModel)]="exercise.title" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Beschreibung </mat-label>
+        <input matInput [(ngModel)]="exercise.description" required>
+    </mat-form-field>
+
+    <div actions>
+        <div actions>
+            <button mat-raised-button mat-dialog-close> Abbrechen </button>
+            <button mat-raised-button color="primary" (click)="create()"> Erstellen </button>
+        </div>
+    </div>
+
+</app-dialog>

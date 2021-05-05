@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { AppService } from './app.service';
 import { finalize } from 'rxjs/operators';
+import { Exercise, ExerciseForPostRequest } from '../../../../nest-server/src/exercises/exercise.interfaces';
 import { FitcomAdministrators } from '../../../../nest-server/src/fitcom-administrators/fitcom-administrator.interfaces';
 
 @Injectable()
@@ -42,6 +43,13 @@ export class ApiService {
         ).subscribe(
             (fitnessCenters => completion(fitnessCenters)),
             () => console.log('Fitnessstudios konnten nicht geladen werden.')
+        );
+    }
+
+    createExercise(exercise: ExerciseForPostRequest, completion: (exercise: Exercise) => void): void {
+        this.httpClient.post<Exercise>('api/exercises', exercise, {headers: {authorization: this.userService.user?.jwt ?? ''}}).subscribe(
+            (exercise: Exercise) => completion(exercise),
+            (() => console.log('Trainingsübung konnte nicht angelegt werden.'))
         );
     }
 

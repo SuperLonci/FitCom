@@ -3,39 +3,42 @@
     [title]="'Fitcom Administrator'"
     [showActions]="true">
 
-    <mat-form-field appearance="outline">
-        <mat-label> Vorname </mat-label>
-        <input matInput readonly [value]="administrator.firstName">
-    </mat-form-field>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label> Vorname </mat-label>
+            <input matInput readonly [value]="administrator.firstName">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label> Nachname </mat-label>
+            <input matInput readonly [value]="administrator.lastName">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label> E-Mail Adresse </mat-label>
+            <input matInput readonly [value]="administrator.email">
+        </mat-form-field>
+    </div>
     
-    <mat-form-field appearance="outline">
-        <mat-label> Nachname </mat-label>
-        <input matInput readonly [value]="administrator.lastName">
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label> E-Mail Adresse </mat-label>
-        <input matInput readonly [value]="administrator.email">
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label> {{ administrator.birthDate ? 'Geburtsdatum' : 'Kein Geburtsdatum angegeben' }} </mat-label>
-        <input matInput readonly [value]="administrator.birthDate">
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label> Eingeladen von </mat-label>
-        <input matInput readonly [value]="administrator.invitedByName">
-    </mat-form-field>
-    
-    <mat-form-field appearance="outline">
-        <mat-label> Eingeladen am </mat-label>
-        <input matInput readonly [value]="administrator.invitedAt | date: 'd. MMMM y'">
-    </mat-form-field>
+    <div>
+        <mat-form-field appearance="outline">
+            <mat-label> {{ administrator.birthDate ? 'Geburtsdatum' : 'Kein Geburtsdatum angegeben' }} </mat-label>
+            <input matInput readonly [value]="administrator.birthDate">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label> Eingeladen von </mat-label>
+            <input matInput readonly [value]="administrator.invitedByName">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label> Eingeladen am </mat-label>
+            <input matInput readonly [value]="administrator.invitedAt | date: 'd. MMMM y'">
+        </mat-form-field>
+    </div>
 
     <div actions>
-        <button mat-raised-button mat-dialog-close> Abbrechen </button>
-        <button mat-raised-button color="warn"> Entfernen </button>
+        <button mat-button color="warn" (click)="unauthorizeFitcomAdministrator()"> Entfernen </button>
     </div>
 
 </app-dialog>
