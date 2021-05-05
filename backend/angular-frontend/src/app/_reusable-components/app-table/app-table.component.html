@@ -19,7 +19,7 @@
 
     <div *ngFor="let item of items">
 
-        <button mat-menu-item (click)="selectItem.emit(item.id)" matTooltip="{{item[tooltipAttributeName]}}" class="row">
+        <button mat-menu-item (click)="selectItem.emit(item)" matTooltip="{{item[tooltipAttributeName]}}" class="row">
 
             <div *ngFor="let column of columns" [style.flex]="column.flex ? column.flex : '1'" [style.text-align]="column.textAlign" class="row-column">
 

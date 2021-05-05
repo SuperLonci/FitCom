@@ -1,0 +1,26 @@
+
+<app-dialog
+    [title]="'Eingeladener Fitcom Administrator'"
+    [showActions]="true">
+
+    <mat-form-field appearance="outline">
+        <mat-label> E-Mail Adresse </mat-label>
+        <input matInput readonly [value]="invitedAdministrator.email">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+        <mat-label> Eingeladen von </mat-label>
+        <input matInput readonly [value]="invitedAdministrator.invitedByName">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+        <mat-label> Eingeladen am </mat-label>
+        <input matInput readonly [value]="invitedAdministrator.invitedAt | date: 'd. MMMM y'">
+    </mat-form-field>
+
+    <div actions>
+        <button mat-raised-button mat-dialog-close> Abbrechen </button>
+        <button mat-raised-button color="warn"> Entfernen </button>
+    </div>
+
+</app-dialog>

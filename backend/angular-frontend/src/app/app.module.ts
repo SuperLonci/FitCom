@@ -73,6 +73,7 @@ import { FitcomAdministrationExerciseDetailDialog } from './fitcom-administratio
 import { FitcomAdministrationCreateExerciseDialog } from './fitcom-administration-exercises-component/fitcom-administration-create-exercise-component/fitcom-administration-create-exercise.dialog';
 import { FitcomAdministrationFitnessCenterDetailDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-fintess-center-detail-dialog/fitcom-administration-fintess-center-detail.dialog';
 import { FitcomAdministrationCreateFitnessCenterDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-create-fitness-center-dialog/fitcom-administration-create-fitness-center.dialog';
+import { FitcomAdministrationInvitedAdministratorDetailDialog } from './fitcom-administration-administrators-component/fitcom-administration-invited-administrator-detail-dialog/fitcom-administration-invited-administrator-detail.dialog';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -133,6 +134,7 @@ const angularMaterialModules = [
 
         FitcomAdministrationAdministratorsComponent,
         FitcomAdministrationAdministratorDetailDialog,
+        FitcomAdministrationInvitedAdministratorDetailDialog,
         FitcomAdministrationCreateAdministratorDialog,
 
         FitcomAdministrationExercisesComponent,

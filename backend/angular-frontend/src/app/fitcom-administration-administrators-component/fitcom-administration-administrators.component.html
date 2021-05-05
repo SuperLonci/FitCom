@@ -6,20 +6,24 @@
     <app-table
         [items]="administrators.administrators"
         [columns]="columns"
+        [rewriteRule]="tableRewriteRule"
+        
         (selectItem)="didSelectAdministrator($event)"
         (createItem)="createAdministrator()">
     </app-table>
+    
+</app-page>
 
-    <app-header
-        [titlePrefixIconName]="'mark_email_unread'"
-        [title]="'Ausstehende Einladungen'">
-    </app-header>
+<app-page
+    [titlePrefixIconName]="'mark_email_unread'"
+    [title]="'Ausstehende Einladungen'">
 
     <app-table
         [items]="administrators.invitedAdministrators"
         [columns]="invitedAdministratorsColumns"
         [showCreateButton]="false"
-        (selectItem)="didSelectAdministrator($event)">
+        [rewriteRule]="tableRewriteRule"
+        (selectItem)="didSelectInvitedAdministrator($event)">
     </app-table>
 
 </app-page>
