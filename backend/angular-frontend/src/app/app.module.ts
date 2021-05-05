@@ -52,7 +52,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRippleModule } from '@angular/material/core';
 
-
 import { SigninDialog } from './signin-dialog/signin.dialog';
 import { NotFoundComponent } from './not-found-component/not-found.component';
 import { HomeComponent } from './home-component/home.component';
@@ -68,6 +67,12 @@ import { FitcomAdministrationExercisesComponent } from './fitcom-administration-
 import { FitcomAdministrationFitnessCentersComponent } from './fitcom-administration-fitness-centers-component/fitcom-administration-fitness-centers.component';
 import { UserProfileDialog } from './user-profile-dialog/user-profile.dialog';
 import { EditPasswordDialog } from './edit-password-dialog/edit-password.dialog';
+import { FitcomAdministrationAdministratorDetailDialog } from './fitcom-administration-administrators-component/fitcom-administration-administrator-detail-dialog/fitcom-administration-administrator-detail.dialog';
+import { FitcomAdministrationCreateAdministratorDialog } from './fitcom-administration-administrators-component/fitcom-administration-create-administrator-component/fitcom-administration-create-administrator.dialog';
+import { FitcomAdministrationExerciseDetailDialog } from './fitcom-administration-exercises-component/fitcom-administration-exercises-detail-dialog/fitcom-administration-exercises-detail.dialog';
+import { FitcomAdministrationCreateExerciseDialog } from './fitcom-administration-exercises-component/fitcom-administration-create-exercise-component/fitcom-administration-create-exercise.dialog';
+import { FitcomAdministrationFitnessCenterDetailDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-fintess-center-detail-dialog/fitcom-administration-fintess-center-detail.dialog';
+import { FitcomAdministrationCreateFitnessCenterDialog } from './fitcom-administration-fitness-centers-component/fitcom-administration-create-fitness-center-dialog/fitcom-administration-create-fitness-center.dialog';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -125,9 +130,18 @@ const angularMaterialModules = [
         PrivacyComponent,
 
         FitcomAdministrationComponent,
+
         FitcomAdministrationAdministratorsComponent,
+        FitcomAdministrationAdministratorDetailDialog,
+        FitcomAdministrationCreateAdministratorDialog,
+
         FitcomAdministrationExercisesComponent,
-        FitcomAdministrationFitnessCentersComponent
+        FitcomAdministrationExerciseDetailDialog,
+        FitcomAdministrationCreateExerciseDialog,
+
+        FitcomAdministrationFitnessCentersComponent,
+        FitcomAdministrationFitnessCenterDetailDialog,
+        FitcomAdministrationCreateFitnessCenterDialog
         
     ],
     imports: [

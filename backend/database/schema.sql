@@ -14,7 +14,11 @@ CREATE TABLE Users (
 
 CREATE TABLE FitcomAdministrators (
     userId                                  CHAR(36) PRIMARY KEY,
-    FOREIGN KEY(userId)                     REFERENCES Users(id)
+    FOREIGN KEY(userId)                     REFERENCES Users(id),
+
+    invitedAt                               DATE NOT NULL,
+    invitedBy                               CHAR(36) NOT NULL,
+    FOREIGN KEY(invitedBy)                  REFERENCES Users(id)
 );
 
 CREATE TABLE FitnessCenters (
@@ -26,7 +30,11 @@ CREATE TABLE FitnessCenters (
     street                                  VARCHAR(255) NOT NULL CHECK (street <> ''),
     streetNumber                            VARCHAR(255) NOT NULL CHECK (streetNumber <> ''),
     phoneNumber                             VARCHAR(255) NOT NULL DEFAULT '',
-    email                                   VARCHAR(255) NOT NULL DEFAULT ''
+    email                                   VARCHAR(255) NOT NULL DEFAULT '',
+
+    createdAt                               DATE NOT NULL,
+    createdBy                               CHAR(36) NOT NULL,
+    FOREIGN KEY(invitedBy)                  REFERENCES Users(id)
 );
 
 CREATE TABLE Trainingsplans (
@@ -50,6 +58,7 @@ CREATE TABLE FitnessCenterMembers (
 
     bodyWeight                              SMALLINT,
     bodySize                                SMALLINT,
+    isMemberSince                           DATE NOT NULL,
     PRIMARY KEY(userId, fitnessCenterId)
 );
 
@@ -64,6 +73,9 @@ CREATE TABLE FitnessCenterStaff (
     canWatchMembers                         BOOLEAN NOT NULL,
     canCreateTrainingsplans                 BOOLEAN NOT NULL,
 
+    invitedAt                               DATE NOT NULL,
+    invitedBy                               CHAR(36) NOT NULL,
+    FOREIGN KEY(invitedBy)                  REFERENCES Users(id)
     PRIMARY KEY(userId, fitnessCenterId)
 );
 
