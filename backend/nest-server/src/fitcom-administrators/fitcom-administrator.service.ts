@@ -1,13 +1,15 @@
 
 import { Injectable } from '@nestjs/common';
 import { DbService } from 'src/shared-services/db.service';
+import { UserService } from 'src/users/user.service';
 import { FitcomAdministrator, FitcomAdministrators, InvitedFitcomAdministrator } from './fitcom-administrator.interfaces';
 
 @Injectable()
 export class FitcomAdministratorService {
 
     constructor(
-        private readonly dbService: DbService
+        private readonly dbService: DbService,
+        private readonly userService: UserService
     ) {}
 
     async getFitcomAdministrators(): Promise<FitcomAdministrators> {
@@ -54,13 +56,16 @@ export class FitcomAdministratorService {
         const [user] = await this.dbService.query<{id: string}>(`
             SELECT id FROM Users WHERE email = '${email}'
         `);
-        if (user) {
+        if (user) await this.dbService.query(`
+            INSERT INTO FitcomAdministrators (userId, invitedAt, invitedBy)
+            VALUE ('${user.id}', CURRENT_DATE, '${invitorId}')
+        `);
+        if (!user) {
+            const userId = await this.userService.inviteUser(email);
             await this.dbService.query(`
                 INSERT INTO FitcomAdministrators (userId, invitedAt, invitedBy)
-                VALUE ('${user.id}', CURRENT_DATE, '${invitorId}')
+                VALUE ('${userId}', CURRENT_DATE, '${invitorId}')
             `);
-        } else {
-            //
         }
     }
 

@@ -17,4 +17,13 @@ export class RegistrationComponent {
         this.dialog.open(RegistrationDialog, { data: activationToken, disableClose: true });
     }
 
+    user = {
+        firstName: '',
+        lastName: '',
+        birthDate: new Date(),
+        password: ''
+    };
+
+    passwordRepeat = '';
+
 }

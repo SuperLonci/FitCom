@@ -42,3 +42,11 @@ export interface JwtContent {
 export interface DatabaseUserResponse extends JwtContent {
     activationToken: string
 }
+
+export interface UserForPostRequest {
+    firstName: string
+    lastName: string
+    birthDate: string
+    gender: string
+    password: string
+}

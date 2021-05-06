@@ -1,15 +1,20 @@
 
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import { EnvironmentService } from 'src/shared-services/environment.service';
+import { MailService } from 'src/shared-services/mail.service';
 import { DbService } from './../shared-services/db.service';
 import { JwtService } from './../shared-services/jwt.service';
-import { AuthenticationResponse, Credentials, DatabaseUserResponse, FitnessCenterForMember, FitnessCenterForStaff, JwtContent } from './user.interfaces';
+import { v4 as uuidv4 } from 'uuid';
+import { AuthenticationResponse, Credentials, DatabaseUserResponse, FitnessCenterForMember, FitnessCenterForStaff, JwtContent, UserForPostRequest } from './user.interfaces';
 
 @Injectable()
 export class UserService {
     
     constructor(
         private readonly dbService: DbService,
-        private readonly jwtService: JwtService
+        private readonly jwtService: JwtService,
+        private readonly environmentService: EnvironmentService,
+        private readonly mailService: MailService
     ) {}
 
     async authentication(credentials: Credentials): Promise<AuthenticationResponse> {
@@ -106,5 +111,49 @@ export class UserService {
             WHERE userId = '${userId}'
         `);
     }
+
+    async inviteUser(email: string): Promise<string> {
+        const userId = uuidv4();
+        const activationToken = uuidv4();
+        await this.dbService.query(`
+            INSERT Users (id, email, password, firstName, lastName, activationToken)
+            VALUE ('${userId}', '${email}', '', '', '', '${activationToken}')
+        `);
+        await this.mailService.send(
+            email, 
+            'Fitcom Registrierung', 
+            `
+                Du wurdest dazu eingeladen ein Fitcom Administrator zu werden. <br>
+                Klicke den folgenden Button um deine Registrierung abzuschließen. <br> <br>
+                <a
+                    href="${this.environmentService.frontendRoot}/Registrierung/${activationToken}"
+                    style="background-color: black; color: white; padding: 8px; border-radius: 4px; text-decoration: none">
+                    Registrieren
+                </a>
+                <br>
+            `);
+
+        return userId;
+    }
+
+    // async registration(activationToken: string, user: UserForPostRequest): Promise<AuthenticationResponse> {
+    //     const [userResult] = await this.dbService.query<{id: string}>(`
+    //         SELECT id, role FROM Users WHERE activationToken = '${activationToken}'
+    //     `);
+    //     if (!(userResult && userResult.id)) throw new NotFoundException;
+    //     await this.dbService.query(`
+    //         UPDATE Users SET
+    //         firstName = '${user.firstName}',
+    //         lastName = '${user.lastName}',
+    //         gender = '${user.gender}',
+    //         birthDate = ${user.birthDate === '' ? 'NULL': `'${user.birthDate}'`},
+    //         password = SHA2(CONCAT('${user.password}', id), 512),
+    //         activationToken = NULL
+    //         WHERE activationToken = '${activationToken}'
+    //     `);
+        
+        
+    //     return this.generateAuthenticationResponseFor({id: userResult.id, ...user});
+    // }
 
 }
