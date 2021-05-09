@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
 
-class TrainingFinishedFragment {
-//    override fun onCreateView(
-    fun onCreateView(
+class TrainingFinishedFragment : Fragment() {
+
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
@@ -23,6 +27,12 @@ class TrainingFinishedFragment {
             Navigation.findNavController(root).navigate(R.id.TrainingInput)
 //            ToDo: exit activity
         }
+
+        val rv = root.findViewById<RecyclerView>(R.id.rv_trainingfinished_overview)
+
+        rv.adapter = TrainingFinishedAdapter(requireContext(), DataManager().histories.toList())
+
+        rv.layoutManager = LinearLayoutManager(context)
 
         return root
     }

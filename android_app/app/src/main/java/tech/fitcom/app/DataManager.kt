@@ -164,24 +164,30 @@ class DataManager {
     private fun initializeHistory() {
         var history = HistoryData(
             "Bankdrücken",
-            "100kg",
-            "12",
+            100,
+            "kg",
+            12,
+            "Wdh",
             "gerade"
         )
         histories.add(history)
 
         history = HistoryData(
             "Bankdrücken",
-            "90kg",
-            "10",
+            90,
+            "kg",
+            10,
+            "Wdh",
             "vor 10 Minuten"
         )
         histories.add(history)
 
         history = HistoryData(
             "Bankdrücken",
-            "80kg",
-            "8",
+            80,
+            "kg",
+            8,
+            "Wdh",
             "vor 3 Tagen"
         )
         histories.add(history)

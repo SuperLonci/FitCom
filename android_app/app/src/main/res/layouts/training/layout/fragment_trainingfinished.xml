@@ -27,116 +27,41 @@
         android:gravity="center_horizontal"
         android:text="Alles korrekt?"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/table_trainingfinished_overview"
+        app:layout_constraintBottom_toTopOf="@+id/rl_trainingfinished_overview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_trainingfinished_title" />
 
-
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/table_trainingfinished_overview"
+    <RelativeLayout
+        android:id="@+id/rl_trainingfinished_overview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        app:layout_constraintTop_toBottomOf="@id/text_trainingfinished_desc"
-        app:layout_constraintBottom_toTopOf="@id/btn_trainingfinished_yes"
+        android:layout_height="0dp"
+        android:padding="0dp"
+        android:layout_marginHorizontal="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_trainingfinished_yes"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/text_trainingfinished_desc">
 
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/check_studio_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/text_exercise_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:gravity="end"
+            android:text="Historie"
+            android:textSize="24sp" />
 
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/usr_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_trainingfinished_overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_exercise_overview"
+            android:paddingHorizontal="20dp"
+            android:layout_marginHorizontal="0dp"
+            tools:listitem="@layout/overview_item" />
 
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/usr_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
-
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/usr_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
-
-        </TableRow>
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/usr_height"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
-
-        </TableRow>
-
-        <TableRow android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Übung"
-                android:textSize="20sp"/>
-            <TextView
-                android:id="@+id/usr_weight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="20sp"/>
-
-        </TableRow>
-    </TableLayout>
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_trainingfinished_yes"
@@ -152,7 +77,7 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_trainingfinished_no"
-        app:layout_constraintTop_toBottomOf="@id/table_trainingfinished_overview"
+        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
@@ -170,7 +95,7 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintStart_toEndOf="@id/btn_trainingfinished_yes"
         app:layout_constraintEnd_toStartOf="@id/btn_trainingfinished_maybe"
-        app:layout_constraintTop_toBottomOf="@id/table_trainingfinished_overview"
+        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <Button
@@ -187,7 +112,7 @@
         app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintStart_toEndOf="@id/btn_trainingfinished_no"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/table_trainingfinished_overview"
+        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 

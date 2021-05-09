@@ -1,11 +1,16 @@
 package tech.fitcom.app.training
 
+import android.os.Build
 import android.widget.Button
 import android.widget.EditText
+import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
+import java.time.Instant
+import java.time.format.DateTimeFormatter
 
 class TrainingInputViewModel: ViewModel() {
 
@@ -49,6 +54,20 @@ class TrainingInputViewModel: ViewModel() {
     fun onSubValue2() {
         exercise.value2 = exercise.value2step?.let { exercise.value2?.minus(it) }
         if (exercise.value2!! < 0) exercise.value2 = 0
+    }
+
+    fun onSafe(dm: DataManager) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            dm.histories.add(HistoryData(
+                exercise.title,
+                exercise.value1,
+                exercise.value1type,
+                exercise.value2,
+                exercise.value2type,
+                DateTimeFormatter.ISO_INSTANT.format(Instant.now())
+    //            System.currentTimeMillis().toString()
+            ))
+        }
     }
 
     fun nextExercise() {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cv_exercise_history"
     android:layout_width="match_parent"
-    android:layout_height="55dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="10dp"
     android:clickable="false"
@@ -20,48 +20,31 @@
         android:paddingHorizontal="5dp">
 
         <TextView
-            android:id="@+id/text_history_title"
+            android:id="@+id/text_overview_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:text="Bankdrücken"
             android:textSize="24sp" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="5dp"
-        android:id="@+id/rl_values"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        >
-
         <TextView
-            android:id="@+id/text_history_weight"
+            android:id="@+id/text_overview_weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1 kg"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@id/text_overview_rep"
+            android:paddingRight="10dp"
+            android:text="100 kg"
             android:textSize="22sp" />
 
         <TextView
-            android:id="@+id/text_history_rep"
+            android:id="@+id/text_overview_rep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/text_history_weight"
-            android:paddingLeft="10dp"
-            android:text="1 Stück"
-            android:textSize="22sp"
-            android:paddingStart="10dp" />
-    </RelativeLayout>
-
-        <TextView
-            android:id="@+id/text_history_last"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/rl_values"
-            android:text="Vor 2 Tagen"
-            android:textSize="18sp"/>
+            android:text="10 Stück"
+            android:textSize="22sp" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

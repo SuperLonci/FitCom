@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.R
+import java.time.Instant
 
 class TrainingInputHistoryAdapter(private val context: Context, private val exercises: List<HistoryData>) :
     RecyclerView.Adapter<TrainingInputHistoryAdapter.ViewHolder>() {
@@ -17,8 +19,8 @@ class TrainingInputHistoryAdapter(private val context: Context, private val exer
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val textTitle = itemView.findViewById<TextView?>(R.id.text_history_title)
-        val textWeight = itemView.findViewById<TextView?>(R.id.text_history_weight)
-        val textRep = itemView.findViewById<TextView?>(R.id.text_history_rep)
+        val textValue1 = itemView.findViewById<TextView?>(R.id.text_history_weight)
+        val textValue2 = itemView.findViewById<TextView?>(R.id.text_history_rep)
         val textLast = itemView.findViewById<TextView>(R.id.text_history_last)
 
         init {
@@ -28,6 +30,10 @@ class TrainingInputHistoryAdapter(private val context: Context, private val exer
                 Toast.makeText(context,"Warum klickst du mich?", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    fun update(){
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -42,8 +48,12 @@ class TrainingInputHistoryAdapter(private val context: Context, private val exer
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = exercises[position]
         holder.textTitle?.text = item.title
-        holder.textWeight?.text = item.weight
-        holder.textRep?.text = item.rep
-        holder.textLast?.text = item.last
+        holder.textValue1?.text = item.value1.toString().plus(" ").plus(item.value1type)
+        if (item.value2 == null) {
+            holder.textValue2?.isVisible = false
+        } else {
+            holder.textValue2?.text = item.value2.toString().plus(" ").plus(item.value2type)
+        }
+        holder.textLast?.text = item.date
     }
 }

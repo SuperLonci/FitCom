@@ -27,6 +27,9 @@ class TrainingInputFragment : Fragment() {
     // view Model
     private lateinit var viewModel: TrainingInputViewModel
 
+    // History Adapter
+    private var historyAdapter: TrainingInputHistoryAdapter? = null
+
     // super ugly -> mit bindings lösen
     private var text_traininginput_title: TextView? = null
     private var text_exercise_value1: TextView? = null
@@ -56,19 +59,26 @@ class TrainingInputFragment : Fragment() {
 //
 //        )
 
-
-
         viewModel = ViewModelProvider(this).get(TrainingInputViewModel::class.java)
 //        viewModel = ViewModelProviders.of(this).get(TrainingInputViewModel::class.java)
 
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_traininginput, container, false)
 
-        val rv = root.findViewById<RecyclerView>(R.id.rv_traininginput_history)
 
-        rv.adapter = TrainingInputHistoryAdapter(requireContext(), dm.histories)
+        // History Recycler View
+        val rv_traininginput_history = root.findViewById<RecyclerView>(R.id.rv_traininginput_history)
 
-        rv.layoutManager = LinearLayoutManager(context)
+        historyAdapter = TrainingInputHistoryAdapter(requireContext(), dm.histories)
+
+        rv_traininginput_history.adapter = historyAdapter
+
+        var linearLayoutManager = LinearLayoutManager(context)
+        linearLayoutManager.reverseLayout = true
+        linearLayoutManager.stackFromEnd = true
+
+        rv_traininginput_history.layoutManager = linearLayoutManager
+
 
         // Buttons to change values
         // reference to text
@@ -179,6 +189,16 @@ class TrainingInputFragment : Fragment() {
         text_exercise_value1_val.setText(viewModel.value1.toString())
         text_exercise_value2_val.setText(viewModel.value2.toString())*/
 
+        // safe Button
+        val btn_exercise_save = root.findViewById<Button>(R.id.btn_exercise_save)
+        btn_exercise_save.setOnClickListener{
+            viewModel.onSafe(dm)
+            updateHistory()
+
+            // scroll history to top
+            linearLayoutManager.scrollToPositionWithOffset(dm.histories.size-1,0)
+        }
+
         // set initial value
         updateExercise()
         updateInputs()
@@ -222,6 +242,10 @@ class TrainingInputFragment : Fragment() {
     private fun updateInputs(){
         text_exercise_value1_val?.setText(viewModel.exercise.value1.toString())
         text_exercise_value2_val?.setText(viewModel.exercise.value2.toString())
+    }
+
+    private fun updateHistory() {
+        historyAdapter?.update()
     }
 
     fun trainingFinished(root: View) {
