@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/iv_trophy_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:adjustViewBounds="true"
+        android:padding="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/baseline_emoji_events_24"
+        android:tooltipText="Lustiger Text"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/iv_trophy_text"
+        android:text="Fancy name"
+        android:textSize="15sp"
+        android:layout_below="@+id/iv_trophy_img"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

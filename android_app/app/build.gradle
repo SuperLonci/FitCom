@@ -14,6 +14,7 @@ android {
                             'src/main/res/layouts/home',
                             'src/main/res/layouts/activity-layouts',
                             'src/main/res/layouts/training',
+                            'src/main/res/layouts/createTrainingplan',
                             'src/main/res/layouts',
                             'src/main/res'
                     ]

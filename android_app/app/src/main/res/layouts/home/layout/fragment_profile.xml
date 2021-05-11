@@ -7,18 +7,52 @@
     android:layout_height="match_parent"
     tools:context=".home.ProfileFragment">
 
-    <TextView
-        android:id="@+id/text_notifications"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center_horizontal" />
+        android:id="@+id/rl_trophies">
+
+        <TextView
+            android:id="@+id/text_trophy_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="0dp"
+            android:textAlignment="center"
+            android:text="Trophäen"
+            android:textSize="25sp"
+            android:gravity="center_horizontal"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rv_trophies"
+            android:foregroundGravity="top"
+            android:layout_below="@+id/text_trophy_title"
+            tools:listitem="@layout/trophy_item"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/rl_trophies">
+
+        <TextView
+            android:id="@+id/text_user_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
+            android:textAlignment="center"
+            android:text="Höchstwerte"
+            android:textSize="25sp"
+            android:gravity="center_horizontal"/>
+
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

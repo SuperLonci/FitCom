@@ -3,6 +3,7 @@ package tech.fitcom.app
 import tech.fitcom.app.home.HomeItemData
 import tech.fitcom.app.home.TrainingdayInfo
 import tech.fitcom.app.home.TrainingplanInfo
+import tech.fitcom.app.home.TrophyItemData
 import tech.fitcom.app.training.ExerciseData
 import tech.fitcom.app.training.HistoryData
 
@@ -18,6 +19,8 @@ class DataManager {
 
     val steps = ArrayList<String>()
 
+    val trophies = ArrayList<TrophyItemData>()
+
 
     init {
         initializeTrainingplans()
@@ -26,6 +29,7 @@ class DataManager {
         initializeExercises()
         initializeHistory()
         initializeSteps()
+        initializeTrophies()
     }
 
     private fun initializeTrainingplans() {
@@ -199,5 +203,63 @@ class DataManager {
         steps.add("5")
         steps.add("10")
         steps.add("20")
+    }
+
+    private fun initializeTrophies() {
+        var trophy = TrophyItemData(
+            "Trophäe 1",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 2",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 3",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 4",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 5",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 5",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 5",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
+
+        trophy = TrophyItemData(
+            "Trophäe 5",
+            "mache tolle Dinge",
+            R.drawable.baseline_emoji_events_24
+        )
+        trophies.add(trophy)
     }
 }
