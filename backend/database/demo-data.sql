@@ -11,7 +11,7 @@ INSERT INTO Users (id, firstName, lastName, birthDate, email, password, activati
 ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', 'root', 'root', NULL, 'root', SHA2(CONCAT('root', 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'), 512), NULL),
 ('19a7394f-fea0-4d96-897e-370ae0ccadae', 'bob', 'bob', NULL, 'bob', SHA2(CONCAT('bob', '19a7394f-fea0-4d96-897e-370ae0ccadae'), 512), NULL),
 ('b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d', 'alice', 'alice', NULL, 'alice', SHA2(CONCAT('alice', 'b4434fd0-0dda-4f9d-9c1d-c70d2026ec1d'), 512), NULL),
-('f15a3fe8-a001-4874-89ca-db067244f0e4', 'chalie', 'chalie', NULL, 'chalie', SHA2(CONCAT('chalie', 'f15a3fe8-a001-4874-89ca-db067244f0e4'), 512), NULL);
+('f15a3fe8-a001-4874-89ca-db067244f0e4', 'charlie', 'charlie', NULL, 'charlie', SHA2(CONCAT('charlie', 'f15a3fe8-a001-4874-89ca-db067244f0e4'), 512), NULL);
 
 INSERT INTO FitcomAdministrators (userId, invitedAt, invitedBy) VALUES
 ('eacd43b4-f1e1-430c-905a-2ae90710d6f4', CURRENT_DATE, 'eacd43b4-f1e1-430c-905a-2ae90710d6f4'),
