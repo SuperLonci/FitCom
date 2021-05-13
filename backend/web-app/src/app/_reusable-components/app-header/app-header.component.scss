@@ -1,0 +1,38 @@
+
+:host {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+
+    #title {
+        font-weight: bold;
+        font-size: x-large;
+    }
+
+    #spacer {
+        flex: 1;
+    }
+
+    ::ng-deep {
+        > *:not(:last-child) {
+            margin-right: 16px;
+        }
+
+        button, mat-form-field {
+            margin-right: 16px;
+        }
+
+        mat-form-field {
+            margin-bottom: -10px;
+        }
+    }
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

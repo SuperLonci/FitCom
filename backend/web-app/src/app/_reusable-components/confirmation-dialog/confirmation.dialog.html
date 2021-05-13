@@ -1,0 +1,13 @@
+
+<app-dialog
+    [titlePrefixIconName]="data.titlePrefixIconName"
+    [title]="data.title">
+
+    {{ data.description }}
+
+    <div actions>
+        <button mat-raised-button mat-dialog-close> Abbrechen </button>
+        <button mat-raised-button [color]="data.warnAction ? 'warn' : 'primary'" (click)="confirm()"> {{ data.buttonTitle }} </button>
+    </div>
+
+</app-dialog>
