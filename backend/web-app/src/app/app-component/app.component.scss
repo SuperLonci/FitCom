@@ -1,0 +1,47 @@
+
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    mat-card {
+        padding: 0px;
+        z-index: 2;
+        overflow-x: auto;
+
+        mat-toolbar {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+
+            #title-button {
+                
+                text-align: center;
+
+                button {
+                    padding: 4px 16px;
+        
+                    img {
+                        height: 38px;
+                    }
+                }
+            }
+
+            #user-button {
+                text-align: end;
+            }
+        }
+    
+        mat-progress-bar {
+            position: absolute;
+            height: 2px;
+        }
+    }
+    
+    mat-sidenav-container {
+        flex: 1;
+    
+        mat-sidenav {
+            padding: 8px 0px;
+        }    
+    }
+}

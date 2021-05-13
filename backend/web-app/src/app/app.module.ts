@@ -49,6 +49,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatRippleModule } from '@angular/material/core';
+import { HomeComponent } from './public-pages/home-component/home.component';
+import { ImpressumComponent } from './public-pages/impressum-component/impressum.component';
+import { NotFoundComponent } from './public-pages/not-found-component/not-found.component';
+import { PrivacyComponent } from './public-pages/privacy-component/privacy.component';
+import { TermsOfServiceComponent } from './public-pages/terms-of-service-component/terms-of-service.component';
+import { AppService } from './_services/app-service';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -90,7 +96,12 @@ const angularMaterialModules = [
         AppDialog,
         AppPage,
         AppTable,
-        ConfirmationDialog
+        ConfirmationDialog,
+        HomeComponent,
+        ImpressumComponent,
+        NotFoundComponent,
+        PrivacyComponent,
+        TermsOfServiceComponent
     ],
     imports: [
         BrowserModule,
@@ -107,7 +118,8 @@ const angularMaterialModules = [
             provide: LOCALE_ID,
             useValue: 'de'
         },
-        DatePipe
+        DatePipe,
+        AppService
     ]
 })
 export class AppModule {}

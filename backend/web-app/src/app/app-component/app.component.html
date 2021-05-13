@@ -1,2 +1,44 @@
 
-<h1> Angular + NestJS = <3 </h1>
+<mat-card>
+
+    <mat-toolbar>
+
+        <div>
+            <button mat-button (click)="sideNavIsExpanded = !sideNavIsExpanded">
+                <mat-icon> menu </mat-icon>
+            </button>
+        </div>
+
+        <div id="title-button">
+            <button mat-button (click)="navigateTo('Startseite')">
+                <img src="assets/fitcom-logo.png">
+            </button>
+        </div>
+        
+        <div id="user-button">
+            <button mat-button>
+                <span> Anmelden </span>
+            </button>
+        </div>
+
+    </mat-toolbar>
+
+    <mat-progress-bar mode="indeterminate" *ngIf="appService.isLoading"></mat-progress-bar>
+
+</mat-card>
+
+<mat-sidenav-container hasBackdrop="false">
+
+    <mat-sidenav mode="over" [(opened)]="sideNavIsExpanded">
+        <button mat-menu-item
+            *ngFor="let navigationLink of navigationLinks"
+            (click)="navigateTo(navigationLink)">
+            {{ navigationLink }}
+        </button>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

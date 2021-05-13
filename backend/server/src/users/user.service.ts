@@ -8,4 +8,10 @@ export class UserService {
 
     constructor(private readonly dbService: DbService) {}
 
+    async test(): Promise<any> {
+        return await this.dbService.query(`
+            SHOW TABLES;
+        `);
+    }
+
 }
