@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -133,12 +134,12 @@ class TrainingInputFragment : Fragment() {
 
         btn_exercise_next.setOnClickListener {
             viewModel.nextExercise()
-            updateExercise()
+//            updateExercise()
         }
 
         btn_exercise_prev.setOnClickListener {
             viewModel.prevExercise()
-            updateExercise()
+//            updateExercise()
         }
 
         // Spinner
@@ -199,23 +200,37 @@ class TrainingInputFragment : Fragment() {
             linearLayoutManager.scrollToPositionWithOffset(dm.histories.size-1,0)
         }
 
+        viewModel.currentExercise.observe(viewLifecycleOwner, Observer { newExercise ->
+//            updateExercise()
+        })
+
+        viewModel.exercise.observe(viewLifecycleOwner, Observer { newExercise ->
+            updateExercise()
+        })
+
+        viewModel.eventTrainingFinished.observe(viewLifecycleOwner, Observer { hasFinished ->
+            if (hasFinished) {
+                Navigation.findNavController(root).navigate(R.id.TrainingFinished)
+            }
+        })
+
         // set initial value
-        updateExercise()
-        updateInputs()
+//        updateExercise()
+//        updateInputs()
 
         return root
     }
 
     private fun updateExercise(){
-        text_traininginput_title?.text = viewModel.exercise.title
+        text_traininginput_title?.text = viewModel.exercise.value?.title
         // todo: update image
 
-        text_exercise_value1_val?.setText(viewModel.exercise.value1.toString())
-        text_exercise_value1?.text = viewModel.exercise.value1type
+        text_exercise_value1_val?.setText(viewModel.exercise.value?.value1.toString())
+        text_exercise_value1?.text = viewModel.exercise.value?.value1type
 
-        spinner_exercise_value1_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value1step.toString()))
+        spinner_exercise_value1_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value?.value1step.toString()))
 
-        if (viewModel.exercise.value2 == null){
+        if (viewModel.exercise.value?.value2 == null){
             text_exercise_value2_val?.setText("")
             text_exercise_value2?.text = ""
 
@@ -232,23 +247,23 @@ class TrainingInputFragment : Fragment() {
             btn_add_value2?.isVisible = true
             btn_sub_value2?.isVisible = true
             spinner_exercise_value2_steps?.isVisible = true
-            spinner_exercise_value2_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value2step.toString()))
+            spinner_exercise_value2_steps?.setSelection(dm.steps.indexOf(viewModel.exercise.value?.value2step.toString()))
 
-            text_exercise_value2_val?.setText(viewModel.exercise.value2.toString())
-            text_exercise_value2?.text = viewModel.exercise.value2type
+            text_exercise_value2_val?.setText(viewModel.exercise.value?.value2.toString())
+            text_exercise_value2?.text = viewModel.exercise.value?.value2type
         }
     }
 
     private fun updateInputs(){
-        text_exercise_value1_val?.setText(viewModel.exercise.value1.toString())
-        text_exercise_value2_val?.setText(viewModel.exercise.value2.toString())
+        text_exercise_value1_val?.setText(viewModel.exercise.value?.value1.toString())
+        text_exercise_value2_val?.setText(viewModel.exercise.value?.value2.toString())
     }
 
     private fun updateHistory() {
         historyAdapter?.update()
     }
 
-    fun trainingFinished(root: View) {
+    private fun trainingFinished(root: View) {
         // navigate to finished screen
         Navigation.findNavController(root).navigate(R.id.TrainingFinished)
     }

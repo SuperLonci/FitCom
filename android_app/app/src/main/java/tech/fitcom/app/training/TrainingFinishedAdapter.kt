@@ -23,21 +23,12 @@ class TrainingFinishedAdapter(private val context: Context, private val exercise
         val textRep = itemView?.findViewById<TextView?>(R.id.text_overview_rep)
 
         init {
-            itemView.setOnClickListener {
-                var activity = itemView.context as AppCompatActivity
-                var fragment = TrainingdayFragment()
-                // use a bundle to give the next fragment the information which rv was clicked
-                var bundle = Bundle()
-                bundle.putString("Workout_Title", textTitle?.text.toString())
-                fragment.arguments = bundle
-                //replace the fragment
-                activity.supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
-            }
+            // ToDo: add popup to alter Entry
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.trainingplan_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.history_item, parent, false)
         return ViewHolder(itemView)
     }
 

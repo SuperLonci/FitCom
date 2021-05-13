@@ -6,13 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
-import tech.fitcom.app.training.TrainingActivity
+import tech.fitcom.app.createTrainingplan.CreateTrainingplanActivity
 
 class TrainingplanFragment : Fragment() {
 
@@ -38,8 +37,8 @@ class TrainingplanFragment : Fragment() {
         val btn_add_trainingplan = root.findViewById<FloatingActionButton>(R.id.btn_add_trainingplan)
 
         btn_add_trainingplan.setOnClickListener {
-//            val intent = Intent(context, CreateTrainingPlanActivity::class.java)
-//            context.startActivity(intent)
+            val intent = Intent(context, CreateTrainingplanActivity::class.java)
+            context?.startActivity(intent)
         }
 
         return root

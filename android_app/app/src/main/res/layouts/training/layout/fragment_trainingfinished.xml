@@ -36,8 +36,8 @@
         android:id="@+id/rl_trainingfinished_overview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="0dp"
         android:layout_marginHorizontal="0dp"
+        android:padding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_trainingfinished_yes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +47,8 @@
             android:id="@+id/text_exercise_overview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="30dp"
             android:gravity="end"
+            android:paddingHorizontal="30dp"
             android:text="Historie"
             android:textSize="24sp" />
 
@@ -57,8 +57,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/text_exercise_overview"
-            android:paddingHorizontal="20dp"
             android:layout_marginHorizontal="0dp"
+            android:paddingHorizontal="20dp"
             tools:listitem="@layout/overview_item" />
 
     </RelativeLayout>
@@ -68,52 +68,18 @@
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:text="Ja"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:backgroundTint="@color/colorPrimaryDark"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btn_trainingfinished_no"
-        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <Button
-        android:id="@+id/btn_trainingfinished_no"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="20dp"
-        android:text="Nein"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:layout_constraintStart_toEndOf="@id/btn_trainingfinished_yes"
-        app:layout_constraintEnd_toStartOf="@id/btn_trainingfinished_maybe"
-        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
-        app:layout_constraintBottom_toBottomOf="parent" />
-
-    <Button
-        android:id="@+id/btn_trainingfinished_maybe"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="20dp"
-        android:text="Vielleicht"
-        android:textColor="@android:color/black"
-        android:textSize="14sp"
-        app:backgroundTint="@color/colorPrimaryDark"
-        app:layout_constraintStart_toEndOf="@id/btn_trainingfinished_no"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

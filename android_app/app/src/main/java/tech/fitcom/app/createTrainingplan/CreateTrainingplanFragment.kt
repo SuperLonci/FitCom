@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
 import tech.fitcom.app.home.HomeAdapter
+import tech.fitcom.app.home.TrainingplanAdapter
 
 
 class CreateTrainingplanFragment : Fragment() {
@@ -19,6 +20,15 @@ class CreateTrainingplanFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_create_trainingplan, container, false)
+
+        // Data Manager for TrainingPlanList
+        val rv = root.findViewById<RecyclerView>(R.id.rv_create_trainingsplan_select)
+
+        val adapter = CreateTrainingplanSearchAdapter(requireContext(), DataManager().exercises.values.toList())
+
+        rv.adapter =  adapter
+
+        rv.layoutManager = LinearLayoutManager(context)
 
         return root
     }

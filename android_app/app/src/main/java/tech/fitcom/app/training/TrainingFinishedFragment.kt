@@ -19,14 +19,16 @@ class TrainingFinishedFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val root = inflater.inflate(R.layout.fragment_trainingdayoverview, container, false)
+        val root = inflater.inflate(R.layout.fragment_trainingfinished, container, false)
 
         // Button Navigation
-        val next = root.findViewById<Button>(R.id.btn_trainingfinished_yes)
-        next.setOnClickListener {
-            Navigation.findNavController(root).navigate(R.id.TrainingInput)
+        val btn_trainingfinished_yes = root.findViewById<Button>(R.id.btn_trainingfinished_yes)
+        btn_trainingfinished_yes.setOnClickListener {
 //            ToDo: exit activity
         }
+
+        //ToDo: add possibility to change historie Data by clicking on item
+
 
         val rv = root.findViewById<RecyclerView>(R.id.rv_trainingfinished_overview)
 
