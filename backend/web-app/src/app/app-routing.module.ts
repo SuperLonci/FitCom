@@ -6,6 +6,7 @@ import { ImpressumComponent } from './public-pages/impressum-component/impressum
 import { NotFoundComponent } from './public-pages/not-found-component/not-found.component';
 import { PrivacyComponent } from './public-pages/privacy-component/privacy.component';
 import { TermsOfServiceComponent } from './public-pages/terms-of-service-component/terms-of-service.component';
+import { RegistrationComponent } from './user-pages/registration-component/registration.component';
 
 const routes: Routes = [
     {
@@ -27,6 +28,10 @@ const routes: Routes = [
     {
         path: 'Datenschutz',
         component: PrivacyComponent
+    },
+    {
+        path: 'Registrierung/:activationToken',
+        component: RegistrationComponent
     },
     {
         path: '**',

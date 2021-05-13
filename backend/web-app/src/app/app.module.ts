@@ -54,7 +54,15 @@ import { ImpressumComponent } from './public-pages/impressum-component/impressum
 import { NotFoundComponent } from './public-pages/not-found-component/not-found.component';
 import { PrivacyComponent } from './public-pages/privacy-component/privacy.component';
 import { TermsOfServiceComponent } from './public-pages/terms-of-service-component/terms-of-service.component';
-import { AppService } from './_services/app-service';
+import { AppService } from './_services/app.service';
+import { SignInDialog } from './user-pages/sign-in-dialog/sign-in.dialog';
+import { ForgotPasswordDialog } from './user-pages/forgot-password-dialog/forgot-password.dialog';
+import { ProfileDialog } from './user-pages/profile-dialog/profile.dialog';
+import { EditPasswordDialog } from './user-pages/edit-password-dialog/edit-password.dialog';
+import { RegistrationComponent } from './user-pages/registration-component/registration.component';
+import { RegistrationDialog } from './user-pages/registration-component/registration.dialog';
+import { ApiService } from './_services/api.service';
+import { UserService } from './_services/user.service';
 
 const angularMaterialModules = [
     MatButtonModule,
@@ -101,7 +109,13 @@ const angularMaterialModules = [
         ImpressumComponent,
         NotFoundComponent,
         PrivacyComponent,
-        TermsOfServiceComponent
+        TermsOfServiceComponent,
+        SignInDialog,
+        ForgotPasswordDialog,
+        ProfileDialog,
+        EditPasswordDialog,
+        RegistrationComponent,
+        RegistrationDialog
     ],
     imports: [
         BrowserModule,
@@ -119,7 +133,9 @@ const angularMaterialModules = [
             useValue: 'de'
         },
         DatePipe,
-        AppService
+        AppService,
+        ApiService,
+        UserService
     ]
 })
 export class AppModule {}

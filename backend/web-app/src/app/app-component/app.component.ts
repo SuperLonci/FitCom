@@ -2,7 +2,8 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AppService } from '../_services/app-service';
+import { SignInDialog } from '../user-pages/sign-in-dialog/sign-in.dialog';
+import { AppService } from '../_services/app.service';
 
 @Component({
     selector: 'app-root',
@@ -24,6 +25,10 @@ export class AppComponent {
     navigateTo(destination: string): void {
         this.sideNavIsExpanded = false;
         this.router.navigate([destination]);
+    }
+
+    signIn(): void {
+        this.dialog.open(SignInDialog);
     }
 
 }

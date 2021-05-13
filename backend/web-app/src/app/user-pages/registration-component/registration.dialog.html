@@ -1,0 +1,22 @@
+
+<app-dialog
+    titlePrefixIconName="account_circle"
+    title="Registrieren">
+
+    <mat-form-field appearance="outline">
+        <mat-label> Vorname </mat-label>
+        <input matInput type="text">
+        <mat-icon matSuffix>  </mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Nachname </mat-label>
+        <input matInput type="text">
+        <mat-icon matSuffix>  </mat-icon>
+    </mat-form-field>
+
+    <div actions>
+        <button mat-raised-button color="primary" (click)="completeRegistration()"> Registrierung abschließen </button>
+    </div>
+
+</app-dialog>

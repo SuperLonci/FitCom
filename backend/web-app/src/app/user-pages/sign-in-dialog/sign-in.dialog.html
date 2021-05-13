@@ -1,0 +1,25 @@
+
+<app-dialog
+    titlePrefixIconName="login"
+    title="Anmelden">
+
+    <mat-form-field appearance="outline">
+        <mat-label> E-Mail Adresse </mat-label>
+        <input matInput [(ngModel)]="email" type="email" autocomplete="off">
+        <mat-icon matSuffix> alternate_email </mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Passwort </mat-label>
+        <input matInput [(ngModel)]="password" type="password" autocomplete="off">
+        <mat-icon matSuffix> password </mat-icon>
+    </mat-form-field>
+
+    <button mat-button color="primary" (click)="forgotPassword()"> Passwort vergessen? </button>
+
+    <div actions>
+        <button mat-raised-button mat-dialog-close> Abbrechen </button>
+        <button mat-raised-button color="primary" (click)="signIn()"> Anmelden </button>
+    </div>
+
+</app-dialog>

@@ -16,9 +16,7 @@
         </div>
         
         <div id="user-button">
-            <button mat-button>
-                <span> Anmelden </span>
-            </button>
+            <button mat-button (click)="signIn()"> Anmelden </button>
         </div>
 
     </mat-toolbar>
@@ -30,11 +28,15 @@
 <mat-sidenav-container hasBackdrop="false">
 
     <mat-sidenav mode="over" [(opened)]="sideNavIsExpanded">
-        <button mat-menu-item
-            *ngFor="let navigationLink of navigationLinks"
-            (click)="navigateTo(navigationLink)">
-            {{ navigationLink }}
-        </button>
+
+        <mat-selection-list [multiple]="false">
+            <mat-list-option
+                *ngFor="let navigationLink of navigationLinks"
+                (click)="navigateTo(navigationLink)">
+                {{ navigationLink }}
+            </mat-list-option>
+        </mat-selection-list>
+
     </mat-sidenav>
 
     <mat-sidenav-content>
