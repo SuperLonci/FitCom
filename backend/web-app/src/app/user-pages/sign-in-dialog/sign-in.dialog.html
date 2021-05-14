@@ -20,7 +20,7 @@
 
     <div actions>
         <button mat-raised-button mat-dialog-close> Abbrechen </button>
-        <button mat-raised-button color="primary" (click)="signIn()"> Anmelden </button>
+        <button mat-raised-button color="primary" (click)="signIn()" [disabled]="!inputIsValid()"> Anmelden </button>
     </div>
 
 </app-dialog>

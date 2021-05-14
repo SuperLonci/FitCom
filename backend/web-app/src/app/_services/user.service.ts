@@ -15,7 +15,6 @@ export class UserService {
     ) {
         const jwt = localStorage.getItem('fitcom-jwt');
         if (jwt) this.authorization(jwt);
-        else console.log('No JWT in local storage');
     }
 
     jwt: string | undefined;
@@ -39,6 +38,7 @@ export class UserService {
                 if (response.status === 401) this.showSnackBar('Falsches Passwort');
                 if (response.status === 403) this.showSnackBar('Benutzerkonto noch nicht freigeschalten');
                 if (response.status === 404) this.showSnackBar('Benutzer mit E-Mail Adresse nicht gefunden');
+                if (response.status === 504) this.showSnackBar('Es scheint ein technisches Problem vorzuliegen');
             }
         );
     }

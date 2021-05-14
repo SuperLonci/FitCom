@@ -21,9 +21,12 @@ export class SignInDialog {
     credentials: Credentials = {
         email: '',
         password: ''
-    }
+    };
+
+    inputIsValid = (): boolean => this.credentials.email !== '' && this.credentials.password !== '';
 
     signIn(): void {
+        if (!this.inputIsValid()) return;
         this.isLoading = true;
         this.userService.authentication(this.credentials, wasSuccessful => {
             this.isLoading = false;

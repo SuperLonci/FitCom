@@ -1,3 +1,4 @@
+
 import { BadRequestException } from '@nestjs/common';
 
 export interface JwtResponse {
@@ -8,6 +9,7 @@ export interface JwtResponse {
 export interface JwtResponseUser {
     id: string
     firstName: string
+    lastName: string
     isFitcomAdministrator: boolean
     isStaffInFitnessCenters: any[]
     isMemberInFitnessCenters: any[]
@@ -34,6 +36,27 @@ export class Credentials {
     }
 
     email: string;
+    password: string;
+
+}
+
+export interface UserProfile {
+    firstName: string
+    lastName: string
+    birthDate: Date
+    email: string
+}
+
+export class EditPasswordRequest {
+
+    constructor(object: any) {
+        if (!('password' in object) || object.password === '') {
+            console.log('invalid password for credentials');
+            throw new BadRequestException;
+        }
+        this.password = object.password;
+    }
+
     password: string;
 
 }

@@ -2,7 +2,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import { JwtService } from './../_services/jwt.service';
 import { DbService } from './../_services/db.service';
-import { Credentials, JwtResponse } from './user.interfaces';
+import { Credentials, JwtResponse, UserProfile } from './user.interfaces';
 
 @Injectable()
 export class UserService {
@@ -55,6 +55,22 @@ export class UserService {
                 userId: user.userId
             })
         };
+    }
+
+    async getProfile(userId: string): Promise<UserProfile> {
+        const [user] = await this.dbService.query<UserProfile>(`
+            SELECT firstName, lastName, birthDate, email FROM Users WHERE id = '${userId}'
+        `);
+        if (!user) throw new NotFoundException;
+        return user;
+    }
+
+    async editPassword(userId: string, password: string): Promise<void> {
+        await this.dbService.query(`
+            UPDATE Users SET
+            password = SHA2(CONCAT('${password}', id), 512)
+            WHERE id = '${userId}'
+        `);
     }
 
 }
