@@ -1,6 +1,32 @@
 
-<app-dialog>
+<app-dialog
+    titlePrefixIconName="account_circle"
+    title="Mein Profil"
+    [showActions]="false">
 
-    Profil
+    <mat-form-field appearance="outline">
+        <mat-label> Vorname </mat-label>
+        <input matInput readonly type="text" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Nachname </mat-label>
+        <input matInput readonly type="text" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Geburtsdatum </mat-label>
+        <input matInput readonly type="text" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> E-Mail Adresse </mat-label>
+        <input matInput readonly type="email" autocomplete="off">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label> Mitglied seit </mat-label>
+        <input matInput readonly type="text" autocomplete="off">
+    </mat-form-field>
 
 </app-dialog>

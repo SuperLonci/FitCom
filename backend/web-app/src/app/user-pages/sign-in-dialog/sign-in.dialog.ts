@@ -1,6 +1,8 @@
 
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { UserService } from 'src/app/_services/user.service';
+import { Credentials } from '../../../../../server/src/users/user.interfaces';
 import { ForgotPasswordDialog } from '../forgot-password-dialog/forgot-password.dialog';
 
 @Component({
@@ -8,17 +10,29 @@ import { ForgotPasswordDialog } from '../forgot-password-dialog/forgot-password.
 })
 export class SignInDialog {
 
-    constructor(private readonly dialog: MatDialog) {}
+    constructor(
+        private readonly dialog: MatDialog,
+        private readonly userService: UserService,
+        private readonly dialogReference: MatDialogRef<SignInDialog>
+    ) {}
 
-    email: string = '';
-    password: string = '';
+    isLoading: boolean = false;
+
+    credentials: Credentials = {
+        email: '',
+        password: ''
+    }
 
     signIn(): void {
-        //
+        this.isLoading = true;
+        this.userService.authentication(this.credentials, wasSuccessful => {
+            this.isLoading = false;
+            if (wasSuccessful) this.dialogReference.close();
+        });
     }
 
     forgotPassword(): void {
-        this.dialog.open(ForgotPasswordDialog, {data: this.email});
+        this.dialog.open(ForgotPasswordDialog, {data: this.credentials.email});
     }
 
 }

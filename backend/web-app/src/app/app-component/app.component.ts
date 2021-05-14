@@ -2,8 +2,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { EditPasswordDialog } from '../user-pages/edit-password-dialog/edit-password.dialog';
+import { ProfileDialog } from '../user-pages/profile-dialog/profile.dialog';
 import { SignInDialog } from '../user-pages/sign-in-dialog/sign-in.dialog';
 import { AppService } from '../_services/app.service';
+import { UserService } from '../_services/user.service';
 
 @Component({
     selector: 'app-root',
@@ -14,6 +17,7 @@ export class AppComponent {
 
     constructor(
         public readonly appService: AppService,
+        public readonly userService: UserService,
         private readonly dialog: MatDialog,
         private readonly router: Router
     ) {}
@@ -29,6 +33,14 @@ export class AppComponent {
 
     signIn(): void {
         this.dialog.open(SignInDialog);
+    }
+
+    editPassword(): void {
+        this.dialog.open(EditPasswordDialog);
+    }
+
+    showProfile(): void {
+        this.dialog.open(ProfileDialog);
     }
 
 }

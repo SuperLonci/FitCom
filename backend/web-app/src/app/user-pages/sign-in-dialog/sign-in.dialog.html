@@ -1,17 +1,18 @@
 
 <app-dialog
     titlePrefixIconName="login"
-    title="Anmelden">
+    title="Anmelden"
+    [isLoading]="isLoading">
 
     <mat-form-field appearance="outline">
         <mat-label> E-Mail Adresse </mat-label>
-        <input matInput [(ngModel)]="email" type="email" autocomplete="off">
+        <input matInput [(ngModel)]="credentials.email" type="email" autocomplete="off">
         <mat-icon matSuffix> alternate_email </mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
         <mat-label> Passwort </mat-label>
-        <input matInput [(ngModel)]="password" type="password" autocomplete="off">
+        <input matInput [(ngModel)]="credentials.password" type="password" autocomplete="off">
         <mat-icon matSuffix> password </mat-icon>
     </mat-form-field>
 

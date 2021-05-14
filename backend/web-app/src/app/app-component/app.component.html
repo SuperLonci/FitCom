@@ -16,8 +16,43 @@
         </div>
         
         <div id="user-button">
-            <button mat-button (click)="signIn()"> Anmelden </button>
+            
+            <button mat-button (click)="signIn()" *ngIf="!userService.user"> Anmelden </button>
+            
+           <div *ngIf="userService.user">
+
+                <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon> account_circle </mat-icon>
+                </button>
+
+                <mat-menu #userMenu="matMenu">
+
+                    <div style="margin: 8px;"> Angemeldet als </div>
+                    <div style="margin: 8px;"> {{ userService.user.firstName }} </div>
+
+                    <mat-divider></mat-divider>
+
+                    <button mat-menu-item (click)="showProfile()">
+                        <mat-icon matSuffix> account_circle </mat-icon>
+                        <span> Profil </span>
+                    </button>
+        
+                    <button mat-menu-item (click)="editPassword()">
+                        <mat-icon matSuffix> lock </mat-icon>
+                        <span> Passwort ändern </span>
+                    </button>
+        
+                    <button mat-menu-item (click)="userService.signOut()">
+                        <mat-icon matSuffix color="warn"> logout </mat-icon>
+                        <span> Abmelden </span>
+                    </button>
+        
+                </mat-menu>
+
+           </div>
+
         </div>
+
 
     </mat-toolbar>
 
