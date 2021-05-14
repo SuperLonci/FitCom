@@ -19,7 +19,7 @@ class TrainingInputViewModel: ViewModel() {
     //Exercise Structure
 //    private var currentExercise = 0
     val currentExercise = MutableLiveData<Int>(0)
-    private val exercises: List<ExerciseData> = DataManager().exercises.values.toList()
+    private val exercises: List<ExerciseData> = DataManager().exercises
 //    var exercise: ExerciseData = exercises[currentExercise.value!!]
     val exercise = MutableLiveData<ExerciseData>(exercises[currentExercise.value!!])
 
@@ -96,6 +96,10 @@ class TrainingInputViewModel: ViewModel() {
             exercise.value = exercises[currentExercise.value!!]
 //        } else currentExercise.value = exercises.size - 1
         }
+    }
+
+    fun onTrainingFinishComplete() {
+        _eventGameFinished.value = false
     }
 
     /*private fun reassingValues(){

@@ -30,12 +30,14 @@ class TrainingDayOverviewFragment : Fragment() {
 
         val rv = root.findViewById<RecyclerView>(R.id.rv_trainingday_exercises)
 
-        rv.adapter = TrainingDayExerciseAdapter(requireContext(), DataManager().exercises.values.toList())
+        val itemAdapter = TrainingDayExerciseAdapter(requireContext(), DataManager().exercises)
+        rv.adapter = itemAdapter
 
         rv.layoutManager = LinearLayoutManager(context)
 
-//        val itemTouchHelper = ItemTouchHelper(itemTouchHelperCallback)
-//        itemTouchHelper.attachToRecyclerView(rv)
+        // Setup ItemTouchHelper
+        val callback = ExerciseOverviewDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
+        ItemTouchHelper(callback).attachToRecyclerView(rv)
 
         return root
     }

@@ -13,7 +13,7 @@ class DataManager {
 
     val homeItems = HashMap<String, HomeItemData>()
 
-    val exercises = HashMap<String, ExerciseData>()
+    val exercises = ArrayList<ExerciseData>()
 
     val histories = ArrayList<HistoryData>()
 
@@ -96,7 +96,7 @@ class DataManager {
             1
 
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
         exercise = ExerciseData(
             "exercise_pull_up",
@@ -109,7 +109,7 @@ class DataManager {
             null,
             null
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
         exercise = ExerciseData(
             "exercise_push_up",
@@ -122,7 +122,7 @@ class DataManager {
             null,
             null
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
         exercise = ExerciseData(
             "exercise_bizeps_curl",
@@ -135,7 +135,7 @@ class DataManager {
             "Wdh",
             1
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
         exercise = ExerciseData(
             "exercise_squat",
@@ -148,7 +148,7 @@ class DataManager {
             "Wdh",
             1
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
         exercise = ExerciseData(
             "exercise_leg_press",
@@ -161,7 +161,7 @@ class DataManager {
             "Wdh",
             1
         )
-        exercises.set(exercise.exerciseId, exercise)
+        exercises.add(exercise)
 
     }
 

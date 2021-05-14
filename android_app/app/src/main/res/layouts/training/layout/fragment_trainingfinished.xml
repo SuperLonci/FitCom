@@ -64,6 +64,24 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_trainingfinished_back"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="20dp"
+        android:text="Zurück"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rl_trainingfinished_overview" />
+
+    <Button
         android:id="@+id/btn_trainingfinished_yes"
         android:layout_width="120dp"
         android:layout_height="60dp"

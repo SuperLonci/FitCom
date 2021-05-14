@@ -1,5 +1,6 @@
 package tech.fitcom.app.training
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
+import tech.fitcom.app.home.HomeActivity
 
 class TrainingFinishedFragment : Fragment() {
 
@@ -24,7 +26,14 @@ class TrainingFinishedFragment : Fragment() {
         // Button Navigation
         val btn_trainingfinished_yes = root.findViewById<Button>(R.id.btn_trainingfinished_yes)
         btn_trainingfinished_yes.setOnClickListener {
-//            ToDo: exit activity
+            activity?.finish()
+//            ToDo: safe state
+        }
+
+        // Button Navigation
+        val btn_trainingfinished_back = root.findViewById<Button>(R.id.btn_trainingfinished_back)
+        btn_trainingfinished_back.setOnClickListener {
+            Navigation.findNavController(root).navigate(R.id.TrainingInput)
         }
 
         //ToDo: add possibility to change historie Data by clicking on item

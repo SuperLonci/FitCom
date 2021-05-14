@@ -211,6 +211,7 @@ class TrainingInputFragment : Fragment() {
         viewModel.eventTrainingFinished.observe(viewLifecycleOwner, Observer { hasFinished ->
             if (hasFinished) {
                 Navigation.findNavController(root).navigate(R.id.TrainingFinished)
+                viewModel.onTrainingFinishComplete()
             }
         })
 

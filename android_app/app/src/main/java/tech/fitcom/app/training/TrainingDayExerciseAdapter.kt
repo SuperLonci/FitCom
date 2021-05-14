@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.R
 
-class TrainingDayExerciseAdapter(private val context: Context, private val exercises: List<ExerciseData>) :
+class TrainingDayExerciseAdapter(private val context: Context, private val exercises: ArrayList<ExerciseData>) :
     RecyclerView.Adapter<TrainingDayExerciseAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
@@ -40,5 +40,22 @@ class TrainingDayExerciseAdapter(private val context: Context, private val exerc
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = exercises[position]
         holder.textTitle?.text = item.title
+    }
+
+    /**
+     * Function called to swap dragged items
+     */
+    fun swapItems(fromPosition: Int, toPosition: Int) {
+        if (fromPosition < toPosition) {
+            for (i in fromPosition..toPosition - 1) {
+                exercises.set(i, exercises.set(i+1, exercises.get(i)));
+            }
+        } else {
+            for (i in fromPosition..toPosition + 1) {
+                exercises.set(i, exercises.set(i-1, exercises.get(i)));
+            }
+        }
+
+        notifyItemMoved(fromPosition, toPosition)
     }
 }

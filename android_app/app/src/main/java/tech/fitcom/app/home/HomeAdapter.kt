@@ -36,4 +36,12 @@ class HomeAdapter(private val context: Context, private val homeItems: List<Home
         holder.textDesc?.text = homeItem.desc
 //        holder.textPicture?.irgendwas = homeItem.picture
     }
+
+    /**
+     * Function called to delete swiped items
+     */
+    fun deleteItem(position: Int) {
+        homeItems.drop(position)
+        notifyItemRemoved(position)
+    }
 }

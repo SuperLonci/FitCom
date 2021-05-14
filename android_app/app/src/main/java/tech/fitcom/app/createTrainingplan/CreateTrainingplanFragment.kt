@@ -24,7 +24,7 @@ class CreateTrainingplanFragment : Fragment() {
         // Data Manager for TrainingPlanList
         val rv = root.findViewById<RecyclerView>(R.id.rv_create_trainingsplan_select)
 
-        val adapter = CreateTrainingplanSearchAdapter(requireContext(), DataManager().exercises.values.toList())
+        val adapter = CreateTrainingplanSearchAdapter(requireContext(), DataManager().exercises)
 
         rv.adapter =  adapter
 
