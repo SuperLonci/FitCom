@@ -4,13 +4,13 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "trainings_plans")
 data class TrainingsPlans(
     @PrimaryKey(autoGenerate = false)
     var id: String,
 
-    @ColumnInfo(name = "fitness_center_member_id")
-    var fitnessCenterMemberId: String,
+    @ColumnInfo(name = "creator_id")
+    var creatorId: String,
 
     @ColumnInfo(name = "trainer_id")
     var trainerId: String,

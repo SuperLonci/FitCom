@@ -10,9 +10,6 @@ data class FitnessCenterMember(
     @PrimaryKey(autoGenerate = false)
     var id: String,
 
-    @ColumnInfo(name = "gender")
-    var gender: String,
-
     @ColumnInfo(name = "first_name")
     var firstName: String,
 
@@ -32,5 +29,8 @@ data class FitnessCenterMember(
     var bodyWeight: Int,
 
     @ColumnInfo(name = "body_height")
-    var bodyHeight: Int
+    var bodyHeight: Int,
+
+    @ColumnInfo(name = "gender")
+    var gender: String
     )
