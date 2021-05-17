@@ -5,7 +5,7 @@ import androidx.room.Entity
 
 @Entity(tableName = "exercise_muscle_group", primaryKeys = ["exercise_id", "muscle_group_id"])
 data class ExerciseMuscleGroups(
-    @ColumnInfo(name = "exercise_id")
+    @ColumnInfo(name = "id")
     var id: String,
 
     @ColumnInfo(name = "muscle_group_id")
