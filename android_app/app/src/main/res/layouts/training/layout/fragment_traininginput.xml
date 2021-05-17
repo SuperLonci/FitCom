@@ -46,14 +46,15 @@
             android:paddingHorizontal="20dp"
             android:paddingVertical="10dp">
 
-            <Button
+            <ImageButton
                 android:layout_width="55dp"
                 android:layout_height="70dp"
                 android:id="@+id/btn_exercise_prev"
-                android:text="◄"
-                android:textSize="25sp"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/round_navigate_before_24"
+                android:scaleType="centerCrop"
+                android:backgroundTint="@color/colorPrimary"/>
 
             <ImageView
                 android:id="@+id/iv_exercise_img"
@@ -67,14 +68,15 @@
                 android:src="@drawable/baseline_fitness_center_24"
                 />
 
-            <Button
+            <ImageButton
                 android:layout_width="55dp"
                 android:layout_height="70dp"
                 android:id="@+id/btn_exercise_next"
-                android:text="►"
-                android:textSize="25sp"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"/>
+                android:layout_centerVertical="true"
+                android:src="@drawable/round_navigate_next_24"
+                android:scaleType="centerCrop"
+                android:backgroundTint="@color/colorPrimary"/>
 
         </RelativeLayout>
 
@@ -83,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/rl_exercise_toggle"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="10dp"
             android:paddingVertical="5dp"
             android:layout_marginHorizontal="15dp"
             android:background="@drawable/border">
@@ -98,7 +100,7 @@
 
                 <TableRow
                     android:id="@+id/row_value1_conf"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
@@ -106,7 +108,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value1_val"
                         android:text="0"
-                        android:textSize="25sp"
+                        android:textSize="24sp"
                         android:inputType="numberDecimal"
                         android:layout_gravity="center_vertical"/>
 
@@ -116,8 +118,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value1"
-                        android:text=""
-                        android:textSize="25sp"
+                        android:text="Wdh"
+                        android:textSize="24sp"
                         android:paddingLeft="5dp"
                         android:layout_gravity="center_vertical"/>
 
@@ -154,7 +156,7 @@
 
                 <TableRow
                     android:id="@+id/row_value2_conf"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <EditText
@@ -162,7 +164,7 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value2_val"
                         android:text=""
-                        android:textSize="25sp"
+                        android:textSize="24sp"
                         android:inputType="number"
                         android:layout_gravity="center_vertical"/>
 
@@ -170,8 +172,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/text_exercise_value2"
-                        android:text=""
-                        android:textSize="25sp"
+                        android:text="kg"
+                        android:textSize="24sp"
                         android:paddingLeft="5dp"
                         android:layout_gravity="center_vertical"/>
 

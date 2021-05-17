@@ -19,7 +19,7 @@ class TrainingInputViewModel: ViewModel() {
     //Exercise Structure
 //    private var currentExercise = 0
     val currentExercise = MutableLiveData<Int>(0)
-    private val exercises: List<ExerciseData> = DataManager().exercises
+    val exercises: List<ExerciseData> = DataManager().exercises
 //    var exercise: ExerciseData = exercises[currentExercise.value!!]
     val exercise = MutableLiveData<ExerciseData>(exercises[currentExercise.value!!])
 

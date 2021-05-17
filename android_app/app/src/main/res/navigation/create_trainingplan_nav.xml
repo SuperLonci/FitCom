@@ -10,5 +10,15 @@
         android:name="tech.fitcom.app.createTrainingplan.CreateTrainingplanFragment"
         android:label="fragment_create_trainingday_select"
         tools:layout="@layout/fragment_create_trainingplan" >
+        <action
+            android:id="@+id/action_CreateTrainingplan_select_to_CreateTrainingplan_details"
+            app:destination="@id/CreateTrainingplan_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CreateTrainingplan_details"
+        android:name="tech.fitcom.app.createTrainingplan.CreateTrainingplanDetailsFragment"
+        android:label="fragment_create_trainingday_details"
+        tools:layout="@layout/fragment_create_trainingplan_details" >
     </fragment>
 </navigation>

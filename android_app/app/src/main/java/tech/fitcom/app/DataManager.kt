@@ -36,7 +36,7 @@ class DataManager {
         var trainingplan = TrainingplanInfo(
             "3er_split",
             "3er Split",
-            "Alle wichtigen Übungen in drei spannenden Trainingstagen",
+            "Alle wichtigen Übungen an drei spannenden Trainingstagen",
             "Empfehlung deines Trainers"
         )
         trainingplans.set(trainingplan.trainingplanId, trainingplan)
@@ -52,14 +52,14 @@ class DataManager {
     }
 
     private fun initializeTrainingdays() {
-        var trainingday = TrainingdayInfo("3er_split_1", "Brust", "Drück alles weg!", "")
+        var trainingday = TrainingdayInfo("3er_split_1", "Brust", "Drück alles weg!", "vor 2 Tagen")
         trainingdays.set(trainingday.trainingdayId, trainingday)
 
-        trainingday = TrainingdayInfo("3er_split_2", "Rücken", "Ziehen mal anders", "")
+        trainingday = TrainingdayInfo("3er_split_2", "Rücken", "Ziehen mal anders", "gerade eben")
         trainingdays.set(trainingday.trainingdayId, trainingday)
 
         trainingday =
-            TrainingdayInfo("3er_split_3", "Bauch Beine Po", "Für unser Cardiomäuschen", "")
+            TrainingdayInfo("3er_split_3", "Bauch Beine Po", "Für unsere Cardiomäuschen", "vor 1 Tag")
         trainingdays.set(trainingday.trainingdayId, trainingday)
 
     }
@@ -93,7 +93,9 @@ class DataManager {
             10,
             8,
             "Wdh",
-            1
+            1,
+            "Brust",
+            "Trizeps"
 
         )
         exercises.add(exercise)
@@ -107,7 +109,9 @@ class DataManager {
             1,
             null,
             null,
-            null
+            null,
+            "Rücken",
+            "Bizeps"
         )
         exercises.add(exercise)
 
@@ -120,7 +124,9 @@ class DataManager {
             1,
             null,
             null,
-            null
+            null,
+            "Brust",
+            "Trizeps"
         )
         exercises.add(exercise)
 
@@ -133,7 +139,9 @@ class DataManager {
             10,
             12,
             "Wdh",
-            1
+            1,
+            "Brust",
+            null
         )
         exercises.add(exercise)
 
@@ -146,7 +154,9 @@ class DataManager {
             10,
             15,
             "Wdh",
-            1
+            1,
+            "Beine",
+            "Gluteus Maximus"
         )
         exercises.add(exercise)
 
@@ -159,7 +169,9 @@ class DataManager {
             10,
             6,
             "Wdh",
-            1
+            1,
+            "Beine",
+            "Oberschenkel"
         )
         exercises.add(exercise)
 

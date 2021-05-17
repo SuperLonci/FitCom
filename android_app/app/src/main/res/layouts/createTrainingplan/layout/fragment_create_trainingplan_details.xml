@@ -8,36 +8,25 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text_create_trainingsplan_title"
-        android:text="Wähle Übungen aus:"
+        android:id="@+id/text_create_trainingsplan_details_title"
+        android:text="Details angeben"
         android:textSize="30sp"
         android:layout_margin="10dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/search_create_trainingplan"/>
-
-    <SearchView
-        android:id="@+id/search_create_trainingplan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        android:queryHint="Gib eine Übung an"
-        android:paddingVertical="5dp"
-        app:layout_constraintTop_toBottomOf="@+id/text_create_trainingsplan_title"
-        app:layout_constraintBottom_toTopOf="@+id/rv_create_trainingsplan_select"
-        />
+        app:layout_constraintBottom_toTopOf="@+id/rv_create_trainingsplan_details"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_create_trainingsplan_select"
+        android:id="@+id/rv_create_trainingsplan_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_create_trainingplan"
-        tools:listitem="@layout/search_item"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_create_trainingsplan_details_title"
+        tools:listitem="@layout/exercise_item"/>
 
     <Button
-        android:id="@+id/btn_create_trainingplan_next"
+        android:id="@+id/btn_create_trainingplan_finish"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_marginStart="5dp"
@@ -46,11 +35,11 @@
         android:layout_marginEnd="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
-        android:text="Weiter"
+        android:text="Fertig"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

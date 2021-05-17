@@ -129,8 +129,8 @@ class TrainingInputFragment : Fragment() {
         text_exercise_value2 = root.findViewById<TextView>(R.id.text_exercise_value2)
 
         // Next, Prev Exercise
-        val btn_exercise_next = root.findViewById<Button>(R.id.btn_exercise_next)
-        val btn_exercise_prev = root.findViewById<Button>(R.id.btn_exercise_prev)
+        val btn_exercise_next = root.findViewById<ImageButton>(R.id.btn_exercise_next)
+        val btn_exercise_prev = root.findViewById<ImageButton>(R.id.btn_exercise_prev)
 
         btn_exercise_next.setOnClickListener {
             viewModel.nextExercise()
@@ -143,8 +143,8 @@ class TrainingInputFragment : Fragment() {
         }
 
         // Spinner
-        val spinner_exercise_value1_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value1_steps);
-        spinner_exercise_value2_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value2_steps);
+        val spinner_exercise_value1_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value1_steps)
+        spinner_exercise_value2_steps = root.findViewById<Spinner>(R.id.spinner_exercise_value2_steps)
 
         // finally, data bind spinner with adapter
         spinner_exercise_value1_steps.adapter = TrainingInputStepSpinnerAdapter(root.context, dm.steps)
@@ -252,6 +252,19 @@ class TrainingInputFragment : Fragment() {
 
             text_exercise_value2_val?.setText(viewModel.exercise.value?.value2.toString())
             text_exercise_value2?.text = viewModel.exercise.value?.value2type
+        }
+
+        if (viewModel.currentExercise.value == 0){
+//            btn_exercise_prev.setImageResource(R.drawable.round_skip_previous_24)
+            btn_exercise_prev.isVisible = false
+        } else {
+            btn_exercise_prev.isVisible = true
+        }
+
+        if (viewModel.currentExercise.value == viewModel.exercises.size - 1){
+            btn_exercise_next.setImageResource(R.drawable.round_last_page_24)
+        } else {
+            btn_exercise_next.setImageResource(R.drawable.round_navigate_next_24)
         }
     }
 

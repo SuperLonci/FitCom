@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="15dp"
     android:clickable="true"
@@ -21,27 +21,29 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/text_trainingplan_title"
+            android:id="@+id/text_trainingday_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:text="3er Split"
-            android:textSize="32sp" />
+            android:text="Push"
+            android:textSize="28sp" />
 
         <TextView
-            android:id="@+id/text_trainingplan_desc"
+            android:id="@+id/text_trainingday_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_trainingplan_title"
-            android:text="Alle wichtigen Übungen in drei spannenden Trainingstagen"
+            android:layout_below="@+id/text_trainingday_title"
+            android:text="Drück alles von dir weg!"
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/text_trainingplan_info"
+            android:id="@+id/text_trainingday_last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/text_trainingplan_desc"
-            android:text="Vorschläge der Redaktion"
-            android:textSize="15sp"/>
+            android:layout_below="@+id/text_trainingday_desc"
+            android:layout_alignParentRight="true"
+            android:gravity="bottom"
+            android:text="vor X Tagen"
+            android:textSize="15sp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

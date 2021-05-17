@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
 
 class TrainingplanAdapter(private val context: Context, private val trainingplans: List<TrainingplanInfo>) :
@@ -28,6 +29,10 @@ class TrainingplanAdapter(private val context: Context, private val trainingplan
                 var bundle = Bundle()
                 bundle.putString("Workout_Title", textTitle?.text.toString())
                 fragment.arguments = bundle
+
+                // write selected Trainingplan into EnvironmentVariables
+                EnvironmentVariables.selectedTrainingplan = textTitle?.text.toString()
+
                 //replace the fragment
                 activity.supportFragmentManager.beginTransaction().replace(R.id.fragment, fragment).commit()
             }

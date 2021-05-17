@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.R
 import tech.fitcom.app.DataManager
+import tech.fitcom.app.EnvironmentVariables
 
 class TrainingDayOverviewFragment : Fragment() {
 
@@ -28,6 +30,11 @@ class TrainingDayOverviewFragment : Fragment() {
             Navigation.findNavController(root).navigate(R.id.TrainingInput)
         }
 
+        // Title of Trainingsplan
+        val text_trainingdayoverview_plan = root.findViewById<TextView>(R.id.text_trainingdayoverview_plan)
+        text_trainingdayoverview_plan.setText(EnvironmentVariables.selectedTrainingplan)
+
+        // Recycler View
         val rv = root.findViewById<RecyclerView>(R.id.rv_trainingday_exercises)
 
         val itemAdapter = TrainingDayExerciseAdapter(requireContext(), DataManager().exercises)

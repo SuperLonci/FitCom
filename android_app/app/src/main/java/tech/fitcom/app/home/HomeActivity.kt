@@ -7,6 +7,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
 
 class HomeActivity : AppCompatActivity() {
@@ -32,7 +33,11 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.trainingFragment -> {
-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingplanFragment()).commit()
+                    if (EnvironmentVariables.selectedTrainingplan == null) {
+                        supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingplanFragment()).commit()
+                    } else {
+                        supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingdayFragment()).commit()
+                    }
                     true
                 }
                 R.id.profileFragment -> {

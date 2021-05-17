@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="3dp"
+    android:layout_margin="5dp"
     android:clickable="false"
     android:foreground="?android:attr/selectableItemBackground"
     app:cardCornerRadius="3dp"
@@ -19,23 +19,16 @@
         android:layout_height="wrap_content"
         android:paddingHorizontal="5dp">
 
-<!--
-        <TextView
-            android:id="@+id/text_search_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Bankdrücken"
-            android:textSize="24sp" />
--->
-
         <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/rb_search_title"
             android:layout_height="50dp"
             android:layout_width="match_parent"
-            android:id="@+id/rb_search_title"
             android:layoutDirection="rtl"
             android:text="Bankdrücken"
-            android:textSize="24sp"/>
+            android:gravity="center_vertical"
+            android:textSize="24sp"
+            android:textColor="@android:color/tertiary_text_dark"
+            android:paddingHorizontal="10dp"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
