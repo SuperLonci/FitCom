@@ -11,4 +11,5 @@
     <string name="text_studioid_input">Studio ID Eingeben</string>
     <string name="text_id">ID</string>
     <string name="start_workout">Workout starten</string>
+    <string name="string_training_plans">Trainingspläne</string>
 </resources>

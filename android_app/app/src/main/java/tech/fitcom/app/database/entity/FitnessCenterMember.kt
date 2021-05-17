@@ -17,16 +17,16 @@ data class FitnessCenterMember(
     var firstName: String,
 
     @ColumnInfo(name = "last_name")
-    var lastName: String,
+    var lastName: String?,
 
     @ColumnInfo(name = "birth_date")
-    var birthDate: Date,
+    var birthDate: Date?,
 
     @ColumnInfo(name = "email")
-    var email: String,
+    var email: String?,
 
     @ColumnInfo(name = "activation_token")
-    var activationToken: String,
+    var activationToken: String?,
 
     @ColumnInfo(name = "body_weight")
     var bodyWeight: Int,

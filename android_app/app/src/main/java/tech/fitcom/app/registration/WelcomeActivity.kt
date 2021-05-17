@@ -2,7 +2,6 @@ package tech.fitcom.app.registration
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import tech.fitcom.app.registration.NewUser
 import tech.fitcom.app.R
 
 //create new user

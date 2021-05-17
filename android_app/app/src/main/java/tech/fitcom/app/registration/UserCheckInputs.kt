@@ -8,11 +8,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_user_check_inputs.*
+import kotlinx.coroutines.*
 import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
+import tech.fitcom.app.database.FitComDatabase
+import tech.fitcom.app.database.dao.FitnessCenterMemberDao
+import tech.fitcom.app.database.entity.FitnessCenterMember
 
 class UserCheckInputs : Fragment() {
+
+    private var job = Job()
+    private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,6 +26,9 @@ class UserCheckInputs : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_user_check_inputs, container, false)
+        val fitnessCenterMemberDao = FitComDatabase.getInstance(requireContext()).fitnessCenterMemberDao
+
+        //val dataSource = FitComDatabase.getInstance(requireContext()).fitComDatabaseDao
 
         root.findViewById<TextView>(R.id.check_studio_id).text = user.studioID.toString()
         root.findViewById<TextView>(R.id.usr_name).text = user.username
@@ -29,6 +38,8 @@ class UserCheckInputs : Fragment() {
         root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + " kg")
 
         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
+            val databaseUser = FitnessCenterMember("1", user.usergender ,user.username,null, null, user.useremail, null, user.userweight, user.userheight)
+            initializeUser(databaseUser, fitnessCenterMemberDao)
             // ToDo: Datenbankanfrage senden
             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
 
@@ -45,5 +56,17 @@ class UserCheckInputs : Fragment() {
         }
 
         return root
+    }
+
+    private fun initializeUser(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao) {
+        uiScope.launch {
+            insertFitnessCenterMember(fitnessCenterMember, fitnessCenterMemberDao)
+        }
+    }
+
+    private suspend fun insertFitnessCenterMember(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao){
+        return withContext(Dispatchers.IO) {
+            fitnessCenterMemberDao.insertFitnessCenterMember(fitnessCenterMember)
+        }
     }
 }
