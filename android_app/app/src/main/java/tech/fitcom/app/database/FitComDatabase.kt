@@ -6,10 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import tech.fitcom.app.database.dao.FitnessCenterMemberDao
-import tech.fitcom.app.database.entity.FitnessCenterMember
-import tech.fitcom.app.database.entity.TrainingsPlans
+import tech.fitcom.app.database.entity.*
 
-@Database(entities = [FitnessCenterMember::class, TrainingsPlans::class], version = 1, exportSchema = false)
+@Database(entities = [FitnessCenterMember::class, TrainingsPlans::class,
+    TrainingsPlanDays::class, TrainingsPlanDayExercises::class,
+    TrainingsPlanDayExercisesSets::class, MuscleGroups::class,
+    Exercises::class, ExerciseMuscleGroups::class,
+    ExecutedTrainingsPlanDays::class], version = 2, exportSchema = false)
+
 @TypeConverters(Converters::class)
 abstract class FitComDatabase : RoomDatabase() {
 

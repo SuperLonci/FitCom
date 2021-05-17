@@ -38,7 +38,7 @@ class UserCheckInputs : Fragment() {
         root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + " kg")
 
         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
-            val databaseUser = FitnessCenterMember("1", user.usergender ,user.username,null, null, user.useremail, null, user.userweight, user.userheight)
+            val databaseUser = FitnessCenterMember("1", user.username,null, null, user.useremail, null, user.userweight, user.userheight, user.usergender)
             initializeUser(databaseUser, fitnessCenterMemberDao)
             // ToDo: Datenbankanfrage senden
             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
