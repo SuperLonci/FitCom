@@ -33,7 +33,7 @@ abstract class FitComDatabase : RoomDatabase() {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         FitComDatabase::class.java,
-                        "sleep_history_database"
+                        "fitcom_database"
                     )
                         .fallbackToDestructiveMigration()
                         .build()

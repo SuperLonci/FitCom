@@ -22,9 +22,6 @@ data class FitnessCenterMember(
     @ColumnInfo(name = "email")
     var email: String?,
 
-    @ColumnInfo(name = "activation_token")
-    var activationToken: String?,
-
     @ColumnInfo(name = "body_weight")
     var bodyWeight: Int,
 
