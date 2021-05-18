@@ -12,7 +12,7 @@ import tech.fitcom.app.database.entity.*
     TrainingsPlanDays::class, TrainingsPlanDayExercises::class,
     TrainingsPlanDayExercisesSets::class, MuscleGroups::class,
     Exercises::class, ExerciseMuscleGroups::class,
-    ExecutedTrainingsPlanDays::class], version = 2, exportSchema = false)
+    ExecutedTrainingsPlanDays::class, ApplicationSettings::class], version = 2, exportSchema = false)
 
 @TypeConverters(Converters::class)
 abstract class FitComDatabase : RoomDatabase() {
