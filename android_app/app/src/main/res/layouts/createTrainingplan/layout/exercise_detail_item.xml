@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_exercise_history"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="5dp"
+    android:clickable="false"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    app:contentPadding="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="5dp">
+
+        <TextView
+            android:id="@+id/text_create_trainingsplan_details_title"
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:text="Bankdrücken"
+            android:gravity="center_vertical"
+            android:textSize="24sp"
+            android:paddingHorizontal="10dp"/>
+
+<!--        ToDo: Show selected Values of weight, reps and sets -->
+
+        <ImageView
+            android:id="@+id/iv_exercise_drag"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/baseline_drag_handle_24"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

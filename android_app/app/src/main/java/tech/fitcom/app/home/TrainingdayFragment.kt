@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.fragment_trainingday.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import tech.fitcom.app.DataManager
+import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
+import tech.fitcom.app.createTrainingplan.CreateTrainingplanActivity
 
 class TrainingdayFragment : Fragment() {
 
@@ -39,6 +42,14 @@ class TrainingdayFragment : Fragment() {
         rv.adapter = TrainingdayAdapter(requireContext(), DataManager().trainingdays.values.toList())
 
         rv.layoutManager = LinearLayoutManager(context)
+
+        // Button select Trainingplan
+        val btn_change_trainingplan = root.findViewById<FloatingActionButton>(R.id.btn_change_trainingplan)
+
+        btn_change_trainingplan.setOnClickListener {
+            activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment, TrainingplanFragment())?.commit()
+        }
+
         return root
     }
 }

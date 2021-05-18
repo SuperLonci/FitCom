@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="3er Split"
-            android:textSize="35sp" />
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/text_trainingplan_desc"
@@ -41,6 +41,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_trainingplan_desc"
-            android:text="Vorschläge der Redaktion" />
+            android:text="Vorschläge der Redaktion"
+            android:textSize="15sp"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

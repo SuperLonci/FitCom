@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_trainingplan_nav"
+    app:startDestination="@id/CreateTrainingplan_select">
+
+    <fragment
+        android:id="@+id/CreateTrainingplan_select"
+        android:name="tech.fitcom.app.createTrainingplan.CreateTrainingplanFragment"
+        android:label="fragment_create_trainingday_select"
+        tools:layout="@layout/fragment_create_trainingplan" >
+        <action
+            android:id="@+id/action_CreateTrainingplan_select_to_CreateTrainingplan_details"
+            app:destination="@id/CreateTrainingplan_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CreateTrainingplan_details"
+        android:name="tech.fitcom.app.createTrainingplan.CreateTrainingplanDetailsFragment"
+        android:label="fragment_create_trainingday_details"
+        tools:layout="@layout/fragment_create_trainingplan_details" >
+    </fragment>
+</navigation>

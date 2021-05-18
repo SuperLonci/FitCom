@@ -19,9 +19,9 @@ class TrainingdayAdapter(private val context: Context, private val trainingdays:
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textTitle = itemView?.findViewById<TextView?>(R.id.text_trainingplan_title)
-        val textDesc = itemView?.findViewById<TextView?>(R.id.text_trainingplan_desc)
-        val textInfo = itemView?.findViewById<TextView?>(R.id.text_trainingplan_info)
+        val textTitle = itemView?.findViewById<TextView?>(R.id.text_trainingday_title)
+        val textDesc = itemView?.findViewById<TextView?>(R.id.text_trainingday_desc)
+        val textLast = itemView?.findViewById<TextView?>(R.id.text_trainingday_last)
 
         init {
             itemView.setOnClickListener {
@@ -33,7 +33,7 @@ class TrainingdayAdapter(private val context: Context, private val trainingdays:
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = layoutInflater.inflate(R.layout.trainingplan_item, parent, false)
+        val itemView = layoutInflater.inflate(R.layout.trainingday_item, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -45,6 +45,6 @@ class TrainingdayAdapter(private val context: Context, private val trainingdays:
         val trainingday= trainingdays[position]
         holder.textTitle?.text = trainingday.title
         holder.textDesc?.text = trainingday.desc
-        holder.textInfo?.text = trainingday.info
+        holder.textLast?.text = trainingday.last
     }
 }

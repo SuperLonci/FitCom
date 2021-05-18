@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_training_input"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".training.TrainingInputFragment">
+
+    <RelativeLayout
+        android:id="@+id/rl_trainingday_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:layout_marginTop="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/text_traininginput_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+            android:text="Bankdrücken"
+            android:textSize="40sp"/>
+<!--        android:layout_below="@id/text_trainingdayoverview_plan"-->
+
+<!--        android:background="@drawable/border"-->
+
+        <RelativeLayout
+            android:id="@+id/rl_exercise_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_traininginput_title"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp">
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="70dp"
+                android:id="@+id/btn_exercise_prev"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/round_navigate_before_24"
+                android:scaleType="centerCrop"
+                android:backgroundTint="@color/colorPrimary"/>
+
+            <ImageView
+                android:id="@+id/iv_exercise_img"
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true"
+                android:gravity="center_horizontal"
+                android:padding="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/baseline_fitness_center_24"
+                />
+
+            <ImageButton
+                android:layout_width="55dp"
+                android:layout_height="70dp"
+                android:id="@+id/btn_exercise_next"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/round_navigate_next_24"
+                android:scaleType="centerCrop"
+                android:backgroundTint="@color/colorPrimary"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_exercise_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_exercise_toggle"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:layout_marginHorizontal="15dp"
+            android:background="@drawable/border">
+
+            <TableLayout
+                android:id="@+id/tl_exercise_conf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TableRow
+                    android:id="@+id/row_value1_conf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_exercise_value1_val"
+                        android:text="0"
+                        android:textSize="24sp"
+                        android:inputType="numberDecimal"
+                        android:layout_gravity="center_vertical"/>
+
+                    <!-- Todo: make button layout not dependent on text -->
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_exercise_value1"
+                        android:text="Wdh"
+                        android:textSize="24sp"
+                        android:paddingLeft="5dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <Button
+                        android:id="@+id/btn_sub_value1"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:background="@drawable/round_button"
+                        android:text="-"
+                        android:textSize="25sp"
+                        android:layout_gravity="right|center_vertical"/>
+
+                    <Spinner
+                        android:id="@+id/spinner_exercise_value1_steps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+
+                    <Button
+                        android:id="@+id/btn_add_value1"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="0dp"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginLeft="0dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:background="@drawable/round_button"
+                        android:text="+"
+                        android:textSize="25sp"
+                        android:layout_gravity="right|center_vertical"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/row_value2_conf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_exercise_value2_val"
+                        android:text=""
+                        android:textSize="24sp"
+                        android:inputType="number"
+                        android:layout_gravity="center_vertical"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_exercise_value2"
+                        android:text="kg"
+                        android:textSize="24sp"
+                        android:paddingLeft="5dp"
+                        android:layout_gravity="center_vertical"/>
+
+                    <Button
+                        android:id="@+id/btn_sub_value2"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="5dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:background="@drawable/round_button"
+                        android:text="-"
+                        android:textSize="25sp"
+                        android:layout_gravity="right|center_vertical"/>
+
+                    <Spinner
+                        android:id="@+id/spinner_exercise_value2_steps"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <Button
+                        android:id="@+id/btn_add_value2"
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_margin="0dp"
+                        android:backgroundTint="@color/colorAccent"
+                        android:background="@drawable/round_button"
+                        android:text="+"
+                        android:textSize="25sp"
+                        android:layout_gravity="right|center_vertical"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:id="@+id/btn_exercise_save"
+                android:text="Sichern"
+                android:textSize="20sp"
+                android:layout_below="@+id/tl_exercise_conf"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_history"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="0dp"
+        android:layout_marginHorizontal="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rl_trainingday_info">
+
+        <TextView
+            android:id="@+id/text_exercise_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="30dp"
+            android:gravity="end"
+            android:text="Historie"
+            android:textSize="24sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_traininginput_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/text_exercise_history"
+            android:paddingHorizontal="10dp"
+            android:layout_marginHorizontal="0dp"
+            tools:listitem="@layout/history_item"/>
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
