@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "build:fe": "cd angular-frontend && ng build --prod",
+        "start:fe": "cd angular-frontend && ng serve --hmr",
+        "start:be": "cd nest-server && nest start -w",
+        "start:prod": "npm run build:fe && npm run start:be",
+        "start:dev": "npm run start:fe | npm run start:be"
+    }
+}

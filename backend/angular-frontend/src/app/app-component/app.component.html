@@ -1,0 +1,41 @@
+
+<div id="main-frame">
+
+    <mat-card style="padding: 0px; z-index: 2;">
+
+        <mat-toolbar class="noselect">
+
+            <button mat-button>
+                <mat-icon> menu </mat-icon>
+            </button>
+
+            <button mat-button style="margin: auto; font-size: large; padding: 4px 32px;">
+                <span> Fitcom. </span>
+            </button>
+            
+            <button mat-button (click)="signin()">
+                <mat-icon> account_circle </mat-icon>
+            </button>
+
+        </mat-toolbar>
+
+        <mat-progress-bar mode="indeterminate" *ngIf="appService.isLoading"></mat-progress-bar>
+
+    </mat-card>
+
+    <router-outlet></router-outlet>
+
+    <!-- <mat-sidenav-container>
+         (click)="sidenav.toggle()"
+        <mat-sidenav #sidenav mode="side">
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container> -->
+
+</div>
