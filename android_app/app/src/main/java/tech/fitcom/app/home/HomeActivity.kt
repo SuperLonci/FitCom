@@ -16,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-        supportActionBar?.title = "Trainingspläne"
+        supportActionBar?.title = getString(R.string.string_training_plans)
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
         val navController = navHostFragment.navController
