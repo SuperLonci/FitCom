@@ -10,8 +10,7 @@ class ExerciseData(
     var value2: Int?,
     val value2type: String?,
     var value2step:Int?,
-    val primaryGroup:String,
-    val secondaryGroup:String?
+    val muscles:ArrayList<ExerciseMuscle>?
 
     ){
         override fun toString(): String {

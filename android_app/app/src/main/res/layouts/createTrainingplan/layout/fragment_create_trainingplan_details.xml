@@ -36,9 +36,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
         android:text="Fertig"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        app:backgroundTint="@color/colorPrimaryDark"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

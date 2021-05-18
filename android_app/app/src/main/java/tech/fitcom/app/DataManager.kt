@@ -5,6 +5,7 @@ import tech.fitcom.app.home.TrainingdayInfo
 import tech.fitcom.app.home.TrainingplanInfo
 import tech.fitcom.app.home.TrophyItemData
 import tech.fitcom.app.training.ExerciseData
+import tech.fitcom.app.training.ExerciseMuscle
 import tech.fitcom.app.training.HistoryData
 
 class DataManager {
@@ -30,6 +31,7 @@ class DataManager {
         initializeHistory()
         initializeSteps()
         initializeTrophies()
+//        initializeExerciseMuscle()
     }
 
     private fun initializeTrainingplans() {
@@ -84,6 +86,19 @@ class DataManager {
     }
 
     private fun initializeExercises(){
+        var exerciseMuscles = ArrayList<ExerciseMuscle>()
+
+        exerciseMuscles.add(
+            ExerciseMuscle("Brust", "", 3)
+        )
+        exerciseMuscles.add(
+            ExerciseMuscle("Trizeps", "", 3)
+        )
+        exerciseMuscles.add(
+            ExerciseMuscle("Rücken", "", 2)
+        )
+
+
         var exercise = ExerciseData(
             "exercise_bench_press",
             "Bankdrücken",
@@ -94,9 +109,7 @@ class DataManager {
             8,
             "Wdh",
             1,
-            "Brust",
-            "Trizeps"
-
+            exerciseMuscles
         )
         exercises.add(exercise)
 
@@ -110,8 +123,7 @@ class DataManager {
             null,
             null,
             null,
-            "Rücken",
-            "Bizeps"
+            exerciseMuscles
         )
         exercises.add(exercise)
 
@@ -125,8 +137,7 @@ class DataManager {
             null,
             null,
             null,
-            "Brust",
-            "Trizeps"
+            exerciseMuscles
         )
         exercises.add(exercise)
 
@@ -140,8 +151,7 @@ class DataManager {
             12,
             "Wdh",
             1,
-            "Brust",
-            null
+            exerciseMuscles
         )
         exercises.add(exercise)
 
@@ -155,8 +165,7 @@ class DataManager {
             15,
             "Wdh",
             1,
-            "Beine",
-            "Gluteus Maximus"
+            exerciseMuscles
         )
         exercises.add(exercise)
 
@@ -170,8 +179,7 @@ class DataManager {
             6,
             "Wdh",
             1,
-            "Beine",
-            "Oberschenkel"
+            exerciseMuscles
         )
         exercises.add(exercise)
 

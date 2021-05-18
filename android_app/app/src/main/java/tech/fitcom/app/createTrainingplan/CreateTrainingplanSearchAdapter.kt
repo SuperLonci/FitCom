@@ -59,6 +59,7 @@ class CreateTrainingplanSearchAdapter(private val context: Context, private val 
                         if (row.title.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
                             resultList.add(row)
                         }
+                        /*
                         if (row.primaryGroup.toLowerCase(Locale.ROOT).contains(charSearch.toLowerCase(Locale.ROOT))) {
                             if (row !in resultList){
                                 resultList.add(row)
@@ -68,7 +69,7 @@ class CreateTrainingplanSearchAdapter(private val context: Context, private val 
                             if (row !in resultList){
                                 resultList.add(row)
                             }
-                        }
+                        }*/
                     }
                     exerciseFilterList = resultList
                 }
