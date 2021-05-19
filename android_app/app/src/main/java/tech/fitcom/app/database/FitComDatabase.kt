@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import tech.fitcom.app.database.dao.ApplicationSettingsDao
 import tech.fitcom.app.database.dao.FitnessCenterMemberDao
 import tech.fitcom.app.database.entity.*
 
@@ -12,13 +13,15 @@ import tech.fitcom.app.database.entity.*
     TrainingsPlanDays::class, TrainingsPlanDayExercises::class,
     TrainingsPlanDayExercisesSets::class, MuscleGroups::class,
     Exercises::class, ExerciseMuscleGroups::class,
-    ExecutedTrainingsPlanDays::class, ApplicationSettings::class], version = 2, exportSchema = false)
+    ExecutedTrainingsPlanDays::class, ApplicationSettings::class], version = 4, exportSchema = false)
 
 @TypeConverters(Converters::class)
 abstract class FitComDatabase : RoomDatabase() {
 
     abstract val fitComDatabaseDao: FitComDatabaseDao
     abstract val fitnessCenterMemberDao: FitnessCenterMemberDao
+    abstract val applicationSettingsDao: ApplicationSettingsDao
+
 
     companion object{
 

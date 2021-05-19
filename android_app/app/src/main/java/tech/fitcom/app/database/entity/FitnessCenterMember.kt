@@ -17,7 +17,7 @@ data class FitnessCenterMember(
     var lastName: String?,
 
     @ColumnInfo(name = "birth_date")
-    var birthDate: Date?,
+    var birthDate: String?,
 
     @ColumnInfo(name = "email")
     var email: String?,

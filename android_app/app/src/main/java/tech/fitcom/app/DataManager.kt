@@ -1,6 +1,6 @@
 package tech.fitcom.app
 
-import tech.fitcom.app.home.HomeItemData
+import tech.fitcom.app.home.FeedItemData
 import tech.fitcom.app.home.TrainingdayInfo
 import tech.fitcom.app.home.TrainingplanInfo
 import tech.fitcom.app.home.TrophyItemData
@@ -12,7 +12,7 @@ class DataManager {
     val trainingplans = HashMap<String, TrainingplanInfo>()
     val trainingdays = HashMap<String, TrainingdayInfo>()
 
-    val homeItems = HashMap<String, HomeItemData>()
+    val homeItems = HashMap<String, FeedItemData>()
 
     val exercises = ArrayList<ExerciseData>()
 
@@ -67,7 +67,7 @@ class DataManager {
     }
 
     private fun initializeHome() {
-        var homeItem = HomeItemData(
+        var homeItem = FeedItemData(
             "homeItem_1",
             "Trainer Thorsten fordert dich heraus!",
             "100 Liegestütze",
@@ -75,7 +75,7 @@ class DataManager {
         )
         homeItems.set(homeItem.homeitemId, homeItem)
 
-        homeItem = HomeItemData(
+        homeItem = FeedItemData(
             "homeItem_2",
             "Marc hat einen neuen Rekord!",
             "100kg Bankdrücken - gratuliere ihm!",

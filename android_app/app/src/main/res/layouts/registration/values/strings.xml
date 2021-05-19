@@ -7,9 +7,11 @@
     <string name="your_email">Deine Email Adresse:</string>
     <string name="for_recovery">zur Wiederherstellung</string>
     <string name="text_email">Email</string>
-    <string name="text_name">Name</string>
+    <string name="text_first_name">Vorname</string>
+    <string name="text_last_name">Nachname</string>
     <string name="text_studioid_input">Studio ID Eingeben</string>
     <string name="text_id">ID</string>
     <string name="start_workout">Workout starten</string>
     <string name="string_training_plans">Trainingspläne</string>
+    <string name="name_input">Wie heißt du?</string>
 </resources>

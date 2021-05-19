@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
-import tech.fitcom.app.home.HomeAdapter
-import tech.fitcom.app.home.TrainingplanAdapter
 
 class CreateTrainingplanFragment : Fragment() {
     override fun onCreateView(

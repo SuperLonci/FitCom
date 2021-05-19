@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 
         //sets a timer for 3 seconds to show the logo in that time
         Handler(Looper.getMainLooper()).postDelayed({
-            Toast.makeText(applicationContext, fitnessCenterMember.value?.firstName, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(applicationContext, fitnessCenterMember.value?.firstName, Toast.LENGTH_SHORT).show()
             //constant for manual start HomeActivity or LoginActivity
             if(fitnessCenterMember.value != null) {
                 val intent = Intent(this@MainActivity, HomeActivity::class.java)

@@ -13,7 +13,7 @@ data class ApplicationSettings(
     var selectedTrainingPlan: String?,
 
     @ColumnInfo(name = "feed_filter")
-    var feedFilter: ArrayList<String>,
+    var feedFilter: String,
 
     @ColumnInfo(name = "dark_mode")
     var dark_mode: Boolean

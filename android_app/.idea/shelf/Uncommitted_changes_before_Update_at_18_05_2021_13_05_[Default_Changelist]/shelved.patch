@@ -1,0 +1,288 @@
+Index: app/src/main/java/tech/fitcom/app/home/HomeAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.home\r\n\r\nimport android.content.Context\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.ImageView\r\nimport android.widget.TextView\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport kotlinx.android.synthetic.main.trainingplan_item.view.*\r\nimport tech.fitcom.app.R\r\n\r\nclass HomeAdapter(private val context: Context, private val homeItems: List<HomeItemData>) :\r\n    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {\r\n\r\n    private val layoutInflater = LayoutInflater.from(context)\r\n\r\n    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){\r\n        val textTitle = itemView?.findViewById<TextView?>(R.id.text_home_item_title)\r\n        val textDesc = itemView?.findViewById<TextView?>(R.id.text_home_item_desc)\r\n        val textPicture = itemView?.findViewById<ImageView?>(R.id.img_home_item_picture)\r\n    }\r\n\r\n    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {\r\n        val itemView = layoutInflater.inflate(R.layout.home_item, parent, false)\r\n        return ViewHolder(itemView)\r\n    }\r\n\r\n    override fun getItemCount(): Int {\r\n        return homeItems.size\r\n    }\r\n\r\n    override fun onBindViewHolder(holder: ViewHolder, position: Int) {\r\n        val homeItem = homeItems[position]\r\n        holder.textTitle?.text = homeItem.title\r\n        holder.textDesc?.text = homeItem.desc\r\n//        holder.textPicture?.irgendwas = homeItem.picture\r\n    }\r\n\r\n    /**\r\n     * Function called to delete swiped items\r\n     */\r\n    fun deleteItem(position: Int) {\r\n        homeItems.drop(position)\r\n        notifyItemRemoved(position)\r\n    }\r\n}
+===================================================================
+--- app/src/main/java/tech/fitcom/app/home/HomeAdapter.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/home/FeedAdapter.kt	(date 1621335493643)
+@@ -7,17 +7,16 @@
+ import android.widget.ImageView
+ import android.widget.TextView
+ import androidx.recyclerview.widget.RecyclerView
+-import kotlinx.android.synthetic.main.trainingplan_item.view.*
+ import tech.fitcom.app.R
+ 
+-class HomeAdapter(private val context: Context, private val homeItems: List<HomeItemData>) :
+-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
++class FeedAdapter(private val context: Context, private val feedItems: List<FeedItemData>) :
++    RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
+ 
+     private val layoutInflater = LayoutInflater.from(context)
+ 
+     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+-        val textTitle = itemView?.findViewById<TextView?>(R.id.text_home_item_title)
+-        val textDesc = itemView?.findViewById<TextView?>(R.id.text_home_item_desc)
++        val textTitle = itemView.findViewById<TextView?>(R.id.text_home_item_title)
++        val textDesc = itemView.findViewById<TextView?>(R.id.text_home_item_desc)
+         val textPicture = itemView?.findViewById<ImageView?>(R.id.img_home_item_picture)
+     }
+ 
+@@ -27,13 +26,13 @@
+     }
+ 
+     override fun getItemCount(): Int {
+-        return homeItems.size
++        return feedItems.size
+     }
+ 
+     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+-        val homeItem = homeItems[position]
+-        holder.textTitle?.text = homeItem.title
+-        holder.textDesc?.text = homeItem.desc
++        val item = feedItems[position]
++        holder.textTitle?.text = item.title
++        holder.textDesc?.text = item.desc
+ //        holder.textPicture?.irgendwas = homeItem.picture
+     }
+ 
+@@ -41,7 +40,7 @@
+      * Function called to delete swiped items
+      */
+     fun deleteItem(position: Int) {
+-        homeItems.drop(position)
++        feedItems.drop(position)
+         notifyItemRemoved(position)
+     }
+ }
+\ No newline at end of file
+Index: app/src/main/java/tech/fitcom/app/registration/NewUser.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.registration\r\n\r\nclass NewUser {\r\n    var studioID: String = \"12345\"\r\n    var username: String = \"Max\"\r\n    var useremail: String? = null\r\n    var usergender: String = \"male\"\r\n    var userheight: Int = 100\r\n    var userweight: Int = 100\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/registration/NewUser.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/registration/NewUser.kt	(date 1621334868232)
+@@ -1,8 +1,12 @@
+ package tech.fitcom.app.registration
+ 
++import java.util.*
++
+ class NewUser {
+     var studioID: String = "12345"
+     var username: String = "Max"
++    var userlastname: String? = null
++    var userbirthdate: Date? = null
+     var useremail: String? = null
+     var usergender: String = "male"
+     var userheight: Int = 100
+Index: app/src/main/java/tech/fitcom/app/home/HomeActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.home\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport androidx.navigation.fragment.NavHostFragment\r\nimport androidx.navigation.ui.AppBarConfiguration\r\nimport androidx.navigation.ui.setupActionBarWithNavController\r\nimport androidx.navigation.ui.setupWithNavController\r\nimport com.google.android.material.bottomnavigation.BottomNavigationView\r\nimport tech.fitcom.app.EnvironmentVariables\r\nimport tech.fitcom.app.R\r\n\r\nclass HomeActivity : AppCompatActivity() {\r\n    //to be remove\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_home)\r\n        supportActionBar?.title = getString(R.string.string_training_plans)\r\n        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)\r\n        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment\r\n        val navController = navHostFragment.navController\r\n        //switch the title in the appBar for each fragment\r\n        val appBarConfig = AppBarConfiguration(setOf(R.id.homeFragement,R.id.trainingFragment,R.id.profileFragment))\r\n        setupActionBarWithNavController(navController, appBarConfig)\r\n\r\n        bottomNavigationView.setupWithNavController(navController)\r\n\r\n        bottomNavigationView.setOnNavigationItemSelectedListener { item ->\r\n            when(item.itemId) {\r\n                R.id.homeFragement -> {\r\n                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()\r\n                    true\r\n                }\r\n                R.id.trainingFragment -> {\r\n                    if (EnvironmentVariables.selectedTrainingplan == null) {\r\n                        supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingplanFragment()).commit()\r\n                    } else {\r\n                        supportFragmentManager.beginTransaction().replace(R.id.fragment, TrainingdayFragment()).commit()\r\n                    }\r\n                    true\r\n                }\r\n                R.id.profileFragment -> {\r\n                    supportFragmentManager.beginTransaction().replace(R.id.fragment, ProfileFragment()).commit()\r\n                    true\r\n                }\r\n                else -> false\r\n\r\n            }\r\n        }\r\n\r\n    }\r\n\r\n    override fun onResume() {\r\n        super.onResume()\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/home/HomeActivity.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/home/HomeActivity.kt	(date 1621335359023)
+@@ -29,7 +29,7 @@
+         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+             when(item.itemId) {
+                 R.id.homeFragement -> {
+-                    supportFragmentManager.beginTransaction().replace(R.id.fragment, HomeFragment()).commit()
++                    supportFragmentManager.beginTransaction().replace(R.id.fragment, FeedFragment()).commit()
+                     true
+                 }
+                 R.id.trainingFragment -> {
+Index: app/src/main/java/tech/fitcom/app/home/HomeItemData.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.home\r\n\r\nclass HomeItemData(val homeitemId: String, val title: String, val desc: String, val picture: String){\r\n    override fun toString(): String {\r\n        return title\r\n    }\r\n}\r\n
+===================================================================
+--- app/src/main/java/tech/fitcom/app/home/HomeItemData.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/home/FeedItemData.kt	(date 1621335359045)
+@@ -1,6 +1,6 @@
+ package tech.fitcom.app.home
+ 
+-class HomeItemData(val homeitemId: String, val title: String, val desc: String, val picture: String){
++class FeedItemData(val homeitemId: String, val title: String, val desc: String, val picture: String){
+     override fun toString(): String {
+         return title
+     }
+Index: app/src/main/java/tech/fitcom/app/DataManager.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app\r\n\r\nimport tech.fitcom.app.home.HomeItemData\r\nimport tech.fitcom.app.home.TrainingdayInfo\r\nimport tech.fitcom.app.home.TrainingplanInfo\r\nimport tech.fitcom.app.home.TrophyItemData\r\nimport tech.fitcom.app.training.ExerciseData\r\nimport tech.fitcom.app.training.ExerciseMuscle\r\nimport tech.fitcom.app.training.HistoryData\r\n\r\nclass DataManager {\r\n    val trainingplans = HashMap<String, TrainingplanInfo>()\r\n    val trainingdays = HashMap<String, TrainingdayInfo>()\r\n\r\n    val homeItems = HashMap<String, HomeItemData>()\r\n\r\n    val exercises = ArrayList<ExerciseData>()\r\n\r\n    val histories = ArrayList<HistoryData>()\r\n\r\n    val steps = ArrayList<String>()\r\n\r\n    val trophies = ArrayList<TrophyItemData>()\r\n\r\n\r\n    init {\r\n        initializeTrainingplans()\r\n        initializeTrainingdays()\r\n        initializeHome()\r\n        initializeExercises()\r\n        initializeHistory()\r\n        initializeSteps()\r\n        initializeTrophies()\r\n//        initializeExerciseMuscle()\r\n    }\r\n\r\n    private fun initializeTrainingplans() {\r\n        var trainingplan = TrainingplanInfo(\r\n            \"3er_split\",\r\n            \"3er Split\",\r\n            \"Alle wichtigen Übungen an drei spannenden Trainingstagen\",\r\n            \"Empfehlung deines Trainers\"\r\n        )\r\n        trainingplans.set(trainingplan.trainingplanId, trainingplan)\r\n\r\n        trainingplan = TrainingplanInfo(\r\n            \"5er_split\",\r\n            \"5er Split\",\r\n            \"Jeder Muskelpartie wird an einem Tag die volle Aufmerksamkeit geschenkt\",\r\n            \"\"\r\n        )\r\n        trainingplans.set(trainingplan.trainingplanId, trainingplan)\r\n\r\n    }\r\n\r\n    private fun initializeTrainingdays() {\r\n        var trainingday = TrainingdayInfo(\"3er_split_1\", \"Brust\", \"Drück alles weg!\", \"vor 2 Tagen\")\r\n        trainingdays.set(trainingday.trainingdayId, trainingday)\r\n\r\n        trainingday = TrainingdayInfo(\"3er_split_2\", \"Rücken\", \"Ziehen mal anders\", \"gerade eben\")\r\n        trainingdays.set(trainingday.trainingdayId, trainingday)\r\n\r\n        trainingday =\r\n            TrainingdayInfo(\"3er_split_3\", \"Bauch Beine Po\", \"Für unsere Cardiomäuschen\", \"vor 1 Tag\")\r\n        trainingdays.set(trainingday.trainingdayId, trainingday)\r\n\r\n    }\r\n\r\n    private fun initializeHome() {\r\n        var homeItem = HomeItemData(\r\n            \"homeItem_1\",\r\n            \"Trainer Thorsten fordert dich heraus!\",\r\n            \"100 Liegestütze\",\r\n            \"Bild\"\r\n        )\r\n        homeItems.set(homeItem.homeitemId, homeItem)\r\n\r\n        homeItem = HomeItemData(\r\n            \"homeItem_2\",\r\n            \"Marc hat einen neuen Rekord!\",\r\n            \"100kg Bankdrücken - gratuliere ihm!\",\r\n            \"\"\r\n        )\r\n        homeItems.set(homeItem.homeitemId, homeItem)\r\n\r\n    }\r\n\r\n    private fun initializeExercises(){\r\n        var exerciseMuscles = ArrayList<ExerciseMuscle>()\r\n\r\n        exerciseMuscles.add(\r\n            ExerciseMuscle(\"Brust\", \"\", 3)\r\n        )\r\n        exerciseMuscles.add(\r\n            ExerciseMuscle(\"Trizeps\", \"\", 3)\r\n        )\r\n        exerciseMuscles.add(\r\n            ExerciseMuscle(\"Rücken\", \"\", 2)\r\n        )\r\n\r\n\r\n        var exercise = ExerciseData(\r\n            \"exercise_bench_press\",\r\n            \"Bankdrücken\",\r\n            \"Auf und ab\",\r\n            100,\r\n            \"kg\",\r\n            10,\r\n            8,\r\n            \"Wdh\",\r\n            1,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n        exercise = ExerciseData(\r\n            \"exercise_pull_up\",\r\n            \"Klimmzüge\",\r\n            \"Hoch und runter\",\r\n            10,\r\n            \"Wdh\",\r\n            1,\r\n            null,\r\n            null,\r\n            null,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n        exercise = ExerciseData(\r\n            \"exercise_push_up\",\r\n            \"Liegestütze\",\r\n            \"Hoch und runter\",\r\n            50,\r\n            \"Wdh\",\r\n            1,\r\n            null,\r\n            null,\r\n            null,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n        exercise = ExerciseData(\r\n            \"exercise_bizeps_curl\",\r\n            \"Bizeps-Curls\",\r\n            \"Hoch und runter\",\r\n            15,\r\n            \"kg\",\r\n            10,\r\n            12,\r\n            \"Wdh\",\r\n            1,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n        exercise = ExerciseData(\r\n            \"exercise_squat\",\r\n            \"Kniebeuge\",\r\n            \"Hoch und runter\",\r\n            120,\r\n            \"kg\",\r\n            10,\r\n            15,\r\n            \"Wdh\",\r\n            1,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n        exercise = ExerciseData(\r\n            \"exercise_leg_press\",\r\n            \"Beinpresse\",\r\n            \"Hoch und runter\",\r\n            150,\r\n            \"kg\",\r\n            10,\r\n            6,\r\n            \"Wdh\",\r\n            1,\r\n            exerciseMuscles\r\n        )\r\n        exercises.add(exercise)\r\n\r\n    }\r\n\r\n    private fun initializeHistory() {\r\n        var history = HistoryData(\r\n            \"Bankdrücken\",\r\n            100,\r\n            \"kg\",\r\n            12,\r\n            \"Wdh\",\r\n            \"gerade\"\r\n        )\r\n        histories.add(history)\r\n\r\n        history = HistoryData(\r\n            \"Bankdrücken\",\r\n            90,\r\n            \"kg\",\r\n            10,\r\n            \"Wdh\",\r\n            \"vor 10 Minuten\"\r\n        )\r\n        histories.add(history)\r\n\r\n        history = HistoryData(\r\n            \"Bankdrücken\",\r\n            80,\r\n            \"kg\",\r\n            8,\r\n            \"Wdh\",\r\n            \"vor 3 Tagen\"\r\n        )\r\n        histories.add(history)\r\n    }\r\n\r\n    private fun initializeSteps() {\r\n        steps.add(\"1\")\r\n        steps.add(\"2\")\r\n        steps.add(\"5\")\r\n        steps.add(\"10\")\r\n        steps.add(\"20\")\r\n    }\r\n\r\n    private fun initializeTrophies() {\r\n        var trophy = TrophyItemData(\r\n            \"Trophäe 1\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 2\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 3\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 4\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 5\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 5\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 5\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n\r\n        trophy = TrophyItemData(\r\n            \"Trophäe 5\",\r\n            \"mache tolle Dinge\",\r\n            R.drawable.baseline_emoji_events_24\r\n        )\r\n        trophies.add(trophy)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/DataManager.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/DataManager.kt	(date 1621335359030)
+@@ -1,6 +1,6 @@
+ package tech.fitcom.app
+ 
+-import tech.fitcom.app.home.HomeItemData
++import tech.fitcom.app.home.FeedItemData
+ import tech.fitcom.app.home.TrainingdayInfo
+ import tech.fitcom.app.home.TrainingplanInfo
+ import tech.fitcom.app.home.TrophyItemData
+@@ -12,7 +12,7 @@
+     val trainingplans = HashMap<String, TrainingplanInfo>()
+     val trainingdays = HashMap<String, TrainingdayInfo>()
+ 
+-    val homeItems = HashMap<String, HomeItemData>()
++    val homeItems = HashMap<String, FeedItemData>()
+ 
+     val exercises = ArrayList<ExerciseData>()
+ 
+@@ -67,7 +67,7 @@
+     }
+ 
+     private fun initializeHome() {
+-        var homeItem = HomeItemData(
++        var homeItem = FeedItemData(
+             "homeItem_1",
+             "Trainer Thorsten fordert dich heraus!",
+             "100 Liegestütze",
+@@ -75,7 +75,7 @@
+         )
+         homeItems.set(homeItem.homeitemId, homeItem)
+ 
+-        homeItem = HomeItemData(
++        homeItem = FeedItemData(
+             "homeItem_2",
+             "Marc hat einen neuen Rekord!",
+             "100kg Bankdrücken - gratuliere ihm!",
+Index: app/src/main/java/tech/fitcom/app/createTrainingplan/CreateTrainingplanFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.createTrainingplan\r\n\r\nimport android.os.Bundle\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.SearchView\r\nimport androidx.fragment.app.Fragment\r\nimport androidx.navigation.Navigation\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport tech.fitcom.app.DataManager\r\nimport tech.fitcom.app.R\r\nimport tech.fitcom.app.home.HomeAdapter\r\nimport tech.fitcom.app.home.TrainingplanAdapter\r\n\r\nclass CreateTrainingplanFragment : Fragment() {\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        // Inflate the layout for this fragment\r\n        val root = inflater.inflate(R.layout.fragment_create_trainingplan, container, false)\r\n\r\n        // Button Navigation\r\n        val next = root.findViewById<Button>(R.id.btn_create_trainingplan_next)\r\n        next.setOnClickListener {\r\n            Navigation.findNavController(root).navigate(R.id.CreateTrainingplan_details)\r\n        }\r\n\r\n        // Data Manager for TrainingPlanList\r\n        val rv = root.findViewById<RecyclerView>(R.id.rv_create_trainingsplan_select)\r\n\r\n        val adapter = CreateTrainingplanSearchAdapter(requireContext(), DataManager().exercises)\r\n\r\n        rv.adapter =  adapter\r\n\r\n        rv.layoutManager = LinearLayoutManager(context)\r\n\r\n        // Search Bar\r\n        val search_create_trainingplan = root.findViewById<SearchView>(R.id.search_create_trainingplan)\r\n\r\n        search_create_trainingplan.setOnQueryTextListener(object: SearchView.OnQueryTextListener{\r\n            override fun onQueryTextSubmit(query: String?): Boolean {\r\n                return false\r\n            }\r\n\r\n            override fun onQueryTextChange(newText: String?): Boolean {\r\n                adapter.filter.filter(newText)\r\n                return false\r\n            }\r\n\r\n        })\r\n\r\n        return root\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/createTrainingplan/CreateTrainingplanFragment.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/createTrainingplan/CreateTrainingplanFragment.kt	(date 1621335359058)
+@@ -12,8 +12,6 @@
+ import androidx.recyclerview.widget.RecyclerView
+ import tech.fitcom.app.DataManager
+ import tech.fitcom.app.R
+-import tech.fitcom.app.home.HomeAdapter
+-import tech.fitcom.app.home.TrainingplanAdapter
+ 
+ class CreateTrainingplanFragment : Fragment() {
+     override fun onCreateView(
+Index: app/src/main/java/tech/fitcom/app/registration/UserCheckInputs.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.registration\r\n\r\nimport android.os.Bundle\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport android.widget.Button\r\nimport android.widget.TextView\r\nimport androidx.navigation.Navigation\r\nimport kotlinx.coroutines.*\r\nimport tech.fitcom.app.EnvironmentVariables\r\nimport tech.fitcom.app.R\r\nimport tech.fitcom.app.database.FitComDatabase\r\nimport tech.fitcom.app.database.dao.FitnessCenterMemberDao\r\nimport tech.fitcom.app.database.entity.FitnessCenterMember\r\n\r\nclass UserCheckInputs : Fragment() {\r\n\r\n    private var job = Job()\r\n    private val uiScope = CoroutineScope(Dispatchers.Main + job)\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        // Inflate the layout for this fragment\r\n        val root = inflater.inflate(R.layout.fragment_user_check_inputs, container, false)\r\n        val fitnessCenterMemberDao = FitComDatabase.getInstance(requireContext()).fitnessCenterMemberDao\r\n\r\n        //val dataSource = FitComDatabase.getInstance(requireContext()).fitComDatabaseDao\r\n\r\n        root.findViewById<TextView>(R.id.check_studio_id).text = user.studioID.toString()\r\n        root.findViewById<TextView>(R.id.usr_name).text = user.username\r\n        root.findViewById<TextView>(R.id.usr_email).text = user.useremail\r\n        root.findViewById<TextView>(R.id.usr_gender).text = user.usergender\r\n        root.findViewById<TextView>(R.id.usr_height).text = (user.userheight.toString() + \" cm\")\r\n        root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + \" kg\")\r\n\r\n        root.findViewById<Button>(R.id.btn_yes).setOnClickListener {\r\n            val databaseUser = FitnessCenterMember(\"1\", user.username,null, null, user.useremail, null, user.userweight, user.userheight, user.usergender)\r\n            initializeUser(databaseUser, fitnessCenterMemberDao)\r\n            // ToDo: Datenbankanfrage senden\r\n            Navigation.findNavController(root).navigate(R.id.registrationConfirmation)\r\n\r\n            // Die Environment Variablen müssen lokal gespeichert werden\r\n            // Wenn erfolgreich\r\n            EnvironmentVariables.registered = true\r\n\r\n        }\r\n        root.findViewById<Button>(R.id.btn_no).setOnClickListener {\r\n            Navigation.findNavController(root).navigate(R.id.nameInput)\r\n        }\r\n        root.findViewById<Button>(R.id.btn_maybe).setOnClickListener {\r\n            // ToDo: Funny Popup\r\n        }\r\n\r\n        return root\r\n    }\r\n\r\n    private fun initializeUser(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao) {\r\n        uiScope.launch {\r\n            insertFitnessCenterMember(fitnessCenterMember, fitnessCenterMemberDao)\r\n        }\r\n    }\r\n\r\n    private suspend fun insertFitnessCenterMember(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao){\r\n        return withContext(Dispatchers.IO) {\r\n            fitnessCenterMemberDao.insertFitnessCenterMember(fitnessCenterMember)\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/registration/UserCheckInputs.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/registration/UserCheckInputs.kt	(date 1621334868224)
+@@ -32,13 +32,15 @@
+ 
+         root.findViewById<TextView>(R.id.check_studio_id).text = user.studioID.toString()
+         root.findViewById<TextView>(R.id.usr_name).text = user.username
++//        root.findViewById<TextView>(R.id.usr_last_name).text = user.userlastname
++//        root.findViewById<TextView>(R.id.usr_birth_date).text = user.userbirth_date
+         root.findViewById<TextView>(R.id.usr_email).text = user.useremail
+         root.findViewById<TextView>(R.id.usr_gender).text = user.usergender
+         root.findViewById<TextView>(R.id.usr_height).text = (user.userheight.toString() + " cm")
+         root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + " kg")
+ 
+         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
+-            val databaseUser = FitnessCenterMember("1", user.username,null, null, user.useremail, null, user.userweight, user.userheight, user.usergender)
++            val databaseUser = FitnessCenterMember("1", user.username, null, null, user.useremail, user.userweight, user.userheight, user.usergender)
+             initializeUser(databaseUser, fitnessCenterMemberDao)
+             // ToDo: Datenbankanfrage senden
+             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
+Index: app/src/main/java/tech/fitcom/app/home/HomeDragAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.home\r\n\r\nimport android.content.Context\r\nimport androidx.recyclerview.widget.ItemTouchHelper\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport tech.fitcom.app.training.TrainingDayExerciseAdapter\r\n\r\nclass HomeDragAdapter(context: Context, adapter: HomeAdapter, dragDirs: Int, swipeDirs: Int) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {\r\n    var HomeAdapter = adapter\r\n\r\n    override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean\r\n    {\r\n        return true\r\n    }\r\n\r\n    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int)\r\n    {\r\n        HomeAdapter.deleteItem(viewHolder.bindingAdapterPosition)\r\n    }\r\n}\r\n
+===================================================================
+--- app/src/main/java/tech/fitcom/app/home/HomeDragAdapter.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/home/FeedDragAdapter.kt	(date 1621335359064)
+@@ -3,9 +3,8 @@
+ import android.content.Context
+ import androidx.recyclerview.widget.ItemTouchHelper
+ import androidx.recyclerview.widget.RecyclerView
+-import tech.fitcom.app.training.TrainingDayExerciseAdapter
+ 
+-class HomeDragAdapter(context: Context, adapter: HomeAdapter, dragDirs: Int, swipeDirs: Int) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
++class FeedDragAdapter(context: Context, adapter: FeedAdapter, dragDirs: Int, swipeDirs: Int) : ItemTouchHelper.SimpleCallback(dragDirs, swipeDirs) {
+     var HomeAdapter = adapter
+ 
+     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean
+Index: app/src/main/java/tech/fitcom/app/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.os.Handler\r\nimport android.os.Looper\r\nimport android.widget.Toast\r\nimport androidx.lifecycle.MutableLiveData\r\nimport kotlinx.coroutines.*\r\nimport tech.fitcom.app.database.FitComDatabase\r\nimport tech.fitcom.app.database.dao.FitnessCenterMemberDao\r\nimport tech.fitcom.app.database.entity.FitnessCenterMember\r\nimport tech.fitcom.app.home.HomeActivity\r\nimport tech.fitcom.app.registration.WelcomeActivity\r\n\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    private var job = Job()\r\n    private val uiScope = CoroutineScope(Dispatchers.Main + job)\r\n    private var fitnessCenterMember = MutableLiveData<FitnessCenterMember>()\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n\r\n        val fitnessCenterMemberDao = FitComDatabase.getInstance(applicationContext).fitnessCenterMemberDao\r\n\r\n\r\n        //hides the action bar in the loading screen\r\n        supportActionBar?.hide()\r\n\r\n        existFitnessCenterMember(fitnessCenterMemberDao)\r\n\r\n\r\n        //sets a timer for 3 seconds to show the logo in that time\r\n        Handler(Looper.getMainLooper()).postDelayed({\r\n            Toast.makeText(applicationContext, fitnessCenterMember.value?.firstName, Toast.LENGTH_SHORT).show()\r\n            //constant for manual start HomeActivity or LoginActivity\r\n            if(fitnessCenterMember.value != null) {\r\n                val intent = Intent(this@MainActivity, HomeActivity::class.java)\r\n                startActivity(intent)\r\n            }\r\n            else {\r\n                val intent = Intent(this@MainActivity, WelcomeActivity::class.java)\r\n                startActivity(intent)\r\n            }\r\n            finish()\r\n        }, 2000)\r\n    }\r\n\r\n    private fun existFitnessCenterMember(fitnessCenterMemberDao: FitnessCenterMemberDao) {\r\n        uiScope.launch {\r\n            //dropTable(fitnessCenterMemberDao)\r\n            fitnessCenterMember.value = getFitnessCenterMember(fitnessCenterMemberDao)\r\n        }\r\n    }\r\n\r\n    private suspend fun getFitnessCenterMember(fitnessCenterMemberDao: FitnessCenterMemberDao): FitnessCenterMember {\r\n        return withContext(Dispatchers.IO) {\r\n            var fitnessCenterMember = fitnessCenterMemberDao.get(\"1\")\r\n            fitnessCenterMember\r\n        }\r\n    }\r\n\r\n    //only for development purpose\r\n    private suspend fun dropTable(fitnessCenterMemberDao: FitnessCenterMemberDao) {\r\n        return withContext(Dispatchers.IO) {\r\n            fitnessCenterMemberDao.deleteFitnessCenterTable()\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/tech/fitcom/app/MainActivity.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/MainActivity.kt	(date 1621334202723)
+@@ -36,7 +36,7 @@
+ 
+         //sets a timer for 3 seconds to show the logo in that time
+         Handler(Looper.getMainLooper()).postDelayed({
+-            Toast.makeText(applicationContext, fitnessCenterMember.value?.firstName, Toast.LENGTH_SHORT).show()
++//            Toast.makeText(applicationContext, fitnessCenterMember.value?.firstName, Toast.LENGTH_SHORT).show()
+             //constant for manual start HomeActivity or LoginActivity
+             if(fitnessCenterMember.value != null) {
+                 val intent = Intent(this@MainActivity, HomeActivity::class.java)
+Index: app/src/main/java/tech/fitcom/app/home/HomeFragment.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package tech.fitcom.app.home\r\n\r\nimport android.os.Bundle\r\nimport androidx.fragment.app.Fragment\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport androidx.recyclerview.widget.ItemTouchHelper\r\nimport androidx.recyclerview.widget.LinearLayoutManager\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport tech.fitcom.app.DataManager\r\nimport tech.fitcom.app.R\r\nimport tech.fitcom.app.training.ExerciseOverviewDragAdapter\r\n\r\nclass HomeFragment : Fragment() {\r\n\r\n    override fun onCreateView(\r\n        inflater: LayoutInflater, container: ViewGroup?,\r\n        savedInstanceState: Bundle?\r\n    ): View? {\r\n        // Inflate the layout for this fragment\r\n        val root = inflater.inflate(R.layout.fragment_home, container, false)\r\n\r\n        // Recycler View definition\r\n\r\n        // Data Manager for TrainingPlanList\r\n        val rvHome = root.findViewById<RecyclerView>(R.id.recyclerView_Home)\r\n\r\n        val itemAdapter = HomeAdapter(requireContext(), DataManager().homeItems.values.toList())\r\n        rvHome.adapter = itemAdapter\r\n\r\n        rvHome.layoutManager = LinearLayoutManager(context)\r\n\r\n        // Setup ItemTouchHelper\r\n        val callback = HomeDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))\r\n        ItemTouchHelper(callback).attachToRecyclerView(rvHome)\r\n\r\n        return root\r\n    }\r\n}
+===================================================================
+--- app/src/main/java/tech/fitcom/app/home/HomeFragment.kt	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/java/tech/fitcom/app/home/FeedFragment.kt	(date 1621335359037)
+@@ -10,9 +10,8 @@
+ import androidx.recyclerview.widget.RecyclerView
+ import tech.fitcom.app.DataManager
+ import tech.fitcom.app.R
+-import tech.fitcom.app.training.ExerciseOverviewDragAdapter
+ 
+-class HomeFragment : Fragment() {
++class FeedFragment : Fragment() {
+ 
+     override fun onCreateView(
+         inflater: LayoutInflater, container: ViewGroup?,
+@@ -26,13 +25,13 @@
+         // Data Manager for TrainingPlanList
+         val rvHome = root.findViewById<RecyclerView>(R.id.recyclerView_Home)
+ 
+-        val itemAdapter = HomeAdapter(requireContext(), DataManager().homeItems.values.toList())
++        val itemAdapter = FeedAdapter(requireContext(), DataManager().homeItems.values.toList())
+         rvHome.adapter = itemAdapter
+ 
+         rvHome.layoutManager = LinearLayoutManager(context)
+ 
+         // Setup ItemTouchHelper
+-        val callback = HomeDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
++        val callback = FeedDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
+         ItemTouchHelper(callback).attachToRecyclerView(rvHome)
+ 
+         return root
+Index: app/src/main/res/layouts/navigation/navigation_bar.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<navigation xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/navigation_bar\"\r\n    app:startDestination=\"@id/homeFragement\">\r\n\r\n    <fragment\r\n        android:id=\"@+id/homeFragement\"\r\n        android:name=\"tech.fitcom.app.home.HomeFragment\"\r\n        android:label=\"Home\"\r\n        tools:layout=\"@layout/fragment_home\" />\r\n\r\n    <fragment\r\n        android:id=\"@+id/trainingFragment\"\r\n        android:name=\"tech.fitcom.app.home.TrainingplanFragment\"\r\n        android:label=\"Training\"\r\n        tools:layout=\"@layout/fragment_trainingplan\" >\r\n        <action\r\n            android:id=\"@+id/action_trainingFragment_to_trainingdayFragment\"\r\n            app:destination=\"@id/trainingdayFragment\" />\r\n    </fragment>\r\n    <fragment\r\n        android:id=\"@+id/trainingdayFragment\"\r\n        android:name=\"tech.fitcom.app.home.TrainingplanFragment\"\r\n        android:label=\"Trainingday\"\r\n        tools:layout=\"@layout/fragment_trainingday\" />\r\n\r\n    <fragment\r\n        android:id=\"@+id/profileFragment\"\r\n        android:name=\"tech.fitcom.app.home.ProfileFragment\"\r\n        android:label=\"Profile\"\r\n        tools:layout=\"@layout/fragment_profile\" />\r\n</navigation>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layouts/navigation/navigation_bar.xml	(revision 36d9b2923aed0c4d84f93c665154dd0c50d29f7f)
++++ app/src/main/res/layouts/navigation/navigation_bar.xml	(date 1621335359012)
+@@ -7,7 +7,7 @@
+ 
+     <fragment
+         android:id="@+id/homeFragement"
+-        android:name="tech.fitcom.app.home.HomeFragment"
++        android:name="tech.fitcom.app.home.FeedFragment"
+         android:label="Home"
+         tools:layout="@layout/fragment_home" />
+ 

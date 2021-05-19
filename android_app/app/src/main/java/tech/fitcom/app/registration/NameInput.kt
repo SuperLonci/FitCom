@@ -22,7 +22,7 @@ class NameInput : Fragment() {
         val next = root.findViewById<Button>(R.id.next)
 
         next.setOnClickListener {
-            val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputName)
+            val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputFirstName)
             val textfield = root.findViewById<EditText>(R.id.editText_name)
 
             if(textfield.text.length > 15) {

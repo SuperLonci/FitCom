@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name"
+            android:text="Vorname"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/usr_name"
@@ -64,6 +64,39 @@
             android:textSize="20sp"/>
 
     </TableRow>
+
+    <TableRow android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nachname"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/usr_last_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"/>
+
+    </TableRow>
+
+    <TableRow android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Geburtsdatum"
+            android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/usr_birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20sp"/>
+
+    </TableRow>
+
     <TableRow android:padding="10dp">
         <TextView
             android:layout_width="wrap_content"
@@ -84,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Gender"
+            android:text="Geschlecht"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/usr_gender"
@@ -99,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Height"
+            android:text="Größe"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/usr_height"
@@ -115,7 +148,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Weight"
+            android:text="Gewicht"
             android:textSize="20sp"/>
         <TextView
             android:id="@+id/usr_weight"

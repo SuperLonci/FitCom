@@ -7,17 +7,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.trainingplan_item.view.*
 import tech.fitcom.app.R
 
-class HomeAdapter(private val context: Context, private val homeItems: List<HomeItemData>) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class FeedAdapter(private val context: Context, private val feedItems: MutableList<FeedItemData>) :
+    RecyclerView.Adapter<FeedAdapter.ViewHolder>() {
 
     private val layoutInflater = LayoutInflater.from(context)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textTitle = itemView?.findViewById<TextView?>(R.id.text_home_item_title)
-        val textDesc = itemView?.findViewById<TextView?>(R.id.text_home_item_desc)
+        val textTitle = itemView.findViewById<TextView?>(R.id.text_home_item_title)
+        val textDesc = itemView.findViewById<TextView?>(R.id.text_home_item_desc)
         val textPicture = itemView?.findViewById<ImageView?>(R.id.img_home_item_picture)
     }
 
@@ -27,13 +26,13 @@ class HomeAdapter(private val context: Context, private val homeItems: List<Home
     }
 
     override fun getItemCount(): Int {
-        return homeItems.size
+        return feedItems.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val homeItem = homeItems[position]
-        holder.textTitle?.text = homeItem.title
-        holder.textDesc?.text = homeItem.desc
+        val item = feedItems[position]
+        holder.textTitle?.text = item.title
+        holder.textDesc?.text = item.desc
 //        holder.textPicture?.irgendwas = homeItem.picture
     }
 
@@ -41,7 +40,7 @@ class HomeAdapter(private val context: Context, private val homeItems: List<Home
      * Function called to delete swiped items
      */
     fun deleteItem(position: Int) {
-        homeItems.drop(position)
+        feedItems.removeAt(position)
         notifyItemRemoved(position)
     }
 }

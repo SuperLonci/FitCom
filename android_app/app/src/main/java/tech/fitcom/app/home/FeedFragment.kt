@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tech.fitcom.app.DataManager
 import tech.fitcom.app.R
-import tech.fitcom.app.training.ExerciseOverviewDragAdapter
 
-class HomeFragment : Fragment() {
+class FeedFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,13 +25,13 @@ class HomeFragment : Fragment() {
         // Data Manager for TrainingPlanList
         val rvHome = root.findViewById<RecyclerView>(R.id.recyclerView_Home)
 
-        val itemAdapter = HomeAdapter(requireContext(), DataManager().homeItems.values.toList())
+        val itemAdapter = FeedAdapter(requireContext(), DataManager().homeItems.values.toMutableList())
         rvHome.adapter = itemAdapter
 
         rvHome.layoutManager = LinearLayoutManager(context)
 
         // Setup ItemTouchHelper
-        val callback = HomeDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
+        val callback = FeedDragAdapter(requireContext(), itemAdapter, ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), ItemTouchHelper.LEFT.or(ItemTouchHelper.RIGHT))
         ItemTouchHelper(callback).attachToRecyclerView(rvHome)
 
         return root

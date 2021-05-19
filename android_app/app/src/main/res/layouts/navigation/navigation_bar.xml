@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragement"
-        android:name="tech.fitcom.app.home.HomeFragment"
+        android:name="tech.fitcom.app.home.FeedFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
 
