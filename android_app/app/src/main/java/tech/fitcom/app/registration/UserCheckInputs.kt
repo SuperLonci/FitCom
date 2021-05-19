@@ -8,17 +8,11 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.Navigation
-import kotlinx.coroutines.*
+import kotlinx.android.synthetic.main.fragment_user_check_inputs.*
 import tech.fitcom.app.EnvironmentVariables
 import tech.fitcom.app.R
-import tech.fitcom.app.database.FitComDatabase
-import tech.fitcom.app.database.dao.FitnessCenterMemberDao
-import tech.fitcom.app.database.entity.FitnessCenterMember
 
 class UserCheckInputs : Fragment() {
-
-    private var job = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,22 +20,26 @@ class UserCheckInputs : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_user_check_inputs, container, false)
-        val fitnessCenterMemberDao = FitComDatabase.getInstance(requireContext()).fitnessCenterMemberDao
-
-        //val dataSource = FitComDatabase.getInstance(requireContext()).fitComDatabaseDao
 
         root.findViewById<TextView>(R.id.check_studio_id).text = user.studioID.toString()
+<<<<<<< Updated upstream
         root.findViewById<TextView>(R.id.usr_name).text = user.username
+=======
+        root.findViewById<TextView>(R.id.usr_name).text = user.userfirstname
         root.findViewById<TextView>(R.id.usr_last_name).text = user.userlastname
         root.findViewById<TextView>(R.id.usr_birth_date).text = user.userbirthdate
+>>>>>>> Stashed changes
         root.findViewById<TextView>(R.id.usr_email).text = user.useremail
         root.findViewById<TextView>(R.id.usr_gender).text = user.usergender
         root.findViewById<TextView>(R.id.usr_height).text = (user.userheight.toString() + " cm")
         root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + " kg")
 
         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
-            val databaseUser = FitnessCenterMember("1", user.username, user.userlastname, user.userbirthdate, user.useremail, user.userweight, user.userheight, user.usergender)
+<<<<<<< Updated upstream
+=======
+            val databaseUser = FitnessCenterMember("1", user.userfirstname, user.userlastname, user.userbirthdate, user.useremail, user.userweight, user.userheight, user.usergender)
             initializeUser(databaseUser, fitnessCenterMemberDao)
+>>>>>>> Stashed changes
             // ToDo: Datenbankanfrage senden
             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
 
@@ -58,17 +56,5 @@ class UserCheckInputs : Fragment() {
         }
 
         return root
-    }
-
-    private fun initializeUser(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao) {
-        uiScope.launch {
-            insertFitnessCenterMember(fitnessCenterMember, fitnessCenterMemberDao)
-        }
-    }
-
-    private suspend fun insertFitnessCenterMember(fitnessCenterMember: FitnessCenterMember, fitnessCenterMemberDao: FitnessCenterMemberDao){
-        return withContext(Dispatchers.IO) {
-            fitnessCenterMemberDao.insertFitnessCenterMember(fitnessCenterMember)
-        }
     }
 }
