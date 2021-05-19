@@ -16,12 +16,14 @@ import tech.fitcom.app.database.dao.ApplicationSettingsDao
 import tech.fitcom.app.database.dao.FitnessCenterMemberDao
 import tech.fitcom.app.database.entity.ApplicationSettings
 import tech.fitcom.app.database.entity.FitnessCenterMember
+import tech.fitcom.app.database.repository.ApplicationSettingsRepositoryImpl
 
 class HomeActivity : AppCompatActivity() {
 
     private var job = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
     private var applicationSettings = MutableLiveData<ApplicationSettings>()
+    private val applicationSettingsRepository = ApplicationSettingsRepositoryImpl(applicationContext)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +32,7 @@ class HomeActivity : AppCompatActivity() {
         supportActionBar?.title = getString(R.string.string_training_plans)
 
         // Database connection
-        val applicationSettingsDao = FitComDatabase.getInstance(applicationContext).applicationSettingsDao
-        existApplicationSettings(applicationSettingsDao)
+        getApplicationSettings("1")
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment) as NavHostFragment
@@ -65,19 +66,11 @@ class HomeActivity : AppCompatActivity() {
 
             }
         }
-
     }
 
-    private fun existApplicationSettings(applicationSettingsDao: ApplicationSettingsDao) {
+    private fun getApplicationSettings(id: String) {
         uiScope.launch {
-            applicationSettings.value = getApplicationSettings(applicationSettingsDao)
-        }
-    }
-
-    private suspend fun getApplicationSettings(applicationSettingsDao: ApplicationSettingsDao): ApplicationSettings {
-        return withContext(Dispatchers.IO) {
-            var applicationSettings = applicationSettingsDao.get("1")
-            applicationSettings
+            applicationSettings.value = applicationSettingsRepository.getApplicationSettings(id)
         }
     }
 
