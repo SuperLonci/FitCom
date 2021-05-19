@@ -4,7 +4,7 @@ import java.util.*
 
 class NewUser {
     var studioID: String = "12345"
-    var username: String = "Max"
+    var userfirstname: String = "Max"
     var userlastname: String? = null
     var userbirthdate: String? = null
     var useremail: String? = null

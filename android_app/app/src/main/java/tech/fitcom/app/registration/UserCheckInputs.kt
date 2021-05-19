@@ -31,7 +31,7 @@ class UserCheckInputs : Fragment() {
         //val dataSource = FitComDatabase.getInstance(requireContext()).fitComDatabaseDao
 
         root.findViewById<TextView>(R.id.check_studio_id).text = user.studioID.toString()
-        root.findViewById<TextView>(R.id.usr_name).text = user.username
+        root.findViewById<TextView>(R.id.usr_name).text = user.userfirstname
         root.findViewById<TextView>(R.id.usr_last_name).text = user.userlastname
         root.findViewById<TextView>(R.id.usr_birth_date).text = user.userbirthdate
         root.findViewById<TextView>(R.id.usr_email).text = user.useremail
@@ -40,7 +40,7 @@ class UserCheckInputs : Fragment() {
         root.findViewById<TextView>(R.id.usr_weight).text = (user.userweight.toString() + " kg")
 
         root.findViewById<Button>(R.id.btn_yes).setOnClickListener {
-            val databaseUser = FitnessCenterMember("1", user.username, user.userlastname, user.userbirthdate, user.useremail, user.userweight, user.userheight, user.usergender)
+            val databaseUser = FitnessCenterMember("1", user.userfirstname, user.userlastname, user.userbirthdate, user.useremail, user.userweight, user.userheight, user.usergender)
             initializeUser(databaseUser, fitnessCenterMemberDao)
             // ToDo: Datenbankanfrage senden
             Navigation.findNavController(root).navigate(R.id.registrationConfirmation)
