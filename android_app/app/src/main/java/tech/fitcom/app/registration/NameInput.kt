@@ -22,22 +22,15 @@ class NameInput : Fragment() {
         val next = root.findViewById<Button>(R.id.next)
 
         next.setOnClickListener {
-<<<<<<< Updated upstream
-            val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputName)
-            val textfield = root.findViewById<EditText>(R.id.editText_name)
-=======
             val edtTextLayout = root.findViewById<TextInputLayout>(R.id.textInputFirstName)
-            val edittext_first_name = root.findViewById<EditText>(R.id.edittext_first_name)
-            val edittext_last_name = root.findViewById<EditText>(R.id.edittext_last_name)
->>>>>>> Stashed changes
+            val textfield = root.findViewById<EditText>(R.id.editText_name)
 
-            if(edittext_first_name.text.length > 15) {
+            if(textfield.text.length > 15) {
                 edtTextLayout.isErrorEnabled = true
                 edtTextLayout.error = "Dieser Name ist ungültig."
             }
             else {
-                user.userfirstname = edittext_first_name.text.toString()
-                user.userlastname = edittext_last_name.text.toString()
+                user.username = textfield.text.toString()
                 Navigation.findNavController(root).navigate(R.id.emailInput)
             }
         }
