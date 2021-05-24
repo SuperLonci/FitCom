@@ -8,6 +8,7 @@ class NewUser {
     var userlastname: String? = null
     var userbirthdate: String? = null
     var useremail: String? = null
+    var userpassword: String? = null
     var usergender: String = "male"
     var userheight: Int = 100
     var userweight: Int = 100

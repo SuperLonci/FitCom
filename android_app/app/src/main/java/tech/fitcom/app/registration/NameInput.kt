@@ -33,7 +33,7 @@ class NameInput : Fragment() {
             else {
                 user.userfirstname = edittext_first_name.text.toString()
                 user.userlastname = edittext_last_name.text.toString()
-                Navigation.findNavController(root).navigate(R.id.emailInput)
+                Navigation.findNavController(root).navigate(R.id.birthdateInput)
             }
         }
         return root

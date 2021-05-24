@@ -31,7 +31,16 @@
         android:label="fragment_name_input"
         tools:layout="@layout/fragment_name_input" >
         <action
-            android:id="@+id/action_nameInput_to_emailInput"
+            android:id="@+id/action_nameInput_to_birthdateInput"
+            app:destination="@id/birthdateInput" />
+    </fragment>
+    <fragment
+        android:id="@+id/birthdateInput"
+        android:name="tech.fitcom.app.registration.BirthdateInputFragment"
+        android:label="fragment_birthdate_input"
+        tools:layout="@layout/fragment_birthdate_input" >
+        <action
+            android:id="@+id/action_birthdateInput_to_emailInput"
             app:destination="@id/emailInput" />
     </fragment>
     <fragment
@@ -40,7 +49,17 @@
         android:label="fragment_email_input"
         tools:layout="@layout/fragment_email_input" >
         <action
-            android:id="@+id/action_emailInput_to_apacheHelicopterSelection"
+            android:id="@+id/action_emailInput_to_passowrdInput"
+            app:destination="@id/passowrdInput" />
+    </fragment>
+    <fragment
+        android:id="@+id/passowrdInput"
+        android:name="tech.fitcom.app.registration.PasswordInputFragment"
+        android:label="fragment_password_input"
+        tools:layout="@layout/fragment_password_input" >
+
+        <action
+            android:id="@+id/action_passowrdInput_to_apacheHelicopterSelection"
             app:destination="@id/apacheHelicopterSelection" />
     </fragment>
     <fragment

@@ -14,4 +14,7 @@
     <string name="start_workout">Workout starten</string>
     <string name="string_training_plans">Trainingspläne</string>
     <string name="name_input">Wie heißt du?</string>
+    <string name="text_password">Passwort</string>
+    <string name="your_password">Passwort eingeben:</string>
+    <string name="weight">Gewicht</string>
 </resources>
