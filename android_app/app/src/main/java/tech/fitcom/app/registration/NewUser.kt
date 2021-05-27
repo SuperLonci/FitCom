@@ -1,6 +1,7 @@
 package tech.fitcom.app.registration
 
-import java.util.*
+
+//evtl data class
 
 class NewUser {
     var studioID: String = "12345"
