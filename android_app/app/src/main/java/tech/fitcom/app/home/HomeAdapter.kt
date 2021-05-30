@@ -16,9 +16,9 @@ class HomeAdapter(private val context: Context, private val homeItems: List<Home
     private val layoutInflater = LayoutInflater.from(context)
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textTitle = itemView?.findViewById<TextView?>(R.id.text_home_item_title)
-        val textDesc = itemView?.findViewById<TextView?>(R.id.text_home_item_desc)
-        val textPicture = itemView?.findViewById<ImageView?>(R.id.img_home_item_picture)
+        val textTitle = itemView.findViewById<TextView?>(R.id.text_home_item_title)
+        val textDesc = itemView.findViewById<TextView?>(R.id.text_home_item_desc)
+        val textPicture = itemView.findViewById<ImageView?>(R.id.img_home_item_picture)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

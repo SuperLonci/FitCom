@@ -19,9 +19,9 @@ class TrainingdayAdapter(private val context: Context, private val trainingdays:
     private val layoutInflater = LayoutInflater.from(context)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val textTitle = itemView?.findViewById<TextView?>(R.id.text_trainingplan_title)
-        val textDesc = itemView?.findViewById<TextView?>(R.id.text_trainingplan_desc)
-        val textInfo = itemView?.findViewById<TextView?>(R.id.text_trainingplan_info)
+        val textTitle = itemView.findViewById<TextView?>(R.id.text_trainingplan_title)
+        val textDesc = itemView.findViewById<TextView?>(R.id.text_trainingplan_desc)
+        val textInfo = itemView.findViewById<TextView?>(R.id.text_trainingplan_info)
 
         init {
             itemView.setOnClickListener {
