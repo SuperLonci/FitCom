@@ -2,7 +2,7 @@ name: Android Build Validation
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: [ master, dev, pipeline-setup ]
   
   pull_request:
     branches: [ master ]
